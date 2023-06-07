@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <header class="header__container">
+        <img class="header__image"src="assets/books.png" alt="" >
+        <h1>SIMPLE LIBRARY APP</h1>
+        <p><span class="subcontent">Welcome to Code4V's simple Library</span></p>
+    </header>
+    <main class="main__container">
+        <section class="left__container">
+            <h2>Current Books</h2>
+        
+            <div class="book_list">
+                <table>
+                    <thead>
+                        <tr>
+                            <td>Title</td>
+                            <td>Author</td>
+                            <td>Pages</td>
+                            <td>Status</td>
+                            <td>Actions</td>
+                        </tr>
+                    </thead>
+                    <tbody id="table_body">
+                    </tbody>
+                </table>
+                
+            </div>
+            
+        </section>
+
+        <section class="right__container">
+            <div class="add__form">
+                <h2>Add Books</h2>
+                <form>
+                    <label for="bookTitle">Book Title</label>
+                    <input type="text" name="bookTitle" id="bookTitle" required>
+            
+                    <label for="bookAuthor">Book Author</label>
+                    <input type="text" name="bookAuthor" id="bookAuthor" required>
+                    
+                    <label for="bookPages">Book Pages</label>
+                    <input type="number" name="bookPages" id="bookPages" required>
+            
+                    <button type="submit" onclick="addBookToLibrary(event)">Add Book</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <script src="index.js"></script>
+</body>
+</html>
