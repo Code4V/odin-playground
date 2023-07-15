@@ -15,7 +15,7 @@ function addBookToLibrary(e){
     let getTitle = document.getElementById('bookTitle')
     let getAuthor = document.getElementById('bookAuthor')
     let getPages = document.getElementById('bookPages')
-
+    
     if (getTitle.value === null || getTitle.value === undefined || getTitle.value === '') return false
     if (getAuthor.value === null || getAuthor.value === undefined || getAuthor.value === '') return false
     if (getPages.value === null || getPages.value === undefined || getPages.value === '') return false
