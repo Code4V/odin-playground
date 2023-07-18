@@ -1,11 +1,23 @@
 @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans&family=Noto+Sans&family=Rubik&display=swap');
 :root 
 {
-    --primary-color: hsl(236, 72%, 45%);
-    --secondary-color: hsl(106, 72%, 45%);
+    --theme: light dark;
 
-    --light-color: hsl(236, 100%, 87%);
+    --purple: hsl(283, 76%, 46%);
+    --purple-dark: hsl(288, 79%, 17%);
+    --green: hsl(106, 72%, 45%);
+
+    --orange: hsl(14, 76%, 44%);
+
+    --brown: hsl(32, 89%, 11%);
+
+
+    --primary-color: var(--purple);
+    --secondary-color: var(--green);
+
+    --dark-color: var(--purple-dark);
 }
+
 *
 {
     font-family: 'Josefin Sans';
@@ -17,17 +29,19 @@
 .play {
     display: flex;
     flex-direction: column;
-    gap: 5px;
+    gap: 4px;
 }
 
 .play__buttons {
-    margin: 15px auto 0;
+    margin: 16px auto;
 }
 
 .play__buttons button {
     background-color: var(--secondary-color);
     padding: .5rem 2.5rem;
 
+    text-transform: uppercase;
+    font-weight: 600;
     border-radius: 100vmax;
     border: 0;
 }
@@ -40,17 +54,22 @@
     width: fit-content;
     grid-template-columns: repeat(3, 100px);
     grid-template-rows: repeat(3, 100px);
-    gap: 5px;
+    gap: 4px;
     
     place-items: center;
     align-content: center;
     overflow: hidden;
 
+    border: solid 4px var(--secondary-color);
+
+    padding: 4px;
+
 }
 
 .play__arena-area
 {
-    background-color: var(--light-color);
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
     min-height: 100%;
     min-width: 100%;
     display: inline;
@@ -58,19 +77,51 @@
 
     height: 100%;
     place-items: center;
-    padding-top: 25%;
+    padding-top: 30%;
 
     font-size: 40px;
     font-weight: 800;
     transition: 500ms cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
+.play__themes
+{
+    margin-inline: auto;
+    margin-top: 8px;
+}
+
+.colorpicker
+{
+    list-style: none;
+    display: flex;
+    cursor: pointer;
+
+    justify-content: center;
+    align-content: center;
+    text-align: center;
+
+    gap:8px
+}
+
+.colorpicker__selection
+{
+    --square: 1.7rem;
+    background: blue;
+    width: var(--square);
+    height: var(--square);
+    
+    border-radius: 500px;
+    border: solid 2px black;
+    /* content: ''; */
+}
+
 .highlight
 {
     animation: biggysmall 500ms ; 
     transition: 500ms cubic-bezier(0.165, 0.84, 0.44, 1);
-    background-color: black !important;
-    color: var(--light-color) !important;
+    background-color: var(--secondary-color) !important;
+    color: var(--dark-color) !important;
+    /* opacity: 100% !important; */
 }
 
 @keyframes biggysmall {

@@ -16,8 +16,6 @@ const playerFactory = (playershape, playerName) =>
 
 var highlightDelay; 
 
-
-
 const playArena = (playerOne, playerTwo) =>
 {
     
@@ -69,7 +67,7 @@ const playArena = (playerOne, playerTwo) =>
                     }
                 }, 1000);
 
-                finishGame();
+                finishGame(filtered);
             }
         })
     }   
@@ -133,11 +131,16 @@ const playArena = (playerOne, playerTwo) =>
         });
     }
 
-    const finishGame = () =>
+    const finishGame = (excluded) =>
     {
         getArena().forEach(element => {  
             element.setAttribute("style", "pointer-events:none")
-            element.setAttribute("style", "opacity: 90%")
+            if(!excluded.includes(parseInt(element.getAttribute("id").slice(4)-1)))
+            {
+                element.setAttribute("style", "opacity:50%; pointer-events:none");
+            }
+
+            
         })
     }
 
@@ -186,9 +189,26 @@ const generateBoard = (() =>
     return;
 })();
 
+const changeTheme = (selectedTheme) => {
+    const colorpicker = document.querySelectorAll(".colorpicker__selection")
+
+
+    switch(selectedTheme){
+        case 'brown':
+            document.documentElement.style.setProperty('--primary-color', 'var(--brown)');
+            break;
+        case 'orange':
+            document.documentElement.style.setProperty('--primary-color', 'var(--orange)');
+            break;
+    }
+    console.log(colorpicker)
+};
+
 const CrossPlayer = playerFactory("X");
 const CirclePlayer = playerFactory("O");
 
 
 const Arena = playArena(CrossPlayer, CirclePlayer);
 Arena.startGame();
+
+
