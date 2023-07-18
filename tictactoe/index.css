@@ -2,6 +2,8 @@
 :root 
 {
     --primary-color: hsl(236, 72%, 45%);
+    --secondary-color: hsl(106, 72%, 45%);
+
     --light-color: hsl(236, 100%, 87%);
 }
 *
@@ -12,28 +14,76 @@
     box-sizing: border-box;
 }
 
-.play_arena 
+.play {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.play__buttons {
+    margin: 15px auto 0;
+}
+
+.play__buttons button {
+    background-color: var(--secondary-color);
+    padding: .5rem 2.5rem;
+
+    border-radius: 100vmax;
+    border: 0;
+}
+
+.play__arena
 {
-    
     margin: auto auto;
     display: grid;         
 
     width: fit-content;
-    height: 100svh;
     grid-template-columns: repeat(3, 100px);
     grid-template-rows: repeat(3, 100px);
     gap: 5px;
     
     place-items: center;
     align-content: center;
+    overflow: hidden;
+
 }
 
-.play_area 
+.play__arena-area
 {
     background-color: var(--light-color);
     min-height: 100%;
     min-width: 100%;
+    display: inline;
+    text-align: center;
+
+    height: 100%;
+    place-items: center;
+    padding-top: 25%;
 
     font-size: 40px;
     font-weight: 800;
+    transition: 500ms cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.highlight
+{
+    animation: biggysmall 500ms ; 
+    transition: 500ms cubic-bezier(0.165, 0.84, 0.44, 1);
+    background-color: black !important;
+    color: var(--light-color) !important;
+}
+
+@keyframes biggysmall {
+    0% {
+        transform: scale(1)
+    }
+    50% {
+        transform: scale(.85)
+    }
+    80% {
+        transform: scale(1.05)
+    }
+    100% {
+        transform: scale(1)
+    }
 }
