@@ -189,20 +189,50 @@ const generateBoard = (() =>
     return;
 })();
 
-const changeTheme = (selectedTheme) => {
+(() => {
     const colorpicker = document.querySelectorAll(".colorpicker__selection")
 
+    const colors = {
+                    "theme1": [
+                              "--brown", "--purple-light"
+                              ],
+                    "theme2": [
+                              "--orange", "--red"
+                              ],
+                    "theme3": [
+                              "--purple", "--green"
+                              ],
+                    }
 
-    switch(selectedTheme){
-        case 'brown':
-            document.documentElement.style.setProperty('--primary-color', 'var(--brown)');
-            break;
-        case 'orange':
-            document.documentElement.style.setProperty('--primary-color', 'var(--orange)');
-            break;
-    }
+    colorpicker.forEach(element => {
+        element.addEventListener('click', ()=>{
+            if(element.id === "theme1")
+            {
+                document.documentElement.style.setProperty('--primary-color', `var(${colors[element.id][0]})`);
+                document.documentElement.style.setProperty('--secondary-color', `var(${colors[element.id][1]})`);
+            }
+            if(element.id === "theme2")
+            {
+                document.documentElement.style.setProperty('--primary-color', `var(${colors[element.id][0]})`);
+                document.documentElement.style.setProperty('--secondary-color', `var(${colors[element.id][1]})`);
+            }
+            if(element.id === "theme3")
+            {
+                document.documentElement.style.setProperty('--primary-color', `var(${colors[element.id][0]})`);
+                document.documentElement.style.setProperty('--secondary-color', `var(${colors[element.id][1]})`);
+            }
+        })
+    })
+    // switch(selectedTheme){
+    //     case 'brown':
+    //         document.documentElement.style.setProperty('--primary-color', 'var(--brown)');
+    //         break;
+    //     case 'orange':
+    //         document.documentElement.style.setProperty('--primary-color', 'var(--orange)');
+    //         break;
+    // }
     console.log(colorpicker)
-};
+})();
 
 const CrossPlayer = playerFactory("X");
 const CirclePlayer = playerFactory("O");

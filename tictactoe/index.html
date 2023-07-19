@@ -4,11 +4,25 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Tic Tac FOE!</title>
 
     <link rel="stylesheet" href="index.css">
 </head>
 <body>
+    <div class="register">
+        <form class="register__form" action="" id="form">
+
+            <legend>&rAtail; Player Info &lAtail;</legend>
+
+            <label for="#player1">Player 1 Name:</label>
+            <input class="register__form-input" type="text" name="" placeholder="Enter Player 1 Name" id="player1">
+
+            <label for="#player2">Player 2 Name:</label>
+            <input class="register__form-input" type="text" name="" placeholder="Enter Player 2 Name" id="player2">
+
+            <input class="register__form-input" type="button" value="submit">
+        </form>
+    </div>
 
     <div class="play"> 
         <div class="play__buttons">
@@ -17,8 +31,8 @@
         <div class="play__arena" id="play_arena"></div>
         <div class="play__themes">
             <ul class="colorpicker">
-                <li class="colorpicker__selection" id="theme1" onclick="changeTheme('brown')"> </li>
-                <li class="colorpicker__selection" id="theme2" onclick="changeTheme('orange')"> </li>
+                <li class="colorpicker__selection" id="theme1"> </li>
+                <li class="colorpicker__selection" id="theme2"> </li>
                 <li class="colorpicker__selection" id="theme3"> </li>
             </ul>
         </div>
