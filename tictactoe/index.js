@@ -223,7 +223,7 @@ const generateBoard = (() =>
     const colorpicker = document.querySelectorAll(".colorpicker__selection")
     const rootStyle = document.documentElement.style
     const colors = {
-                    "theme1": [ "--brown", "--purple-light" ],
+                    "theme1": [ "--brown", "--green" ],
                     "theme2": [ "--orange", "--red" ],
                     "theme3": [ "--purple", "--green" ],
                     }               
@@ -259,13 +259,12 @@ const generateBoard = (() =>
 const CrossPlayer = playerFactory("X");
 const CirclePlayer = playerFactory("O");
 
-
-const form = document.forms[0];
+const form = document.forms['register'];
 form.addEventListener('submit', (event)=>{
     event.preventDefault();
 
-    CrossPlayer.setName(form.childNodes[5].value)
-    CirclePlayer.setName(form.childNodes[9].value)
+    CrossPlayer.setName(form.elements['player1'].value)
+    CirclePlayer.setName(form.elements['player2'].value)
 })
 
 const Arena = playArena(CrossPlayer, CirclePlayer);
