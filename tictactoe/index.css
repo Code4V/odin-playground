@@ -31,13 +31,13 @@
 
 .register
 {
-    width: 250px;
+    width: 320px;
     margin-inline: auto;
 
     border: 4px solid var(--primary-color);
     border-radius: 8px;
 
-    padding: 8px 8px 80px 8px;
+    padding: 8px 8px 5rem 8px;
 }
 
 .register__form > *
@@ -54,18 +54,15 @@
     text-transform: uppercase;
 }
 
-.register__form>label
+.register__form>label, .register__form-input[type="submit"]
 {
-    margin-block-start: 8px;
+    margin-block-start: 12px;
 }
 
-.register__form-input[type="button"]
+.register__form-input[type="submit"]
 {
-    margin-block-start: 8px;
     margin-inline-start: auto;
 }
-
-
 
 .play 
 {

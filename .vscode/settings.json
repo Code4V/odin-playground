@@ -1,0 +1,10 @@
+{
+    "workbench.tree.indent": 4,
+    "workbench.editor.pinnedTabSizing": "normal",
+    "editor.minimap.autohide": false,
+    "editor.minimap.renderCharacters": false,
+    "editor.hideCursorInOverviewRuler": false,
+    "editor.rulers": [
+    80
+    ]
+}
