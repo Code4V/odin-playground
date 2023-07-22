@@ -259,12 +259,25 @@ const generateBoard = (() =>
 const CrossPlayer = playerFactory("X");
 const CirclePlayer = playerFactory("O");
 
+const play = document.querySelector(".play")
 const form = document.forms['register'];
+
 form.addEventListener('submit', (event)=>{
     event.preventDefault();
 
-    CrossPlayer.setName(form.elements['player1'].value)
-    CirclePlayer.setName(form.elements['player2'].value)
+    var playerName1 = form.elements['player1'].value;
+    var playerName2 = form.elements['player2'].value;
+
+    if(!playerName1.localeCompare(playerName2))
+    {
+        alert("Players cant have the same name");
+        return false;
+    }
+
+    CrossPlayer.setName(playerName1)
+    CirclePlayer.setName(playerName2)
+
+    play.classList.toggle('show')
 })
 
 const Arena = playArena(CrossPlayer, CirclePlayer);
