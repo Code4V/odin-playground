@@ -27,7 +27,7 @@
 
     <div class="play"> 
         <div class="play__buttons">
-            <button type="button" onclick="Arena.restartGame()">Restart</button>
+            <button type="button" onclick="gameState.restartGame()">Restart</button>
         </div>
         <div class="play__arena" id="play_arena"></div>
         <div class="play__themes">
@@ -52,7 +52,7 @@
         </div>
         <div class="scoreboard__status">
             <p>Waiting for</p>
-            <span>Player</span>
+            <span id="turnby">Player</span>
         </div>
     </div>
     

@@ -3,22 +3,24 @@
 {
     --theme: light dark;
 
-    --purple: hsl(283, 76%, 46%);
-    --green: hsl(106, 72%, 45%);
 
-    --orange: hsl(14, 76%, 44%);
-    --red: hsl(0, 87%, 78%);
+    --purple: hsl(283, 76%, 50%);
+    --green: hsl(106, 72%, 50%);
 
-    --brown: hsl(32, 89%, 11%);
+    --orange: hsl(14, 76%, 50%);
+    --red: hsl(0, 87%, 80%);
 
-    --purple-light: hsl(283, 87%, 49%);
-    --purple-dark: hsl(288, 79%, 17%);
+    --brown: hsl(32, 89%, 10%);
+
+    --purple-light: hsl(283, 87%, 50%);
+    --purple-dark: hsl(288, 79%, 20%);
 
 
     --primary-color: var(--purple);
     --secondary-color: var(--green);
 
     --dark-color: var(--purple-dark);
+    --background: hsl(267, 100%, 96%);
 }
 
 *
@@ -34,6 +36,14 @@ body
     display: flex;
     justify-content: center;
     gap: 16px;
+    flex-flow: row wrap;
+
+    background: var(--background);
+}
+
+body > div:not(:nth-child(2)), .play__arena
+{
+    box-shadow: 0 0px 12px 0 rgba(28, 44, 23, 0.2);
 }
 
 .register, .scoreboard
@@ -146,9 +156,7 @@ body
 .show
 {
     display: flex;
-    opacity: 100%;
-
-   
+    opacity: 100%;  
 }
 
 .colorpicker
@@ -242,6 +250,11 @@ body
 .scoreboard__status 
 {
     margin-block: 16px 0;
+}
+
+.scoreboard__status > p 
+{
+    text-align: center;
 }
 
 

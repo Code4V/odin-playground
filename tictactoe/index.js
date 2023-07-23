@@ -4,12 +4,15 @@ const playerFactory = (playershape) =>
     
     const occupied_space = [];
     var player_name;
+    var player_score = 0;
 
     function getPlayer() { return playershape }
     function getSpace() { return occupied_space }
     function getName() { return player_name }
+    function getScore() { return player_score }
 
     function setName(playerName) { player_name = playerName }
+    function addScore() {player_score++}
     
 
     function insertSpace(space) { occupied_space.push(space) }
@@ -18,14 +21,17 @@ const playerFactory = (playershape) =>
         getPlayer,
         getSpace,
         getName,
+        getScore,
         setName,
-        insertSpace
+        insertSpace,
+        addScore
     }
 }
 
 // ARENA EVENTS
-const playArena = (playerOne, playerTwo) =>
+const gameState = (() =>
 {
+    var playerOne, playerTwo;
     var highlightDelay;
     let currentTurn = 1;
     var play_status  = [[0, 1, 2],
@@ -45,6 +51,17 @@ const playArena = (playerOne, playerTwo) =>
         return play_areas;
     }
 
+    const setPlayers = (setPlayerOne, setPlayerTwo) => 
+    {
+        const playerBoardOne = document.querySelector('.scoreboard__player-one>p');
+        const playerBoardTwo = document.querySelector('.scoreboard__player-two>p');
+        playerOne = setPlayerOne;
+        playerTwo = setPlayerTwo;
+
+        playerBoardOne.innerHTML = playerOne.getName();
+        playerBoardTwo.innerHTML = playerTwo.getName();
+    }
+
     const setStatus = (setter) => 
     { 
         play_status = setter 
@@ -55,14 +72,13 @@ const playArena = (playerOne, playerTwo) =>
         return play_status 
     }
 
-
     const checkStatus = (player) => 
     {
         const playerSpace = player.getSpace();
         const winning_combinations = [[0, 1, 2],[3, 4, 5],
-                                        [6, 7, 8],[0, 3, 6],
-                                        [1, 4, 7],[2, 5, 8],
-                                        [0, 4, 8],[2, 4, 6]];
+                                      [6, 7, 8],[0, 3, 6],
+                                      [1, 4, 7],[2, 5, 8],
+                                      [0, 4, 8],[2, 4, 6]];
 
         winning_combinations.forEach((element)=>
         {
@@ -91,8 +107,12 @@ const playArena = (playerOne, playerTwo) =>
                 }
             }, 1000);
 
+            player.addScore();
             finishGame(filtered);
+
         })
+
+        
     }   
 
     const updateStatus = (key, currentPlayer) =>
@@ -113,7 +133,7 @@ const playArena = (playerOne, playerTwo) =>
                 }
             })
         })
-
+        
         checkStatus(currentPlayer)
     }
 
@@ -122,12 +142,13 @@ const playArena = (playerOne, playerTwo) =>
         
         const play_areas = getArena()
         play_areas.forEach((element, key)=>{
+            
             element.addEventListener("click", () => {
                 try{
                     if(element.innerHTML === playerOne.getPlayer() || 
                        element.innerHTML === playerTwo.getPlayer()) 
                        throw "Illegal Move!"
-
+                    
                     if(currentTurn % 2)
                     {
                         
@@ -167,8 +188,6 @@ const playArena = (playerOne, playerTwo) =>
                 element.setAttribute("style",
                                      "opacity:50%; pointer-events:none");
             }
-
-            
         })
     }
 
@@ -194,9 +213,27 @@ const playArena = (playerOne, playerTwo) =>
     return {
         getStatus,
         getTurn,
+        setPlayers,
         startGame,
         restartGame
     }
+})();
+
+const scoreBoard = () =>
+{
+    const turnby = document.querySelector("#turnby")
+
+    const { getTurn } = gameState;
+
+    const updateTurn = () =>
+    {
+        turnby.innerHTML =  getTurn();
+    }
+    
+    return {
+        updateTurn
+    }
+    ;
 }
 
 // CREATES THE TILES
@@ -278,9 +315,12 @@ form.addEventListener('submit', (event)=>{
     CirclePlayer.setName(playerName2)
 
     play.classList.toggle('show')
+    gameState.setPlayers(CrossPlayer, CirclePlayer)
+    gameState.startGame();
+
 })
 
-const Arena = playArena(CrossPlayer, CirclePlayer);
-Arena.startGame();
+// const Arena = playArena(CrossPlayer, CirclePlayer);
+
 
 
