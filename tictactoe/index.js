@@ -69,8 +69,8 @@ const gameState = (() =>
     const getTurn = () => 
     {
         return turn = (currentTurn % 2) ? 
-                    `${currentTurn} -> ${playerTwo.getName()}'s Turn` :
-                    `${currentTurn} -> ${playerOne.getName()}'s Turn`;
+                    `${currentTurn} -> ${playerOne.getName()}'s Turn` :
+                    `${currentTurn} -> ${playerTwo.getName()}'s Turn`;
     }
     
     const getArena = () => 
