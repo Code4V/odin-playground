@@ -86,8 +86,10 @@ const gameState = (() =>
         playerOne = setPlayerOne;
         playerTwo = setPlayerTwo;
 
-        playerBoardOne.innerHTML = playerOne.getName();
-        playerBoardTwo.innerHTML = playerTwo.getName();
+        playerBoardOne.innerHTML = `${playerOne.getName()} 
+                                   (${playerOne.getPlayer()})`;
+        playerBoardTwo.innerHTML = `${playerTwo.getName()} 
+                                   (${playerTwo.getPlayer()})`;
     }
 
     const setStatus = (setter) => 
@@ -142,7 +144,7 @@ const gameState = (() =>
 
             player.addScore();
             updateScore(player)
-            updateTurn(player.getName() + " Won! ")
+            updateTurn(`${player.getName()} Won!`)
             finishGame(filtered);
 
         })
