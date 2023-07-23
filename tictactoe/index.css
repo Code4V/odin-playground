@@ -2,15 +2,14 @@
 :root 
 {
     --theme: light dark;
-
-
+    
     --purple: hsl(283, 76%, 50%);
     --green: hsl(106, 72%, 50%);
 
     --orange: hsl(14, 76%, 50%);
     --red: hsl(0, 87%, 80%);
 
-    --brown: hsl(32, 89%, 10%);
+    --brown: hsl(32, 89%, 12%);
 
     --purple-light: hsl(283, 87%, 50%);
     --purple-dark: hsl(288, 79%, 20%);
@@ -20,7 +19,9 @@
     --secondary-color: var(--green);
 
     --dark-color: var(--purple-dark);
-    --background: hsl(267, 100%, 96%);
+    --background: hsl(0, 0%, 98%);
+
+    --small-screen: 640px;
 }
 
 *
@@ -36,12 +37,13 @@ body
     display: flex;
     justify-content: center;
     gap: 16px;
-    flex-flow: row wrap;
+    flex-flow: column-reverse wrap;
 
     background: var(--background);
 }
 
-body > div:not(:nth-child(2)), .play__arena
+
+body > div:not(:nth-child(even)), .play__arena
 {
     box-shadow: 0 0px 12px 0 rgba(28, 44, 23, 0.2);
 }
@@ -49,8 +51,8 @@ body > div:not(:nth-child(2)), .play__arena
 .register, .scoreboard
 {
     width: 320px;
-    /* margin-inline: auto; */
-    margin-block-start: 12px;
+    margin-inline: auto;
+    margin-block-start: 48px;
 
     height: min-content;
 
@@ -87,9 +89,11 @@ body > div:not(:nth-child(2)), .play__arena
 .play 
 {
     display: none;
-    flex-direction: column;
+    /* flex-direction: column; */
     gap: 4px;
     opacity: 0;
+
+    margin-block-start: 4px;
 
     transition: 500ms ease-in;
     transition-delay: 200ms;
@@ -147,17 +151,66 @@ body > div:not(:nth-child(2)), .play__arena
     }
 }
 
-.play__themes
+.themes
 {
+    display:block;
+    width: fit-content;
+    
+    position: absolute;
     margin-inline: auto;
-    margin-top: 8px;
+    margin-top: 4px;
+
+    top: 0;
+    left: 50%;
+
+    border: solid 2px var(--primary-color);
+    border-radius: 100svh;
+
+    padding: .15em .75em;
+
+    transform: translateX(-50%)
 }
+
+.scoreboard
+{
+    display: none;
+}
+
+.scoreboard__player
+{
+    display: flex;
+    justify-content: space-around;
+}
+
+.scoreboard__player > div 
+{
+    text-align: center;
+}
+
+.scoreboard__player > div > p
+{
+    font-weight: 700;
+}
+
+.scoreboard__player > div > span
+{
+    font-size: xx-large;
+    font-weight: 300;
+}
+
+.scoreboard__status 
+{
+    margin-block: 16px 0;
+    text-align: center;
+}
+
 
 .show
 {
-    display: flex;
+    display: grid;
     opacity: 100%;  
 }
+
 
 .colorpicker
 {
@@ -220,43 +273,6 @@ body > div:not(:nth-child(2)), .play__arena
     }
 }
 
-.scoreboard
-{
-    display: grid;
-}
-
-.scoreboard__player
-{
-    display: flex;
-    justify-content: space-around;
-}
-
-.scoreboard__player > div 
-{
-    text-align: center;
-}
-
-.scoreboard__player > div > p
-{
-    font-weight: 700;
-}
-
-.scoreboard__player > div > span
-{
-    font-size: xx-large;
-    font-weight: 300;
-}
-
-.scoreboard__status 
-{
-    margin-block: 16px 0;
-}
-
-.scoreboard__status > p 
-{
-    text-align: center;
-}
-
 
 .highlight
 {
@@ -302,6 +318,27 @@ input[type="text"]
 
     transition: 500ms cubic-bezier(0.165, 0.84, 0.44, 1);
 }
+
+@media (min-width: 640px)
+{
+    body
+    {
+        flex-flow: row wrap;
+        justify-content: center;
+    }
+
+    .register, .scoreboard
+    {
+        margin-inline: 0;
+    }
+
+    .themes
+    {
+        
+        margin-inline: auto;
+    }
+}
+
 
 @keyframes biggysmall 
 {

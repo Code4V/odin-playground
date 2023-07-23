@@ -28,9 +28,37 @@ const playerFactory = (playershape) =>
     }
 }
 
+const scoreBoard = (() =>
+{
+    const turnby = document.querySelector("#turnby")
+    const scores = document.querySelectorAll(".scoreboard__player span")
+
+    const updateTurn = (turn) =>
+    {
+        turnby.innerHTML = turn;
+    }
+
+    const updateScore = (player) =>
+    {
+        const isFirst = 'X';
+        if(player.getPlayer() == isFirst)
+            scores[0].innerHTML = player.getScore();
+        else 
+            scores[1].innerHTML = player.getScore();
+
+    }
+    
+    return {
+        updateTurn,
+        updateScore
+    }
+    ;
+})();
+
 // ARENA EVENTS
 const gameState = (() =>
 {
+    const { updateTurn, updateScore } = scoreBoard;
     var playerOne, playerTwo;
     var highlightDelay;
     let currentTurn = 1;
@@ -79,6 +107,11 @@ const gameState = (() =>
                                       [6, 7, 8],[0, 3, 6],
                                       [1, 4, 7],[2, 5, 8],
                                       [0, 4, 8],[2, 4, 6]];
+        console.log("ERROR")
+        if (currentTurn == 9)
+        {
+            updateTurn("It's a Tie!")
+        }
 
         winning_combinations.forEach((element)=>
         {
@@ -108,6 +141,8 @@ const gameState = (() =>
             }, 1000);
 
             player.addScore();
+            updateScore(player)
+            updateTurn(player.getName() + " Won! ")
             finishGame(filtered);
 
         })
@@ -133,14 +168,14 @@ const gameState = (() =>
                 }
             })
         })
-        
+        updateTurn(getTurn())
         checkStatus(currentPlayer)
     }
 
     const startGame = () => 
     {
-        
         const play_areas = getArena()
+        updateTurn(getTurn())
         play_areas.forEach((element, key)=>{
             
             element.addEventListener("click", () => {
@@ -206,6 +241,8 @@ const gameState = (() =>
         setStatus([[0, 1, 2],
                    [3, 4, 5],
                    [6, 7, 8]]) ;
+        
+        updateTurn(getTurn())
 
         clearInterval(highlightDelay);
     }
@@ -218,23 +255,6 @@ const gameState = (() =>
         restartGame
     }
 })();
-
-const scoreBoard = () =>
-{
-    const turnby = document.querySelector("#turnby")
-
-    const { getTurn } = gameState;
-
-    const updateTurn = () =>
-    {
-        turnby.innerHTML =  getTurn();
-    }
-    
-    return {
-        updateTurn
-    }
-    ;
-}
 
 // CREATES THE TILES
 const generateBoard = (() => 
@@ -296,8 +316,12 @@ const generateBoard = (() =>
 const CrossPlayer = playerFactory("X");
 const CirclePlayer = playerFactory("O");
 
-const play = document.querySelector(".play")
+const play = document.querySelector(".play");
+const board = document.querySelector(".scoreboard")
+
 const form = document.forms['register'];
+
+const register = document.querySelector(".register");
 
 form.addEventListener('submit', (event)=>{
     event.preventDefault();
@@ -315,9 +339,11 @@ form.addEventListener('submit', (event)=>{
     CirclePlayer.setName(playerName2)
 
     play.classList.toggle('show')
+    board.classList.toggle('show')
     gameState.setPlayers(CrossPlayer, CirclePlayer)
     gameState.startGame();
 
+    register.setAttribute("style", "display: none;")
 })
 
 // const Arena = playArena(CrossPlayer, CirclePlayer);

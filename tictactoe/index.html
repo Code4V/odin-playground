@@ -30,13 +30,6 @@
             <button type="button" onclick="gameState.restartGame()">Restart</button>
         </div>
         <div class="play__arena" id="play_arena"></div>
-        <div class="play__themes">
-            <ul class="colorpicker">
-                <li class="colorpicker__selection" id="theme1"> </li>
-                <li class="colorpicker__selection" id="theme2"> </li>
-                <li class="colorpicker__selection" id="theme3"> </li>
-            </ul>
-        </div>
     </div>
 
     <div class="scoreboard">
@@ -51,12 +44,18 @@
             </div>
         </div>
         <div class="scoreboard__status">
-            <p>Waiting for</p>
+            <p>Turn:</p>
             <span id="turnby">Player</span>
         </div>
     </div>
     
-    
+    <div class="themes">
+        <ul class="colorpicker">
+            <li class="colorpicker__selection" id="theme1"> </li>
+            <li class="colorpicker__selection" id="theme2"> </li>
+            <li class="colorpicker__selection" id="theme3"> </li>
+        </ul>
+    </div>
 
    
     <script src="index.js"></script>
