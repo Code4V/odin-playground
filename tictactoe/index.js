@@ -69,8 +69,8 @@ const gameState = (() =>
     const getTurn = () => 
     {
         return turn = (currentTurn % 2) ? 
-                    `${currentTurn} -> ${playerOne.getName()}'s Turn` :
-                    `${currentTurn} -> ${playerTwo.getName()}'s Turn`;
+                    `${currentTurn} -> ${playerTwo.getName()}'s Turn` :
+                    `${currentTurn} -> ${playerOne.getName()}'s Turn`;
     }
     
     const getArena = () => 
@@ -107,8 +107,8 @@ const gameState = (() =>
                                       [6, 7, 8],[0, 3, 6],
                                       [1, 4, 7],[2, 5, 8],
                                       [0, 4, 8],[2, 4, 6]];
-        console.log("ERROR")
-        if (currentTurn == 9)
+
+        if (currentTurn == 10)
         {
             updateTurn("It's a Tie!")
         }
@@ -148,6 +148,7 @@ const gameState = (() =>
         })
 
         
+        
     }   
 
     const updateStatus = (key, currentPlayer) =>
@@ -168,6 +169,8 @@ const gameState = (() =>
                 }
             })
         })
+       
+        
         updateTurn(getTurn())
         checkStatus(currentPlayer)
     }
@@ -189,16 +192,18 @@ const gameState = (() =>
                         
                         playerOne.insertSpace(parseInt(key));
                         element.innerHTML = playerOne.getPlayer();
+                        currentTurn++;
                         updateStatus(key, playerOne);
                         
-                        ++currentTurn;
+                       
                     }  
                     else
                     {
                         playerTwo.insertSpace(parseInt(key));
                         element.innerHTML = playerTwo.getPlayer();
+                        currentTurn++;
                         updateStatus(key, playerTwo);
-                        ++currentTurn;
+                   
                     }
     
                     
