@@ -1,140 +1,156 @@
-@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans&family=Noto+Sans&family=Rubik&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&display=swap');
 
-* {
-    box-sizing: border-box;
+:root
+{
+    --primary-color: hsl(37, 70%, 64%);
 
-    font-family: 'Rubik';
+    --font-solid: hsl(37, 50%, 50%);
+}
 
+
+* 
+{
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+
+    font-family: Manrope;
 }
 
-body {
-    background-color: whitesmoke;
+body
+{
+    display: grid;
+
+    place-items: center;
+    place-content: center;
+    
+    height: 80svh;
 }
 
+.header 
+{
+    display: grid;
 
-input {
-    display: block;
-    margin: 0 0 10px 0 ;
-}
+    place-items: center;
 
-.header__container {
-    width: fit-content;
-    margin-inline: auto;
+    max-width: 40rem;
 
-    text-align: center;
-}
+    margin: 0 auto;
 
-.header__image {
-    margin: 10px 0;
-    width: 250px;
-}
-
-.subcontent {
-    font-size: small;
-   
-}
-
-.book_list {
-    margin: 25px 0 0 0;
-}
-
-table { 
-    width: 100%;
-}
-
-thead {
-    font-weight: 600;
-}
-
-thead > tr > th:last-child {
-    min-width: 120px;
-}
-
-thead > tr > th:first-child {
-    min-width: 120px;
-}
-
-tbody > tr > td > input {
-    display: inline-block;
-    margin: 0 5px 0px;
-}
-
-:is(tbody, thead) tr :is(th td):first-child{
-    width: 225px;
-    word-break: break-all;
+    gap: 1rem;
     
 }
 
-:is(tbody, thead) tr td:nth-child(2){
-    width: 125px;
-}
-
-input[type="button"], button[type="submit"] {
-    padding: .25rem 1.5rem;
-}
-
-input[type="text"], input[type="number"] {
-    width: 100%;
-    margin-block-end: 10px;
-    padding: .15rem .5rem
-}
-
-form label {
-    margin-block-end: 10px;
-}
-
-.main__container {
-    display: flex;
-    gap: 10px;
-
-    flex-flow: column-reverse wrap;
-
-    align-items: center;
-    max-width: 90svh;
- 
-    margin-block: 50px 0;
-    padding: 0 10px
-}
-
-.left__container {
-    flex: 1 0 60%;
-
-    text-align: center;
-}
-
-.right__container {
-    flex: 1 0 100%;
-}
-
-.add__form{
-    position: sticky;
-    top: 5px;
-    width: clamp(20rem, 20rem, 21rem);
-
-    background-color: #fff;
-    padding: 15px;
-
-    border-radius: 15px;
-
-    box-shadow: 2px 5px 18px 3px rgba(0,0,0,0.25);
-    -webkit-box-shadow: 2px 5px 18px 3px rgba(0,0,0,0.25);
-    -moz-box-shadow: 2px 5px 18px 3px rgba(0,0,0,0.25);
-}
-
-.list-items:last-child {
-    margin-bottom: 10px;
-}
-
-@media (min-width:  1366px)
+.header__images
 {
-    .main__container {
-        flex-flow: row wrap;
-        margin-inline: auto;
-    }
+    display: flex;
+    gap: 1rem;
+}
 
-    .right__container{
-        flex: 1 0 30%;
-    }
+.header__images img 
+{
+    max-width: 5rem;
+}
+
+.header__images img:last-child
+{
+    border-radius: 50% !important;
+}
+
+.header__title
+{
+    position: relative;
+    font-size: 4rem;
+}
+
+.header__title::after
+{
+    font-size: x-small;
+    content: "with Code4V";
+
+    position: absolute;
+
+    left: 0;
+    right: 0;
+    bottom: .25rem;
+
+    /* color: var(--primary-color); */
+}
+
+
+
+.header__nav
+{
+    min-width: 100%;
+}
+
+.header__nav-list
+{
+    display: flex;
+
+    gap: 12px;
+    list-style: none;
+
+    
+   text-align: center;
+}
+
+.nav-list__links
+{
+    flex: 1 0 33%;
+}
+
+
+.nav-list__links > a 
+{
+    text-decoration: none;
+    color: black;
+    
+    transition: color 250ms ease-in-out;
+}
+
+.nav-list__links > a:hover 
+{
+    color: var(--font-solid);
+}
+
+.nav-list__links > a::before
+{
+    content: '↯';
+}
+
+.nav-list__links:nth-child(3)
+{
+    position: relative;
+}
+
+.nav-list__links:nth-child(3) > a::after
+{
+    content: "Coming Soon!";
+
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    opacity: 0;
+
+    background-color: white;
+
+    transition: all 250ms ease-in-out;
+}
+
+.nav-list__links:nth-child(3) > a:hover::after 
+{
+    color: var(--font-solid);
+    opacity: 100%;
+}
+
+
+
+
+.primary-color
+{
+    color: var(--primary-color)
 }

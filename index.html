@@ -5,57 +5,24 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-
+    
     <link rel="stylesheet" href="index.css">
 </head>
 <body>
-    <header class="header__container">
-        <img class="header__image"src="assets/books.png" alt="" >
-        <h1>SIMPLE LIBRARY APP</h1>
-        <p><span class="subcontent">Welcome to Code4V's simple Library</span></p>
+    <header class="header"> 
+        <section class="header__images">
+            <img src="https://www.theodinproject.com/assets/icons/odin-icon-b5b31c073f7417a257003166c98cc23743654715305910c068b93a3bf4d3065d.svg" alt="the odin project!">
+            <span> X </span>
+            <img src="https://avatars.githubusercontent.com/u/105205802?v=4" alt="the odin project!">
+        </section>
+        <h1 class="header__title">THE <span class="primary-color">O</span>DIN PROJECT</h1>
+        <div class="header__nav">
+            <ul class="header__nav-list">
+                <li class="nav-list__links"><a href="/library/">Library</a></li>
+                <li class="nav-list__links"><a href="/tictactoe/">Tic-Tac-Toe</a></li>
+                <li class="nav-list__links"><a href="#">Web Store</a></li>
+            </ul>
+        </div>
     </header>
-    <main class="main__container">
-        <section class="left__container">
-            <h2>Current Books</h2>
-        
-            <div class="book_list">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Title</th>
-                            <th>Author</th>
-                            <th>Pages</th>
-                            <th>Status</th>
-                            <th>Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody id="table_body">
-                    </tbody>
-                </table>
-                
-            </div>
-            
-        </section>
-
-        <section class="right__container">
-            <div class="add__form">
-                <h2>Add Books</h2>
-                <form>
-                    <label for="bookTitle">Book Title</label>
-                    <input type="text" name="bookTitle" id="bookTitle" required>
-            
-                    <label for="bookAuthor">Book Author</label>
-                    <input type="text" name="bookAuthor" id="bookAuthor" required>
-                    
-                    <label for="bookPages">Book Pages</label>
-                    <input type="number" name="bookPages" id="bookPages" required>
-            
-                    <button type="submit" onclick="addBookToLibrary(event)">Add Book</button>
-                </form>
-            </div>
-        </section>
-    </main>
-
-    <script src="index.js"></script>
 </body>
 </html>
