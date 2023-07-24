@@ -38,6 +38,8 @@ body
     margin: 0 auto;
 
     gap: 1rem;
+
+    padding: .5rem;
     
 }
 
@@ -60,7 +62,9 @@ body
 .header__title
 {
     position: relative;
-    font-size: 4rem;
+    font-size: 5.5rem;
+
+    text-align: center;
 }
 
 .header__title::after
@@ -77,6 +81,12 @@ body
     /* color: var(--primary-color); */
 }
 
+@media screen and (min-width: 640px){
+    .header__title
+    {
+        font-size: 4rem;
+    }
+}
 
 
 .header__nav
