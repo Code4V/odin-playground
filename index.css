@@ -48,7 +48,11 @@ thead {
     font-weight: 600;
 }
 
-thead > tr > td:last-child {
+thead > tr > th:last-child {
+    min-width: 120px;
+}
+
+thead > tr > th:first-child {
     min-width: 120px;
 }
 
@@ -57,7 +61,7 @@ tbody > tr > td > input {
     margin: 0 5px 0px;
 }
 
-:is(tbody, thead) tr td:first-child{
+:is(tbody, thead) tr :is(th td):first-child{
     width: 225px;
     word-break: break-all;
     
@@ -85,25 +89,29 @@ form label {
     display: flex;
     gap: 10px;
 
-    width: 50svw;
-    margin-inline: auto;
+    flex-flow: column-reverse wrap;
+
+    align-items: center;
+    max-width: 90svh;
+ 
     margin-block: 50px 0;
     padding: 0 10px
 }
 
 .left__container {
-    width: 70%;
+    flex: 1 0 60%;
 
     text-align: center;
 }
 
 .right__container {
-    width: 30%;
+    flex: 1 0 100%;
 }
 
 .add__form{
     position: sticky;
     top: 5px;
+    width: clamp(20rem, 20rem, 21rem);
 
     background-color: #fff;
     padding: 15px;
@@ -117,4 +125,16 @@ form label {
 
 .list-items:last-child {
     margin-bottom: 10px;
+}
+
+@media (min-width:  1366px)
+{
+    .main__container {
+        flex-flow: row wrap;
+        margin-inline: auto;
+    }
+
+    .right__container{
+        flex: 1 0 30%;
+    }
 }

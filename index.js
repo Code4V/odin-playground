@@ -1,3 +1,57 @@
+// CLASS DECLARATIONS
+class Book {
+
+    constructor(title, author, pages)
+    {
+        this.title = title
+        this.author = author
+        this.pages = pages
+        this.hasRead = false
+    }
+    
+    
+}
+
+class Magazine extends Book {
+    
+    isThick () {
+        if(this.pages > 200) return "Thick Boi"
+        return "Thin Ass"
+    }
+}
+
+class Dictionary extends Magazine
+{
+    isInteresting = false;
+    
+}
+
+Book.prototype.read = function () {
+    this.hasRead = true
+}
+
+Book.prototype.info = function () {
+    return (this.title + ' by ' + this.author + ', ' + this.pages + ' pages, not read yet')
+}
+
+Book.prototype.throw = function () {
+    return ("You've thrown " + this.title + ", which is a " + this.constructor.name)
+}
+
+
+
+Magazine.prototype = Object.create(Book.prototype)
+
+
+
+Dictionary.prototype = Object.create(Book.prototype)
+
+Dictionary.prototype.throw = function () {
+    return ("You can't throw a Dictionary")
+}
+
+
+
 const Book1 = new Book('The Hobbit', 'J.R.R Tolkien', 295)
 const Book2 = new Book('Lord of the Rings', 'J.R.R Tolkien', 500)
 const Book3 = new Book('Middle Earth', 'J.R.R Tolkien', 299)
@@ -5,9 +59,9 @@ const Magazine1 = new Magazine('Timely Earth', 'John Boulevard', 100)
 const Dictionary1 = new Dictionary('Every Word From 2000', 'Steve Morder', 500)
 
 let myLibrary = [];
-myLibrary.push(Book1, Book2, Book3)
+myLibrary.push(Book1, Book2, Book3, Magazine1)
 
-displayBooks(myLibrary)
+renderLibrary(myLibrary)
 
 function addBookToLibrary(e){
     e.preventDefault();
@@ -27,7 +81,7 @@ function addBookToLibrary(e){
     getPages.value = ''
 
     reset()
-    displayBooks(myLibrary)
+    renderLibrary(myLibrary)
 }
 
 function reset(){
@@ -43,7 +97,7 @@ function deleteBook(index) {
     myLibrary.splice(index, 1)
 
     reset()
-    displayBooks(myLibrary)
+    renderLibrary(myLibrary)
 }
 
 function markAsRead(index) {
@@ -53,10 +107,10 @@ function markAsRead(index) {
     else myLibrary[index].read()
     
     reset()
-    displayBooks(myLibrary)
+    renderLibrary(myLibrary)
 }
 
-function displayBooks(library){
+function renderLibrary(library){
     if (library === null || library === undefined) return
     library.forEach((items, index) => {
         // Creates Row
@@ -102,43 +156,3 @@ function displayBooks(library){
     })
 }
 
-function Book (title, author, pages) {
-    this.title = title,
-    this.author = author,
-    this.pages = pages
-
-    this.hasRead = false
-}
-
-Book.prototype.read = function () {
-    this.hasRead = true
-}
-
-Book.prototype.info = function () {
-    return (this.title + ' by ' + this.author + ', ' + this.pages + ' pages, not read yet')
-}
-
-Book.prototype.throw = function () {
-    return ("You've thrown " + this.title + ", which is a " + this.constructor.name)
-}
-
-function Magazine (title, author, pages) {
-    Book.call(this, title, author, pages)
-    this.isThick = function () {
-        if(this.pages > 200) return "Thick Boi"
-        return "Thin Ass"
-    }
-}
-
-Magazine.prototype = Object.create(Book.prototype)
-
-function Dictionary (title, author, pages) {
-    Magazine.call(this, title, author, pages)
-    // Magazine.call(this)
-}
-
-Dictionary.prototype = Object.create(Book.prototype)
-
-Dictionary.prototype.throw = function () {
-    return ("You can't throw a Dictionary")
-}
