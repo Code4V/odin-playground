@@ -5,6 +5,10 @@
     --primary-color: hsl(37, 70%, 64%);
 
     --font-solid: hsl(37, 50%, 50%);
+
+    --basic-transition: 125ms ease-out;
+    --animation-transition: 1000ms ease-out;
+    --sudden-transition: 350ms cubic-bezier(.19,1.38,.73,.96);
 }
 
 
@@ -59,10 +63,35 @@ body
     border-radius: 50% !important;
 }
 
+.header__images span
+{
+
+    position: relative;
+    cursor: default;
+}
+
+.header__images span::before
+{
+    content: 'X';
+    position: absolute;
+    color: var(--primary-color);
+    
+    clip-path: polygon(50% 0, 100% 0, 100% 100%, 50% 100%);
+    transition: clip-path var(--basic-transition);
+    cursor: default;
+}
+
+.header__images span:hover::before
+{
+    animation: spin var(--animation-transition) infinite;
+    clip-path: polygon(50% 0, 0 0, 0 100%, 50% 100%);
+}
+
+
 .header__title
 {
     position: relative;
-    font-size: 5.5rem;
+    font-size: 5rem;
 
     text-align: center;
 }
@@ -81,17 +110,11 @@ body
     /* color: var(--primary-color); */
 }
 
-@media screen and (min-width: 640px){
-    .header__title
-    {
-        font-size: 4rem;
-    }
-}
-
 
 .header__nav
 {
-    min-width: 100%;
+    width: 100%;
+    padding: .5rem;
 }
 
 .header__nav-list
@@ -107,7 +130,7 @@ body
 
 .nav-list__links
 {
-    flex: 1 0 33%;
+    flex: 1 0 34%;
 }
 
 
@@ -115,8 +138,10 @@ body
 {
     text-decoration: none;
     color: black;
+    position: relative;
     
-    transition: color 250ms ease-in-out;
+    transition: color var(--basic-transition);
+
 }
 
 .nav-list__links > a:hover 
@@ -127,6 +152,20 @@ body
 .nav-list__links > a::before
 {
     content: '↯';
+    opacity: 0;
+    display: inline-block;
+    position: absolute;
+    left: 40%;
+
+    transform: translateY(-50px);
+    
+    transition: opacity var(--basic-transition), transform var(--sudden-transition);
+}
+
+.nav-list__links > a:hover::before
+{
+    opacity: 100%;
+    transform: translateY(35px);
 }
 
 .nav-list__links:nth-child(3)
@@ -136,7 +175,7 @@ body
 
 .nav-list__links:nth-child(3) > a::after
 {
-    content: "Coming Soon!";
+    content: "On Going!";
 
     position: absolute;
     top: 0;
@@ -163,4 +202,30 @@ body
 .primary-color
 {
     color: var(--primary-color)
+}
+
+@keyframes spin 
+{
+    0%{
+        clip-path: polygon(50% 0, 100% 0, 100% 100%, 50% 100%);
+    }
+    25%{
+        clip-path: polygon(0 50%, 100% 50%, 100% 100%, 0 100%);
+    }
+    50%{
+        clip-path: polygon(0 0, 50% 0, 50% 100%, 0 100%);
+    }
+    75%{
+        clip-path: polygon(0 0, 100% 0, 100% 50%, 0 50%);
+    }
+    100% {
+        clip-path: polygon(50% 0, 100% 0, 100% 100%, 50% 100%);
+    }
+}
+
+@media screen and (min-width: 640px){
+    .header__title
+    {
+        font-size: 4rem;
+    }
 }
