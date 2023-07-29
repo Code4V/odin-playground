@@ -1,0 +1,14 @@
+@use '../abstracts/' as *;
+
+.primary 
+{
+    // border: solid .125rem $golden-500;
+    background-color: $steelblue-600;
+    color: $golden-200;
+}
+
+.secondary
+{
+    background-color: $darkslate-500;
+    color: $steelblue-100
+}

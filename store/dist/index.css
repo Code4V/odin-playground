@@ -1,0 +1,95 @@
+@import url("https://fonts.googleapis.com/css2?family=Fira+Sans:wght@100;200;300;400;500;600;700;800;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&display=swap");
+.header {
+  display: flex;
+  position: relative;
+  height: 100svh;
+  overflow: hidden;
+  place-items: center;
+}
+.header__image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  aspect-ratio: 16/9;
+  object-fit: contain;
+  object-position: left;
+}
+.header__contents {
+  backdrop-filter: blur(8px);
+  width: 40rem;
+  text-align: center;
+  color: hsl(41, 83%, 45%);
+  margin-inline: 1rem;
+  padding: 2rem;
+  border: 0.2rem hsl(41, 83%, 45%) solid;
+}
+.header__title {
+  font-weight: 900;
+  font-size: 4rem;
+  line-height: 3.5rem;
+  margin-block-start: 1rem;
+  word-break: keep-all;
+  letter-spacing: 0.05rem;
+}
+.header__subtitle {
+  font-family: "Amatic SC";
+  color: hsl(211, 62%, 93%);
+  font-weight: 400;
+  font-size: 1.5rem;
+  letter-spacing: 0.25rem;
+}
+.header__buttons {
+  display: none;
+  margin-block-start: 1.25rem;
+}
+.header__buttons * {
+  margin-inline: 0.5rem;
+  font-weight: 600;
+}
+@media (min-width: 640px) {
+  .header__contents {
+    margin-inline: auto;
+  }
+  .header__title {
+    font-size: 6rem;
+    line-height: 4.5rem;
+  }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: 1rem;
+  line-height: normal;
+}
+
+button {
+  padding: 0.5rem 1.75rem;
+  border: 0;
+  border-radius: 0;
+}
+
+.primary {
+  background-color: hsl(210, 74%, 36%);
+  color: hsl(41, 87%, 78%);
+}
+
+.secondary {
+  background-color: hsl(214, 20%, 27%);
+  color: hsl(211, 62%, 93%);
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Poppins";
+}
+
+/*# sourceMappingURL=index.css.map */
