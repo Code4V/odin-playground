@@ -46,6 +46,13 @@
     line-height: 24px;
 }
 
+.header > h1 > a
+{
+    text-decoration: none;
+    color:hsl(37, 50%, 50%) ; ;
+    
+}
+
 .main 
 {
     display: flex;
