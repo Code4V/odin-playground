@@ -1,63 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Tic Tac FOE!</title>
 
-    <link rel="stylesheet" href="index.css">
-</head>
-<body>
+    <link rel="stylesheet" href="index.css" />
+  </head>
 
-    <div class="register">
+  <body>
+    <header class="header">
+        <h1 class="header__title"> TIC TAC FOE </h1>
+        <span class="header__subtitle"> by Code4V </span>
+    </header>
+    <main class="main">
+      <div class="register">
         <form class="register__form" action="" id="register">
-
-            <legend>&rAtail; Player Info &lAtail;</legend>
-
-            <label for="#player1">Player 1 Name:</label>
-            <input class="register__form-input" type="text" name="" placeholder="Enter Player 1 Name" id="player1" required>
-
-            <label for="#player2">Player 2 Name:</label>
-            <input class="register__form-input" type="text" name="" placeholder="Enter Player 2 Name" id="player2" required>
-
-            <button class="register__form-input" type="submit"> Start </button>
+          <legend>&rAtail; Player Info &lAtail;</legend>
+          <label for="#player1">Player 1 Name:</label>
+          <input
+            class="register__form-input"
+            type="text"
+            name=""
+            placeholder="Enter Player 1 Name"
+            id="player1"
+            required
+          />
+          <label for="#player2">Player 2 Name:</label>
+          <input
+            class="register__form-input"
+            type="text"
+            name=""
+            placeholder="Enter Player 2 Name"
+            id="player2"
+            required
+          />
+          <button class="register__form-input" type="submit">Start</button>
         </form>
-    </div>
-
-    <div class="play"> 
+      </div>
+      <div class="play">
         <div class="play__buttons">
-            <button type="button" onclick="gameState.restartGame()">Restart</button>
+          <button type="button" onclick="gameState.restartGame()">
+            Restart
+          </button>
         </div>
         <div class="play__arena" id="play_arena"></div>
-    </div>
-
-    <div class="scoreboard">
+      </div>
+      <div class="scoreboard">
         <div class="scoreboard__player">
-            <div class="scoreboard__player-one">
-                <p>Player 1 Name</p>
-                <span>0</span>
-            </div>
-            <div class="scoreboard__player-two">
-                <p>Player 2 Name</p>
-                <span>0</span>
-            </div>
+          <div class="scoreboard__player-one">
+            <p>Player 1 Name</p>
+            <span>0</span>
+          </div>
+          <div class="scoreboard__player-two">
+            <p>Player 2 Name</p>
+            <span>0</span>
+          </div>
         </div>
         <div class="scoreboard__status">
-            <p>Turn:</p>
-            <span id="turnby">Player</span>
+          <p>Turn:</p>
+          <span id="turnby">Player</span>
         </div>
-    </div>
-    
-    <div class="themes">
-        <ul class="colorpicker">
-            <li class="colorpicker__selection" id="theme1"> </li>
-            <li class="colorpicker__selection" id="theme2"> </li>
-            <li class="colorpicker__selection" id="theme3"> </li>
-        </ul>
-    </div>
+      </div>
 
-   
+      <div class="themes">
+        <ul class="colorpicker">
+          <li class="colorpicker__selection" id="theme1"></li>
+          <li class="colorpicker__selection" id="theme2"></li>
+          <li class="colorpicker__selection" id="theme3"></li>
+        </ul>
+      </div>
+    </main>
+
     <script src="index.js"></script>
-</body>
+  </body>
 </html>
