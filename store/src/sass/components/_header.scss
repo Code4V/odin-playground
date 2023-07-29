@@ -7,7 +7,7 @@
     display: flex; 
     position: relative;
 
-    height: 100svh;
+    height: 50svh;
     overflow: hidden;
 
     place-items: center;
@@ -23,17 +23,20 @@
         object-fit: contain;        
         object-position:left;
     }
-
+    
     &__contents
     {
+
+        $default-width: 40rem;
         backdrop-filter: blur(8px);
-        width: clamp(25rem, 40rem, 45rem);
+        width: clamp(25rem, $default-width, 45rem);
         text-align: center;
         color: $golden-500;
 
         margin-inline: 1rem; 
         padding: 2rem;
         border: .2rem $golden-500 solid;
+
     } 
 
 
