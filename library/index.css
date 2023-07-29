@@ -93,7 +93,8 @@ form label {
 
     align-items: center;
     max-width: 90svh;
- 
+    
+    margin-inline: auto;
     margin-block: 50px 0;
     padding: 0 10px
 }
