@@ -1,10 +1,11 @@
+@charset "UTF-8";
 @import url("https://fonts.googleapis.com/css2?family=Fira+Sans:wght@100;200;300;400;500;600;700;800;900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&display=swap");
 .header {
   display: flex;
   position: relative;
-  height: 50svh;
+  min-height: 50svh;
   overflow: hidden;
   place-items: center;
 }
@@ -13,11 +14,13 @@
   top: 0;
   left: 0;
   z-index: -1;
+  max-width: fit-content;
   aspect-ratio: 16/9;
   object-fit: contain;
   object-position: left;
 }
 .header__contents {
+  margin-block: 1rem;
   backdrop-filter: blur(8px);
   width: 40rem;
   text-align: center;
@@ -28,7 +31,7 @@
 }
 .header__title {
   font-weight: 900;
-  font-size: 4rem;
+  font-size: 3rem;
   line-height: 3.5rem;
   margin-block-start: 1rem;
   word-break: keep-all;
@@ -42,12 +45,15 @@
   letter-spacing: 0.25rem;
 }
 .header__buttons {
-  display: none;
   margin-block-start: 1.25rem;
 }
 .header__buttons * {
   margin-inline: 0.5rem;
   font-weight: 600;
+}
+.header__buttons--primary {
+  background-color: hsl(210, 74%, 36%);
+  color: hsl(41, 87%, 78%);
 }
 @media (min-width: 640px) {
   .header__contents {
@@ -59,22 +65,6 @@
   }
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-size: 1rem;
-  line-height: normal;
-}
-
-button {
-  padding: 0.5rem 1.75rem;
-  border: 0;
-  border-radius: 0;
-}
-
 .primary {
   background-color: hsl(210, 74%, 36%);
   color: hsl(41, 87%, 78%);
@@ -83,6 +73,205 @@ button {
 .secondary {
   background-color: hsl(214, 20%, 27%);
   color: hsl(211, 62%, 93%);
+}
+
+.best-seller {
+  padding: 1rem;
+  display: flex;
+  flex-flow: column wrap;
+  width: clamp(27rem, 80%, 40rem);
+  margin-inline: auto;
+}
+.best-seller__title {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 800;
+  color: hsl(41, 90%, 25%);
+}
+.best-seller__item {
+  display: flex;
+  gap: 0.75rem;
+  margin-block: 2rem 0;
+  flex-flow: column wrap;
+}
+.best-seller__item-image {
+  max-height: 200px;
+  max-width: 200px;
+  min-height: 200px;
+  position: relative;
+}
+.best-seller__item-image > img {
+  aspect-ratio: 1/1;
+  object-fit: cover;
+  object-position: center;
+  box-shadow: 0 0 24px 4px hsl(211, 62%, 93%);
+  max-height: 200px;
+  min-height: 200px;
+}
+.best-seller__item-image::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  transform: translate(-8px, 8px);
+  z-index: -1;
+  border: 0.15rem solid hsl(41, 86%, 35%);
+}
+.best-seller__item-title {
+  font-size: 2rem;
+  text-transform: uppercase;
+  color: hsl(41, 83%, 45%);
+  font-weight: 300;
+}
+.best-seller__item-description {
+  word-break: break-all;
+}
+.best-seller__item-action {
+  max-width: fit-content;
+  margin-block-start: 1rem;
+}
+@media (min-width: 640px) {
+  .best-seller__item {
+    flex-flow: row wrap;
+  }
+}
+
+html, body, div, span, applet, object, iframe, table, caption,
+tbody, tfoot, thead, tr, th, td, del, dfn, em, font, img, ins,
+kbd, q, s, samp, small, strike, strong, sub, sup, tt, var,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr,
+acronym, address, big, cite, code, dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend {
+  vertical-align: baseline;
+  font-family: inherit;
+  font-weight: inherit;
+  font-style: inherit;
+  font-size: 100%;
+  outline: 0;
+  padding: 0;
+  margin: 0;
+  border: 0;
+}
+
+:focus {
+  outline: 0;
+}
+
+body {
+  background: white;
+  line-height: 1;
+  color: black;
+}
+
+table {
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+caption, th, td {
+  font-weight: normal;
+  text-align: left;
+}
+
+ul, ol {
+  list-style-type: none;
+}
+
+blockquote:before, blockquote:after, q:before, q:after {
+  content: "";
+}
+
+blockquote, q {
+  quotes: "" "";
+}
+
+/* automatecly resize image to width of container */
+img, object, video, embed {
+  max-width: 100%;
+}
+
+/* Numbering and bullets */
+ul, ol {
+  margin-left: 1.25em;
+}
+
+li:before {
+  margin-right: 0.5em;
+}
+
+ul li:before {
+  content: "❁";
+}
+
+ul li li:before {
+  content: "❀";
+}
+
+ul li li li:before {
+  content: "✿";
+}
+
+ul li li li li:before {
+  content: "❃";
+}
+
+ol {
+  counter-reset: n;
+}
+
+ol li {
+  counter-increment: n;
+}
+
+ol li:before {
+  content: counters(n, ".") ".";
+}
+
+/* Word wrap http://jsfiddle.net/6uG82/4/ */
+s + sup {
+  position: absolute;
+  line-height: 0.1em;
+  padding-bottom: 3em;
+}
+
+/* blockquote */
+blockquote:before, blockquote:after, q:before, q:after {
+  position: relative;
+}
+
+blockquote:before, q:before {
+  content: "❝";
+}
+
+blockquote:after, q:after {
+  content: "❞";
+}
+
+blockquote:before {
+  left: -1ex;
+  top: 1ex;
+}
+
+blockquote:after {
+  right: -1ex;
+  bottom: 1ex;
+}
+
+blockquote address {
+  text-align: right;
+  padding-right: 1em;
+}
+
+blockquote address:before {
+  content: "— ";
+}
+
+button {
+  padding: 0.5rem 1.75rem;
+  border: 0;
+  border-radius: 0;
 }
 
 * {

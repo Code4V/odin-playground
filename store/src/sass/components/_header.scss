@@ -7,7 +7,7 @@
     display: flex; 
     position: relative;
 
-    height: 50svh;
+    min-height: 50svh;
     overflow: hidden;
 
     place-items: center;
@@ -18,6 +18,7 @@
         top: 0;
         left: 0;
         z-index: -1;
+        max-width: fit-content;
 
         aspect-ratio: 16/9;
         object-fit: contain;        
@@ -26,7 +27,7 @@
     
     &__contents
     {
-
+        margin-block: 1rem;
         $default-width: 40rem;
         backdrop-filter: blur(8px);
         width: clamp(25rem, $default-width, 45rem);
@@ -43,12 +44,10 @@
     &__title
     {
         font-weight: 900;
-        font-size: 4rem;
+        font-size: 3rem;
         line-height: 3.5rem;
         margin-block-start: 1rem;
-
         word-break:keep-all;
-
         letter-spacing: .05rem;
     }
 
@@ -59,12 +58,11 @@
         font-weight: 400;
         font-size: 1.5rem;
         letter-spacing: .25rem;
-        // text-transform: uppercase;
     }
 
     &__buttons 
     {   
-        display: none;
+        // display: none;
         margin-block-start: 1.25rem;
     
         & *
@@ -73,6 +71,12 @@
             font-weight: 600;
         }
         
+        &--primary 
+        {
+            // border: solid .125rem $golden-500;
+            background-color: $steelblue-600;
+            color: $golden-200;
+        }
     }
 
     @media (min-width: 640px) 
