@@ -1,9 +1,5 @@
 @use '../abstracts/' as *;
 
-
-
-
-
 .item 
 {
     display: flex;
@@ -14,13 +10,18 @@
 
     flex-flow: column wrap;
 
-    &-image 
+    padding: .5rem 1.5rem;
+
+    // background-color: white;
+
+    &__image 
     {
-        max-height: 200px;
-        max-width: 200px;
         min-height: 200px;
+        max-width: 200px;
+        max-height: 200px;
         position: relative;
 
+            isolation: isolate;
         & > img
         {
             aspect-ratio: 1/1;
@@ -42,39 +43,44 @@
             bottom: 0;
             right: 0;
 
-            transform: translate(-8px, 8px);
+            transform: translate(-5px, 5px);
             z-index: -1;
             border: .15rem solid $golden-600;
+            
         }
     }
 
-    &-title
+    &__info
     {
-        font-size: 2rem;
-        text-transform: uppercase;
-        color: $golden-500;
-        font-weight: 300;
-    }
-
-    &-description
-    {
-        word-break: break-all;
-    }
-
-    &-action
-    {
-        max-width: fit-content;
-        margin-block-start: 1rem;
-    }
 
 
-@media (min-width: 640px) 
-{
-    &__item
-    {
-        flex-flow: row wrap;
+        &-title
+        {
+            font-size: 2rem;
+            text-transform: uppercase;
+            color: $golden-500;
+            font-weight: 300;
+        }
+
+        &-description
+        {
+            word-break: break-all;
+        }
+
+        &-action
+        {
+            max-width: fit-content;
+            margin-block-start: 1rem;
+        }
     }
 
 }
+
+@media (min-width: 640px) 
+{
+    .item
+    {
+        flex-flow: row wrap;
+    }
 
 }

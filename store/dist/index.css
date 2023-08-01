@@ -86,21 +86,23 @@
   text-align: center;
   font-size: 2rem;
   font-weight: 800;
-  color: hsl(41, 90%, 25%);
+  color: hsl(41, 83%, 45%);
 }
-.best-seller__item {
+.item {
   display: flex;
   gap: 0.75rem;
   margin-block: 2rem 0;
   flex-flow: column wrap;
+  padding: 0.5rem 1.5rem;
 }
-.best-seller__item-image {
-  max-height: 200px;
-  max-width: 200px;
+.item__image {
   min-height: 200px;
+  max-width: 200px;
+  max-height: 200px;
   position: relative;
+  isolation: isolate;
 }
-.best-seller__item-image > img {
+.item__image > img {
   aspect-ratio: 1/1;
   object-fit: cover;
   object-position: center;
@@ -108,36 +110,36 @@
   max-height: 200px;
   min-height: 200px;
 }
-.best-seller__item-image::before {
+.item__image::before {
   content: "";
   position: absolute;
   top: 0;
   left: 0;
   bottom: 0;
   right: 0;
-  transform: translate(-8px, 8px);
+  transform: translate(-5px, 5px);
   z-index: -1;
   border: 0.15rem solid hsl(41, 86%, 35%);
 }
-.best-seller__item-title {
+.item__info-title {
   font-size: 2rem;
   text-transform: uppercase;
   color: hsl(41, 83%, 45%);
   font-weight: 300;
 }
-.best-seller__item-description {
+.item__info-description {
   word-break: break-all;
 }
-.best-seller__item-action {
+.item__info-action {
   max-width: fit-content;
   margin-block-start: 1rem;
 }
+
 @media (min-width: 640px) {
-  .best-seller__item {
+  .item {
     flex-flow: row wrap;
   }
 }
-
 html, body, div, span, applet, object, iframe, table, caption,
 tbody, tfoot, thead, tr, th, td, del, dfn, em, font, img, ins,
 kbd, q, s, samp, small, strike, strong, sub, sup, tt, var,
@@ -160,7 +162,7 @@ fieldset, form, label, legend {
 }
 
 body {
-  background: white;
+  background: hsl(0, 0%, 95%);
   line-height: 1;
   color: black;
 }
