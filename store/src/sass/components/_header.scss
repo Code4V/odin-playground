@@ -1,95 +1,79 @@
 @use "../abstracts/" as *;
 
+.header {
+  display: flex;
+  position: relative;
 
+  min-height: 50svh;
+  overflow: hidden;
 
-.header
-{
-    display: flex; 
-    position: relative;
+  place-items: center;
 
-    min-height: 50svh;
-    overflow: hidden;
+  &__image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    max-width: fit-content;
 
-    place-items: center;
+    aspect-ratio: 16/9;
+    object-fit: contain;
+    object-position: left;
+  }
 
-    &__image
-    {
-        position: absolute;
-        top: 0;
-        left: 0;
-        z-index: -1;
-        max-width: fit-content;
+  &__contents {
+    margin-block: 1rem;
+    $default-width: 40rem;
+    backdrop-filter: blur(8px);
+    width: clamp(25rem, $default-width, 45rem);
+    text-align: center;
+    color: $golden-500;
 
-        aspect-ratio: 16/9;
-        object-fit: contain;        
-        object-position:left;
-    }
-    
-    &__contents
-    {
-        margin-block: 1rem;
-        $default-width: 40rem;
-        backdrop-filter: blur(8px);
-        width: clamp(25rem, $default-width, 45rem);
-        text-align: center;
-        color: $golden-500;
+    margin-inline: 1rem;
+    padding: 2rem;
+    border: 0.2rem $golden-500 solid;
+  }
 
-        margin-inline: 1rem; 
-        padding: 2rem;
-        border: .2rem $golden-500 solid;
+  &__title {
+    font-weight: 900;
+    font-size: 3rem;
+    line-height: 3.5rem;
+    margin-block-start: 1rem;
+    word-break: keep-all;
+    letter-spacing: 0.05rem;
+  }
 
-    } 
+  &__subtitle {
+    font-family: $font-amatic;
+    color: $steelblue-100;
+    font-weight: 400;
+    font-size: 1.5rem;
+    letter-spacing: 0.25rem;
+  }
 
+  &__buttons {
+    // display: none;
+    margin-block-start: 1.25rem;
 
-    &__title
-    {
-        font-weight: 900;
-        font-size: 3rem;
-        line-height: 3.5rem;
-        margin-block-start: 1rem;
-        word-break:keep-all;
-        letter-spacing: .05rem;
-    }
-
-    &__subtitle
-    {
-        font-family: $font-amatic;
-        color: $steelblue-100;
-        font-weight: 400;
-        font-size: 1.5rem;
-        letter-spacing: .25rem;
-    }
-
-    &__buttons 
-    {   
-        // display: none;
-        margin-block-start: 1.25rem;
-    
-        & *
-        {
-            margin-inline: .5rem;
-            font-weight: 600;
-        }
-        
-        &--primary 
-        {
-            // border: solid .125rem $golden-500;
-            background-color: $steelblue-600;
-            color: $golden-200;
-        }
+    & * {
+      margin-inline: 0.5rem;
+      font-weight: 600;
     }
 
-    @media (min-width: 640px) 
-    {
-        &__contents
-        {
-            margin-inline: auto;
-        }
-        &__title
-        {
-            font-size: 6rem;
-            line-height: 4.5rem;
-        }
-        
+    &--primary {
+      // border: solid .125rem $golden-500;
+      background-color: $steelblue-600;
+      color: $golden-200;
     }
+  }
+
+  @media (min-width: 640px) {
+    &__contents {
+      margin-inline: auto;
+    }
+    &__title {
+      font-size: 6rem;
+      line-height: 4.5rem;
+    }
+  }
 }

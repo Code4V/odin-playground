@@ -99,11 +99,12 @@
   left: -50px;
   right: -200px;
   bottom: 0;
-  height: 220px;
+  height: 100%;
+  min-width: 140svh;
   border: solid 0.175rem hsl(41, 86%, 35%);
   background-color: hsl(210, 74%, 36%);
   z-index: -1;
-  clip-path: polygon(100% 0, 100% 100%, 0% 100%, 5% 50%, 0% 0%);
+  clip-path: polygon(100% 0, 100% 100%, 0% 100%, 3% 50%, 0% 0%);
 }
 
 .item {
@@ -123,20 +124,10 @@
 .item__image > img {
   aspect-ratio: 1/1;
   object-fit: cover;
+  border-left: 0.25rem solid hsl(41, 83%, 45%);
   object-position: center;
   max-height: 200px;
   min-height: 200px;
-}
-.item__image::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  transform: translate(-5px, 5px);
-  z-index: -1;
-  border: 0.15rem solid hsl(41, 86%, 35%);
 }
 .item__info {
   color: hsl(211, 62%, 93%);
@@ -148,6 +139,7 @@
 }
 .item__info-description {
   word-break: break-all;
+  font-weight: 300;
 }
 .item__info-action {
   background-color: hsl(41, 83%, 45%);
@@ -160,12 +152,64 @@
     flex-flow: row wrap;
   }
 }
-html, body, div, span, applet, object, iframe, table, caption,
-tbody, tfoot, thead, tr, th, td, del, dfn, em, font, img, ins,
-kbd, q, s, samp, small, strike, strong, sub, sup, tt, var,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr,
-acronym, address, big, cite, code, dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend {
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+del,
+dfn,
+em,
+font,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend {
   vertical-align: baseline;
   font-family: inherit;
   font-weight: inherit;
@@ -182,7 +226,7 @@ fieldset, form, label, legend {
 }
 
 body {
-  background: hsl(0, 0%, 95%);
+  background: hsl(0, 0%, 90%);
   line-height: 1;
   color: black;
 }
@@ -192,30 +236,41 @@ table {
   border-spacing: 0;
 }
 
-caption, th, td {
+caption,
+th,
+td {
   font-weight: normal;
   text-align: left;
 }
 
-ul, ol {
+ul,
+ol {
   list-style-type: none;
 }
 
-blockquote:before, blockquote:after, q:before, q:after {
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
   content: "";
 }
 
-blockquote, q {
+blockquote,
+q {
   quotes: "" "";
 }
 
 /* automatecly resize image to width of container */
-img, object, video, embed {
+img,
+object,
+video,
+embed {
   max-width: 100%;
 }
 
 /* Numbering and bullets */
-ul, ol {
+ul,
+ol {
   margin-left: 1.25em;
 }
 
@@ -259,15 +314,20 @@ s + sup {
 }
 
 /* blockquote */
-blockquote:before, blockquote:after, q:before, q:after {
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
   position: relative;
 }
 
-blockquote:before, q:before {
+blockquote:before,
+q:before {
   content: "❝";
 }
 
-blockquote:after, q:after {
+blockquote:after,
+q:after {
   content: "❞";
 }
 
@@ -302,6 +362,10 @@ button {
   margin: 0;
   box-sizing: border-box;
   font-family: "Poppins";
+}
+
+body {
+  overflow: hidden;
 }
 
 /*# sourceMappingURL=index.css.map */

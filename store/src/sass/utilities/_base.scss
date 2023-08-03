@@ -1,77 +1,185 @@
-html, body, div, span, applet, object, iframe, table, caption,
-tbody, tfoot, thead, tr, th, td, del, dfn, em, font, img, ins,
-kbd, q, s, samp, small, strike, strong, sub, sup, tt, var,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr,
-acronym, address, big, cite, code, dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend {
-vertical-align: baseline;
-font-family: inherit;
-font-weight: inherit;
-font-style: inherit;
-font-size: 100%;
-outline: 0;
-padding: 0;
-margin: 0;
-border: 0;
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+del,
+dfn,
+em,
+font,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend {
+  vertical-align: baseline;
+  font-family: inherit;
+  font-weight: inherit;
+  font-style: inherit;
+  font-size: 100%;
+  outline: 0;
+  padding: 0;
+  margin: 0;
+  border: 0;
 }
 :focus {
-outline: 0;
+  outline: 0;
 }
 body {
-background: hsl(0, 0%, 95%);
-line-height: 1;
-color: black;
+  background: hsl(0, 0%, 90%);
+  line-height: 1;
+  color: black;
 }
 table {
-border-collapse: separate;
-border-spacing: 0;
+  border-collapse: separate;
+  border-spacing: 0;
 }
-caption, th, td {
-font-weight: normal;
-text-align: left;
+caption,
+th,
+td {
+  font-weight: normal;
+  text-align: left;
 }
-ul, ol {list-style-type: none;}
-blockquote:before, blockquote:after, q:before, q:after {
-content: "";
+ul,
+ol {
+  list-style-type: none;
 }
-blockquote, q {
-quotes: "" "";
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+}
+blockquote,
+q {
+  quotes: "" "";
 }
 
 /* automatecly resize image to width of container */
-img, object, video, embed { max-width: 100%;}
+img,
+object,
+video,
+embed {
+  max-width: 100%;
+}
 
 /* Numbering and bullets */
-ul, ol {margin-left: 1.25em;}
-li:before { margin-right: .5em;}
-ul li:before { content: "❁"}
-ul li li:before { content: "❀"}
-ul li li li:before { content: "✿"}
-ul li li li li:before { content: "❃"}
-ol {counter-reset: n;}
-ol li { counter-increment: n;}
-ol li:before{ content: counters(n, ".") ".";}
+ul,
+ol {
+  margin-left: 1.25em;
+}
+li:before {
+  margin-right: 0.5em;
+}
+ul li:before {
+  content: "❁";
+}
+ul li li:before {
+  content: "❀";
+}
+ul li li li:before {
+  content: "✿";
+}
+ul li li li li:before {
+  content: "❃";
+}
+ol {
+  counter-reset: n;
+}
+ol li {
+  counter-increment: n;
+}
+ol li:before {
+  content: counters(n, ".") ".";
+}
 
 /* Word wrap http://jsfiddle.net/6uG82/4/ */
-s+sup { position:absolute; line-height:.1em;padding-bottom:3em;}
+s + sup {
+  position: absolute;
+  line-height: 0.1em;
+  padding-bottom: 3em;
+}
 
 /* blockquote */
-blockquote:before, blockquote:after,q:before, q:after {position:relative;}
-blockquote:before, q:before { content: "❝"}
-blockquote:after, q:after { content: "❞"}
-blockquote:before {left:-1ex;top:1ex}
-blockquote:after {right:-1ex;bottom:1ex}
-blockquote address { text-align:right; padding-right: 1em}
-blockquote address:before { content: "— "}
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  position: relative;
+}
+blockquote:before,
+q:before {
+  content: "❝";
+}
+blockquote:after,
+q:after {
+  content: "❞";
+}
+blockquote:before {
+  left: -1ex;
+  top: 1ex;
+}
+blockquote:after {
+  right: -1ex;
+  bottom: 1ex;
+}
+blockquote address {
+  text-align: right;
+  padding-right: 1em;
+}
+blockquote address:before {
+  content: "— ";
+}
 
+button {
+  padding: 0.5rem 1.75rem;
 
-button
-{
-    padding: .5rem 1.75rem;
+  border: 0;
+  border-radius: 0;
 
-    border: 0;
-    border-radius: 0;
-
-    transition: all 200ms ease-in-out;
-    
+  transition: all 200ms ease-in-out;
 }
