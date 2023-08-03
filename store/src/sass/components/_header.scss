@@ -57,7 +57,7 @@
 
     & * {
       margin-inline: 0.5rem;
-      font-weight: 600;
+      
     }
 
     &--primary {
@@ -67,7 +67,7 @@
     }
   }
 
-  @media (min-width: 640px) {
+  @media (min-width: 632px) {
     &__contents {
       margin-inline: auto;
     }

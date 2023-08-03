@@ -3,32 +3,29 @@
 
 .best-seller
 {
-    padding: 1rem 1rem 0 1rem;
 
     display: flex;
     flex-flow: column wrap; 
-    
-
     width: clamp(27rem, 80%, 40rem);
 
     margin-inline: auto;
 
     isolation: isolate;
     
-
-    &__title
-    {
-        text-align: center;
-        font-size: 2rem;
-        font-weight: 800;
-
-        color: $golden-500;
-    }
-
     &__item
     {
     position: relative;
-    
+    justify-content: center;
+    align-items: center;
+
+    &-info
+    {
+        &--centered
+        {
+        text-align: center;
+        }
+
+    }
     
     &::before
         {
@@ -41,11 +38,11 @@
             bottom: 0;
             height: 100%;
             min-width: 140svh;
-            border: solid .175rem $golden-600;
+            border: solid .190rem $golden-500;
 
             background-color: $steelblue-600;
             z-index: -1;
-            clip-path: polygon(100% 0, 100% 100%, 0% 100%, 3% 50%, 0% 0%);
+            clip-path: polygon(100% 0, 100% 100%, 0% 100%, 2% 50%, 0% 0%);
         }
 
     }

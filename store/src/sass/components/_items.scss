@@ -2,16 +2,10 @@
 
 .item {
   display: flex;
-
   gap: 0.75rem;
-
   margin-block: 1rem 0;
-
   flex-flow: column wrap;
-
   padding: 0.5rem 1.5rem;
-
-  // background-color: white;
 
   &__image {
     min-height: 200px;
@@ -65,10 +59,11 @@
   &__info {
     color: $steelblue-100;
 
+    flex: 1 0 1/2;
+
     &-title {
       font-size: 2rem;
       text-transform: uppercase;
-      // color: $golden-500;
       font-weight: 300;
     }
 
@@ -82,12 +77,27 @@
       background-color: $golden-500;
       max-width: fit-content;
       margin-block-start: 1rem;
+
+      &:hover
+      {
+        background-color: $golden-400;
+      }
     }
   }
 }
 
-@media (min-width: 640px) {
+@media (min-width: 780px) {
   .item {
     flex-flow: row wrap;
+    align-items: flex-start;
+    justify-content: flex-start;
+
+    &__info
+    {
+      &-title
+      {
+
+      }
+    }
   }
 }
