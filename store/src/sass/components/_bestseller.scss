@@ -3,15 +3,19 @@
 
 .best-seller
 {
-    padding: 1rem;
+    padding: 1rem 1rem 0 1rem;
 
     display: flex;
     flex-flow: column wrap; 
+    
 
     width: clamp(27rem, 80%, 40rem);
 
     margin-inline: auto;
+
+    isolation: isolate;
     
+
     &__title
     {
         text-align: center;
@@ -23,6 +27,27 @@
 
     &__item
     {
+    position: relative;
+    
+    
+    &::before
+        {
+            position: absolute;
+            content: "";
+
+            top: 0;
+            left: -50px;
+            right: -200px;
+            bottom: 0;
+            height: 220px;
+            
+            border: solid .175rem $golden-600;
+
+            background-color: $steelblue-600;
+            z-index: -1;
+            clip-path: polygon(100% 0, 100% 100%, 0% 100%, 5% 50%, 0% 0%);
+        }
+
     }
 
     
