@@ -107,35 +107,7 @@ embed {
   max-width: 100%;
 }
 
-/* Numbering and bullets */
-ul,
-ol {
-  margin-left: 1.25em;
-}
-li:before {
-  margin-right: 0.5em;
-}
-ul li:before {
-  content: "❁";
-}
-ul li li:before {
-  content: "❀";
-}
-ul li li li:before {
-  content: "✿";
-}
-ul li li li li:before {
-  content: "❃";
-}
-ol {
-  counter-reset: n;
-}
-ol li {
-  counter-increment: n;
-}
-ol li:before {
-  content: counters(n, ".") ".";
-}
+
 
 /* Word wrap http://jsfiddle.net/6uG82/4/ */
 s + sup {

@@ -1,51 +1,43 @@
-@use '../abstracts/' as *;
+@use "../abstracts/" as *;
 
+.best-seller {
+  display: flex;
+  flex-flow: column wrap;
+  width: clamp(27rem, 80%, 40rem);
 
-.best-seller
-{
+  margin-inline: auto;
 
-    display: flex;
-    flex-flow: column wrap; 
-    width: clamp(27rem, 80%, 40rem);
+  isolation: isolate;
 
-    margin-inline: auto;
+  &__item {
+    color: $steelblue-100;
 
-    isolation: isolate;
-    
-    &__item
-    {
     position: relative;
     justify-content: center;
     align-items: center;
+    background-color: transparent !important;
 
-    &-info
-    {
-        &--centered
-        {
+    &-info {
+      &--centered {
         text-align: center;
-        }
-
-    }
-    
-    &::before
-        {
-            position: absolute;
-            content: "";
-
-            top: 0;
-            left: -50px;
-            right: -200px;
-            bottom: 0;
-            height: 100%;
-            min-width: 140svh;
-            border: solid .190rem $golden-500;
-
-            background-color: $steelblue-600;
-            z-index: -1;
-            clip-path: polygon(100% 0, 100% 100%, 0% 100%, 2% 50%, 0% 0%);
-        }
-
+      }
     }
 
-    
+    &::before {
+      position: absolute;
+      content: "";
+
+      top: 0;
+      left: -50px;
+      right: -200px;
+      bottom: 0;
+      height: 100%;
+      min-width: 140svh;
+      border: solid 0.19rem $golden-500;
+
+      background-color: $steelblue-600;
+      z-index: -1;
+      clip-path: polygon(100% 0, 100% 100%, 0% 100%, 2% 50%, 0% 0%);
+    }
+  }
 }

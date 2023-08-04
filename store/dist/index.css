@@ -82,9 +82,11 @@
   isolation: isolate;
 }
 .best-seller__item {
+  color: hsl(211, 62%, 93%);
   position: relative;
   justify-content: center;
   align-items: center;
+  background-color: transparent !important;
 }
 .best-seller__item-info--centered {
   text-align: center;
@@ -109,13 +111,16 @@
   gap: 0.75rem;
   margin-block: 1rem 0;
   flex-flow: column wrap;
-  padding: 0.5rem 1.5rem;
+  padding: 0.5rem 1rem;
+  width: 320px;
+  background-color: white;
 }
 .item__image {
   min-height: 200px;
   max-width: 200px;
   max-height: 200px;
   position: relative;
+  margin-inline: auto;
   isolation: isolate;
 }
 .item__image > img {
@@ -127,13 +132,12 @@
   min-height: 200px;
 }
 .item__info {
-  color: hsl(211, 62%, 93%);
   flex: 1 0 1/2;
 }
 .item__info-title {
   font-size: 2rem;
   text-transform: uppercase;
-  font-weight: 300;
+  font-weight: 500;
 }
 .item__info-description {
   word-break: break-all;
@@ -153,10 +157,32 @@
     flex-flow: row wrap;
     align-items: flex-start;
     justify-content: flex-start;
+    width: auto;
   }
 }
 .menu {
   margin-block: 2rem;
+}
+.menu__items {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.navigation {
+  display: flex;
+  place-content: center;
+  margin-block: 1rem 0;
+}
+.navigation__items-item {
+  transition: color 150ms ease-in-out;
+}
+.navigation__items-item:hover {
+  color: hsl(210, 74%, 36%);
+}
+.navigation .active {
+  color: hsl(41, 83%, 45%);
 }
 
 html,
@@ -275,44 +301,6 @@ embed {
   max-width: 100%;
 }
 
-/* Numbering and bullets */
-ul,
-ol {
-  margin-left: 1.25em;
-}
-
-li:before {
-  margin-right: 0.5em;
-}
-
-ul li:before {
-  content: "❁";
-}
-
-ul li li:before {
-  content: "❀";
-}
-
-ul li li li:before {
-  content: "✿";
-}
-
-ul li li li li:before {
-  content: "❃";
-}
-
-ol {
-  counter-reset: n;
-}
-
-ol li {
-  counter-increment: n;
-}
-
-ol li:before {
-  content: counters(n, ".") ".";
-}
-
 /* Word wrap http://jsfiddle.net/6uG82/4/ */
 s + sup {
   position: absolute;
@@ -359,7 +347,7 @@ blockquote address:before {
 
 h3 {
   text-align: center;
-  font-size: 2rem;
+  font-size: 3rem;
   font-weight: 800;
   color: hsl(41, 83%, 45%);
 }
@@ -376,6 +364,18 @@ section {
   padding: 1rem 1rem 0 1rem;
 }
 
+ul {
+  display: flex;
+  gap: 1rem;
+}
+ul > li {
+  list-style: none;
+  cursor: pointer;
+}
+ul > li::before {
+  content: none !important;
+}
+
 * {
   padding: 0;
   margin: 0;
@@ -384,7 +384,7 @@ section {
 }
 
 body {
-  overflow: hidden;
+  overflow-x: hidden;
 }
 
 /*# sourceMappingURL=index.css.map */

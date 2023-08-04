@@ -1,0 +1,26 @@
+@use '../abstracts/' as *;
+
+.navigation
+{
+    display: flex;
+    place-content: center;
+    margin-block: 1rem 0;
+
+    &__items
+    {
+
+        &-item
+        {
+            transition: color 150ms ease-in-out;
+            &:hover
+            {
+                color: $steelblue-600;
+            }
+        }
+        
+    }
+    .active
+    {
+        color: $golden-500;
+    }
+}

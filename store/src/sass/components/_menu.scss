@@ -3,4 +3,14 @@
 .menu
 {
     margin-block: 2rem;
+
+    &__items
+    {
+        display: flex;
+
+        gap: 8px;
+        
+        flex-wrap: wrap;
+        justify-content: center;
+    }
 }
