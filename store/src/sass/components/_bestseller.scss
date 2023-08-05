@@ -11,13 +11,15 @@
 
   &__item {
     color: $steelblue-100;
-
     position: relative;
     justify-content: center;
     align-items: center;
     background-color: transparent !important;
-
+    margin-inline: auto;
+    
     &-info {
+      flex-basis: auto !important;
+
       &--centered {
         text-align: center;
       }

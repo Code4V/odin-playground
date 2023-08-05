@@ -3,7 +3,9 @@
 .menu
 {
     margin-block: 2rem;
+    width: 70%;
 
+    margin-inline: auto;
     &__items
     {
         display: flex;
@@ -13,4 +15,9 @@
         flex-wrap: wrap;
         justify-content: center;
     }
+}
+
+@media (min-width: 640px)
+{
+
 }

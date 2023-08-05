@@ -5,7 +5,7 @@
   gap: 0.75rem;
   margin-block: 1rem 0;
   flex-flow: column wrap;
-  padding: 0.5rem 1rem;
+  padding: .5rem .5rem;
   width: 320px;
 
   background-color: white;
@@ -15,7 +15,7 @@
     max-width: 200px;
     max-height: 200px;
     position: relative;
-   margin-inline: auto; 
+    margin-inline: auto; 
     isolation: isolate;
 
     & > img {
@@ -33,8 +33,6 @@
   &__info {
     
 
-    flex: 1 0 1/2;
-
     &-title {
       font-size: 2rem;
       text-transform: uppercase;
@@ -42,8 +40,8 @@
     }
 
     &-description {
-      word-break: break-all;
-
+      word-break:normal;
+      max-width: 100%;
       font-weight: 300;
     }
 
@@ -66,12 +64,9 @@
     align-items: flex-start;
     justify-content: flex-start;
     width: auto;
-    // &__info
-    // {
-    //   &-title
-    //   {
-
-    //   }
-    // }
+    &__info
+    {
+      flex: 1 0 20rem;
+    }
   }
 }
