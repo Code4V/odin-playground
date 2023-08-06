@@ -1,5 +1,6 @@
 import Header from './components/header';
-import { Product } from './components/product';
+import Product from './components/product';
+import Menu from './components/menu';
 
 const main = document.querySelector("#content");
 
@@ -8,6 +9,5 @@ const main = document.querySelector("#content");
 
 main.insertAdjacentElement('afterbegin',Header());
 
-console.log(Product())
-main.appendChild(Product())
+main.appendChild(Menu())
 // main.innerHTML = "HELLO"
