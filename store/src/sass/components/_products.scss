@@ -1,6 +1,6 @@
 @use "../abstracts/" as *;
 
-.item {
+.product {
   display: flex;
   gap: 0.75rem;
   margin-block: 1rem 0;
@@ -59,7 +59,7 @@
 }
 
 @media (min-width: 780px) {
-  .item {
+  .product {
     flex-flow: row wrap;
     align-items: flex-start;
     justify-content: flex-start;

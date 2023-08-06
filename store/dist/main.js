@@ -20,13 +20,23 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 
 /***/ }),
 
+/***/ "./src/components/product.js":
+/*!***********************************!*\
+  !*** ./src/components/product.js ***!
+  \***********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   Product: () => (/* binding */ Product)\n/* harmony export */ });\nconst Product = () =>\r\n{\r\n    const product = document.createElement('div');\r\n    product.setAttribute('class', 'product');\r\n\r\n    const productImage = document.createElement('div');\r\n    productImage.setAttribute('class', 'product__image');\r\n\r\n    const image = document.createElement('img');\r\n    image.setAttribute('src', 'https://picsum.photos/id/677/250');\r\n    image.setAttribute('alt', 'testing image');\r\n    \r\n    productImage.appendChild(image);\r\n\r\n    const productInfo = document.createElement('div');\r\n    productInfo.setAttribute('class', 'product__info');\r\n    \r\n    const infoTitle = document.createElement('span');\r\n    infoTitle.setAttribute('class', 'product__info-title');\r\n    infoTitle.textContent = \"Odin's Dinner\";\r\n\r\n    const infoDescription = document.createElement('p');\r\n    infoDescription.setAttribute('class', 'product__info-description');\r\n    infoDescription.textContent = \"Dine to the glorious meal of Odin himself!\";\r\n    \r\n    const infoButton = document.createElement('button');\r\n    infoButton.setAttribute('class', 'product__info-action');\r\n    infoButton.textContent = \"ORDER NOW\";\r\n\r\n    productInfo.appendChild(infoTitle);\r\n    infoTitle.insertAdjacentElement('afterend', infoDescription);\r\n    infoDescription.insertAdjacentElement('afterend', infoButton);\r\n\r\n\r\n    product.appendChild(productImage);\r\n    productImage.insertAdjacentElement('afterend', productInfo);\r\n    \r\n    return product;\r\n}\r\n\r\n\n\n//# sourceURL=webpack://wpstore/./src/components/product.js?");
+
+/***/ }),
+
 /***/ "./src/index.js":
 /*!**********************!*\
   !*** ./src/index.js ***!
   \**********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _components_header__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/header */ \"./src/components/header.js\");\n\r\n\r\n\r\nconst main = document.querySelector(\"#content\");\r\n\r\n\r\n\r\n\r\nmain.insertAdjacentElement('afterbegin',(0,_components_header__WEBPACK_IMPORTED_MODULE_0__[\"default\"])());\r\n\r\n// main.innerHTML = \"HELLO\"\n\n//# sourceURL=webpack://wpstore/./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _components_header__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/header */ \"./src/components/header.js\");\n/* harmony import */ var _components_product__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/product */ \"./src/components/product.js\");\n\r\n\r\n\r\nconst main = document.querySelector(\"#content\");\r\n\r\n\r\n\r\n\r\nmain.insertAdjacentElement('afterbegin',(0,_components_header__WEBPACK_IMPORTED_MODULE_0__[\"default\"])());\r\n\r\nconsole.log((0,_components_product__WEBPACK_IMPORTED_MODULE_1__.Product)())\r\nmain.appendChild((0,_components_product__WEBPACK_IMPORTED_MODULE_1__.Product)())\r\n// main.innerHTML = \"HELLO\"\n\n//# sourceURL=webpack://wpstore/./src/index.js?");
 
 /***/ })
 
