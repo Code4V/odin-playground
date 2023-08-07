@@ -1,7 +1,7 @@
 import Product from './product';
 import products from './../data/products';
 
-const Menu = () =>
+const Menu = (currentCategory) =>
 {
     const menu = document.createElement('section');
     menu.setAttribute('class', 'menu');
@@ -19,12 +19,14 @@ const Menu = () =>
 
     const menuNavigation = document.createElement('nav');
     
-
+    
     menu.appendChild(menuTitle);
     menuTitle.insertAdjacentElement('afterend', menuItems)
 
-    Object.entries(products).forEach(element => {
-        menuItems.appendChild(Product(element[1].productName, element[1].productDescription));
+    products.forEach(element => {
+        if (element.productCategory.includes(currentCategory) || 
+            currentCategory == null)
+        menuItems.appendChild(Product(element.productName, element.productDescription));
     })
 
     return menu;

@@ -9,5 +9,5 @@ const main = document.querySelector("#content");
 
 main.insertAdjacentElement('afterbegin',Header());
 
-main.appendChild(Menu())
+main.appendChild(Menu('Drinks'))
 // main.innerHTML = "HELLO"
