@@ -1,5 +1,6 @@
 import Product from './product';
 import products from './../data/products';
+import Navigation from './navigation';
 
 const Menu = (currentCategory) =>
 {
@@ -17,12 +18,14 @@ const Menu = (currentCategory) =>
 
     menuTitle.appendChild(title);
 
-    const menuNavigation = document.createElement('nav');
-    
+    // const menuNavigation = document.createElement('nav');
     
     menu.appendChild(menuTitle);
+    
     menuTitle.insertAdjacentElement('afterend', menuItems)
-
+    
+    menuItems.insertAdjacentElement('beforebegin', Navigation(["All", "Main Course", "Appetizers", "Desserts", "Drinks", "Sides"], currentCategory))
+    
     products.forEach(element => {
         if (element.productCategory.includes(currentCategory) || 
             currentCategory == null)
