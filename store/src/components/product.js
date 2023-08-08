@@ -1,4 +1,4 @@
-const Product = (title, description) =>
+const Product = (item) =>
 {
     const product = document.createElement('div');
     product.setAttribute('class', 'product');
@@ -17,11 +17,11 @@ const Product = (title, description) =>
     
     const infoTitle = document.createElement('span');
     infoTitle.setAttribute('class', 'product__info-title');
-    infoTitle.textContent = title;
+    infoTitle.textContent = item.productName;
 
     const infoDescription = document.createElement('p');
     infoDescription.setAttribute('class', 'product__info-description');
-    infoDescription.textContent = description;
+    infoDescription.textContent = item.productDescription;
     
     const infoButton = document.createElement('button');
     infoButton.setAttribute('class', 'product__info-action');

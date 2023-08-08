@@ -1,4 +1,4 @@
-const Navigation = (items = [], selected) => {
+const Navigation = (items = [], selected = '') => {
 
     const navigation = document.createElement('nav');
     navigation.setAttribute('class', 'navigation');
@@ -6,14 +6,17 @@ const Navigation = (items = [], selected) => {
     const navigationItems = document.createElement('ul');
     navigationItems.setAttribute('class', 'navigation__items');
 
-    items.forEach(element => {
+    items.forEach((element, index) => {
 
         const item = document.createElement('li');
         item.setAttribute('class', 'navigation__items-item');
         
-        if(selected.toUpperCase() === element.toUpperCase())
+        if((selected == '' && index === 0) || (selected.toUpperCase() === element.toUpperCase()) )
         item.setAttribute('class', 'active');
         
+      
+
+
         item.textContent = element;
         navigationItems.appendChild(item)
     });

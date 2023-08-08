@@ -26,10 +26,10 @@ const Menu = (currentCategory) =>
     
     menuItems.insertAdjacentElement('beforebegin', Navigation(["All", "Main Course", "Appetizers", "Desserts", "Drinks", "Sides"], currentCategory))
     
-    products.forEach(element => {
+    products.map(element => {
         if (element.productCategory.includes(currentCategory) || 
             currentCategory == null)
-        menuItems.appendChild(Product(element.productName, element.productDescription));
+        menuItems.appendChild(Product(element));
     })
 
     return menu;
