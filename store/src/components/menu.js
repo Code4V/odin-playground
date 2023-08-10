@@ -32,6 +32,7 @@ const Menu = (currentCategory) =>
         menuItems.appendChild(Product(element));
     })
 
+
     return menu;
 }
 
