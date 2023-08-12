@@ -24,7 +24,7 @@ var products =
         },
         {
         'productID': 'md0003',
-        'productName': 'Swedish',
+        'productName': 'Swedish Pancake',
         'productDescription': 'A Fillet Fish fresh from the ocean',
         'productPrice': 900,
         'productCategory': 

@@ -22,14 +22,30 @@ const Product = (item) =>
     const infoDescription = document.createElement('p');
     infoDescription.setAttribute('class', 'product__info-description');
     infoDescription.textContent = item.productDescription;
+
+    const infoPrice = document.createElement('p');
+    infoPrice.setAttribute('class', 'product__info-price');
+    infoPrice.textContent = item.productPrice;
     
     const infoButton = document.createElement('button');
     infoButton.setAttribute('class', 'product__info-action');
     infoButton.textContent = "ORDER NOW";
 
+    
+    
     productInfo.appendChild(infoTitle);
     infoTitle.insertAdjacentElement('afterend', infoDescription);
-    infoDescription.insertAdjacentElement('afterend', infoButton);
+    infoDescription.insertAdjacentElement('afterend', infoPrice);
+    infoPrice.insertAdjacentElement('afterend', infoButton);
+    
+    item.productCategory.forEach(element => {
+        const infoCategory = document.createElement('span');
+        infoCategory.setAttribute('class', 'product__info-category');
+        infoCategory.textContent = element;
+       
+        infoPrice.insertAdjacentElement('afterend', infoCategory)
+    });
+
 
 
     product.appendChild(productImage);

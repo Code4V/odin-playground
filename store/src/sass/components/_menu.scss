@@ -6,6 +6,12 @@
     width: 70%;
 
     margin-inline: auto;
+    
+    .navigation
+    {
+        place-content: center;        
+    }
+    
     &__items
     {
         display: flex;

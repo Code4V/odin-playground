@@ -33,19 +33,35 @@
   &__info {
     
 
-    &-title {
+    &-title, &-price 
+    {
       font-size: 2rem;
       text-transform: uppercase;
       font-weight: 500;
     }
 
-    &-description {
+    &-description 
+    {
       word-break:normal;
       max-width: 100%;
       font-weight: 300;
     }
 
-    &-action {
+    &-price
+    {
+      margin-block: 8px;
+    
+      &::after
+      {
+        content: '$';
+        font-size: 1rem;
+        position: absolute;
+      }
+    }
+
+    &-action 
+    {
+      display: block;
       background-color: $golden-500;
       max-width: fit-content;
       margin-block-start: 1rem;
@@ -54,6 +70,16 @@
       {
         background-color: $golden-400;
       }
+    }
+
+    &-category
+    {
+      margin-inline-end: 4px;
+      padding-block: 2px;
+      padding-inline: 8px;
+
+      border-radius: 100svh;
+      background-color: $steelblue-200;
     }
   }
 }
