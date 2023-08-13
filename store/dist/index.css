@@ -95,6 +95,9 @@
 .best-seller__product-info--centered {
   text-align: center;
 }
+.best-seller__product-category {
+  color: black;
+}
 .best-seller__product::before {
   position: absolute;
   content: "";
@@ -135,6 +138,10 @@
   max-height: 200px;
   min-height: 200px;
 }
+.product__info {
+  display: flex;
+  flex-flow: column;
+}
 .product__info-title, .product__info-price {
   font-size: 2rem;
   text-transform: uppercase;
@@ -156,8 +163,8 @@
 .product__info-action {
   display: block;
   background-color: hsl(41, 83%, 45%);
-  max-width: fit-content;
-  margin-block-start: 1rem;
+  flex: 1 1 auto;
+  margin-block-start: 3rem;
 }
 .product__info-action:hover {
   background-color: hsl(41, 80%, 56%);
@@ -176,6 +183,7 @@
     align-items: flex-start;
     justify-content: flex-start;
     width: 600px;
+    min-height: auto;
   }
   .product__info {
     flex: 1 0 20rem;

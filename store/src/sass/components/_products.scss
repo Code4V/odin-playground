@@ -31,7 +31,10 @@
   }
 
   &__info {
+    display: flex;
+    flex-flow: column;
     
+    // min-height: 100%;
 
     &-title, &-price 
     {
@@ -63,8 +66,10 @@
     {
       display: block;
       background-color: $golden-500;
-      max-width: fit-content;
-      margin-block-start: 1rem;
+      // max-width: fit-content;
+
+      flex: 1 1 auto;
+      margin-block-start: 3rem;
 
       &:hover
       {
@@ -90,9 +95,11 @@
     align-items: flex-start;
     justify-content: flex-start;
     width: 600px;
+    min-height: auto;
     &__info
     {
       flex: 1 0 20rem;
+      // flex-direction: column;
     }
   }
 }

@@ -16,13 +16,25 @@
     align-items: center;
     background-color: transparent !important;
     margin-inline: auto;
+
+    
     
     &-info {
       flex-basis: auto !important;
-
+      
+      // height: 100px;
       &--centered {
         text-align: center;
       }
+    }
+
+    &-category {
+
+      color: black;
+    }
+
+    &-action {
+      // margin-inline: auto;
     }
 
     &::before {
