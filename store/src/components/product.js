@@ -2,6 +2,7 @@ const Product = (item) =>
 {
     const product = document.createElement('div');
     product.setAttribute('class', 'product');
+    product.setAttribute('id', `${item.productID}`)
 
     const productImage = document.createElement('div');
     productImage.setAttribute('class', 'product__image');

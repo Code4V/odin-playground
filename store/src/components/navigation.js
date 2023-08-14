@@ -12,7 +12,7 @@ const Navigation = (items = [], selected = '') => {
         item.setAttribute('class', 'navigation__items-item');
         
         if((selected == '' && index === 0) || (selected.toUpperCase() === element.toUpperCase()) )
-        item.setAttribute('class', 'active');
+        item.setAttribute('class', 'navigation__items-item active');
         
       
 

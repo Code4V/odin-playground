@@ -23,15 +23,35 @@ const Menu = (currentCategory) =>
     menu.appendChild(menuTitle);
     
     menuTitle.insertAdjacentElement('afterend', menuItems)
+   
+    let menuNavigation = Navigation(["All", "Main Course", "Appetizers", "Desserts", "Drinks", "Sides"], currentCategory);
+
+    menuItems.insertAdjacentElement('beforebegin', menuNavigation);
     
-    menuItems.insertAdjacentElement('beforebegin', Navigation(["All", "Main Course", "Appetizers", "Desserts", "Drinks", "Sides"], currentCategory))
     
     products.map(element => {
         if (element.productCategory.includes(currentCategory) || 
-            currentCategory == null)
+        currentCategory == null)
         menuItems.appendChild(Product(element));
     })
+    
+    
+    menuNavigation.childNodes[0].childNodes.forEach(element => {
+        element.addEventListener('click', () => {
+            element.classList.toggle('active');
+            
+            console.log(menuItems);
+            menuItems.textContent = '';
 
+
+
+            products.map(product => {
+                if (product.productCategory.includes(element.textContent) || 
+                     element.textContent == 'All')
+                menuItems.appendChild(Product(product));
+            })
+        })
+    })
 
     return menu;
 }

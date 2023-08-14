@@ -34,7 +34,7 @@ var products =
             ],
         },
         {
-        'productID': 'md0003',
+        'productID': 'md0004',
         'productName': 'Odin\'s Dinner',
         'productDescription': 'Dine to the glorious meal of Odin himself!',
         'productPrice': 900,
