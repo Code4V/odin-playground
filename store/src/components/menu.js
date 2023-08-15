@@ -1,76 +1,79 @@
-import Product from './product';
-import products from './../data/products';
-import Navigation from './navigation';
+import Product from "./product";
+import products from "./../data/products";
+import Navigation from "./navigation";
 
-const Menu = (currentCategory) =>
-{
-    const menu = document.createElement('section');
-    menu.setAttribute('class', 'menu');
+const Menu = (currentCategory) => {
+  const menu = document.createElement("section");
+  menu.setAttribute("class", "menu");
 
-    const menuItems = document.createElement('div');
-    menuItems.setAttribute('class', 'menu__items');
+  const menuItems = document.createElement("div");
+  menuItems.setAttribute("class", "menu__items");
 
-    const menuEmpty = document.createElement('p');
-    menuEmpty.setAttribute('class', 'menu__items-content menu__items-content--empty');
-    menuEmpty.textContent = "Oops! Looks like the high seas took these part of the menu!"
-    
-    const menuTitle = document.createElement('div');
-    menuTitle.setAttribute('class', 'menu__title');
+  const menuEmpty = document.createElement("p");
+  menuEmpty.setAttribute(
+    "class",
+    "menu__items-content menu__items-content--empty"
+  );
+  menuEmpty.textContent =
+    "Oops! Looks like the high seas took these part of the menu!";
 
-    const title = document.createElement('h3');
-    title.textContent = 'MENU';
+  const menuTitle = document.createElement("div");
+  menuTitle.setAttribute("class", "menu__title");
 
-    menuTitle.appendChild(title);
+  const title = document.createElement("h3");
+  title.textContent = "MENU";
 
-    // const menuNavigation = document.createElement('nav');
-    
-    menu.appendChild(menuTitle);
-    
-    menuTitle.insertAdjacentElement('afterend', menuItems)
-   
-    let menuNavigation = Navigation(["All", "Main Course", "Appetizers", "Desserts", "Drinks", "Sides"], currentCategory);
+  menuTitle.appendChild(title);
 
-    menuItems.insertAdjacentElement('beforebegin', menuNavigation);
-    
-    
-    products.map(element => {
-        if (element.productCategory.includes(currentCategory) || 
-        currentCategory == null)
-        menuItems.appendChild(Product(element));
-    })
-    
-    menuNavigation.childNodes[0].childNodes.forEach(element => {
-        element.addEventListener('click', () => {
-            
-            element.parentElement.childNodes.forEach(child =>
-            {
-                if (child.classList.contains('active'))
-                child.setAttribute('class', 'navigation__items-item');
-            })
-            
-            
-            element.classList.add('active');
-            
-            menuItems.textContent = '';
-            let isEmpty = true; 
-            products.map(product => {
-                if (product.productCategory.includes(element.textContent) || 
-                     element.textContent == 'All')
-                {
-                    menuItems.appendChild(Product(product));
-                    isEmpty  = false                    
-                }
-            })
+  // const menuNavigation = document.createElement('nav');
 
-            if (isEmpty)
-            {
-                menuItems.appendChild(menuEmpty);
-            }
-        })
-    })
+  menu.appendChild(menuTitle);
 
-    return menu;
-}
+  menuTitle.insertAdjacentElement("afterend", menuItems);
 
+  let menuNavigation = Navigation(
+    ["All", "Main Course", "Appetizers", "Desserts", "Drinks", "Sides"],
+    currentCategory
+  );
+
+  menuItems.insertAdjacentElement("beforebegin", menuNavigation);
+
+  products.map((element) => {
+    if (
+      element.productCategory.includes(currentCategory) ||
+      currentCategory == null
+    )
+      menuItems.appendChild(Product(element));
+  });
+
+  menuNavigation.childNodes[0].childNodes.forEach((element) => {
+    element.addEventListener("click", () => {
+      element.parentElement.childNodes.forEach((child) => {
+        if (child.classList.contains("active"))
+          child.setAttribute("class", "navigation__items-item");
+      });
+
+      element.classList.add("active");
+
+      menuItems.textContent = "";
+      let isEmpty = true;
+      products.map((product) => {
+        if (
+          product.productCategory.includes(element.textContent) ||
+          element.textContent == "All"
+        ) {
+          menuItems.appendChild(Product(product));
+          isEmpty = false;
+        }
+      });
+
+      if (isEmpty) {
+        menuItems.appendChild(menuEmpty);
+      }
+    });
+  });
+
+  return menu;
+};
 
 export default Menu;

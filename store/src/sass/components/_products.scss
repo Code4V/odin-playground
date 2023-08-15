@@ -5,7 +5,7 @@
   gap: 0.75rem;
   margin-block: 1rem 0;
   flex-flow: column wrap;
-  padding: .5rem .5rem;
+  padding: 0.5rem 0.5rem;
   width: 320px;
 
   background-color: white;
@@ -15,7 +15,7 @@
     max-width: 200px;
     max-height: 200px;
     position: relative;
-    margin-inline: auto; 
+    margin-inline: auto;
     isolation: isolate;
 
     & > img {
@@ -27,43 +27,38 @@
       max-height: 200px;
       min-height: 200px;
     }
-
   }
 
   &__info {
     display: flex;
     flex-flow: column;
-    
+
     // min-height: 100%;
 
-    &-title, &-price 
-    {
+    &-title,
+    &-price {
       font-size: 2rem;
       text-transform: uppercase;
       font-weight: 500;
     }
 
-    &-description 
-    {
-      word-break:normal;
+    &-description {
+      word-break: normal;
       max-width: 100%;
       font-weight: 300;
     }
 
-    &-price
-    {
+    &-price {
       margin-block: 8px;
-    
-      &::after
-      {
-        content: '$';
+
+      &::after {
+        content: "$";
         font-size: 1rem;
         position: absolute;
       }
     }
 
-    &-action 
-    {
+    &-action {
       display: block;
       background-color: $golden-500;
       // max-width: fit-content;
@@ -71,19 +66,17 @@
       flex: 1 1 auto;
       margin-block-start: 3rem;
 
-      &:hover
-      {
+      &:hover {
         background-color: $golden-400;
       }
     }
 
-    &-category
-    {
+    &-category {
       margin-inline-end: 4px;
       padding-block: 2px;
       padding-inline: 8px;
 
-      font-size: .75rem;
+      font-size: 0.75rem;
       line-height: 2;
       border-radius: 100svh;
       background-color: $steelblue-200;
@@ -98,8 +91,7 @@
     justify-content: flex-start;
     width: 600px;
     min-height: auto;
-    &__info
-    {
+    &__info {
       flex: 1 0 20rem;
       // flex-direction: column;
     }

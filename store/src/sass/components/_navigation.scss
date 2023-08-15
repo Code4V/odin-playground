@@ -1,25 +1,18 @@
-@use '../abstracts/' as *;
+@use "../abstracts/" as *;
 
-.navigation
-{
-    display: flex;
-    margin-block: 1rem 0;
+.navigation {
+  display: flex;
+  margin-block: 1rem 0;
 
-    &__items
-    {
-
-        &-item
-        {
-            transition: color 150ms ease-in-out;
-            &:hover
-            {
-                color: $steelblue-600;
-            }
-        }
-        
+  &__items {
+    &-item {
+      transition: color 150ms ease-in-out;
+      &:hover {
+        color: $steelblue-600;
+      }
     }
-    .active
-    {
-        color: $golden-500;
-    }
+  }
+  .active {
+    color: $golden-500;
+  }
 }

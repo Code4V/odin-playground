@@ -1,15 +1,12 @@
-@use '../abstracts/' as *;
+@use "../abstracts/" as *;
 
-h3
-{
-    
-    text-align: center;
-    font-size: 3rem;
-    font-weight: 800;
-    
-    color: $golden-500;
+h3 {
+  text-align: center;
+  font-size: 3rem;
+  font-weight: 800;
+
+  color: $golden-500;
 }
-
 
 button {
   padding: 0.5rem 1.75rem;
@@ -21,28 +18,19 @@ button {
   transition: all 250ms ease-in-out;
 }
 
-
-section
-{
-    padding: 1rem 1rem 0 1rem;
-
+section {
+  padding: 1rem 1rem 0 1rem;
 }
 
-
-ul 
-{
+ul {
   display: flex;
   gap: 1rem;
 
-  & > li 
-  {
+  & > li {
     list-style: none;
     cursor: pointer;
-    &::before
-    {
+    &::before {
       content: none !important;
     }
   }
 }
-
-
