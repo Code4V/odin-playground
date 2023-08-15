@@ -4,7 +4,7 @@
 {
     margin-block: 2rem;
     width: 70%;
-
+    min-height: 1000px;
     margin-inline: auto;
     
     .navigation
@@ -20,6 +20,12 @@
         
         flex-wrap: wrap;
         justify-content: center;
+
+        &-content
+        {
+            margin-block-start: 1rem;
+            text-align: center;
+        }
     }
 }
 

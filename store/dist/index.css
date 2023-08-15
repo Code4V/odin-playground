@@ -173,6 +173,8 @@
   margin-inline-end: 4px;
   padding-block: 2px;
   padding-inline: 8px;
+  font-size: 0.75rem;
+  line-height: 2;
   border-radius: 100svh;
   background-color: hsl(210, 79%, 85%);
 }
@@ -192,6 +194,7 @@
 .menu {
   margin-block: 2rem;
   width: 70%;
+  min-height: 1000px;
   margin-inline: auto;
 }
 .menu .navigation {
@@ -202,6 +205,10 @@
   gap: 8px;
   flex-wrap: wrap;
   justify-content: center;
+}
+.menu__items-content {
+  margin-block-start: 1rem;
+  text-align: center;
 }
 
 .navigation {

@@ -10,6 +10,10 @@ const Menu = (currentCategory) =>
     const menuItems = document.createElement('div');
     menuItems.setAttribute('class', 'menu__items');
 
+    const menuEmpty = document.createElement('p');
+    menuEmpty.setAttribute('class', 'menu__items-content menu__items-content--empty');
+    menuEmpty.textContent = "Oops! Looks like the high seas took these part of the menu!"
+    
     const menuTitle = document.createElement('div');
     menuTitle.setAttribute('class', 'menu__title');
 
@@ -35,21 +39,33 @@ const Menu = (currentCategory) =>
         menuItems.appendChild(Product(element));
     })
     
-    
     menuNavigation.childNodes[0].childNodes.forEach(element => {
         element.addEventListener('click', () => {
-            element.classList.toggle('active');
             
-            console.log(menuItems);
+            element.parentElement.childNodes.forEach(child =>
+            {
+                if (child.classList.contains('active'))
+                child.setAttribute('class', 'navigation__items-item');
+            })
+            
+            
+            element.classList.add('active');
+            
             menuItems.textContent = '';
-
-
-
+            let isEmpty = true; 
             products.map(product => {
                 if (product.productCategory.includes(element.textContent) || 
                      element.textContent == 'All')
-                menuItems.appendChild(Product(product));
+                {
+                    menuItems.appendChild(Product(product));
+                    isEmpty  = false                    
+                }
             })
+
+            if (isEmpty)
+            {
+                menuItems.appendChild(menuEmpty);
+            }
         })
     })
 
