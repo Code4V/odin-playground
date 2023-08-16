@@ -1,6 +1,7 @@
 import Product from "./product";
 import products from "./../data/products";
 import Navigation from "./navigation";
+import NotFound from "./../assets/NotFound.png";
 
 const Menu = (currentCategory) => {
   const menu = document.createElement("section");
@@ -8,6 +9,9 @@ const Menu = (currentCategory) => {
 
   const menuItems = document.createElement("div");
   menuItems.setAttribute("class", "menu__items");
+
+  const menuNotFound = new Image();
+  menuNotFound.src = NotFound;
 
   const menuEmpty = document.createElement("p");
   menuEmpty.setAttribute(
@@ -68,6 +72,7 @@ const Menu = (currentCategory) => {
       });
 
       if (isEmpty) {
+        menuItems.appendChild(menuNotFound);
         menuItems.appendChild(menuEmpty);
       }
     });

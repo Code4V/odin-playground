@@ -7,7 +7,8 @@ const Product = (item) => {
   productImage.setAttribute("class", "product__image");
 
   const image = document.createElement("img");
-  image.setAttribute("src", "https://picsum.photos/id/677/250");
+  // image.setAttribute("src", "https://picsum.photos/id/677/250");
+  image.setAttribute("src", "https://picsum.photos/250");
   image.setAttribute("alt", "testing image");
 
   productImage.appendChild(image);

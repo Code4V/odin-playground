@@ -2,7 +2,7 @@
 
 .menu {
   margin-block: 2rem;
-  width: 70%;
+  width: 100%;
   min-height: 1000px;
   margin-inline: auto;
 
@@ -12,7 +12,7 @@
 
   &__items {
     display: flex;
-
+    // height: 1000px;
     gap: 8px;
 
     flex-wrap: wrap;
@@ -21,9 +21,13 @@
     &-content {
       margin-block-start: 1rem;
       text-align: center;
+      place-self: center;
     }
   }
 }
 
-@media (min-width: 640px) {
+@media (min-width: 780px) {
+.menu {
+  width: 70%
+}
 }

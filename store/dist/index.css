@@ -116,10 +116,9 @@
 .product {
   display: flex;
   gap: 0.75rem;
-  margin-block: 1rem 0;
   flex-flow: column wrap;
   padding: 0.5rem 0.5rem;
-  width: 320px;
+  width: 240px;
   background-color: white;
 }
 .product__image {
@@ -193,7 +192,7 @@
 }
 .menu {
   margin-block: 2rem;
-  width: 70%;
+  width: 100%;
   min-height: 1000px;
   margin-inline: auto;
 }
@@ -209,11 +208,17 @@
 .menu__items-content {
   margin-block-start: 1rem;
   text-align: center;
+  place-self: center;
 }
 
+@media (min-width: 780px) {
+  .menu {
+    width: 70%;
+  }
+}
 .navigation {
   display: flex;
-  margin-block: 1rem 0;
+  margin-block: 1rem 1rem;
 }
 .navigation__items-item {
   transition: color 150ms ease-in-out;
