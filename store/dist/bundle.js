@@ -20,6 +20,26 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 
 /***/ }),
 
+/***/ "./src/components/footer.js":
+/*!**********************************!*\
+  !*** ./src/components/footer.js ***!
+  \**********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\nconst Footer = () => \r\n{\r\n    const footer = document.createElement(\"footer\");\r\n    footer.setAttribute(\"class\", \"footer\");\r\n\r\n    const footerContent = document.createElement(\"div\");\r\n    footerContent.setAttribute(\"class\", \"footer__content\")\r\n\r\n    const contentCreator = document.createElement(\"p\");\r\n    contentCreator.setAttribute(\"class\", \"footer__content-by\");\r\n    contentCreator.textContent = \"Made by Code4V\";\r\n\r\n    footerContent.appendChild(contentCreator);\r\n\r\n    footer.appendChild(footerContent);\r\n\r\n    return footer;\r\n}\r\n\r\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Footer);\n\n//# sourceURL=webpack://wpstore/./src/components/footer.js?");
+
+/***/ }),
+
+/***/ "./src/components/header-navigation.js":
+/*!*********************************************!*\
+  !*** ./src/components/header-navigation.js ***!
+  \*********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var _navigation__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./navigation */ \"./src/components/navigation.js\");\n\r\n\r\nconst HeaderNavigation = () =>\r\n{\r\n    const MainNavigation = document.createElement(\"nav\");\r\n    MainNavigation.setAttribute(\"class\", \"header-navigation\");\r\n  \r\n    MainNavigation.appendChild((0,_navigation__WEBPACK_IMPORTED_MODULE_0__[\"default\"])([\"Home\", \"Menu\", \"Contact\"]));\r\n    return MainNavigation;\r\n}\r\n\r\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (HeaderNavigation);\n\n//# sourceURL=webpack://wpstore/./src/components/header-navigation.js?");
+
+/***/ }),
+
 /***/ "./src/components/header.js":
 /*!**********************************!*\
   !*** ./src/components/header.js ***!
@@ -76,7 +96,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
   \**********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _components_header__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/header */ \"./src/components/header.js\");\n/* harmony import */ var _components_product__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/product */ \"./src/components/product.js\");\n/* harmony import */ var _components_menu__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/menu */ \"./src/components/menu.js\");\n/* harmony import */ var _components_navigation__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/navigation */ \"./src/components/navigation.js\");\n/* harmony import */ var _components_best_seller__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/best-seller */ \"./src/components/best-seller.js\");\n\r\n\r\n\r\n\r\n\r\n\r\nconst main = document.querySelector(\"#content\");\r\n\r\n// main.insertAdjacentElement('beforebegin', Navigation(['Home', 'Menu', 'Contact']))\r\n\r\ndocument.addEventListener(\"DOMContentLoaded\", () => {\r\n  main.insertAdjacentElement(\"afterbegin\", (0,_components_header__WEBPACK_IMPORTED_MODULE_0__[\"default\"])());\r\n  main.appendChild((0,_components_best_seller__WEBPACK_IMPORTED_MODULE_4__[\"default\"])());\r\n  main.appendChild((0,_components_menu__WEBPACK_IMPORTED_MODULE_2__[\"default\"])());\r\n});\r\n\r\n// main.innerHTML = \"HELLO\"\r\n\n\n//# sourceURL=webpack://wpstore/./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _components_header__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/header */ \"./src/components/header.js\");\n/* harmony import */ var _components_product__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/product */ \"./src/components/product.js\");\n/* harmony import */ var _components_menu__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/menu */ \"./src/components/menu.js\");\n/* harmony import */ var _components_header_navigation__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/header-navigation */ \"./src/components/header-navigation.js\");\n/* harmony import */ var _components_best_seller__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/best-seller */ \"./src/components/best-seller.js\");\n/* harmony import */ var _components_footer__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/footer */ \"./src/components/footer.js\");\n\r\n\r\n\r\n\r\n\r\n\r\n\r\nconst main = document.querySelector(\"#content\");\r\n\r\n// main.insertAdjacentElement('beforebegin', Navigation(['Home', 'Menu', 'Contact']))\r\n\r\ndocument.addEventListener(\"DOMContentLoaded\", () => {\r\n  main.insertAdjacentElement(\"beforebegin\", (0,_components_header_navigation__WEBPACK_IMPORTED_MODULE_3__[\"default\"])());\r\n  main.insertAdjacentElement(\"afterbegin\", (0,_components_header__WEBPACK_IMPORTED_MODULE_0__[\"default\"])());\r\n  main.appendChild((0,_components_best_seller__WEBPACK_IMPORTED_MODULE_4__[\"default\"])());\r\n  main.appendChild((0,_components_menu__WEBPACK_IMPORTED_MODULE_2__[\"default\"])());\r\n  main.appendChild((0,_components_footer__WEBPACK_IMPORTED_MODULE_5__[\"default\"])());\r\n});\r\n\r\n// main.innerHTML = \"HELLO\"\r\n\n\n//# sourceURL=webpack://wpstore/./src/index.js?");
 
 /***/ }),
 
