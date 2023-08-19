@@ -1,0 +1,15 @@
+.header-navigation {
+  position: fixed;
+  top: 0;
+
+  z-index: 1;
+
+  padding-inline: 1rem;
+
+  background-color: hsla(210, 75%, 36%, 0.5);
+  backdrop-filter: blur(4px);
+  width: 100%;
+
+  display: flex;
+  justify-content: center;
+}
