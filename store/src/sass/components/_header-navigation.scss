@@ -1,3 +1,5 @@
+@use "../abstracts/" as *;
+
 .header-navigation {
   position: fixed;
   top: 0;
@@ -12,4 +14,18 @@
 
   display: flex;
   justify-content: center;
+
+  flex-flow: row wrap;
+
+  &__logo
+  {
+    color: $golden-500;
+    font-weight: 900;
+    font-size: 3rem;
+    line-height: 3.5rem;
+    // margin-block-start: 1rem;
+    word-break: keep-all;
+    letter-spacing: 0.05rem;
+
+  }
 }

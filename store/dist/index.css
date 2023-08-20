@@ -240,6 +240,15 @@
   width: 100%;
   display: flex;
   justify-content: center;
+  flex-flow: row wrap;
+}
+.header-navigation__logo {
+  color: hsl(41, 83%, 45%);
+  font-weight: 900;
+  font-size: 3rem;
+  line-height: 3.5rem;
+  word-break: keep-all;
+  letter-spacing: 0.05rem;
 }
 
 html,
