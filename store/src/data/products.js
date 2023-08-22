@@ -5,6 +5,7 @@ var products =
         'productName': 'Fish Fillet',
         'productDescription': 'A Fillet Fish fresh from the ocean',
         'productPrice': 900,
+        'productImage': `https://picsum.photos/id/${Math.ceil(Math.random()*100)}/250`,
         'productCategory': 
             [
             'Main Course',
@@ -17,6 +18,7 @@ var products =
         'productName': 'Swedish MeatBall',
         'productDescription': 'A Fillet Fish fresh from the ocean',
         'productPrice': 900,
+        'productImage': `https://picsum.photos/id/${Math.ceil(Math.random()*100)}/250`,
         'productCategory': 
             [
             'Main Course'
@@ -27,6 +29,7 @@ var products =
         'productName': 'Swedish Pancake',
         'productDescription': 'A Fillet Fish fresh from the ocean',
         'productPrice': 900,
+        'productImage': `https://picsum.photos/id/${Math.ceil(Math.random()*100)}/250`,
         'productCategory': 
             [
             'Main Course',
@@ -38,11 +41,13 @@ var products =
         'productName': 'Odin\'s Dinner',
         'productDescription': 'Dine to the glorious meal of Odin himself!',
         'productPrice': 900,
+        'productImage': `https://picsum.photos/id/${Math.ceil(Math.random()*100)}/250`,
         'productCategory': 
             [
             'Drinks'
             ],
         },
+        
     ]
 ;
 

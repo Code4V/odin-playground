@@ -1,4 +1,6 @@
 const Product = (item) => {
+  console.log(item)
+  
   const product = document.createElement("div");
   product.setAttribute("class", "product");
   product.setAttribute("id", `${item.productID}`);
@@ -8,7 +10,7 @@ const Product = (item) => {
 
   const image = document.createElement("img");
   // image.setAttribute("src", "https://picsum.photos/id/677/250");
-  image.setAttribute("src", "https://picsum.photos/250");
+  image.setAttribute("src", `${item.productImage}`);
   image.setAttribute("alt", "testing image");
 
   productImage.appendChild(image);
