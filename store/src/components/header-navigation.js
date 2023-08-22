@@ -17,10 +17,14 @@ const HeaderNavigation = () =>
     // MainNavigation.appendChild(Navigation(["Home", "Menu", "Contact"]));
     MainNavigation.appendChild(headerNavigationTitle);
     
-    document.addEventListener('mouseenter', () => {
+    document.addEventListener('scroll', () => {
         MainNavigation.classList.add("header-navigation--scrolled")
         if(document.scrollingElement.scrollTop > 0)
         {
+        }
+        else
+        {
+        MainNavigation.classList.remove("header-navigation--scrolled")
         }
     })
     return MainNavigation;
