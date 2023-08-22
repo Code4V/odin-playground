@@ -17,6 +17,15 @@
 
   flex-flow: row wrap;
 
+  transition: 700ms all cubic-bezier(0.165, 0.84, 0.44, 1);
+  box-shadow: 0 0 8px 5px hsla(210, 100%, 0%, 0.3);
+
+  &--scrolled
+  {
+    background-color: $steelblue-600;
+    padding-block: 1rem;
+  }
+
   &__logo
   {
     color: $golden-500;

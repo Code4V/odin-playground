@@ -241,6 +241,12 @@
   display: flex;
   justify-content: center;
   flex-flow: row wrap;
+  transition: 700ms all cubic-bezier(0.165, 0.84, 0.44, 1);
+  box-shadow: 0 0 8px 5px hsla(210, 100%, 0%, 0.3);
+}
+.header-navigation--scrolled {
+  background-color: hsl(210, 74%, 36%);
+  padding-block: 1rem;
 }
 .header-navigation__logo {
   color: hsl(41, 83%, 45%);
