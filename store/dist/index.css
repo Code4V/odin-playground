@@ -246,7 +246,7 @@
 }
 .header-navigation--scrolled {
   background-color: hsl(210, 74%, 36%);
-  padding-block: 1rem;
+  padding-block: 0.35rem;
 }
 .header-navigation__logo {
   color: hsl(41, 83%, 45%);
