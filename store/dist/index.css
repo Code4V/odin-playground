@@ -461,7 +461,7 @@ ul > li::before {
 }
 
 .main {
-  overflow-x: hidden;
+  overflow: hidden;
 }
 
 /*# sourceMappingURL=index.css.map */

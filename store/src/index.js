@@ -10,8 +10,8 @@ const main = document.querySelector("#content");
 // main.insertAdjacentElement('beforebegin', Navigation(['Home', 'Menu', 'Contact']))
 
 document.addEventListener("DOMContentLoaded", () => {
-  main.insertAdjacentElement("beforebegin", HeaderNavigation());
   main.insertAdjacentElement("afterbegin", Header());
+  main.insertAdjacentElement("afterbegin", HeaderNavigation());
   main.appendChild(BestSeller());
   main.appendChild(Menu());
   main.appendChild(Footer());
