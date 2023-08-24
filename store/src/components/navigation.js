@@ -19,6 +19,19 @@ const Navigation = (items = [], selected = "") => {
     navigationItems.appendChild(item);
   });
 
+  if (items) {
+    navigationItems.childNodes.forEach((element) => {
+      element.addEventListener("click", () => {
+        element.parentElement.childNodes.forEach((child) => {
+          if (child.classList.contains("active"))
+            child.setAttribute("class", "navigation__items-item");
+        });
+
+        element.classList.add("active");
+      });
+    });
+  }
+
   navigation.appendChild(navigationItems);
 
   return navigation;

@@ -5,6 +5,8 @@
   margin-block: 1rem 1rem;
 
   &__items {
+    align-items: center;
+
     &-item {
       transition: color 150ms ease-in-out;
       &:hover {

@@ -52,12 +52,6 @@ const Menu = (currentCategory) => {
 
   menuNavigation.childNodes[0].childNodes.forEach((element) => {
     element.addEventListener("click", () => {
-      element.parentElement.childNodes.forEach((child) => {
-        if (child.classList.contains("active"))
-          child.setAttribute("class", "navigation__items-item");
-      });
-
-      element.classList.add("active");
 
       menuItems.textContent = "";
       let isEmpty = true;

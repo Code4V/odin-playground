@@ -9,13 +9,11 @@ const HeaderNavigation = () =>
     headerNavigationTitle.setAttribute("class", "header-navigation__logo");
     headerNavigationTitle.textContent = "VIKINGS";
 
-    console.log(window);
-    console.log(document);
+    let headerNavigation = Navigation(["Home", "Menu", "Contact"])
+    headerNavigation.classList.add('test');
 
-
-    
-    // MainNavigation.appendChild(Navigation(["Home", "Menu", "Contact"]));
     MainNavigation.appendChild(headerNavigationTitle);
+    MainNavigation.appendChild(headerNavigation);
     
     document.addEventListener('scroll', () => {
         MainNavigation.classList.add("header-navigation--scrolled")

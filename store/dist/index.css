@@ -220,6 +220,9 @@
   display: flex;
   margin-block: 1rem 1rem;
 }
+.navigation__items {
+  align-items: center;
+}
 .navigation__items-item {
   transition: color 150ms ease-in-out;
 }
@@ -239,7 +242,8 @@
   backdrop-filter: blur(4px);
   width: 100%;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
+  gap: 0.25rem;
   flex-flow: row wrap;
   transition: 700ms all cubic-bezier(0.165, 0.84, 0.44, 1);
   box-shadow: 0 0 8px 5px hsla(210, 100%, 0%, 0.3);
