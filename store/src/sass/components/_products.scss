@@ -32,7 +32,7 @@
   &__info {
     display: flex;
     flex-flow: column;
-
+    margin-block-start: auto;
     // min-height: 100%;
 
     &-title,

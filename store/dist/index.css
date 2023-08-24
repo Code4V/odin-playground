@@ -140,6 +140,7 @@
 .product__info {
   display: flex;
   flex-flow: column;
+  margin-block-start: auto;
 }
 .product__info-title, .product__info-price {
   font-size: 2rem;
@@ -459,7 +460,7 @@ ul > li::before {
   font-family: "Poppins";
 }
 
-body {
+.main {
   overflow-x: hidden;
 }
 
