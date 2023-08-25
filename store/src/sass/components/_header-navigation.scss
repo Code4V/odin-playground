@@ -38,4 +38,14 @@
     letter-spacing: 0.05rem;
 
   }
+
+  &__navigation
+  {
+
+    &-items
+    {
+      font-weight: 800;
+      color: $golden-100;
+    }
+  }
 }

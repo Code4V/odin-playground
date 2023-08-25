@@ -10,7 +10,9 @@ const HeaderNavigation = () =>
     headerNavigationTitle.textContent = "VIKINGS";
 
     let headerNavigation = Navigation(["Home", "Menu", "Contact"])
-    headerNavigation.classList.add('test');
+    headerNavigation.classList.add('header-navigation__navigation');
+
+    headerNavigation.childNodes[0].classList.add('header-navigation__navigation-items');
 
     MainNavigation.appendChild(headerNavigationTitle);
     MainNavigation.appendChild(headerNavigation);

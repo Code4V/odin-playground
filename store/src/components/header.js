@@ -1,11 +1,16 @@
+import HeaderImage from './../assets/header_bg.jpg';
+
 const Header = () =>
 {
     const header = document.createElement('header');
     header.setAttribute('class', 'header');
     
-    const headerImage = document.createElement('img');
-    headerImage.setAttribute('class', 'header__image');
-    headerImage.setAttribute('src', 'assets/header_bg.jpg');
+    const headerImage = new Image();
+    headerImage.classList.add('class', 'header__image');
+    headerImage.src = HeaderImage;
+    // const headerImage = document.createElement('img');
+    // headerImage.setAttribute('class', 'header__image');
+    // headerImage.setAttribute('src', 'assets/header_bg.jpg');
 
     const headerContents = document.createElement('div');
     headerContents.setAttribute('class', 'header__contents');

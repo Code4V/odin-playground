@@ -228,7 +228,7 @@
   transition: color 150ms ease-in-out;
 }
 .navigation__items-item:hover {
-  color: hsl(210, 74%, 36%);
+  color: hsl(210, 70%, 58%);
 }
 .navigation .active {
   color: hsl(41, 83%, 45%);
@@ -260,6 +260,10 @@
   line-height: 3.5rem;
   word-break: keep-all;
   letter-spacing: 0.05rem;
+}
+.header-navigation__navigation-items {
+  font-weight: 800;
+  color: hsl(41, 100%, 87%);
 }
 
 html,
