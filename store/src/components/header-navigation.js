@@ -27,6 +27,7 @@ const HeaderNavigation = () =>
         MainNavigation.classList.remove("header-navigation--scrolled")
         }
     })
+
     return MainNavigation;
 }
 
