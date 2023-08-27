@@ -7,13 +7,13 @@
   flex-flow: column wrap;
   padding: 0.5rem 0.5rem;
   width: 240px;
-
+  
   background-color: white;
 
   &__image {
-    min-height: 200px;
+    min-height: 213px;
     max-width: 200px;
-    max-height: 200px;
+    // max-height: 200px;
     position: relative;
     margin-inline: auto;
     isolation: isolate;
@@ -24,8 +24,8 @@
 
       border-left: 0.25rem solid $golden-500;
       object-position: center;
-      max-height: 200px;
-      min-height: 200px;
+      // max-height: 200px;
+      min-height: 213px;
     }
   }
 
@@ -90,7 +90,9 @@
     align-items: flex-start;
     justify-content: flex-start;
     width: 600px;
-    min-height: auto;
+    // min-height: auto;
+    // max-height: 200px;
+
     &__info {
       flex: 1 0 20rem;
       // flex-direction: column;

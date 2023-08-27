@@ -8,7 +8,7 @@ const Footer = () =>
 
     const contentCreator = document.createElement("p");
     contentCreator.setAttribute("class", "footer__content-by");
-    contentCreator.textContent = "Made by Code4V";
+    contentCreator.textContent = "Made by Code4V for the Odin Project";
 
     footerContent.appendChild(contentCreator);
 

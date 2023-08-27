@@ -1,0 +1,19 @@
+@use './../abstracts/' as *;
+
+.footer
+{
+    background-color: $steelblue-500;
+    text-align: center;
+
+    &__content
+    {
+        padding-block: 1rem;
+
+        &-by
+        {
+            color: $steelblue-100
+        }
+    }
+
+
+}
