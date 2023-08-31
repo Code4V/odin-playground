@@ -1,4 +1,14 @@
-.about-us
-{
-    min-height: 100svh;
+@use "./../abstracts/" as *;
+
+.about-us {
+  min-height: 100svh;
+
+  &__description {
+    border: 0.125rem solid $golden-500;
+    margin-block-start: 1rem;
+    margin-inline: auto;
+    max-width: 70%;
+  
+    padding: .5rem;
+}
 }

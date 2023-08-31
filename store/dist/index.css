@@ -278,6 +278,13 @@
 .about-us {
   min-height: 100svh;
 }
+.about-us__description {
+  border: 0.125rem solid hsl(41, 83%, 45%);
+  margin-block-start: 1rem;
+  margin-inline: auto;
+  max-width: 70%;
+  padding: 0.5rem;
+}
 
 html,
 body,
