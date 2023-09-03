@@ -13,7 +13,6 @@ class Book {
 }
 
 class Magazine extends Book {
-    
     isThick () {
         if(this.pages > 200) return "Thick Boi"
         return "Thin Ass"
