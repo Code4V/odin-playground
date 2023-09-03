@@ -11,14 +11,20 @@
 
   &__image {
     position: absolute;
-    top: 0;
-    left: 0;
-    z-index: -1;
-    min-width: 100%;
+    
+    min-height: 500px;
 
-    aspect-ratio: 16/9;
-    object-fit: contain;
-    object-position: left;
+    > img {
+      isolation: isolate;
+      top: 0;
+      left: 0;
+      z-index: -1;
+      height: 1200px;
+
+      aspect-ratio: 16/9;
+      object-fit: cover;
+      object-position: center;
+    }
   }
 
   &__contents {

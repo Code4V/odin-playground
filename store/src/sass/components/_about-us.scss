@@ -2,13 +2,29 @@
 
 .about-us {
   min-height: 100svh;
+  margin-block-end: 2rem;
 
   &__description {
-    border: 0.125rem solid $golden-500;
+    border-block: 0.125rem solid $golden-500;
     margin-block-start: 1rem;
     margin-inline: auto;
     max-width: 70%;
   
     padding: .5rem;
+
+    display: flex;
+    flex-flow: column wrap;
+    gap: 1rem;
+    
+    &-paragraph
+    {
+
+    }
+
+    &-image
+    {
+      height: 250px;
+      object-fit: cover;
+    }
 }
 }

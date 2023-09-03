@@ -11,13 +11,17 @@
 }
 .header__image {
   position: absolute;
+  min-height: 500px;
+}
+.header__image > img {
+  isolation: isolate;
   top: 0;
   left: 0;
   z-index: -1;
-  min-width: 100%;
+  height: 1200px;
   aspect-ratio: 16/9;
-  object-fit: contain;
-  object-position: left;
+  object-fit: cover;
+  object-position: center;
 }
 .header__contents {
   margin-block: 1rem;
@@ -277,13 +281,21 @@
 
 .about-us {
   min-height: 100svh;
+  margin-block-end: 2rem;
 }
 .about-us__description {
-  border: 0.125rem solid hsl(41, 83%, 45%);
+  border-block: 0.125rem solid hsl(41, 83%, 45%);
   margin-block-start: 1rem;
   margin-inline: auto;
   max-width: 70%;
   padding: 0.5rem;
+  display: flex;
+  flex-flow: column wrap;
+  gap: 1rem;
+}
+.about-us__description-image {
+  height: 250px;
+  object-fit: cover;
 }
 
 html,

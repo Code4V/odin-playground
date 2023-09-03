@@ -5,12 +5,19 @@ const Header = () =>
     const header = document.createElement('header');
     header.setAttribute('class', 'header');
     
+    const headerImageContainer = document.createElement('div');
+    headerImageContainer.setAttribute('class', 'header__image');
+
+    
+    
     const headerImage = new Image();
-    headerImage.classList.add('class', 'header__image');
+    // headerImage.classList.add('class', 'header__image');
     headerImage.src = HeaderImage;
     // const headerImage = document.createElement('img');
     // headerImage.setAttribute('class', 'header__image');
     // headerImage.setAttribute('src', 'assets/header_bg.jpg');
+    
+    headerImageContainer.appendChild(headerImage);
 
     const headerContents = document.createElement('div');
     headerContents.setAttribute('class', 'header__contents');
@@ -41,7 +48,7 @@ const Header = () =>
     headerImage.insertAdjacentElement('afterend', headerContents);
 
 
-    header.appendChild(headerImage)
+    header.appendChild(headerImageContainer)
     header.appendChild(headerContents)
 
     return header;
