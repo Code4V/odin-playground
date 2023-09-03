@@ -6,8 +6,12 @@ This is a repository for my Odin Project's JavaScript course, All the assignment
 
 ## What's the Current Progress
 
-[X] Library
-[X] Tic-tac-toe
-[ ] Restaurant Menu *On Progress*
-[ ] To-Do List
+- [X] Library
+- [X] Tic-tac-toe
+- [ ] Restaurant Menu *On Progress*
+- [ ] To-Do List
+
+## Additional Info
+
+You can freely browse my codes and suggest any improvement. Thank You! :heart:
 
