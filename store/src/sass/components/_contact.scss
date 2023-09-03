@@ -1,0 +1,12 @@
+@use './../abstracts/' as *;
+
+.contact
+{
+  margin-block-start: 3rem;
+  min-height: 100svh;
+  
+  &__title
+  {
+
+  }
+}

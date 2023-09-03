@@ -21,7 +21,6 @@ const Header = () =>
 
     const headerContents = document.createElement('div');
     headerContents.setAttribute('class', 'header__contents');
-
     const headerContentsTitle = document.createElement('h1');
     headerContentsTitle.setAttribute('class', 'header__title');
     headerContentsTitle.textContent = 'VIKINGS: SEA BREEZE';
@@ -35,7 +34,12 @@ const Header = () =>
 
     const headerButton = document.createElement('button');
     headerButton.setAttribute('class', 'button header__buttons-see--primary');
+    headerButton.setAttribute('type', 'button')
     headerButton.textContent = 'SEE MENU'
+
+    headerButton.addEventListener('click', () => {
+        alert(clicked);
+    })
 
     headerContentsButtons.appendChild(headerButton);
 

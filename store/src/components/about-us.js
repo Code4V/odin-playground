@@ -59,7 +59,6 @@ const AboutUs = () => {
   aboutUsDescription.appendChild(fourthDescription);
   aboutUsDescription.appendChild(fourthImage);
 
-
   aboutUs.appendChild(aboutUsHeader);
   aboutUs.appendChild(aboutUsDescription);
 

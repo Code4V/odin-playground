@@ -5,6 +5,7 @@ import Menu from "./components/menu";
 import HeaderNavigation from "./components/header-navigation";
 import BestSeller from "./components/best-seller";
 import Footer from "./components/footer";
+import Contact from "./components/contact";
 
 const main = document.querySelector("#content");
 
@@ -36,7 +37,7 @@ document.addEventListener("DOMContentLoaded", () => {
           container.appendChild(Menu());
           break;
         case "CONTACT":
-          container.appendChild(BestSeller());
+          container.appendChild(Contact());
           break;
       }
     });

@@ -16,6 +16,11 @@ button {
 
   font-weight: 600;
   transition: all 250ms ease-in-out;
+
+  &:hover
+  {
+    background-color: $golden-200;
+  }
 }
 
 section {

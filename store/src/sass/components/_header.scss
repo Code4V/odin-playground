@@ -1,4 +1,5 @@
 @use "../abstracts/" as *;
+@use "../utilities/" as *;
 
 .header {
   display: flex;
@@ -11,14 +12,13 @@
 
   &__image {
     position: absolute;
-    
     min-height: 500px;
-
+    z-index: -1;
+    isolation: isolate;
+    
     > img {
-      isolation: isolate;
       top: 0;
       left: 0;
-      z-index: -1;
       height: 1200px;
 
       aspect-ratio: 16/9;

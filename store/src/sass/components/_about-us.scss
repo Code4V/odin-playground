@@ -3,18 +3,18 @@
 .about-us {
   min-height: 100svh;
   margin-block-end: 2rem;
-
+  
   &__description {
     border-block: 0.125rem solid $golden-500;
     margin-block-start: 1rem;
     margin-inline: auto;
     max-width: 70%;
   
-    padding: .5rem;
+    padding-block: 2rem;
 
     display: flex;
     flex-flow: column wrap;
-    gap: 1rem;
+    gap: 1.5rem;
     
     &-paragraph
     {
@@ -25,6 +25,8 @@
     {
       height: 250px;
       object-fit: cover;
+
+      border-inline: .2rem solid $golden-500;
     }
 }
 }
