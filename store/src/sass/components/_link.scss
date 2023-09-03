@@ -1,0 +1,15 @@
+@use './../abstracts/' as *;
+
+.link
+{
+  display: flex;
+  gap: .5rem;
+  align-items: center;
+  // justify-content: center;
+  
+  margin-inline: auto;
+  &__icon
+  {
+    color: $golden-500;
+  }
+}

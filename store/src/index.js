@@ -1,6 +1,5 @@
 import Header from "./components/header";
 import AboutUs from "./components/about-us";
-import Product from "./components/product";
 import Menu from "./components/menu";
 import HeaderNavigation from "./components/header-navigation";
 import BestSeller from "./components/best-seller";
@@ -37,6 +36,7 @@ document.addEventListener("DOMContentLoaded", () => {
           container.appendChild(Menu());
           break;
         case "CONTACT":
+          container.appendChild(Header());
           container.appendChild(Contact());
           break;
       }

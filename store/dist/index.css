@@ -243,6 +243,7 @@ ul > li::before {
   letter-spacing: 0.25rem;
 }
 .header__buttons {
+  display: none;
   margin-block-start: 1.25rem;
 }
 .header__buttons * {
@@ -494,9 +495,25 @@ ul > li::before {
 }
 
 .contact {
-  margin-block-start: 3rem;
   min-height: 100svh;
 }
+.contact__information {
+  display: flex;
+  flex-direction: column;
+  margin-block: 1rem;
+  gap: 0.5rem;
+}
+
+.link {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  margin-inline: auto;
+}
+.link__icon {
+  color: hsl(41, 83%, 45%);
+}
+
 * {
   padding: 0;
   margin: 0;

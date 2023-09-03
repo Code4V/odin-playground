@@ -2,11 +2,14 @@
 
 .contact
 {
-  margin-block-start: 3rem;
   min-height: 100svh;
-  
-  &__title
-  {
 
+  &__information
+  {
+    display: flex;
+    flex-direction: column;
+    margin-block: 1rem;
+
+    gap: .5rem;
   }
 }
