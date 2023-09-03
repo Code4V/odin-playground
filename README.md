@@ -8,8 +8,8 @@ This is a repository for my Odin Project's JavaScript course, All the assignment
 
 - [X] Library
 - [X] Tic-tac-toe
-- [ ] Restaurant Menu | *On Progress*
-- [ ] To-Do List
+- [X] Restaurant Menu 
+- [ ] To-Do List | *Up Next*
 
 ## Additional Info
 

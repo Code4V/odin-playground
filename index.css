@@ -1,243 +1,206 @@
-@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&display=swap");
 
-:root
-{
-    --primary-color: hsl(37, 70%, 64%);
+:root {
+  --primary-color: hsl(37, 70%, 64%);
 
-    --font-solid: hsl(37, 50%, 50%);
+  --font-solid: hsl(37, 50%, 50%);
 
-    --basic-transition: 125ms ease-out;
-    --animation-transition: 1000ms ease-out;
-    --sudden-transition: 350ms cubic-bezier(.19,1.38,.73,.96);
+  --basic-transition: 125ms ease-out;
+  --animation-transition: 1000ms ease-out;
+  --sudden-transition: 350ms cubic-bezier(0.19, 1.38, 0.73, 0.96);
 }
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 
-* 
-{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-
-    font-family: Manrope;
+  font-family: Manrope;
 }
 
-body
-{
-    display: grid;
+body {
+  display: grid;
 
-    place-items: center;
-    place-content: center;
-    
-    height: 80svh;
+  place-items: center;
+  place-content: center;
+
+  height: 80svh;
 }
 
-.header 
-{
-    display: grid;
-    place-items: center;
+.header {
+  display: grid;
+  place-items: center;
 
-    max-width: 40rem;
+  max-width: 40rem;
 
-    margin: 0 auto;
+  margin: 0 auto;
 
-    gap: 1rem;
+  gap: 1rem;
 
-    padding: .5rem;
-    
+  padding: 0.5rem;
 }
 
-.header__images
-{
-    display: flex;
-    gap: 1rem;
+.header__images {
+  display: flex;
+  gap: 1rem;
 }
 
-.header__images img:first-child
-{
-    max-width: 5rem;
+.header__images img:first-child {
+  max-width: 5rem;
 }
 
-.header__images img:nth-child(2)
-{
-    border-radius: 50% !important;
-    max-width: 4rem;
-    order: 3;
+.header__images img:nth-child(2) {
+  border-radius: 50% !important;
+  max-width: 4rem;
+  order: 3;
 }
 
-.header__images span
-{
-    order: 1;
-    position: relative;
-    cursor: default;
+.header__images span {
+  order: 1;
+  position: relative;
+  cursor: default;
 }
 
-.header__images span::before
-{
-    content: 'X';
-    position: absolute;
-    color: var(--primary-color);
-    
-    clip-path: polygon(50% 0, 50% 0, 50% 100%, 50% 100%);
-    transition: clip-path var(--basic-transition);
-    cursor: default;
+.header__images span::before {
+  content: "X";
+  position: absolute;
+  color: var(--primary-color);
+
+  clip-path: polygon(50% 0, 50% 0, 50% 100%, 50% 100%);
+  transition: clip-path var(--basic-transition);
+  cursor: default;
 }
 
-.header__images img:first-child:hover ~ span::before 
-{
+.header__images img:first-child:hover ~ span::before {
+  clip-path: polygon(50% 0, 100% 0, 100% 100%, 50% 100%);
+}
+.header__images img:nth-child(2):hover ~ span::before {
+  clip-path: polygon(0 0, 50% 0, 50% 100%, 0 100%);
+}
+
+.header__images span:hover::before {
+  animation: spin var(--animation-transition) infinite;
+  clip-path: polygon(50% 0, 0 0, 0 100%, 50% 100%);
+}
+
+.header__title {
+  position: relative;
+  font-size: 5rem;
+
+  text-align: center;
+}
+
+.header__title::after {
+  font-size: x-small;
+  content: "with Code4V";
+
+  position: absolute;
+
+  left: 0;
+  right: 0;
+  bottom: 0.25rem;
+
+  /* color: var(--primary-color); */
+}
+
+.header__nav {
+  width: 100%;
+  padding: 0.5rem;
+}
+
+.header__nav-list {
+  display: flex;
+
+  gap: 2rem;
+  list-style: none;
+
+  flex-flow: row wrap;
+  text-align: center;
+}
+
+.nav-list__links {
+  flex: 1 0 34%;
+}
+
+.nav-list__links > a {
+  text-decoration: none;
+  color: black;
+  position: relative;
+
+  transition: color var(--basic-transition);
+}
+
+.nav-list__links > a:hover {
+  color: var(--font-solid);
+}
+
+.nav-list__links > a::before {
+  content: "↯";
+  opacity: 0;
+  display: inline-block;
+  position: absolute;
+  left: 40%;
+
+  transform: translateY(-50px);
+
+  transition: opacity var(--basic-transition),
+    transform var(--sudden-transition);
+}
+
+.nav-list__links > a:hover::before {
+  opacity: 100%;
+  transform: translateY(35px);
+}
+
+.nav-list__links:nth-child(4) {
+  position: relative;
+}
+
+.nav-list__links:nth-child(4) > a::after {
+  content: "On Going!";
+
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  opacity: 0;
+
+  background-color: white;
+
+  transition: all 250ms ease-in-out;
+}
+
+.nav-list__links:nth-child(4) > a:hover::after {
+  color: var(--font-solid);
+  opacity: 100%;
+}
+
+.primary-color {
+  color: var(--primary-color);
+}
+
+@keyframes spin {
+  0% {
     clip-path: polygon(50% 0, 100% 0, 100% 100%, 50% 100%);
-
-}
-.header__images img:nth-child(2):hover  ~ span::before 
-{
+  }
+  25% {
+    clip-path: polygon(0 50%, 100% 50%, 100% 100%, 0 100%);
+  }
+  50% {
     clip-path: polygon(0 0, 50% 0, 50% 100%, 0 100%);
+  }
+  75% {
+    clip-path: polygon(0 0, 100% 0, 100% 50%, 0 50%);
+  }
+  100% {
+    clip-path: polygon(50% 0, 100% 0, 100% 100%, 50% 100%);
+  }
 }
 
-.header__images span:hover::before
-{
-    animation: spin var(--animation-transition) infinite;
-    clip-path: polygon(50% 0, 0 0, 0 100%, 50% 100%);
-}
-
-
-.header__title
-{
-    position: relative;
-    font-size: 5rem;
-    
-
-    text-align: center;
-}
-
-.header__title::after
-{
-    font-size: x-small;
-    content: "with Code4V";
-
-    position: absolute;
-    
-    left: 0;
-    right: 0;
-    bottom: .25rem;
-
-    /* color: var(--primary-color); */
-}
-
-
-.header__nav
-{
-    width: 100%;
-    padding: .5rem;
-}
-
-.header__nav-list
-{
-    display: flex;
-
-    gap: 12px;
-    list-style: none;
-
-    
-   text-align: center;
-}
-
-.nav-list__links
-{
-    flex: 1 0 34%;
-}
-
-
-.nav-list__links > a 
-{
-    text-decoration: none;
-    color: black;
-    position: relative;
-    
-    transition: color var(--basic-transition);
-
-}
-
-.nav-list__links > a:hover 
-{
-    color: var(--font-solid);
-}
-
-.nav-list__links > a::before
-{
-    content: '↯';
-    opacity: 0;
-    display: inline-block;
-    position: absolute;
-    left: 40%;
-
-    transform: translateY(-50px);
-    
-    transition: opacity var(--basic-transition), transform var(--sudden-transition);
-}
-
-.nav-list__links > a:hover::before
-{
-    opacity: 100%;
-    transform: translateY(35px);
-}
-
-.nav-list__links:nth-child(3)
-{
-    position: relative;
-}
-
-.nav-list__links:nth-child(3) > a::after
-{
-    content: "On Going!";
-
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-
-    opacity: 0;
-
-    background-color: white;
-
-    transition: all 250ms ease-in-out;
-}
-
-.nav-list__links:nth-child(3) > a:hover::after 
-{
-    color: var(--font-solid);
-    opacity: 100%;
-}
-
-
-
-
-.primary-color
-{
-    color: var(--primary-color)
-}
-
-@keyframes spin 
-{
-    0%{
-        clip-path: polygon(50% 0, 100% 0, 100% 100%, 50% 100%);
-    }
-    25%{
-        clip-path: polygon(0 50%, 100% 50%, 100% 100%, 0 100%);
-    }
-    50%{
-        clip-path: polygon(0 0, 50% 0, 50% 100%, 0 100%);
-    }
-    75%{
-        clip-path: polygon(0 0, 100% 0, 100% 50%, 0 50%);
-    }
-    100% {
-        clip-path: polygon(50% 0, 100% 0, 100% 100%, 50% 100%);
-    }
-}
-
-@media screen and (min-width: 640px){
-    .header__title
-    {
-        font-size: 4rem;
-    }
+@media screen and (min-width: 640px) {
+  .header__title {
+    font-size: 4rem;
+  }
 }
