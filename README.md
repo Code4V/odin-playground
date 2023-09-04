@@ -9,7 +9,7 @@ This is a repository for my Odin Project's JavaScript course, All the assignment
 - [X] Library
 - [X] Tic-tac-toe
 - [X] Restaurant Menu 
-- [ ] To-Do List | *Up Next*
+- [ ] To-Do List | *On Progress*
 
 ## Additional Info
 
