@@ -1,21 +1,25 @@
-import { format, formatDistance, formatRelative, subDays} from 'date-fns';
+import { format } from 'date-fns';
 
 class Todo {
+  #title; #description; #dueDate; #priority; #createdAt;
+
   constructor(title, description, dueDate, priority = 0)
   {
-    this.title = title;
-    this.description = description;
-    this.dueDate = format(dueDate,  'MM/dd/yyyy - hh:mm:ss');
-    this.priority = priority;
-    this.createdAt = format(new Date(), 'MM/dd/yyyy - hh:mm:ss');
+    this.#title = title;
+    this.#description = description;
+    this.#dueDate = format(dueDate,  'MM/dd/yyyy - hh:mm:ss');
+    this.#priority = priority;
+    this.#createdAt = format(new Date(), 'MM/dd/yyyy - hh:mm:ss');
   }
 
-  getTodo () {
-    return `${this.title} -> ${this.description} 
-            due date is ${this.dueDate}
-            created at ${this.createdAt}
+  get todoDetails () {
+    return `
+    ${this.#title} -> ${this.#description} 
+    due date is ${this.#dueDate}
+    created at ${this.#createdAt}
             
-            priority is ${this.priority}`
+    priority is ${this.#priority}
+    `;
   }
 }
 

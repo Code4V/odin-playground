@@ -5,6 +5,9 @@ var firstTodo = new Todo('Test', 'Test description', new Date(2023, 10, 23))
 
 const main = document.querySelector('#content');
 const pre = document.createElement('pre');
-pre.textContent = firstTodo.getTodo();
+pre.textContent = firstTodo.todoDetails;
+
+console.log(typeof firstTodo)
+
 
 main.appendChild(pre);
