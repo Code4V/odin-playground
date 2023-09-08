@@ -4,6 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "webpack:watch": "webpack build --watch",
+    "sass:watch": "sass src/sass/index.sass src/dist/index.css --watch",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
