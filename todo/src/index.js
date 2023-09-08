@@ -8,25 +8,24 @@ var fourthTodo = new Todo('Test3', 'Test desddcription', new Date(2023, 10, 23))
 
 
 const Todos = [
-  firstTodo,
-  secondTodo,
-  thirdTodo,
-  fourthTodo
+  firstTodo.todoDetails,
+  secondTodo.todoDetails,
+  thirdTodo.todoDetails,
+  fourthTodo.todoDetails
 ];
 
 const main = document.querySelector('#content');
 const pre = document.createElement('pre');
+
 firstTodo.updateProject = "The First Project"
 
 pre.textContent = firstTodo.todoDetails;
 
+var jsonTodos = JSON.stringify(Todos);
 
 
-Todos.forEach(element => {
-  element.updatePriority = 2;
 
-  console.log(element.todoDetails);
-})
+console.log(jsonTodos)
 
 
 main.appendChild(pre);

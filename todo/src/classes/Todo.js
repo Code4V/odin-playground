@@ -14,14 +14,14 @@ class Todo {
   }
 
   get todoDetails () {
-    return `
-    #${this.#project}
-    ${this.#title} -> ${this.#description} 
-    due date is ${this.#dueDate}
-    created at ${this.#createdAt}
-              
-    priority is ${this.#priority}
-    `;
+    return {
+      project: this.#project,
+      title: this.#title, 
+      description: this.#description,
+      dueDate: this.#dueDate,
+      createdAt: this.#createdAt,
+      priority: this.#priority
+    };
   }
 
   set updateProject (project)
