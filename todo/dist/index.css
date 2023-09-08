@@ -39,4 +39,10 @@ table {
   border-spacing: 0;
 }
 
+.main {
+  display: flex;
+  flex-flow: row wrap;
+  gap: 1rem;
+}
+
 /*# sourceMappingURL=index.css.map */
