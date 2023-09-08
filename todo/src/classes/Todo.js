@@ -7,7 +7,7 @@ class Todo {
   {
     this.#title = title;
     this.#description = description;
-    this.#dueDate = format(dueDate,  'MM/dd/yyyy - hh:mm:ss');
+    this.#dueDate = format(dueDate,  'MM/dd/yyyy');
     this.#priority = priority;
     this.#createdAt = format(new Date(), 'MM/dd/yyyy - hh:mm:ss');
     this.#project = project;

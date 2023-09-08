@@ -1,31 +1,32 @@
 import Todo from "./classes/todo"; 
 import addTodo from "./operations/addTodo";
 
-var firstTodo = new Todo('Test', 'Test description', new Date(2023, 10, 23))
-var secondTodo = new Todo('Test1', 'TeASst description', new Date(2023, 10, 23))
-var thirdTodo = new Todo('Test2', 'Test aasddescription', new Date(2023, 10, 23))
-var fourthTodo = new Todo('Test3', 'Test desddcription', new Date(2023, 10, 23))
+import data from "./data/todo.json";
 
-
-const Todos = [
-  firstTodo.todoDetails,
-  secondTodo.todoDetails,
-  thirdTodo.todoDetails,
-  fourthTodo.todoDetails
-];
+var addedTodo = new Todo('Test', 'Test description', new Date(2023, 6, 5));
 
 const main = document.querySelector('#content');
 const pre = document.createElement('pre');
 
-firstTodo.updateProject = "The First Project"
-
-pre.textContent = firstTodo.todoDetails;
-
-var jsonTodos = JSON.stringify(Todos);
+addedTodo.updateProject = "The First Project"
 
 
+pre.textContent = addedTodo.todoDetails;
 
-console.log(jsonTodos)
 
 
+// var jsonTodos = JSON.parse(data);
+
+addTodo(data, addedTodo.todoDetails)
+addTodo(data, addedTodo.todoDetails)
+
+// console.log(data)
+
+data.forEach((element, index) => {
+  // console.log(element);
+  localStorage.setItem(index, JSON.stringify(element));
+})
+
+
+console.log(JSON.parse(localStorage.getItem(1)));
 main.appendChild(pre);

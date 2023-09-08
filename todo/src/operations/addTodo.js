@@ -1,7 +1,9 @@
 import Todo from "./../classes/todo"
 
-function addTodo(title, description, deadline, project){
-  return Todo(title, description, deadline, project)
+function addTodo(currentData, data){
+  currentData.push(data)
+  
+  return currentData;
 }
 
 export default addTodo;
