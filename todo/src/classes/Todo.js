@@ -24,11 +24,35 @@ class Todo {
     };
   }
 
+  /**
+   * @param {string} project
+   */
   set updateProject (project)
   {
     this.#project = project;
   }
 
+  /**
+   * @param {string} title
+   */
+  set updateTitle (title)
+  {
+    this.#title = title;
+  }
+
+  /**
+   * @param {string} description
+   */
+  set updateDescription (description)
+  {
+    this.#description = description;
+  }
+
+  /**
+   * @param {int} priority
+   * 0 - Normal || >= 1 Higher
+   * Throws an error if entered another datatype
+   */
   set updatePriority (priority)
   {
     try {

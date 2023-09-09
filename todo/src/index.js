@@ -1,5 +1,5 @@
 import Todo from "./classes/todo"; 
-import addTodo from "./operations/addTodo";
+import { addTodo, deleteTodo } from "./operations/todoOperations";
 
 import data from "./data/todo.json";
 
@@ -7,9 +7,14 @@ var addedTodo = new Todo('Test', 'Test description', new Date(2023, 6, 5));
 
 const main = document.querySelector('#content');
 
-addedTodo.updateProject = "The First Project"
+addedTodo.updateProject = "The First Projsect"
 
+addedTodo.updateDescription = "Bruh"
 
+addedTodo.updateTitle = "ETEST"
+addedTodo.updatePriority = 1
+
+console.log(addedTodo)
 
 
 // var jsonTodos = JSON.parse(data);
@@ -23,6 +28,7 @@ data.forEach((element, index) => {
   localStorage.setItem(index, JSON.stringify(element));
 })
 
+deleteTodo(data, 1)
 
 data.forEach(element => {
   console.log(element)
@@ -38,4 +44,4 @@ data.forEach(element => {
 })
 
 
-console.log(JSON.parse(localStorage.getItem(1)));
+console.log(data);
