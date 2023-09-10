@@ -1,5 +1,3 @@
-import Todo from "../classes/todo"
-
 const addTodo = (currentData, data) => 
 {
   currentData.push(data)
