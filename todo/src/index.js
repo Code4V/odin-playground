@@ -22,14 +22,13 @@ const main = document.querySelector('#content');
 if (localStorage.length != 0) 
 {
   data = Array.from(localStorage);
-  data.forEach(element => {
-    element = JSON.parse(element);
-  })
 }
 
 data.forEach(element => 
   {
-    // element = JSON.parse(element)
+    if(localStorage.length != 0)
+      element = JSON.parse(element)
+
     console.log(element);
     const pre = document.createElement('pre');
     pre.textContent = `
