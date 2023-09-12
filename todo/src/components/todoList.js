@@ -10,6 +10,9 @@ const TodoList = (todoData) =>
     if (localStorage.length != 0) element = JSON.parse(element);
 
     const todo = document.createElement('pre');
+    todo.classList.add('todo-list__todos');
+
+    if(element.priority > 0) todo.classList.add('todo-list__todos--priority')
     todo.textContent = `
     ${element.title} ${element.description}
     ${element.dueDate} ${element.createdAt}

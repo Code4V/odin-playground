@@ -44,6 +44,15 @@ body {
   font-family: "Lato";
 }
 
+.todo-list {
+  display: flex;
+  gap: 1rem;
+  flex-flow: row wrap;
+}
+.todo-list__todos--priority {
+  order: -1;
+}
+
 * {
   box-sizing: border-box;
 }

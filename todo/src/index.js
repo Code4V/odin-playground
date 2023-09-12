@@ -1,7 +1,7 @@
 import Todo from "./classes/Todo"; 
 import { addTodo, deleteTodo } from "./operations/todoOperations";
 import data from "./data/todo.json";
-import clearStorage from "./operations/storageOperations";
+import clearStorage, { setStorage } from "./operations/storageOperations";
 
 import TodoList from "./components/todoList";
 
@@ -23,6 +23,8 @@ const main = document.querySelector('#content');
 // deleteTodo(data, 1)
 
 clearStorage();
+
+setStorage(data);
 
 main.appendChild(TodoList(data));
 
