@@ -370,13 +370,33 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 
 /***/ }),
 
+/***/ "./src/components/todoList.js":
+/*!************************************!*\
+  !*** ./src/components/todoList.js ***!
+  \************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\nconst TodoList = (todoData) =>\r\n{\r\n  const todosContainer = document.createElement('section');\r\n  todosContainer.classList.add(\"todo-list\");\r\n\r\n  if (localStorage.length != 0)\r\n    todoData = Array.from(localStorage);\r\n\r\n  todoData.forEach(element => {\r\n    if (localStorage.length != 0) element = JSON.parse(element);\r\n\r\n    const todo = document.createElement('pre');\r\n    todo.textContent = `\r\n    ${element.title} ${element.description}\r\n    ${element.dueDate} ${element.createdAt}\r\n    \r\n    ${element.priority}\r\n    ${element.project}\r\n    `;\r\n\r\n    todosContainer.appendChild(todo);\r\n  });  \r\n\r\n  return todosContainer;\r\n}\r\n\r\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (TodoList);\n\n//# sourceURL=webpack://todo/./src/components/todoList.js?");
+
+/***/ }),
+
 /***/ "./src/index.js":
 /*!**********************!*\
   !*** ./src/index.js ***!
   \**********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _classes_Todo__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./classes/Todo */ \"./src/classes/Todo.js\");\n/* harmony import */ var _operations_todoOperations__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./operations/todoOperations */ \"./src/operations/todoOperations.js\");\n/* harmony import */ var _data_todo_json__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./data/todo.json */ \"./src/data/todo.json\");\n \r\n\r\n\r\n\r\n\r\n\r\nconst main = document.querySelector('#content');\r\n\r\n// var jsonTodos = JSON.parse(data);\r\n\r\n// addTodo(data, addedTodo.todoDetails)\r\n// addTodo(data, secondAdd.todoDetails)\r\n\r\n// console.log(data)\r\n\r\n\r\n// data.forEach((element, index) => {\r\n//   localStorage.setItem(index, JSON.stringify(element));\r\n// })\r\n\r\n// deleteTodo(data, 1)\r\nif (localStorage.length != 0) \r\n{\r\n  _data_todo_json__WEBPACK_IMPORTED_MODULE_2__ = Array.from(localStorage);\r\n}\r\n\r\n_data_todo_json__WEBPACK_IMPORTED_MODULE_2__.forEach(element => \r\n  {\r\n    if(localStorage.length != 0)\r\n      element = JSON.parse(element)\r\n\r\n    console.log(element);\r\n    const pre = document.createElement('pre');\r\n    pre.textContent = `\r\n    ${element.title} ${element.description}\r\n    ${element.dueDate} ${element.createdAt}\r\n\r\n    ${element.priority}\r\n    ${element.project}\r\n    `;\r\n    main.appendChild(pre);\r\n  }\r\n)\r\n\r\n\r\nconsole.log(_data_todo_json__WEBPACK_IMPORTED_MODULE_2__);\n\n//# sourceURL=webpack://todo/./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _classes_Todo__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./classes/Todo */ \"./src/classes/Todo.js\");\n/* harmony import */ var _operations_todoOperations__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./operations/todoOperations */ \"./src/operations/todoOperations.js\");\n/* harmony import */ var _data_todo_json__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./data/todo.json */ \"./src/data/todo.json\");\n/* harmony import */ var _operations_storageOperations__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./operations/storageOperations */ \"./src/operations/storageOperations.js\");\n/* harmony import */ var _components_todoList__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/todoList */ \"./src/components/todoList.js\");\n \r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\nconst main = document.querySelector('#content');\r\n\r\n// var jsonTodos = JSON.parse(data);\r\n\r\n// addTodo(data, addedTodo.todoDetails)\r\n// addTodo(data, secondAdd.todoDetails)\r\n\r\n// console.log(data)\r\n\r\n\r\n// data.forEach((element, index) => {\r\n//   localStorage.setItem(index, JSON.stringify(element));\r\n// })\r\n\r\n// deleteTodo(data, 1)\r\n\r\n(0,_operations_storageOperations__WEBPACK_IMPORTED_MODULE_3__[\"default\"])();\r\n\r\nmain.appendChild((0,_components_todoList__WEBPACK_IMPORTED_MODULE_4__[\"default\"])(_data_todo_json__WEBPACK_IMPORTED_MODULE_2__));\r\n\r\nconsole.log(_data_todo_json__WEBPACK_IMPORTED_MODULE_2__);\n\n//# sourceURL=webpack://todo/./src/index.js?");
+
+/***/ }),
+
+/***/ "./src/operations/storageOperations.js":
+/*!*********************************************!*\
+  !*** ./src/operations/storageOperations.js ***!
+  \*********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* binding */ clearStorage),\n/* harmony export */   setStorage: () => (/* binding */ setStorage)\n/* harmony export */ });\nfunction clearStorage() {\r\n  window.localStorage.clear();\r\n  window.sessionStorage.clear();\r\n}\r\n\r\nfunction setStorage(todoData) {\r\n  if (localStorage.length != 0) return;\r\n\r\n  todoData.forEach((element, index) => {\r\n    localStorage.setItem(index, JSON.stringify(element));\r\n  });\r\n}\r\n\r\n\r\n\n\n//# sourceURL=webpack://todo/./src/operations/storageOperations.js?");
 
 /***/ }),
 

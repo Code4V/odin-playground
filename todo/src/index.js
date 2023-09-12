@@ -1,7 +1,9 @@
 import Todo from "./classes/Todo"; 
 import { addTodo, deleteTodo } from "./operations/todoOperations";
 import data from "./data/todo.json";
+import clearStorage from "./operations/storageOperations";
 
+import TodoList from "./components/todoList";
 
 
 const main = document.querySelector('#content');
@@ -19,28 +21,9 @@ const main = document.querySelector('#content');
 // })
 
 // deleteTodo(data, 1)
-if (localStorage.length != 0) 
-{
-  data = Array.from(localStorage);
-}
 
-data.forEach(element => 
-  {
-    if(localStorage.length != 0)
-      element = JSON.parse(element)
+clearStorage();
 
-    console.log(element);
-    const pre = document.createElement('pre');
-    pre.textContent = `
-    ${element.title} ${element.description}
-    ${element.dueDate} ${element.createdAt}
-
-    ${element.priority}
-    ${element.project}
-    `;
-    main.appendChild(pre);
-  }
-)
-
+main.appendChild(TodoList(data));
 
 console.log(data);
