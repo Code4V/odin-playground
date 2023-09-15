@@ -8,6 +8,7 @@ function setStorage(todoData) {
   {
     if (localStorage.length != 0) {
       reject("Local Storage Already Filled");
+      return;
     }
 
     todoData.forEach((element, index) => {
@@ -23,7 +24,6 @@ function setStorage(todoData) {
     console.log(err);
   })
 
-  makeit();
 }
 
 export { setStorage };

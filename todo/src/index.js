@@ -5,7 +5,13 @@ import clearStorage, { setStorage } from "./operations/storageOperations";
 
 import TodoList from "./components/todoList";
 
+const newTodo = new Todo('Test', 'testing description', new Date());
 
+class Test {};
+
+// const newSoemthing = new Date();
+
+addTodo(data, newTodo);
 const main = document.querySelector('#content');
 
 // var jsonTodos = JSON.parse(data);
