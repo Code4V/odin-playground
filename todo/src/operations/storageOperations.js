@@ -4,11 +4,26 @@ export default function clearStorage() {
 }
 
 function setStorage(todoData) {
-  if (localStorage.length != 0) return;
+  const setPromise = new Promise((resolve, reject) =>
+  {
+    if (localStorage.length != 0) {
+      reject("Local Storage Already Filled");
+    }
 
-  todoData.forEach((element, index) => {
-    localStorage.setItem(index, JSON.stringify(element));
-  });
+    todoData.forEach((element, index) => {
+      localStorage.setItem(index, JSON.stringify(element));
+    });
+
+    resolve("Data Filled Successfully")
+  })
+
+  setPromise.then(message => {
+    console.log(message);
+  }).catch(err => {
+    console.log(err);
+  })
+
+  makeit();
 }
 
 export { setStorage };

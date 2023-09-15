@@ -22,7 +22,7 @@ const main = document.querySelector('#content');
 
 // deleteTodo(data, 1)
 
-// clearStorage();
+clearStorage();
 
 setStorage(data);
 

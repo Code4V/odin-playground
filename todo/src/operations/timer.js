@@ -1,0 +1,4 @@
+function normalTimer() 
+{
+  StylePropertyMap
+}
