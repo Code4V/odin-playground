@@ -5,7 +5,7 @@ import clearStorage, { setStorage } from "./operations/storageOperations";
 
 import TodoList from "./components/todoList";
 
-const newTodo = new Todo('Test', 'testing description', new Date());
+const newTodo = new Todo('AAAAA', 'testing description', new Date());
 
 class Test {};
 
@@ -26,12 +26,12 @@ const main = document.querySelector('#content');
 //   localStorage.setItem(index, JSON.stringify(element));
 // })
 
-// deleteTodo(data, 1)
 
 clearStorage();
 
 setStorage(data);
 
-main.appendChild(TodoList(data));
+deleteTodo(data, 2)
 
 console.log(data);
+main.appendChild(TodoList(data));
