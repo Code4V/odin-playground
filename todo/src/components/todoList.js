@@ -4,6 +4,8 @@ const TodoList = (todoData) =>
 {
   const todosContainer = document.createElement('section');
   todosContainer.classList.add("todo-list");
+  
+  todosContainer.innerHTML = "";
 
 
   if (localStorage.length != 0)

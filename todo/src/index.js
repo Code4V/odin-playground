@@ -3,6 +3,8 @@ import { addTodo, deleteTodo } from "./operations/todoOperations";
 import data from "./data/todo.json";
 import clearStorage, { setStorage } from "./operations/storageOperations";
 
+import Form from "./components/form";
+
 import TodoList from "./components/todoList";
 
 const newTodo = new Todo('AAAAA', 'testing description', new Date());
@@ -32,6 +34,9 @@ clearStorage();
 setStorage(data);
 
 deleteTodo(data, 2)
+deleteTodo(data, 1)
 
 console.log(data);
 main.appendChild(TodoList(data));
+main.appendChild(Form())
+
