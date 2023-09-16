@@ -9,16 +9,10 @@ const TodoList = (todoData) =>
   if (localStorage.length != 0)
   {
     todoData = Array.from(localStorage);
-    todoData = todoData.filter(element => element != undefined)
   }
 
-  console.log(todoData)
 
   todoData.forEach(element => {
-    if(element === undefined)
-      return;
-
-    console.log(element)
     if (localStorage.length != 0) element = JSON.parse(element);
 
     let todoElement = Todo(element);

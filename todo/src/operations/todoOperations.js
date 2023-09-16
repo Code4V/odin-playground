@@ -1,3 +1,5 @@
+import { setStorage } from "./storageOperations";
+
 const addTodo = (currentData, data) => 
 {  
   var storedData = Array.from(localStorage)
@@ -51,7 +53,9 @@ const deleteTodo = (currentData, dataIndex) =>
       return;
     }
     currentData.splice(dataIndex, 1);
-    localStorage.removeItem(dataIndex);
+
+    localStorage.clear();
+    setStorage(currentData);    
 
 
     resolve("Todo successfully deleted")
