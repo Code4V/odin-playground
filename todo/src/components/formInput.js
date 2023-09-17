@@ -1,6 +1,6 @@
 import { format } from "date-fns";
 
-const FormFactory = (name = "input", displayName = "default") =>
+const FormInput = (name = "input", displayName = "default") =>
 {
   const formInput = document.createElement("div");
   formInput.classList.add("form__input");
@@ -44,7 +44,6 @@ const FormFactory = (name = "input", displayName = "default") =>
     Input.classList.add(`form__input-input`);
     Input.name = name;
     Input.id = name;
-    console.log(format(new Date(), "yyyy-MM-dd"));
     Input.min = format(new Date(), "yyyy-MM-dd");
     Input.value = format(new Date(), "yyyy-MM-dd");
 
@@ -52,9 +51,34 @@ const FormFactory = (name = "input", displayName = "default") =>
     return formInput;
   }
 
+  const NumberField = () =>
+  {
+    var Input = document.createElement("input");
+    Input.type = "number";
+    Input.classList.add(`form__input-input`);
+    Input.name = name;
+    Input.id = name;
+    Input.min = 0;
+    Input.max = 4;
+
+    Input.addEventListener("keyup", () => {
+      if (Input.value > Input.max)
+      {
+        Input.value = Input.max;
+      }
+      if (Input.value < Input.min)
+      {
+        Input.value = Input.min;
+      } 
+    });
+
+    formInput.append(Input);
+    return formInput;   
+  }
 
 
-  return { TextArea, InputField, DateField };
+
+  return { TextArea, InputField, DateField, NumberField };
 }
 
-export default FormFactory;
+export default FormInput;
