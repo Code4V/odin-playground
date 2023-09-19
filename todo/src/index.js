@@ -3,6 +3,8 @@ import { addTodo, deleteTodo } from "./operations/todoOperations";
 import data from "./data/todo.json";
 import clearStorage, { setStorage } from "./operations/storageOperations";
 
+import order from "./classes/Builder";
+
 import Form from "./components/form";
 
 import TodoList from "./components/todoList";
@@ -40,3 +42,4 @@ console.log(data);
 main.appendChild(TodoList(data));
 main.appendChild(Form())
 
+console.log(order.orderSummary)
