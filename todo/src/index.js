@@ -3,7 +3,7 @@ import { addTodo, deleteTodo } from "./operations/todoOperations";
 import data from "./data/todo.json";
 import clearStorage, { setStorage } from "./operations/storageOperations";
 
-import order from "./classes/Builder";
+import SingletonTest, { order, order2 } from "./classes/Builder";
 
 import Form from "./components/form";
 
@@ -42,4 +42,7 @@ console.log(data);
 main.appendChild(TodoList(data));
 main.appendChild(Form())
 
-console.log(order.orderSummary)
+order.addNumber().addNumber()
+order2.addNumber()
+
+console.log(order.showNumber(), order2.showNumber())

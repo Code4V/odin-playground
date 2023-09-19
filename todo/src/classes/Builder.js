@@ -40,8 +40,35 @@ class BuilderTest {
   }
 }
 
-var order = new BuilderTest()
+export default class SingletonTest {
+  static hasInstance;
+  static number = 0;
+  constructor ()
+  {
 
+  }
+  static getInstance()
+  {
+    if(!SingletonTest.hasInstance)
+      SingletonTest.hasInstance = new SingletonTest();
 
+    return SingletonTest.hasInstance;
+  }
 
-export default order;
+  addNumber()
+  {
+    SingletonTest.number += 1;
+    return this;
+  }
+
+  showNumber()
+  {
+    return SingletonTest.number;
+  }
+}
+
+var order = new SingletonTest();
+
+var order2 = new SingletonTest();
+
+export { order, order2 };
