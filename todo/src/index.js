@@ -42,7 +42,8 @@ console.log(data);
 main.appendChild(TodoList(data));
 main.appendChild(Form())
 
-order.addNumber().addNumber()
 order2.addNumber()
 
-console.log(order.showNumber(), order2.showNumber())
+
+
+console.log({order})
