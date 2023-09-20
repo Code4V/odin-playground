@@ -4,6 +4,7 @@ import data from '../data/todo.json';
 import Todo from '../classes/Todo';
 import parseISO from 'date-fns/parseISO';
 
+
 const Form = () =>
 {
   const formContainer = document.createElement("form");
@@ -30,7 +31,9 @@ const Form = () =>
 
     const date = parseISO(res.dueDate);
 
-    addTodo(data, new Todo(res.title, res.description, date));
+    addTodo(data, new Todo(res.title, res.description, date, res.project, res.number));
+
+
     
   })
   return formContainer;

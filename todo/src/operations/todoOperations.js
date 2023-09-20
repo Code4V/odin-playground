@@ -1,4 +1,5 @@
 import TodoList from "../components/todoList";
+import { displayList } from "../controllers/displayController";
 import { setStorage } from "./storageOperations";
 
 const addTodo = (currentData, data) => 
@@ -38,6 +39,8 @@ const addTodo = (currentData, data) =>
   }).catch(err => {
     console.log(err)
   })
+
+  displayList(TodoList(currentData));
 
   return currentData;
 }

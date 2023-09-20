@@ -71,12 +71,9 @@ const FormInput = (name = "input", displayName = "default") =>
         Input.value = Input.min;
       } 
     });
-
     formInput.append(Input);
     return formInput;   
   }
-
-
 
   return { TextArea, InputField, DateField, NumberField };
 }
