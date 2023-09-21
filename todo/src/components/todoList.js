@@ -1,12 +1,19 @@
-import { setStorage } from "../operations/storageOperations";
+import { getStorage, setStorage } from "../operations/storageOperations";
 import Todo from "./todo";
 
 const TodoList = (todoData) =>
 {
+
   const todosContainer = document.createElement('section');
   todosContainer.classList.add("todo-list");
   
   todosContainer.innerHTML = "";
+
+  if (todoData.length === 0)
+  {
+    todosContainer.innerHTML = "NO DATA TO SHOW";
+    return todosContainer;
+  }
 
   if (localStorage.length != 0)
   {

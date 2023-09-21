@@ -4,6 +4,8 @@ export default function clearStorage() {
 }
 
 function setStorage(todoData) {
+
+  console.log("AT SET", todoData)
   const setPromise = new Promise((resolve, reject) =>
   {
     if (localStorage.length != 0) {
@@ -28,15 +30,20 @@ function setStorage(todoData) {
 
 function getStorage()
 {
-  var data = [];
+  let todo = [];
+
 
   Array.from(localStorage).forEach(element => {
     element = JSON.parse(element);
+    console.log({element})
 
-    data.push(element);
+
+    todo.push(element);
+    
+    console.log({todo})
   })
 
-  return data;
+  return todo;
 }
 
 export { setStorage, getStorage };

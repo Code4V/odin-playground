@@ -8,6 +8,8 @@ const main = document.querySelector('#content');
 
 clearStorage();
 
+
+
 document.addEventListener("DOMContentLoaded", async () => 
 {
   const mainContainer = document.createElement("main");

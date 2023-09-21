@@ -7,9 +7,10 @@ const displayList = (dataList) =>
   const mainTodoListContainer = document.querySelector('main');
   mainTodoListContainer.innerHTML = "";
 
-  if (localStorage.length == 0) setStorage(data);
-
   mainTodoListContainer.appendChild(TodoList(dataList))
+ 
+  console.log("DATA", {data})
+  if (localStorage.length == 0) setStorage(data);
 }
 
 
