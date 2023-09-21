@@ -10,8 +10,6 @@ const displayList = (dataList) =>
   if (localStorage.length == 0) setStorage(dataList);
 
   mainTodoListContainer.appendChild(TodoList(dataList))
- 
-  console.log("DATA", {data})
 }
 
 

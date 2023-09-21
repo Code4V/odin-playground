@@ -47,6 +47,7 @@ const addTodo = (currentData, data) =>
 
 const deleteTodo = (currentData, dataIndex) =>
 {
+  const deletePromise = new Promise((resolve, reject) => {   
     if (currentData.filter((element, index) => index === dataIndex).length == 0) 
     {
       reject("Data not found");
@@ -59,7 +60,8 @@ const deleteTodo = (currentData, dataIndex) =>
     if (currentData.length === 0)
     {
       clearStorage();
-      displayList(currentData);
+      displayList(currentData)
+      reject("Data is now empty")
       return;
     }
     
@@ -68,11 +70,20 @@ const deleteTodo = (currentData, dataIndex) =>
     console.log({currentData, dataIndex});
     setStorage(currentData)
 
+    resolve("Todo successfully deleted")
+  })
+
+  deletePromise.then(message => {
+    console.log(message);
+  }).catch(err => {
+    console.log(err)
+  });
+
   console.log("AT END OF DELETE", currentData)
 
   displayList(currentData)
 
-  return currentData;  
+  // return currentData;  
 }
 
 export { addTodo, deleteTodo };
