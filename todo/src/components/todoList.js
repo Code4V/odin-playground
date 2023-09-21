@@ -1,3 +1,4 @@
+import { setStorage } from "../operations/storageOperations";
 import Todo from "./todo";
 
 const TodoList = (todoData) =>
@@ -7,21 +8,22 @@ const TodoList = (todoData) =>
   
   todosContainer.innerHTML = "";
 
-
   if (localStorage.length != 0)
   {
     todoData = Array.from(localStorage);
   }
+  
 
-
-  todoData.forEach(element => {
+  todoData.forEach((element, index) => {
     if (localStorage.length != 0) element = JSON.parse(element);
 
-    let todoElement = Todo(element);
+    let todoElement = Todo(element, index);
     todoElement.classList.add('todo-list__todos');
 
     todosContainer.appendChild(todoElement);
   });  
+
+  // setStorage(todoData);
 
   return todosContainer;
 }

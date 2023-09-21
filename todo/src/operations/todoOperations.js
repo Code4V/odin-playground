@@ -40,27 +40,23 @@ const addTodo = (currentData, data) =>
     console.log(err)
   })
 
-  displayList(TodoList(currentData));
+  displayList(currentData);
 
   return currentData;
 }
 
 const deleteTodo = (currentData, dataIndex) =>
 {
-  const deletePromise = new Promise((resolve, reject) => {
-
-   
-    
+  const deletePromise = new Promise((resolve, reject) => {   
     if (currentData.filter((element, index) => index === dataIndex).length == 0) 
     {
       reject("Data not found");
       return;
     }
     currentData.splice(dataIndex, 1);
-
+    
     localStorage.clear();
-    setStorage(currentData);    
-
+    setStorage(currentData)
 
     resolve("Todo successfully deleted")
   })
@@ -73,6 +69,7 @@ const deleteTodo = (currentData, dataIndex) =>
 
   console.log(localStorage)
 
+  displayList(currentData)
   return currentData;  
 }
 

@@ -7,16 +7,16 @@ import TodoList from "./components/todoList";
 const main = document.querySelector('#content');
 
 clearStorage();
-setStorage(data);
 
-document.addEventListener("DOMContentLoaded", () => 
+document.addEventListener("DOMContentLoaded", async () => 
 {
   const mainContainer = document.createElement("main");
-  main.appendChild(mainContainer);
-
-  displayList(TodoList(data));
-  // main.appendChild(TodoList(data));
   main.appendChild(Form())
+  
+  
+  main.appendChild(mainContainer);
+  
+  displayList(data);
 })
 
 

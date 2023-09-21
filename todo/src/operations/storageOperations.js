@@ -26,4 +26,17 @@ function setStorage(todoData) {
 
 }
 
-export { setStorage };
+function getStorage()
+{
+  var data = [];
+
+  Array.from(localStorage).forEach(element => {
+    element = JSON.parse(element);
+
+    data.push(element);
+  })
+
+  return data;
+}
+
+export { setStorage, getStorage };

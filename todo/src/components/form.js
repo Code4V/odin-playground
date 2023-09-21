@@ -10,7 +10,8 @@ const Form = () =>
   const formContainer = document.createElement("form");
   formContainer.classList.add('form');
   
-  formContainer.append(FormInput("title", "Title").InputField());
+  const TEST = FormInput("title", "TEST").InputField()
+  formContainer.append(FormInput("title", "Title").InputField(), TEST);
   formContainer.appendChild(FormInput("project", "Project").InputField());
   formContainer.appendChild(FormInput("number", "Priority").NumberField());
   formContainer.appendChild(FormInput("description", "Description").TextArea());
@@ -26,13 +27,12 @@ const Form = () =>
     e.preventDefault();
     
     const FormEvent = new FormData(formContainer);
-
     const res = Object.fromEntries(FormEvent);
-
     const date = parseISO(res.dueDate);
 
-    addTodo(data, new Todo(res.title, res.description, date, res.project, res.number));
 
+    addTodo(data, new Todo(res.title, res.description, date, res.project, res.number));
+    TEST.childNodes[1].value = ""
 
     
   })
