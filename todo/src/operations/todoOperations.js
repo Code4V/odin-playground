@@ -72,7 +72,7 @@ const deleteTodo = (currentData, dataIndex) =>
 
   displayList(currentData)
 
-  // return currentData;  
+  return currentData;  
 }
 
 export { addTodo, deleteTodo };
