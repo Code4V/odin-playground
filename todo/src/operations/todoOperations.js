@@ -88,12 +88,23 @@ const deleteTodo = (currentData, dataIndex) =>
 const filterProjects = (todoData) =>
 {
   let projects = [];
+  let array = []
 
   todoData.filter(element => {
     if (projects.includes(element.project))
       return;
     projects.push(element.project);
   });
+
+  projects.forEach(outerElement => {
+    todoData.forEach(innerElement => {
+      if (innerElement.project == outerElement)
+      array.push({outerElement : innerElement})    
+    })
+
+  })
+
+  console.log(array)
 
   return projects;
 }

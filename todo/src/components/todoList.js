@@ -1,4 +1,3 @@
-import { filterProjects } from "../operations/todoOperations";
 import Todo from "./todo";
 
 const TodoList = (todoData) => {
