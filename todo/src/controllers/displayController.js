@@ -3,6 +3,8 @@ import { setStorage } from "../operations/storageOperations";
 
 const displayList = (dataList) =>
 {
+  let projects = filterProjects(todoData);
+  
   const mainTodoListContainer = document.querySelector('main');
   mainTodoListContainer.innerHTML = "";
 

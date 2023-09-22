@@ -85,5 +85,18 @@ const deleteTodo = (currentData, dataIndex) =>
   // return currentData;  
 }
 
-export { addTodo, deleteTodo };
+const filterProjects = (todoData) =>
+{
+  let projects = [];
+
+  todoData.filter(element => {
+    if (projects.includes(element.project))
+      return;
+    projects.push(element.project);
+  });
+
+  return projects;
+}
+
+export { addTodo, deleteTodo, filterProjects };
 
