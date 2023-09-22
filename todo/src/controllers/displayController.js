@@ -1,9 +1,10 @@
 import TodoList from "../components/todoList";
 import { setStorage } from "../operations/storageOperations";
+import { filterProjects } from "../operations/todoOperations";
 
 const displayList = (dataList) =>
 {
-  let projects = filterProjects(todoData);
+  let projects = filterProjects(dataList);
   
   const mainTodoListContainer = document.querySelector('main');
   mainTodoListContainer.innerHTML = "";
