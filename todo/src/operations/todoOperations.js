@@ -66,7 +66,6 @@ const deleteTodo = (currentData, dataIndex) =>
     }
     
     clearStorage();
-
     console.log({currentData, dataIndex});
     setStorage(currentData)
 

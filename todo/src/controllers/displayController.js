@@ -1,6 +1,5 @@
 import TodoList from "../components/todoList";
 import { setStorage } from "../operations/storageOperations";
-import data from "./../data/todo.json";
 
 const displayList = (dataList) =>
 {
