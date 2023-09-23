@@ -26,7 +26,6 @@ const addTodo = (currentData, data) => {
 
     currentData.push(data);
     localStorage.setItem(localStorage.length, JSON.stringify(data));
-
     resolve("Item has been added!");
   });
 
@@ -107,7 +106,6 @@ const filterProjects = (todoData) => {
 
     filteredProject.push(newObject);
   });
-
 
   return { projects, filteredProject };
 };
