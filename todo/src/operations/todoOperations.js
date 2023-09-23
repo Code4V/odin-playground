@@ -2,112 +2,114 @@ import TodoList from "../components/todoList";
 import { displayList } from "../controllers/displayController";
 import clearStorage, { setStorage } from "./storageOperations";
 
-const addTodo = (currentData, data) => 
-{  
-  var storedData = Array.from(localStorage)
-  if(storedData.includes(JSON.stringify(data)))
-    return alert("ENGK")
+const addTodo = (currentData, data) => {
+  // var storedData = filteredProject.from(localStorage);
+  // if (storedData.includes(JSON.stringify(data))) return alert("ENGK");
 
   const addPromise = new Promise((resolve, reject) => {
-    if (!currentData) 
-    {
-      reject("No data has been inserted!");return;
+    if (!currentData) {
+      reject("No data has been inserted!");
+      return;
     }
-      
-    if (typeof data !== "object") 
-    {
+
+    if (typeof data !== "object") {
       reject("Data must be an Object");
       return;
     }
-    
-    if (data.constructor.name != "Todo") 
-    {
-      reject("Must be type of Todo"); 
+
+    if (data.constructor.name != "Todo") {
+      reject("Must be type of Todo");
       return;
     }
 
     data = data.todoDetails;
 
-    currentData.push(data)
-    localStorage.setItem(localStorage.length, JSON.stringify(data))
-    
-    resolve("Item has been added!");
-  })  
+    currentData.push(data);
+    localStorage.setItem(localStorage.length, JSON.stringify(data));
 
-  addPromise.then(message => {
-    console.log(message);
-  }).catch(err => {
-    console.log(err)
-  })
+    resolve("Item has been added!");
+  });
+
+  addPromise
+    .then((message) => {
+      console.log(message);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 
   displayList(currentData);
 
   return currentData;
-}
+};
 
-const deleteTodo = (currentData, dataIndex) =>
-{
-  const deletePromise = new Promise((resolve, reject) => {   
-    if (currentData.filter((element, index) => index === dataIndex).length == 0) 
-    {
+const deleteTodo = (currentData, dataIndex) => {
+  const deletePromise = new Promise((resolve, reject) => {
+    if (
+      currentData.filter((element, index) => index === dataIndex).length == 0
+    ) {
       reject("Data not found");
       return;
     }
 
-    console.log("NOEW", currentData)
-    currentData.splice(dataIndex, 1);  
-    
-    if (currentData.length === 0)
-    {
+    console.log("NOEW", currentData);
+    currentData.splice(dataIndex, 1);
+
+    if (currentData.length === 0) {
       clearStorage();
-      displayList(currentData)
-      reject("Data is now empty")
+      displayList(currentData);
+      reject("Data is now empty");
       return;
     }
-    
+
     clearStorage();
-    console.log({currentData, dataIndex});
-    setStorage(currentData)
+    console.log({ currentData, dataIndex });
+    setStorage(currentData);
 
-    resolve("Todo successfully deleted")
-  })
-
-  deletePromise.then(message => {
-    console.log(message);
-  }).catch(err => {
-    console.log(err)
+    resolve("Todo successfully deleted");
   });
 
-  console.log("AT END OF DELETE", currentData)
+  deletePromise
+    .then((message) => {
+      console.log(message);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 
-  displayList(currentData)
+  console.log("AT END OF DELETE", currentData);
 
-  // return currentData;  
-}
+  displayList(currentData);
 
-const filterProjects = (todoData) =>
-{
+  // return currentData;
+};
+
+const filterProjects = (todoData) => {
   let projects = [];
-  let array = []
+  let filteredProject = [];
 
-  todoData.filter(element => {
-    if (projects.includes(element.project))
-      return;
+  todoData.filter((element) => {
+    if (projects.includes(element.project)) return;
     projects.push(element.project);
   });
 
-  projects.forEach(outerElement => {
-    todoData.forEach(innerElement => {
-      if (innerElement.project == outerElement)
-      array.push({outerElement : innerElement})    
-    })
+  projects.forEach((outerElement) => {
+    var newObject = {
+      [outerElement]: [],
+    };
 
-  })
+    todoData.forEach((innerElement) => {
+      if (innerElement.project == outerElement) {
+        newObject[outerElement].push(innerElement);
+        return;
+      } else return;
+    });
 
-  console.log(array)
+    filteredProject.push(newObject);
+  });
 
-  return projects;
-}
+
+  return { projects, filteredProject };
+};
 
 export { addTodo, deleteTodo, filterProjects };
-

@@ -48,6 +48,9 @@ body {
   display: flex;
   gap: 1rem;
   flex-flow: row wrap;
+  margin-block: 0.5rem;
+  border: 0.025rem solid black;
+  padding: 0.5rem;
 }
 .todo-list__todos--priority {
   order: -1;
