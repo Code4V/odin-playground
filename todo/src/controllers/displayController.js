@@ -1,9 +1,12 @@
 import TodoList from "../components/todoList";
-import { setStorage } from "../operations/storageOperations";
+import { getStorage, setStorage } from "../operations/storageOperations";
 import { filterProjects } from "../operations/todoOperations";
 
 const displayList = (dataList) =>
 {
+  if (localStorage.length != 0)
+    dataList = getStorage()
+
   let projects = filterProjects(dataList);
   let filteredData = [];
   console.log(projects)

@@ -14,7 +14,8 @@ function setStorage(todoData) {
     }
 
     todoData.forEach((element, index) => {
-      localStorage.setItem(index, JSON.stringify(element));
+      console.log(element)
+      localStorage.setItem(`${index}`, JSON.stringify(element));
     });
 
     resolve("Data Filled Successfully")
