@@ -21,7 +21,7 @@ const Todo = (todoDetails, index) => {
     `;
 
   deleteButton.addEventListener("click", () => {
-    deleteTodo(getStorage(), index);
+    deleteTodo(getStorage(), `${todoDetails.project}-${index}`);
   });
 
   todo.appendChild(deleteButton);

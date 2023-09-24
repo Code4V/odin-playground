@@ -1,6 +1,6 @@
 import TodoList from "../components/todoList";
 import { displayList } from "../controllers/displayController";
-import clearStorage, { setStorage } from "./storageOperations";
+import clearStorage, { getStorage, setStorage } from "./storageOperations";
 
 const addTodo = (currentData, data) => {
   // var storedData = filteredProject.from(localStorage);
@@ -44,15 +44,20 @@ const addTodo = (currentData, data) => {
 
 const deleteTodo = (currentData, dataIndex) => {
   const deletePromise = new Promise((resolve, reject) => {
-    if (
-      currentData.filter((element, index) => index === dataIndex).length == 0
-    ) {
-      reject("Data not found");
-      return;
-    }
+    // if (
+    //   currentData.filter((element, index) => index === dataIndex).length == 0
+    // ) {
+    //   reject("Data not found");
+    //   return;
+    // }
 
+
+    
+    
     console.log("NOEW", currentData);
-    currentData.splice(dataIndex, 1);
+    // currentData.splice(dataIndex, 1);
+    localStorage.removeItem(dataIndex);
+    currentData = getStorage();
 
     if (currentData.length === 0) {
       clearStorage();
@@ -62,7 +67,7 @@ const deleteTodo = (currentData, dataIndex) => {
     }
 
     clearStorage();
-    console.log({ currentData, dataIndex });
+    console.log("AFTER CLEAR", { currentData, dataIndex });
     setStorage(currentData);
 
     resolve("Todo successfully deleted");

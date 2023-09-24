@@ -18,4 +18,5 @@ document.addEventListener("DOMContentLoaded", async () =>
   displayList(data);
 })
 
-
+var wait = await (await fetch("https://reqres.in/api/users/")).json()
+console.log(wait)

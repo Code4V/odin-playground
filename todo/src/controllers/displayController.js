@@ -1,16 +1,16 @@
 import TodoList from "../components/todoList";
-import { getStorage, setStorage } from "../operations/storageOperations";
+import clearStorage, { getStorage, setStorage } from "../operations/storageOperations";
 import { filterProjects } from "../operations/todoOperations";
 
-const displayList = (dataList, filtered = false) => {
-  if (localStorage.length != 0) dataList = getStorage();
-
+const displayList = (dataList, filtered = true) => {
+  // if (localStorage.length != 0) dataList = getStorage();
+  if (localStorage.length == 0) setStorage(dataList);
+  
   let projects = filterProjects(dataList);
 
   const mainTodoListContainer = document.querySelector("main");
   mainTodoListContainer.innerHTML = "";
 
-  if (localStorage.length == 0) setStorage(dataList);
 
   if (!filtered)
   {
@@ -19,11 +19,15 @@ const displayList = (dataList, filtered = false) => {
   } 
   else 
   {
+    clearStorage();
     projects["filteredProject"].forEach((element) => {
       let currentProj = Object.keys(element)[0];
       projects["projects"].forEach((project) => {
         if (project == currentProj)
+        {
           mainTodoListContainer.appendChild(TodoList(element[project]));
+          setStorage(element[project]);
+        }
         else return;
       });
     });

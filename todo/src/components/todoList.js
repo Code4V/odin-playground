@@ -1,8 +1,6 @@
 import Todo from "./todo";
 
 const TodoList = (todoData) => {
-  console.log(todoData);
-
   const todosContainer = document.createElement("section");
   todosContainer.classList.add("todo-list");
 
