@@ -1,6 +1,6 @@
 import data from "./data/todo.json";
 import clearStorage, { setStorage } from "./operations/storageOperations";
-import { displayList } from "./controllers/displayController";
+import { displayController } from "./controllers/displayController";
 import Form from "./components/form";
 
 const main = document.querySelector('#content');
@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", async () =>
   
   main.appendChild(mainContainer);
   
-  displayList(data);
+  displayController.applyFilter().displayList(data);
 })
 
 var wait = await (await fetch("https://reqres.in/api/users/")).json()
