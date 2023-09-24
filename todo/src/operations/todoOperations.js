@@ -24,8 +24,10 @@ const addTodo = (currentData, data) => {
 
     data = data.todoDetails;
 
-    currentData.push(data);
-    localStorage.setItem(localStorage.length, JSON.stringify(data));
+    // currentData.push(data);
+    localStorage.setItem(`${data.project}-${localStorage.length}`, JSON.stringify(data));
+    currentData = getStorage();
+
     resolve("Item has been added!");
   });
 
@@ -38,8 +40,6 @@ const addTodo = (currentData, data) => {
     });
 
   displayList(currentData);
-
-  return currentData;
 };
 
 const deleteTodo = (currentData, dataIndex) => {
