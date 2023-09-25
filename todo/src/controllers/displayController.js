@@ -6,41 +6,59 @@ import clearStorage, {
 } from "../operations/storageOperations";
 import { filterProjects } from "../operations/todoOperations";
 import parseISO from "date-fns/parseISO";
+import { sortByDate } from "../operations/dataOperations";
 
-class DisplayList {
-  #isFiltered = false; 
+class DisplayController {
+  #isFiltered = false;
+  #sortByDate = false;
 
   constructor() {
-    if (DisplayList.instance == null) {
-      DisplayList.instance = this;
+    if (DisplayController.instance == null) {
+      DisplayController.instance = this;
     }
 
-    return DisplayList.instance;
+    return DisplayController.instance;
   }
 
   displayList = (dataList) => {
     // if (localStorage.length != 0) dataList = getStorage();
     if (localStorage.length == 0) setStorage(dataList);
 
+    if (this.#sortByDate) {
+      dataList = sortByDate(dataList);
+      clearStorage();
+      setStorage(dataList);
+    }
+
     let projects = filterProjects(dataList);
 
     const mainTodoListContainer = document.querySelector("main");
     mainTodoListContainer.innerHTML = "";
 
-    dataList.sort((fDate, sDate) => {
-      return sDate.dueDate - fDate.dueDate
-    })    
-
+    // dataList = sortByDate(dataList);
 
     if (!this.#isFiltered) {
       mainTodoListContainer.appendChild(TodoList(dataList));
     } else {
       clearStorage();
+      if (!projects["projects"].length)
+        mainTodoListContainer.appendChild(TodoList([]));
+
       projects["filteredProject"].forEach((element) => {
+        
         let currentProj = Object.keys(element)[0];
-        projects["projects"].forEach((project) => {
+        projects["projects"].forEach((project, index) => {
+          
+          var duration = (index * 500) + 500 ;
+          duration = (duration > 2500) ? 2500 : duration;
+
           if (project == currentProj) {
-            mainTodoListContainer.appendChild(TodoList(element[project], {projectName: [project]}));
+            console.log(project);
+
+            mainTodoListContainer.appendChild(
+              TodoList(element[project], { projectName: [project], duration: `${[duration]}ms`})
+            );
+
             setStorage(element[project]);
           } else return;
         });
@@ -61,7 +79,7 @@ class DisplayList {
   }
 }
 
-const displayController = new DisplayList();
+const displayController = new DisplayController();
 Object.freeze(displayController);
 
-export default displayController ;
+export default displayController;

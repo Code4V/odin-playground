@@ -5,6 +5,8 @@
   margin-block: .5rem
   border: .025rem solid black
   padding: .5rem
+  transition: 1000ms linear ease-in
+  animation: cubic-bezier(0.27, 0.32, 0, 1.03) fadeIn forwards 
 
   &__header
     order: -2
@@ -13,6 +15,18 @@
     flex: 1 1 100%
 
   &__todos
-
+    // opacity: 0
+    // animation: 250ms cubic-bezier(0.27, 0.32, 0, 1.03) 500ms fadeIn forwards 
+    
     &--priority
       order: -1
+
+@keyframes fadeIn 
+  0% 
+    transform: translateX(-500px)
+    opacity: 0
+  100%
+    transform: translateX(0)
+    opacity: 100
+
+  

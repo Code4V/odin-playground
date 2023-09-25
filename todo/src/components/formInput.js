@@ -55,11 +55,12 @@ const FormInput = (name = "input", displayName = "default") => {
     Input.min = 0;
     Input.max = 4;
 
-    Input.addEventListener("keyup", () => {
+    Input.addEventListener("focusout", (e) => {
+      console.log(Input.max, Input.min)
       if (Input.value > Input.max) {
         Input.value = Input.max;
       }
-      if (Input.value < Input.min) {
+      else if (Input.value < Input.min) {
         Input.value = Input.min;
       }
     });
@@ -67,7 +68,28 @@ const FormInput = (name = "input", displayName = "default") => {
     return formInput;
   };
 
-  return { TextArea, InputField, DateField, NumberField };
+  const SelectField = (options = []) =>
+  {
+    var Input = document.createElement("select");
+    Input.classList.add(`form__input-input`);
+    Input.name = name;
+    Input.id = name;
+
+    if(!options.length) return;
+   
+    options.forEach(element => {
+      const option = document.createElement("option");
+      option.value = element.value;
+      option.innerText = element.content;
+
+      Input.appendChild(option);
+    })
+
+    formInput.append(Input);
+    return formInput;    
+  }
+
+  return { TextArea, InputField, DateField, NumberField, SelectField };
 };
 
 export default FormInput;

@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   main.appendChild(mainContainer);
 
-  // displayController.applyFilter();
+  displayController.applyFilter();
   displayController.displayList(data);
 
 });

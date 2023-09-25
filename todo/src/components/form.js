@@ -13,15 +13,35 @@ const Form = () => {
 
   const titleField = FormInput("title", "Title").InputField();
   const projectField = FormInput("project", "Project").InputField();
-  const numberField = FormInput("number", "Priority").NumberField();
+  const numberField = FormInput("number", "Priority").SelectField([
+    {
+      value: 0,
+      content: "Low",
+    },
+    {
+      value: 1,
+      content: "Normal",
+    },
+    {
+      value: 2,
+      content: "High",
+    },
+    {
+      value: 3,
+      content: "Urgent",
+    },
+    {
+      value: 4,
+      content: "ASAP",
+    },
+  ]);
   const descriptionField = FormInput("description", "Description").TextArea();
   const dueDateField = FormInput("dueDate", "Due Date").DateField();
 
-  
   const formSubmit = document.createElement("button");
   formSubmit.type = "submit";
   formSubmit.textContent = "Add Todo";
-  
+
   formContainer.append(
     titleField,
     projectField,

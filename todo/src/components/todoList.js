@@ -4,6 +4,11 @@ const TodoList = (todoData, options = {projectName: "All"}) => {
   const todosContainer = document.createElement("section");
   todosContainer.classList.add("todo-list");
 
+  if (options.duration != null)
+  {
+    todosContainer.style.animationDuration = options.duration
+  }
+
   if (options.projectName != null)
   {
     const todoListProject = document.createElement("h3");

@@ -39,7 +39,7 @@ const addTodo = (currentData, data) => {
     });
 
   displayController.displayList(currentData)
-};
+ };
 
 const deleteTodo = (currentData, dataIndex) => {
   const deletePromise = new Promise((resolve, reject) => {
@@ -67,20 +67,21 @@ const deleteTodo = (currentData, dataIndex) => {
 
     clearStorage();
     console.log("AFTER CLEAR", { currentData, dataIndex });
-    setStorage(currentData);
-
+    // setStorage(currentData);
+    
     resolve("Todo successfully deleted");
   });
-
+  
   deletePromise
-    .then((message) => {
-      console.log(message);
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-
+  .then((message) => {
+    console.log(message);
+  })
+  .catch((err) => {
+    console.log(err);
+  });
+  
   displayController.displayList(currentData)
+  // clearStorage();
 };
 
 const filterProjects = (todoData) => {
@@ -92,11 +93,13 @@ const filterProjects = (todoData) => {
     projects.push(element.project);
   });
 
+  projects.sort();
+
   projects.forEach((outerElement) => {
     var newObject = {
       [outerElement]: [],
     };
-
+    
     todoData.forEach((innerElement) => {
       if (innerElement.project == outerElement) {
         newObject[outerElement].push(innerElement);

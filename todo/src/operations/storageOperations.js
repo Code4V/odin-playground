@@ -4,7 +4,6 @@ export default function clearStorage() {
 }
 
 async function setStorage(todoData) {
-  console.log(todoData);
   const setPromise = new Promise((resolve, reject) => {
     // if (localStorage.length != 0) {
     //   reject("Local Storage Already Filled");
