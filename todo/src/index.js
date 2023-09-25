@@ -15,8 +15,7 @@ document.addEventListener("DOMContentLoaded", async () =>
   
   main.appendChild(mainContainer);
   
-  displayController.applyFilter().displayList(data);
+  displayController.displayList(data);
 })
 
-var wait = await (await fetch("https://reqres.in/api/users/")).json()
-console.log(wait)
+console.log((await (await fetch("https://reqres.in/api/users/")).json()));
