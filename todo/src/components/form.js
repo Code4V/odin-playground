@@ -17,6 +17,11 @@ const Form = () => {
   const descriptionField = FormInput("description", "Description").TextArea();
   const dueDateField = FormInput("dueDate", "Due Date").DateField();
 
+  
+  const formSubmit = document.createElement("button");
+  formSubmit.type = "submit";
+  formSubmit.textContent = "Add Todo";
+  
   formContainer.append(
     titleField,
     projectField,
@@ -24,11 +29,6 @@ const Form = () => {
     descriptionField,
     dueDateField
   );
-
-  const formSubmit = document.createElement("button");
-  formSubmit.type = "submit";
-  formSubmit.textContent = "Add Todo";
-
   formContainer.appendChild(formSubmit);
 
   formContainer.addEventListener("submit", (e) => {
@@ -36,7 +36,7 @@ const Form = () => {
 
     const FormEvent = new FormData(formContainer);
     const res = Object.fromEntries(FormEvent);
-    const date = parseISO(res.dueDate);
+    const date = new Date(res.dueDate).getTime();
 
     addTodo(
       data,
@@ -57,6 +57,7 @@ const Form = () => {
       else formInput.value = "";
     });
   });
+
   return formContainer;
 };
 

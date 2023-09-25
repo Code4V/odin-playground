@@ -52,6 +52,12 @@ body {
   border: 0.025rem solid black;
   padding: 0.5rem;
 }
+.todo-list__header {
+  order: -2;
+  font-size: 3rem;
+  font-weight: 700;
+  flex: 1 1 100%;
+}
 .todo-list__todos--priority {
   order: -1;
 }

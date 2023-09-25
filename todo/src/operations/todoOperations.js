@@ -1,5 +1,5 @@
 import TodoList from "../components/todoList";
-import { displayList , displayController } from "../controllers/displayController";
+import displayController from "../controllers/displayController";
 import clearStorage, { getStorage, setStorage } from "./storageOperations";
 
 const addTodo = (currentData, data) => {
@@ -24,7 +24,6 @@ const addTodo = (currentData, data) => {
 
     data = data.todoDetails;
 
-    // currentData.push(data);
     localStorage.setItem(`${data.project}-${localStorage.length}`, JSON.stringify(data));
     currentData = getStorage();
 
@@ -39,7 +38,6 @@ const addTodo = (currentData, data) => {
       console.log(err);
     });
 
-  // displayList(currentData);
   displayController.displayList(currentData)
 };
 
@@ -82,11 +80,7 @@ const deleteTodo = (currentData, dataIndex) => {
       console.log(err);
     });
 
-  console.log("AT END OF DELETE", currentData);
-
-  // displayList(currentData);
   displayController.displayList(currentData)
-  // return currentData;
 };
 
 const filterProjects = (todoData) => {

@@ -1,8 +1,17 @@
 import Todo from "./todo";
 
-const TodoList = (todoData) => {
+const TodoList = (todoData, options = {projectName: "All"}) => {
   const todosContainer = document.createElement("section");
   todosContainer.classList.add("todo-list");
+
+  if (options.projectName != null)
+  {
+    const todoListProject = document.createElement("h3");
+    todoListProject.classList.add("todo-list__header")
+    todoListProject.textContent = options.projectName;
+
+    todosContainer.appendChild(todoListProject);
+  }
 
   if (todoData.length === 0) {
     todosContainer.innerHTML = "NO DATA TO SHOW";
