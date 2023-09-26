@@ -68,15 +68,16 @@ class DisplayController {
     return this;
   };
 
-  applyFilter() {
-    this.#isFiltered = true;
+  toggleFilter() {
+    if (!this.#isFiltered)
+      this.#isFiltered = true;
+    else 
+      this.#isFiltered = false;
+    
     return this;
   }
 
-  removeFilter() {
-    this.#isFiltered = false;
-    return this;
-  }
+
 }
 
 const displayController = new DisplayController();

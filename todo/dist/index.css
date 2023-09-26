@@ -47,18 +47,25 @@ body {
 .todo-list {
   display: flex;
   gap: 1rem;
+  justify-content: space-between;
+  margin-inline: auto;
+  width: 90%;
   flex-flow: row wrap;
   margin-block: 0.5rem;
-  border: 0.025rem solid black;
-  padding: 0.5rem;
+  padding: 0.5rem 0.5rem 3rem 0.5rem;
+  overflow: hidden;
   transition: 1000ms linear ease-in;
-  animation: cubic-bezier(0.27, 0.32, 0, 1.03) fadeIn forwards;
+  border-radius: 0.75rem;
+  background: hsl(50, 100%, 87.07%);
 }
 .todo-list__header {
   order: -2;
-  font-size: 3rem;
+  font-size: 2rem;
   font-weight: 700;
   flex: 1 1 100%;
+}
+.todo-list__todos {
+  animation: 500ms cubic-bezier(0.27, 0.32, 0, 1.03) fadeIn forwards;
 }
 .todo-list__todos--priority {
   order: -1;
@@ -66,14 +73,33 @@ body {
 
 @keyframes fadeIn {
   0% {
-    transform: translateX(-500px);
+    transform: translateY(-500px);
     opacity: 0;
   }
   100% {
-    transform: translateX(0);
+    transform: translateY(0);
     opacity: 100;
   }
 }
+.todo {
+  min-width: 15rem;
+  padding: 0.5rem;
+  display: flex;
+  flex-flow: column wrap;
+  min-height: 5rem;
+}
+.todo:hover {
+  transform: scale(1.25);
+  background: green;
+}
+.todo__title-header {
+  font-size: 1rem;
+  font-weight: 700;
+}
+.todo__delete {
+  margin-block-start: auto;
+}
+
 * {
   box-sizing: border-box;
 }

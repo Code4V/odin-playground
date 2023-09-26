@@ -24,7 +24,12 @@ const TodoList = (todoData, options = {projectName: "All"}) => {
   }
 
   todoData.forEach((element, index) => {
-    let todoElement = Todo(element, index);
+    var duration = (index * 500) + 500;
+    duration = (duration > 5000) ? 5000 : duration;
+    
+    let todoElement = Todo(element, index, {
+      "duration": `${[duration]}ms`
+    });
     todoElement.classList.add("todo-list__todos");
 
     todosContainer.appendChild(todoElement);
