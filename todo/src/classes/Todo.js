@@ -7,6 +7,7 @@ class Todo {
   #priority;
   #createdAt;
   #project;
+  #isComplete;
 
   constructor(title, description, dueDate = new Date().getTime(), project = "None", priority = 0) {
     this.#title = title;
@@ -15,6 +16,7 @@ class Todo {
     this.#priority = priority;
     this.#createdAt = new Date().getTime();
     this.#project = project;
+    this.#isComplete = false;
   }
 
   get todoDetails() {
@@ -25,6 +27,7 @@ class Todo {
       dueDate: this.#dueDate,
       createdAt: this.#createdAt,
       priority: this.#priority,
+      isComplete: this.#isComplete,
     };
   }
 

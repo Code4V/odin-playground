@@ -15,11 +15,10 @@ document.addEventListener("DOMContentLoaded", async () => {
   main.appendChild(mainContainer);
 
   displayController.toggleFilter();
-  // displayController.toggleFilter();
   displayController.displayList(data);
 
 });
 
-console.log(await (await fetch("https://reqres.in/api/users/")).json());
+// console.log(await (await fetch("https://reqres.in/api/users/")).json());
 
-console.log(new Date("September-09-2023").getTime())
+// console.log(new Date("September-09-2023").getTime())

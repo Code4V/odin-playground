@@ -1,4 +1,4 @@
-import { parseISO } from "date-fns";
+import { parseISO, formatRelative, formatDistance } from "date-fns";
 import { getStorage } from "../operations/storageOperations";
 import { deleteTodo } from "../operations/todoOperations";
 import format from "date-fns/format";
@@ -29,8 +29,16 @@ const Todo = (todoDetails, index, options = {}) => {
   const todoDescription = document.createElement("p");
   todoDescription.textContent = todoDetails.description;
   
-  todoContentContainer.append(todoDescription)
+  var dueDate = parseInt(todoDetails.dueDate);
 
+  const todoDueDate = document.createElement("p");
+  todoDueDate.textContent = formatDistance(dueDate, new Date(), {addSuffix: true});
+ 
+  const todoComplete = document.createElement("p");
+  todoComplete.classList.add("todo__content-status")
+  todoComplete.textContent = todoDetails.isComplete ? "Completed" : "Not Yet Complete";
+
+  todoContentContainer.append(todoDescription, todoDueDate, todoComplete);
 
   todo.append(todoTitleContainer, todoContentContainer)
 
