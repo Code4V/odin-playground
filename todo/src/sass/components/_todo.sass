@@ -1,11 +1,15 @@
 .todo
   // background: blue
-  background: white
-  min-width: 15rem
+  backdrop-filter: blur(1rem)
+  min-width: 25rem
   padding: .5rem
   display: flex
   flex-flow: column wrap
-  min-height: 15rem
+  border-radius: .75rem
+  
+  background: hsl(50deg 52.72% 90.32% / 25%)
+  box-shadow: .25rem .25rem 1rem hsl(0deg 0% 0.86% / 55%)
+  // min-height: 15rem
 
   &:hover
 
@@ -14,6 +18,11 @@
     &-header
       font-size: 1rem
       font-weight: 700
+
+  &__content
+
+    &-description
+      // color: hsl(50, 30, 30, .5)
 
   &__delete
     margin-block-start: auto 

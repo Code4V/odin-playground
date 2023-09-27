@@ -46,9 +46,8 @@ body {
 
 .todo-list {
   display: flex;
-  gap: 1rem;
+  gap: 1.25rem;
   margin-inline: auto;
-  width: 95%;
   flex-flow: row wrap;
   margin-block: 0.5rem;
   padding: 0.5rem 0.5rem 3rem 0.5rem;
@@ -57,13 +56,12 @@ body {
   border-radius: 0.75rem;
 }
 .todo-list__header {
+  color: white;
   order: -2;
   font-size: 2rem;
   font-weight: 700;
   flex: 1 1 100%;
-}
-.todo-list__todos {
-  animation: 500ms cubic-bezier(0.27, 0.32, 0, 1.03) fadeIn forwards;
+  filter: drop-shadow(0 0 0.25rem hsla(0, 0%, 0.86%, 0.55));
 }
 .todo-list__todos--priority {
   order: -1;
@@ -80,12 +78,14 @@ body {
   }
 }
 .todo {
-  background: white;
-  min-width: 15rem;
+  backdrop-filter: blur(1rem);
+  min-width: 25rem;
   padding: 0.5rem;
   display: flex;
   flex-flow: column wrap;
-  min-height: 15rem;
+  border-radius: 0.75rem;
+  background: hsla(50, 52.72%, 90.32%, 0.25);
+  box-shadow: 0.25rem 0.25rem 1rem hsla(0, 0%, 0.86%, 0.55);
 }
 .todo__title-header {
   font-size: 1rem;
@@ -113,7 +113,13 @@ body {
 main {
   overflow: hidden;
   margin-inline: auto;
-  max-width: 68rem;
+  max-width: 90rem;
+}
+
+.background {
+  position: absolute;
+  z-index: -1;
+  object-fit: cover;
 }
 
 /*# sourceMappingURL=index.css.map */

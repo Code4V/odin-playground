@@ -516,7 +516,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
   \********************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! date-fns */ \"./node_modules/date-fns/esm/formatDistance/index.js\");\n/* harmony import */ var _operations_storageOperations__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../operations/storageOperations */ \"./src/operations/storageOperations.js\");\n/* harmony import */ var _operations_todoOperations__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../operations/todoOperations */ \"./src/operations/todoOperations.js\");\n\r\n\r\n\r\n\r\n\r\n\r\nconst Todo = (todoDetails, index, options = {}) => {\r\n  const todo = document.createElement(\"div\");\r\n  todo.classList.add(\"todo\");\r\n  todo.dataset.order = index;\r\n\r\n  if (options.duration != null)\r\n  {\r\n    todo.style.animationDuration = options.duration;\r\n  }\r\n\r\n  const todoTitleContainer = document.createElement(\"div\");\r\n  todoTitleContainer.classList.add(\"todo__title\");\r\n\r\n  const todoTitle = document.createElement(\"h4\");\r\n  todoTitle.classList.add(\"todo__title-header\")\r\n  todoTitle.textContent = todoDetails.title;\r\n\r\n  todoTitleContainer.appendChild(todoTitle)\r\n\r\n  const todoContentContainer = document.createElement(\"div\");\r\n  todoContentContainer.classList.add(\"todo__content\");\r\n\r\n  const todoDescription = document.createElement(\"p\");\r\n  todoDescription.textContent = todoDetails.description;\r\n  \r\n  var dueDate = parseInt(todoDetails.dueDate);\r\n\r\n  const todoDueDate = document.createElement(\"p\");\r\n  todoDueDate.textContent = (0,date_fns__WEBPACK_IMPORTED_MODULE_2__[\"default\"])(dueDate, new Date(), {addSuffix: true});\r\n \r\n  const todoComplete = document.createElement(\"p\");\r\n  todoComplete.classList.add(\"todo__content-status\")\r\n  todoComplete.textContent = todoDetails.isComplete ? \"Completed\" : \"Not Yet Complete\";\r\n\r\n  todoContentContainer.append(todoDescription, todoDueDate, todoComplete);\r\n\r\n  todo.append(todoTitleContainer, todoContentContainer)\r\n\r\n  const deleteButton = document.createElement(\"button\");\r\n  deleteButton.classList.add(\"todo__delete\")\r\n  deleteButton.textContent = \"delete\";\r\n\r\n  // if (todoDetails.priority > 0)\r\n  //   todo.classList.add(\"todo-list__todos--priority\");\r\n\r\n  //   var intDate = parseInt(todoDetails.dueDate);\r\n  //   var createdDate = parseInt(todoDetails.createdAt)\r\n  // todo.textContent = `\r\n  //   ${todoDetails.title} ${todoDetails.description}\r\n  //   ${format(intDate, 'MMMM-dd-yyyy')} ${format(createdDate, 'MMMM-dd-yyyy')}\r\n    \r\n  //   ${todoDetails.priority}\r\n  //   ${todoDetails.project}\r\n  //   `;\r\n\r\n  deleteButton.addEventListener(\"click\", () => {\r\n    (0,_operations_todoOperations__WEBPACK_IMPORTED_MODULE_1__.deleteTodo)((0,_operations_storageOperations__WEBPACK_IMPORTED_MODULE_0__.getStorage)(), `${todoDetails.project}-${index}`);\r\n  });\r\n\r\n  todo.appendChild(deleteButton);\r\n\r\n  return todo;\r\n};\r\n\r\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Todo);\r\n\n\n//# sourceURL=webpack://todo/./src/components/todo.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var date_fns__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! date-fns */ \"./node_modules/date-fns/esm/formatDistance/index.js\");\n/* harmony import */ var _operations_storageOperations__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../operations/storageOperations */ \"./src/operations/storageOperations.js\");\n/* harmony import */ var _operations_todoOperations__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../operations/todoOperations */ \"./src/operations/todoOperations.js\");\n\r\n\r\n\r\n\r\n\r\n\r\nconst Todo = (todoDetails, index, options = {}) => {\r\n  const todo = document.createElement(\"div\");\r\n  todo.classList.add(\"todo\");\r\n  todo.dataset.order = index;\r\n\r\n  if (options.duration != null)\r\n  {\r\n    todo.style.animationDuration = options.duration;\r\n  }\r\n\r\n  const todoTitleContainer = document.createElement(\"div\");\r\n  todoTitleContainer.classList.add(\"todo__title\");\r\n\r\n  const todoTitle = document.createElement(\"h4\");\r\n  todoTitle.classList.add(\"todo__title-header\")\r\n  todoTitle.textContent = todoDetails.title;\r\n\r\n  todoTitleContainer.appendChild(todoTitle)\r\n\r\n  const todoContentContainer = document.createElement(\"div\");\r\n  todoContentContainer.classList.add(\"todo__content\");\r\n\r\n  const todoDescription = document.createElement(\"p\");\r\n  todoDescription.classList.add(\"todo__content-description\")\r\n  todoDescription.textContent = todoDetails.description;\r\n  \r\n  var dueDate = parseInt(todoDetails.dueDate);\r\n\r\n  const todoDueDate = document.createElement(\"p\");\r\n  todoDueDate.classList.add(\"todo__content-duedate\")\r\n  todoDueDate.textContent = (0,date_fns__WEBPACK_IMPORTED_MODULE_2__[\"default\"])(dueDate, new Date(), {addSuffix: true});\r\n \r\n  const todoComplete = document.createElement(\"p\");\r\n  todoComplete.classList.add(\"todo__content-status\")\r\n  todoComplete.textContent = todoDetails.isComplete ? \"Completed\" : \"Not Yet Complete\";\r\n\r\n  todoContentContainer.append(todoDescription, todoDueDate, todoComplete);\r\n\r\n  todo.append(todoTitleContainer, todoContentContainer)\r\n\r\n  const deleteButton = document.createElement(\"button\");\r\n  deleteButton.classList.add(\"todo__delete\")\r\n  deleteButton.textContent = \"delete\";\r\n\r\n  // if (todoDetails.priority > 0)\r\n  //   todo.classList.add(\"todo-list__todos--priority\");\r\n\r\n  //   var intDate = parseInt(todoDetails.dueDate);\r\n  //   var createdDate = parseInt(todoDetails.createdAt)\r\n  // todo.textContent = `\r\n  //   ${todoDetails.title} ${todoDetails.description}\r\n  //   ${format(intDate, 'MMMM-dd-yyyy')} ${format(createdDate, 'MMMM-dd-yyyy')}\r\n    \r\n  //   ${todoDetails.priority}\r\n  //   ${todoDetails.project}\r\n  //   `;\r\n\r\n  deleteButton.addEventListener(\"click\", () => {\r\n    (0,_operations_todoOperations__WEBPACK_IMPORTED_MODULE_1__.deleteTodo)((0,_operations_storageOperations__WEBPACK_IMPORTED_MODULE_0__.getStorage)(), `${todoDetails.project}-${index}`);\r\n  });\r\n\r\n  todo.appendChild(deleteButton);\r\n\r\n  return todo;\r\n};\r\n\r\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Todo);\r\n\n\n//# sourceURL=webpack://todo/./src/components/todo.js?");
 
 /***/ }),
 
@@ -546,7 +546,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
   \**********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _data_todo_json__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./data/todo.json */ \"./src/data/todo.json\");\n/* harmony import */ var _operations_storageOperations__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./operations/storageOperations */ \"./src/operations/storageOperations.js\");\n/* harmony import */ var _controllers_displayController__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./controllers/displayController */ \"./src/controllers/displayController.js\");\n/* harmony import */ var _components_form__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/form */ \"./src/components/form.js\");\n\r\n\r\n\r\n\r\n\r\n\r\nconst main = document.querySelector(\"#content\");\r\n\r\n(0,_operations_storageOperations__WEBPACK_IMPORTED_MODULE_1__[\"default\"])();\r\n\r\ndocument.addEventListener(\"DOMContentLoaded\", async () => {\r\n  const mainContainer = document.createElement(\"main\");\r\n  main.appendChild((0,_components_form__WEBPACK_IMPORTED_MODULE_3__[\"default\"])());\r\n\r\n  main.appendChild(mainContainer);\r\n\r\n  _controllers_displayController__WEBPACK_IMPORTED_MODULE_2__[\"default\"].toggleFilter();\r\n  _controllers_displayController__WEBPACK_IMPORTED_MODULE_2__[\"default\"].displayList(_data_todo_json__WEBPACK_IMPORTED_MODULE_0__);\r\n\r\n});\r\n\r\n// console.log(await (await fetch(\"https://reqres.in/api/users/\")).json());\r\n\r\n// console.log(new Date(\"September-09-2023\").getTime())\r\n\n\n//# sourceURL=webpack://todo/./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _data_todo_json__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./data/todo.json */ \"./src/data/todo.json\");\n/* harmony import */ var _operations_storageOperations__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./operations/storageOperations */ \"./src/operations/storageOperations.js\");\n/* harmony import */ var _controllers_displayController__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./controllers/displayController */ \"./src/controllers/displayController.js\");\n/* harmony import */ var _components_form__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/form */ \"./src/components/form.js\");\n/* harmony import */ var _assets_TodoBackground_webp__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./assets/TodoBackground.webp */ \"./src/assets/TodoBackground.webp\");\n/* harmony import */ var _assets_AltBackground_jpg__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./assets/AltBackground.jpg */ \"./src/assets/AltBackground.jpg\");\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\nconst main = document.querySelector(\"#content\");\r\n\r\n(0,_operations_storageOperations__WEBPACK_IMPORTED_MODULE_1__[\"default\"])();\r\n\r\ndocument.addEventListener(\"DOMContentLoaded\", async () => {\r\n  const mainContainer = document.createElement(\"main\");\r\n  main.appendChild((0,_components_form__WEBPACK_IMPORTED_MODULE_3__[\"default\"])());\r\n\r\n  const backgroundImage = new Image(1920, 1080);\r\n  backgroundImage.classList.add(\"background\")\r\n  backgroundImage.src = _assets_AltBackground_jpg__WEBPACK_IMPORTED_MODULE_5__;\r\n\r\n  main.appendChild(backgroundImage)\r\n\r\n  main.appendChild(mainContainer);\r\n\r\n  _controllers_displayController__WEBPACK_IMPORTED_MODULE_2__[\"default\"].toggleFilter();\r\n  _controllers_displayController__WEBPACK_IMPORTED_MODULE_2__[\"default\"].displayList(_data_todo_json__WEBPACK_IMPORTED_MODULE_0__);\r\n\r\n});\r\n\r\n// console.log(await (await fetch(\"https://reqres.in/api/users/\")).json());\r\n\r\n// console.log(new Date(\"September-09-2023\").getTime())\r\n\n\n//# sourceURL=webpack://todo/./src/index.js?");
 
 /***/ }),
 
@@ -577,6 +577,26 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   addTodo: () => (/* binding */ addTodo),\n/* harmony export */   deleteTodo: () => (/* binding */ deleteTodo),\n/* harmony export */   filterProjects: () => (/* binding */ filterProjects)\n/* harmony export */ });\n/* harmony import */ var _components_todoList__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../components/todoList */ \"./src/components/todoList.js\");\n/* harmony import */ var _controllers_displayController__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../controllers/displayController */ \"./src/controllers/displayController.js\");\n/* harmony import */ var _storageOperations__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./storageOperations */ \"./src/operations/storageOperations.js\");\n\r\n\r\n\r\n\r\nconst addTodo = (currentData, data) => {\r\n  // var storedData = filteredProject.from(localStorage);\r\n  // if (storedData.includes(JSON.stringify(data))) return alert(\"ENGK\");\r\n\r\n  const addPromise = new Promise((resolve, reject) => {\r\n    if (!currentData) {\r\n      reject(\"No data has been inserted!\");\r\n      return;\r\n    }\r\n\r\n    if (typeof data !== \"object\") {\r\n      reject(\"Data must be an Object\");\r\n      return;\r\n    }\r\n\r\n    if (data.constructor.name != \"Todo\") {\r\n      reject(\"Must be type of Todo\");\r\n      return;\r\n    }\r\n\r\n    data = data.todoDetails;\r\n\r\n    localStorage.setItem(`${data.project}-${localStorage.length}`, JSON.stringify(data));\r\n    currentData = (0,_storageOperations__WEBPACK_IMPORTED_MODULE_2__.getStorage)();\r\n\r\n    resolve(\"Item has been added!\");\r\n  });\r\n\r\n  addPromise\r\n    .then((message) => {\r\n      console.log(message);\r\n    })\r\n    .catch((err) => {\r\n      console.log(err);\r\n    });\r\n\r\n  _controllers_displayController__WEBPACK_IMPORTED_MODULE_1__[\"default\"].displayList(currentData)\r\n };\r\n\r\nconst deleteTodo = (currentData, dataIndex) => {\r\n  const deletePromise = new Promise((resolve, reject) => {\r\n    // if (\r\n    //   currentData.filter((element, index) => index === dataIndex).length == 0\r\n    // ) {\r\n    //   reject(\"Data not found\");\r\n    //   return;\r\n    // }\r\n\r\n\r\n    \r\n    \r\n    console.log(\"NOEW\", currentData);\r\n    // currentData.splice(dataIndex, 1);\r\n    localStorage.removeItem(dataIndex);\r\n    currentData = (0,_storageOperations__WEBPACK_IMPORTED_MODULE_2__.getStorage)();\r\n\r\n    if (currentData.length === 0) {\r\n      (0,_storageOperations__WEBPACK_IMPORTED_MODULE_2__[\"default\"])();\r\n      displayList(currentData);\r\n      reject(\"Data is now empty\");\r\n      return;\r\n    }\r\n\r\n    (0,_storageOperations__WEBPACK_IMPORTED_MODULE_2__[\"default\"])();\r\n    console.log(\"AFTER CLEAR\", { currentData, dataIndex });\r\n    // setStorage(currentData);\r\n    \r\n    resolve(\"Todo successfully deleted\");\r\n  });\r\n  \r\n  deletePromise\r\n  .then((message) => {\r\n    console.log(message);\r\n  })\r\n  .catch((err) => {\r\n    console.log(err);\r\n  });\r\n  \r\n  _controllers_displayController__WEBPACK_IMPORTED_MODULE_1__[\"default\"].displayList(currentData)\r\n  // clearStorage();\r\n};\r\n\r\nconst filterProjects = (todoData) => {\r\n  let projects = [];\r\n  let filteredProject = [];\r\n\r\n  todoData.filter((element) => {\r\n    if (projects.includes(element.project)) return;\r\n    projects.push(element.project);\r\n  });\r\n\r\n  projects.sort();\r\n\r\n  projects.forEach((outerElement) => {\r\n    var newObject = {\r\n      [outerElement]: [],\r\n    };\r\n    \r\n    todoData.forEach((innerElement) => {\r\n      if (innerElement.project == outerElement) {\r\n        newObject[outerElement].push(innerElement);\r\n        return;\r\n      } else return;\r\n    });\r\n\r\n    filteredProject.push(newObject);\r\n  });\r\n\r\n  return { projects, filteredProject };\r\n};\r\n\r\n\r\n\n\n//# sourceURL=webpack://todo/./src/operations/todoOperations.js?");
+
+/***/ }),
+
+/***/ "./src/assets/AltBackground.jpg":
+/*!**************************************!*\
+  !*** ./src/assets/AltBackground.jpg ***!
+  \**************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+eval("module.exports = __webpack_require__.p + \"39ae7ce2620505db639f.jpg\";\n\n//# sourceURL=webpack://todo/./src/assets/AltBackground.jpg?");
+
+/***/ }),
+
+/***/ "./src/assets/TodoBackground.webp":
+/*!****************************************!*\
+  !*** ./src/assets/TodoBackground.webp ***!
+  \****************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+eval("module.exports = __webpack_require__.p + \"b5ccb1afbbbc2e096e59.webp\";\n\n//# sourceURL=webpack://todo/./src/assets/TodoBackground.webp?");
 
 /***/ }),
 
@@ -639,6 +659,18 @@ eval("module.exports = JSON.parse('[{\"project\":\"None\",\"title\":\"Test\",\"d
 /******/ 		};
 /******/ 	})();
 /******/ 	
+/******/ 	/* webpack/runtime/global */
+/******/ 	(() => {
+/******/ 		__webpack_require__.g = (function() {
+/******/ 			if (typeof globalThis === 'object') return globalThis;
+/******/ 			try {
+/******/ 				return this || new Function('return this')();
+/******/ 			} catch (e) {
+/******/ 				if (typeof window === 'object') return window;
+/******/ 			}
+/******/ 		})();
+/******/ 	})();
+/******/ 	
 /******/ 	/* webpack/runtime/hasOwnProperty shorthand */
 /******/ 	(() => {
 /******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
@@ -653,6 +685,29 @@ eval("module.exports = JSON.parse('[{\"project\":\"None\",\"title\":\"Test\",\"d
 /******/ 			}
 /******/ 			Object.defineProperty(exports, '__esModule', { value: true });
 /******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/publicPath */
+/******/ 	(() => {
+/******/ 		var scriptUrl;
+/******/ 		if (__webpack_require__.g.importScripts) scriptUrl = __webpack_require__.g.location + "";
+/******/ 		var document = __webpack_require__.g.document;
+/******/ 		if (!scriptUrl && document) {
+/******/ 			if (document.currentScript)
+/******/ 				scriptUrl = document.currentScript.src;
+/******/ 			if (!scriptUrl) {
+/******/ 				var scripts = document.getElementsByTagName("script");
+/******/ 				if(scripts.length) {
+/******/ 					var i = scripts.length - 1;
+/******/ 					while (i > -1 && !scriptUrl) scriptUrl = scripts[i--].src;
+/******/ 				}
+/******/ 			}
+/******/ 		}
+/******/ 		// When supporting browsers where an automatic publicPath is not supported you must specify an output.publicPath manually via configuration
+/******/ 		// or pass an empty string ("") and set the __webpack_public_path__ variable from your code to use your own logic.
+/******/ 		if (!scriptUrl) throw new Error("Automatic publicPath is not supported in this browser");
+/******/ 		scriptUrl = scriptUrl.replace(/#.*$/, "").replace(/\?.*$/, "").replace(/\/[^\/]+$/, "/");
+/******/ 		__webpack_require__.p = scriptUrl;
 /******/ 	})();
 /******/ 	
 /************************************************************************/

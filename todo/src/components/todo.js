@@ -27,11 +27,13 @@ const Todo = (todoDetails, index, options = {}) => {
   todoContentContainer.classList.add("todo__content");
 
   const todoDescription = document.createElement("p");
+  todoDescription.classList.add("todo__content-description")
   todoDescription.textContent = todoDetails.description;
   
   var dueDate = parseInt(todoDetails.dueDate);
 
   const todoDueDate = document.createElement("p");
+  todoDueDate.classList.add("todo__content-duedate")
   todoDueDate.textContent = formatDistance(dueDate, new Date(), {addSuffix: true});
  
   const todoComplete = document.createElement("p");
