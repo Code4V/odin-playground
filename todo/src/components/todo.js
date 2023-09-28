@@ -2,6 +2,7 @@ import { parseISO, formatRelative, formatDistance } from "date-fns";
 import { getStorage } from "../operations/storageOperations";
 import { deleteTodo } from "../operations/todoOperations";
 import Trash from "../assets/trash.png"
+import Edit from "../assets/pencil.png"
 import format from "date-fns/format";
 
 
@@ -46,11 +47,19 @@ const Todo = (todoDetails, index, options = {}) => {
 
   todo.append(todoTitleContainer, todoContentContainer)
 
+
+  const actionsContainer = document.createElement("div");
+  actionsContainer.classList.add("todo__actions")
+
   const deleteButton = new Image(16)
   deleteButton.src = Trash;
+  deleteButton.classList.add("todo__actions-delete")
 
-  deleteButton.classList.add("todo__delete")
+  const editButton = new Image(16)
+  editButton.src = Edit;
+  editButton.classList.add("todo__actions-edit")
 
+  actionsContainer.append(deleteButton, editButton)  
   // if (todoDetails.priority > 0)
   //   todo.classList.add("todo-list__todos--priority");
 
@@ -68,7 +77,7 @@ const Todo = (todoDetails, index, options = {}) => {
     deleteTodo(getStorage(), `${todoDetails.project}-${index}`);
   });
 
-  todo.appendChild(deleteButton);
+  todo.appendChild(actionsContainer);
 
   return todo;
 };

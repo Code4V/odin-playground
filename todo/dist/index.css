@@ -85,7 +85,7 @@ body {
   display: flex;
   flex-flow: column wrap;
   border-radius: 0.75rem;
-  background: hsla(50, 52.72%, 90.32%, 0.15);
+  background: hsla(50, 5%, 95%, 0.35);
   box-shadow: 0.25rem 0.25rem 1rem hsla(0, 0%, 0.86%, 0.25);
 }
 .todo__title {
@@ -107,6 +107,21 @@ body {
 .todo__content-duedate {
   font-size: 0.9rem;
 }
+.todo__actions-delete {
+  transition: 250ms ease-in transform;
+  filter: invert(17%) sepia(79%) saturate(3196%) hue-rotate(348deg) brightness(98%) contrast(100%);
+}
+.todo__actions-delete:hover {
+  transform: scale(1.2);
+}
+.todo__actions-edit {
+  transition: 250ms ease-in transform;
+  filter: invert(18%) sepia(99%) saturate(2134%) hue-rotate(213deg) brightness(102%) contrast(91%);
+}
+.todo__actions-edit:hover {
+  transform: scale(1.2);
+}
+
 * {
   box-sizing: border-box;
 }

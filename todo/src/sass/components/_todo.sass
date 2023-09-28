@@ -7,7 +7,7 @@
   flex-flow: column wrap
   border-radius: .75rem
   
-  background: hsl(50deg 52.72% 90.32% / 15%)
+  background: hsl(50deg 5% 95% / 35%)
   box-shadow: .25rem .25rem 1rem hsl(0deg 0% 0.86% / 25%)
   // min-height: 15rem
 
@@ -35,5 +35,18 @@
     &-duedate
       font-size: .9rem
 
-  &__delete
-    // filter: invert(17%) sepia(79%) saturate(3196%) hue-rotate(348deg) brightness(98%) contrast(100%)
+  &__actions
+
+    &-delete
+      transition: 250ms ease-in transform
+      filter: invert(17%) sepia(79%) saturate(3196%) hue-rotate(348deg) brightness(98%) contrast(100%)
+      
+      &:hover 
+       transform: scale(1.2)
+
+    &-edit
+      transition: 250ms ease-in transform
+      filter: invert(18%) sepia(99%) saturate(2134%) hue-rotate(213deg) brightness(102%) contrast(91%)
+
+      &:hover
+        transform: scale(1.2)
