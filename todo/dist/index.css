@@ -52,8 +52,8 @@ body {
   margin-block: 0.5rem;
   padding: 0.5rem 0.5rem 3rem 0.5rem;
   overflow: hidden;
-  transition: 1000ms linear ease-in;
   border-radius: 0.75rem;
+  backdrop-filter: blur(0.5rem);
 }
 .todo-list__header {
   color: white;
@@ -61,7 +61,9 @@ body {
   font-size: 2rem;
   font-weight: 700;
   flex: 1 1 100%;
-  filter: drop-shadow(0 0 0.25rem hsla(0, 0%, 0.86%, 0.55));
+}
+.todo-list__todos {
+  animation: 500ms cubic-bezier(0.27, 0.32, 0, 1.03) fadeIn forwards;
 }
 .todo-list__todos--priority {
   order: -1;
@@ -69,7 +71,7 @@ body {
 
 @keyframes fadeIn {
   0% {
-    transform: translateY(-500px);
+    transform: translateY(-200px);
     opacity: 0;
   }
   100% {
@@ -78,23 +80,33 @@ body {
   }
 }
 .todo {
-  backdrop-filter: blur(1rem);
   min-width: 25rem;
   padding: 0.5rem;
   display: flex;
   flex-flow: column wrap;
   border-radius: 0.75rem;
-  background: hsla(50, 52.72%, 90.32%, 0.25);
-  box-shadow: 0.25rem 0.25rem 1rem hsla(0, 0%, 0.86%, 0.55);
+  background: hsla(50, 52.72%, 90.32%, 0.15);
+  box-shadow: 0.25rem 0.25rem 1rem hsla(0, 0%, 0.86%, 0.25);
+}
+.todo__title {
+  display: flex;
 }
 .todo__title-header {
   font-size: 1rem;
   font-weight: 700;
 }
-.todo__delete {
-  margin-block-start: auto;
+.todo__title-status {
+  margin-inline-start: auto;
+  font-size: 0.9rem;
 }
-
+.todo__content {
+  margin-block: 0.25rem;
+  padding-block: 0.35rem;
+  border-block-start: 0.12rem solid hsla(46, 10%, 30%, 0.8);
+}
+.todo__content-duedate {
+  font-size: 0.9rem;
+}
 * {
   box-sizing: border-box;
 }

@@ -1,28 +1,39 @@
 .todo
   // background: blue
-  backdrop-filter: blur(1rem)
+  // backdrop-filter: blur(1rem)
   min-width: 25rem
   padding: .5rem
   display: flex
   flex-flow: column wrap
   border-radius: .75rem
   
-  background: hsl(50deg 52.72% 90.32% / 25%)
-  box-shadow: .25rem .25rem 1rem hsl(0deg 0% 0.86% / 55%)
+  background: hsl(50deg 52.72% 90.32% / 15%)
+  box-shadow: .25rem .25rem 1rem hsl(0deg 0% 0.86% / 25%)
   // min-height: 15rem
 
   &:hover
 
   &__title
+    display: flex
 
     &-header
       font-size: 1rem
       font-weight: 700
 
+    &-status
+      margin-inline-start: auto
+      font-size: .9rem
+  
   &__content
+    margin-block: .25rem
+    padding-block: .35rem
+    border-block-start: .12rem solid hsl(46 10% 30% / .8)
 
     &-description
       // color: hsl(50, 30, 30, .5)
+    
+    &-duedate
+      font-size: .9rem
 
   &__delete
-    margin-block-start: auto 
+    // filter: invert(17%) sepia(79%) saturate(3196%) hue-rotate(348deg) brightness(98%) contrast(100%)

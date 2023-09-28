@@ -1,6 +1,7 @@
 import { parseISO, formatRelative, formatDistance } from "date-fns";
 import { getStorage } from "../operations/storageOperations";
 import { deleteTodo } from "../operations/todoOperations";
+import Trash from "../assets/trash.png"
 import format from "date-fns/format";
 
 
@@ -20,8 +21,12 @@ const Todo = (todoDetails, index, options = {}) => {
   const todoTitle = document.createElement("h4");
   todoTitle.classList.add("todo__title-header")
   todoTitle.textContent = todoDetails.title;
+  
+  const todoComplete = document.createElement("p");
+  todoComplete.classList.add("todo__title-status")
+  todoComplete.textContent = todoDetails.isComplete ? "Complete" : "Incomplete";
 
-  todoTitleContainer.appendChild(todoTitle)
+  todoTitleContainer.append(todoTitle, todoComplete)
 
   const todoContentContainer = document.createElement("div");
   todoContentContainer.classList.add("todo__content");
@@ -36,17 +41,15 @@ const Todo = (todoDetails, index, options = {}) => {
   todoDueDate.classList.add("todo__content-duedate")
   todoDueDate.textContent = formatDistance(dueDate, new Date(), {addSuffix: true});
  
-  const todoComplete = document.createElement("p");
-  todoComplete.classList.add("todo__content-status")
-  todoComplete.textContent = todoDetails.isComplete ? "Completed" : "Not Yet Complete";
 
-  todoContentContainer.append(todoDescription, todoDueDate, todoComplete);
+  todoContentContainer.append(todoDescription, todoDueDate);
 
   todo.append(todoTitleContainer, todoContentContainer)
 
-  const deleteButton = document.createElement("button");
+  const deleteButton = new Image(16)
+  deleteButton.src = Trash;
+
   deleteButton.classList.add("todo__delete")
-  deleteButton.textContent = "delete";
 
   // if (todoDetails.priority > 0)
   //   todo.classList.add("todo-list__todos--priority");

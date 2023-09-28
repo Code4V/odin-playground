@@ -3,7 +3,7 @@ import clearStorage, { setStorage } from "./operations/storageOperations";
 import displayController from "./controllers/displayController";
 import Form from "./components/form";
 import Background from "./assets/TodoBackground.webp"
-import Alt from "./assets/AltBackground.jpg"
+import Alt from "./assets/Alt.jpg"
 import { addDays, format, parseISO, subDays, subHours } from "date-fns";
 
 const main = document.querySelector("#content");
