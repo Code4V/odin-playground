@@ -1,14 +1,23 @@
-const sortByDate = (dataList, options = {}) =>
-{
-  dataList.sort((fdata, sdata) => {
-    return fdata.dueDate - sdata.dueDate;
-  })
+const sortByDate = (dataList, options = {}) => {
 
-  console.log(dataList)
+  switch (typeof dataList[0]) {
+    case "object":
+      const key = options.category;
+      dataList.sort((fdata, sdata) => {
+        return fdata[key] - sdata[key];
+      });
+      break;
+
+    default:
+      dataList.sort((fdata, sdata) => {
+        return fdata - sdata;
+      });
+      break;
+  }
 
   return dataList;
-}
+};
 
-module.exports = sortByDate
+// module.exports = sortByDate;
 
-// export { sortByDate };
+export { sortByDate };

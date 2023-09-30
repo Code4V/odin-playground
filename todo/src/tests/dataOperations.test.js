@@ -1,42 +1,38 @@
 const dateSort = require("../operations/dataOperations");
 
-const sum = (...data) => {
-  const res = data.reduce((prevData, currData) => {
-    return prevData + currData;
-  });
-
-  console.log(res);
-
-  return res;
-};
-
-test("2 + 2 + 5 should be 9", () => {
-  expect(sum(2, 2, 5)).toBe(9);
-});
-
-test("2 should be 2", () => {
-  expect(sum(2)).toBe(2);
-});
-
-test("1000.1 + 1 should be 1001 NOT 1001.1", () => {
-  expect(sum(1000.1, 1)).not.toBe(1001);
-});
-
-test("Should be sorted properly", () => {
+test("Objects should be sorted according to specified category", () => {
   const date = [
     {
       dueDate: new Date().setMonth(11),
+      id: 1231
     },
-    { dueDate: new Date().setMonth(12) },
-    { dueDate: new Date().setMonth(10) },
+    { dueDate: new Date().setMonth(12),
+      id: 2314 },
+    { dueDate: new Date().setMonth(10),
+      id: 2034 },
   ];
   const dateExpected = [
     {
-      dueDate: new Date().setMonth(10),
+      dueDate: new Date().setMonth(11),
+      id: 1231
     },
-    { dueDate: new Date().setMonth(11) },
-    { dueDate: new Date().setMonth(12) },
+    { dueDate: new Date().setMonth(10),
+      id: 2034 },
+    { dueDate: new Date().setMonth(12),
+      id: 2314 },
   ];
 
-  expect(dateSort(date)).toStrictEqual(dateExpected);
+  
+  expect(dateSort(date, {category: "id"})).toStrictEqual(dateExpected);
+  
 });
+
+
+test("Numbers should be sorted in ascending order", () => {
+  
+  const numTest = [1, 3, 1, 5];
+  
+  const numExpect = numTest.sort((a, b)=>a-b);
+
+  expect(dateSort(numTest, {category: "TEst"})).toStrictEqual(numExpect);
+})

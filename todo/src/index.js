@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   const mainContainer = document.createElement("main");
   main.appendChild(Form());
 
-  const backgroundImage = new Image(1920, 1080);
+  const backgroundImage = new Image();
   backgroundImage.classList.add("background")
   backgroundImage.src = Alt;
 

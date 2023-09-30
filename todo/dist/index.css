@@ -147,6 +147,9 @@ main {
   position: absolute;
   z-index: -1;
   object-fit: cover;
+  width: auto;
+  height: auto;
+  aspect-ratio: 9/16 !important;
 }
 
 /*# sourceMappingURL=index.css.map */
