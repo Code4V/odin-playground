@@ -49,11 +49,7 @@ const deleteTodo = (currentData, dataIndex) => {
     //   reject("Data not found");
     //   return;
     // }
-
-
     
-    
-    console.log("NOEW", currentData);
     // currentData.splice(dataIndex, 1);
     localStorage.removeItem(dataIndex);
     currentData = getStorage();
@@ -84,33 +80,4 @@ const deleteTodo = (currentData, dataIndex) => {
   // clearStorage();
 };
 
-const filterProjects = (todoData) => {
-  let projects = [];
-  let filteredProject = [];
-
-  todoData.filter((element) => {
-    if (projects.includes(element.project)) return;
-    projects.push(element.project);
-  });
-
-  projects.sort();
-
-  projects.forEach((outerElement) => {
-    var newObject = {
-      [outerElement]: [],
-    };
-    
-    todoData.forEach((innerElement) => {
-      if (innerElement.project == outerElement) {
-        newObject[outerElement].push(innerElement);
-        return;
-      } else return;
-    });
-
-    filteredProject.push(newObject);
-  });
-
-  return { projects, filteredProject };
-};
-
-export { addTodo, deleteTodo, filterProjects };
+export { addTodo, deleteTodo  };

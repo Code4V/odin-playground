@@ -4,9 +4,8 @@ import clearStorage, {
   getStorage,
   setStorage,
 } from "../operations/storageOperations";
-import { filterProjects } from "../operations/todoOperations";
 import parseISO from "date-fns/parseISO";
-import { sortByDate } from "../operations/dataOperations";
+import { sortByDate, filterProjects } from "../operations/dataOperations";
 
 class DisplayController {
   #isFiltered = false;
@@ -34,8 +33,6 @@ class DisplayController {
 
     const mainTodoListContainer = document.querySelector("main");
     mainTodoListContainer.innerHTML = "";
-
-    // dataList = sortByDate(dataList);
 
     if (!this.#isFiltered) {
       mainTodoListContainer.appendChild(TodoList(dataList));
