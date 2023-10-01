@@ -77,7 +77,6 @@ const deleteTodo = (currentData, dataIndex) => {
   });
   
   displayController.displayList(currentData)
-  // clearStorage();
 };
 
 export { addTodo, deleteTodo  };
