@@ -11,32 +11,45 @@ const Form = () => {
   const formContainer = document.createElement("form");
   formContainer.classList.add("form");
 
-  const titleField = FormInput("title", "Title").InputField({placeholder: "Enter To-do Title"});
-  const projectField = FormInput("project", "Project").InputField({placeholder: "Choose Project"});
-  const numberField = FormInput("number", "Priority").SelectField({choices: [
-    {
-      value: 0,
-      content: "Low",
-    },
-    {
-      value: 1,
-      content: "Normal",
-    },
-    {
-      value: 2,
-      content: "High",
-    },
-    {
-      value: 3,
-      content: "Urgent",
-    },
-    {
-      value: 4,
-      content: "ASAP",
-    },
-  ]});
-  const descriptionField = FormInput("description", "Description").TextArea();
-  const dueDateField = FormInput("dueDate", "Due Date").DateField();
+  const titleField = FormInput("title", "Title").InputField({
+    placeholder: "Enter To-do Title",
+    isRequired: true,
+  });
+  const projectField = FormInput("project", "Project").InputField({
+    placeholder: "Choose Project",
+    isRequired: true,
+  });
+  const numberField = FormInput("number", "Priority").SelectField({
+    choices: [
+      {
+        value: 0,
+        content: "Low",
+      },
+      {
+        value: 1,
+        content: "Normal",
+      },
+      {
+        value: 2,
+        content: "High",
+      },
+      {
+        value: 3,
+        content: "Urgent",
+      },
+      {
+        value: 4,
+        content: "ASAP",
+      },
+    ],
+    isRequired: true,
+  });
+  const descriptionField = FormInput("description", "Description").TextArea({
+    isRequired: true,
+  });
+  const dueDateField = FormInput("dueDate", "Due Date").DateField({
+    isRequired: true,
+  });
 
   const formSubmit = document.createElement("button");
   formSubmit.type = "submit";

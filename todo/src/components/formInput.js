@@ -14,6 +14,8 @@ const FormInput = (name = "input", displayName = "default") => {
   const TextArea = (options = {}) => {
     var Input = document.createElement("textarea");
     Input.classList.add(`form__input-input`);
+
+    Input.required = options.isRequired ?? false;
     Input.placeholder = options.placeholder ?? name;
     Input.name = name;
     Input.id = name;
@@ -26,6 +28,7 @@ const FormInput = (name = "input", displayName = "default") => {
     var Input = document.createElement("input");
     Input.type = "input";
     Input.classList.add(`form__input-input`);
+    Input.required = options.isRequired ?? false;
     Input.placeholder = options.placeholder ?? name;
     Input.name = name;
     Input.id = name;
@@ -39,6 +42,7 @@ const FormInput = (name = "input", displayName = "default") => {
 
     Input.type = "date";
     Input.classList.add(`form__input-input`);
+    Input.required = options.isRequired ?? false;
     Input.name = name;
     Input.id = name;
     Input.min = format(new Date(), "yyyy-MM-dd");
@@ -52,6 +56,7 @@ const FormInput = (name = "input", displayName = "default") => {
     var Input = document.createElement("input");
     Input.type = "number";
     Input.classList.add(`form__input-input`);
+    Input.required = options.isRequired ?? false;
     Input.placeholder = options.placeholder ?? name;
     Input.name = name;
     Input.id = name;
@@ -75,6 +80,7 @@ const FormInput = (name = "input", displayName = "default") => {
   {
     var Input = document.createElement("select");
     Input.classList.add(`form__input-input`);
+    Input.required = options.isRequired ?? false;
     Input.name = name;
     Input.id = name;
 
@@ -92,7 +98,7 @@ const FormInput = (name = "input", displayName = "default") => {
     return formInput;    
   }
 
-  return { TextArea, InputField, DateField, NumberField, SelectField };
+  return { TextArea, InputField, DateField, NumberField, SelectField  };
 };
 
 export default FormInput;
