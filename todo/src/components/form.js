@@ -11,9 +11,9 @@ const Form = () => {
   const formContainer = document.createElement("form");
   formContainer.classList.add("form");
 
-  const titleField = FormInput("title", "Title").InputField();
-  const projectField = FormInput("project", "Project").InputField();
-  const numberField = FormInput("number", "Priority").SelectField([
+  const titleField = FormInput("title", "Title").InputField({placeholder: "Enter To-do Title"});
+  const projectField = FormInput("project", "Project").InputField({placeholder: "Choose Project"});
+  const numberField = FormInput("number", "Priority").SelectField({choices: [
     {
       value: 0,
       content: "Low",
@@ -34,7 +34,7 @@ const Form = () => {
       value: 4,
       content: "ASAP",
     },
-  ]);
+  ]});
   const descriptionField = FormInput("description", "Description").TextArea();
   const dueDateField = FormInput("dueDate", "Due Date").DateField();
 

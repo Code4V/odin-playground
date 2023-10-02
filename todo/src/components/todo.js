@@ -39,11 +39,11 @@ const Todo = (todoDetails, index, options = {}) => {
   var dueDate = parseInt(todoDetails.dueDate);
 
   const todoDueDate = document.createElement("p");
-  todoDueDate.classList.add("todo__content-duedate")
+  todoDueDate.classList.add("todo__actions-duedate")
   todoDueDate.textContent = formatDistance(dueDate, new Date(), {addSuffix: true});
  
 
-  todoContentContainer.append(todoDescription, todoDueDate);
+  todoContentContainer.append(todoDescription);
 
   todo.append(todoTitleContainer, todoContentContainer)
 
@@ -59,7 +59,7 @@ const Todo = (todoDetails, index, options = {}) => {
   editButton.src = Edit;
   editButton.classList.add("todo__actions-edit")
 
-  actionsContainer.append(deleteButton, editButton)  
+  actionsContainer.append(deleteButton, editButton, todoDueDate)  
   // if (todoDetails.priority > 0)
   //   todo.classList.add("todo-list__todos--priority");
 

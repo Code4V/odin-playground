@@ -11,9 +11,10 @@ const FormInput = (name = "input", displayName = "default") => {
 
   formInput.append(Label);
 
-  const TextArea = () => {
+  const TextArea = (options = {}) => {
     var Input = document.createElement("textarea");
     Input.classList.add(`form__input-input`);
+    Input.placeholder = options.placeholder ?? name;
     Input.name = name;
     Input.id = name;
 
@@ -21,10 +22,11 @@ const FormInput = (name = "input", displayName = "default") => {
     return formInput;
   };
 
-  const InputField = () => {
+  const InputField = (options = {}) => {
     var Input = document.createElement("input");
     Input.type = "input";
     Input.classList.add(`form__input-input`);
+    Input.placeholder = options.placeholder ?? name;
     Input.name = name;
     Input.id = name;
 
@@ -32,7 +34,7 @@ const FormInput = (name = "input", displayName = "default") => {
     return formInput;
   };
 
-  const DateField = () => {
+  const DateField = (options = {}) => {
     var Input = document.createElement("input");
 
     Input.type = "date";
@@ -46,10 +48,11 @@ const FormInput = (name = "input", displayName = "default") => {
     return formInput;
   };
 
-  const NumberField = () => {
+  const NumberField = (options = {}) => {
     var Input = document.createElement("input");
     Input.type = "number";
     Input.classList.add(`form__input-input`);
+    Input.placeholder = options.placeholder ?? name;
     Input.name = name;
     Input.id = name;
     Input.min = 0;
@@ -68,16 +71,16 @@ const FormInput = (name = "input", displayName = "default") => {
     return formInput;
   };
 
-  const SelectField = (options = []) =>
+  const SelectField = (options = {}) =>
   {
     var Input = document.createElement("select");
     Input.classList.add(`form__input-input`);
     Input.name = name;
     Input.id = name;
 
-    if(!options.length) return;
+    if(!options.choices) return;
    
-    options.forEach(element => {
+    options.choices.forEach(element => {
       const option = document.createElement("option");
       option.value = element.value;
       option.innerText = element.content;

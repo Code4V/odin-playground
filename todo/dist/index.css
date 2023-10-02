@@ -1,4 +1,3 @@
-@import url("https://fonts.googleapis.com/css2?family=Lato&display=swap");
 html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
   margin: 0;
   padding: 0;
@@ -41,7 +40,7 @@ table {
 }
 
 body {
-  font-family: "Lato";
+  font-family: "Arial";
 }
 
 .todo-list {
@@ -80,6 +79,7 @@ body {
   }
 }
 .todo {
+  font-size: calc(1rem - 2px);
   min-width: 25rem;
   padding: 0.5rem;
   display: flex;
@@ -92,34 +92,48 @@ body {
   display: flex;
 }
 .todo__title-header {
-  font-size: 1rem;
   font-weight: 700;
 }
 .todo__title-status {
   margin-inline-start: auto;
-  font-size: 0.9rem;
 }
 .todo__content {
   margin-block: 0.25rem;
   padding-block: 0.35rem;
   border-block-start: 0.12rem solid hsla(46, 10%, 30%, 0.8);
 }
-.todo__content-duedate {
-  font-size: 0.9rem;
+.todo__actions {
+  display: flex;
+}
+.todo__actions-delete, .todo__actions-edit {
+  transition: 250ms ease-in transform;
+}
+.todo__actions-delete:hover, .todo__actions-edit:hover {
+  transform: scale(1.2);
 }
 .todo__actions-delete {
-  transition: 250ms ease-in transform;
   filter: invert(17%) sepia(79%) saturate(3196%) hue-rotate(348deg) brightness(98%) contrast(100%);
 }
-.todo__actions-delete:hover {
-  transform: scale(1.2);
-}
 .todo__actions-edit {
-  transition: 250ms ease-in transform;
   filter: invert(18%) sepia(99%) saturate(2134%) hue-rotate(213deg) brightness(102%) contrast(91%);
 }
-.todo__actions-edit:hover {
-  transform: scale(1.2);
+.todo__actions-duedate {
+  margin-inline-start: auto;
+}
+
+.form {
+  display: flex;
+  flex-flow: column wrap;
+  gap: 1rem;
+  border-radius: 0.75rem;
+  background: hsla(50, 5%, 95%, 0.35);
+}
+.form__input-label {
+  display: none;
+}
+.form__input-input {
+  background-color: hsla(0, 0%, 50%, 0);
+  border: 0;
 }
 
 * {

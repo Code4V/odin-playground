@@ -1,6 +1,7 @@
 .todo
   // background: blue
   // backdrop-filter: blur(1rem)
+  font-size: calc(1rem - 2px)
   min-width: 25rem
   padding: .5rem
   display: flex
@@ -11,18 +12,14 @@
   box-shadow: .25rem .25rem 1rem hsl(0deg 0% 0.86% / 25%)
   // min-height: 15rem
 
-  &:hover
-
   &__title
     display: flex
 
     &-header
-      font-size: 1rem
       font-weight: 700
 
     &-status
       margin-inline-start: auto
-      font-size: .9rem
   
   &__content
     margin-block: .25rem
@@ -32,21 +29,22 @@
     &-description
       // color: hsl(50, 30, 30, .5)
     
-    &-duedate
-      font-size: .9rem
 
   &__actions
 
-    &-delete
+    display: flex
+
+    &-delete, &-edit
       transition: 250ms ease-in transform
-      filter: invert(17%) sepia(79%) saturate(3196%) hue-rotate(348deg) brightness(98%) contrast(100%)
       
       &:hover 
        transform: scale(1.2)
 
+    &-delete
+      filter: invert(17%) sepia(79%) saturate(3196%) hue-rotate(348deg) brightness(98%) contrast(100%)
+
     &-edit
-      transition: 250ms ease-in transform
       filter: invert(18%) sepia(99%) saturate(2134%) hue-rotate(213deg) brightness(102%) contrast(91%)
 
-      &:hover
-        transform: scale(1.2)
+    &-duedate
+      margin-inline-start: auto
