@@ -40,13 +40,13 @@ const FormInput = (name = "input", displayName = "default") => {
   const DateField = (options = {}) => {
     var Input = document.createElement("input");
 
-    Input.type = "date";
+    Input.type = "datetime-local";
     Input.classList.add(`form__input-input`);
     Input.required = options.isRequired ?? false;
     Input.name = name;
     Input.id = name;
-    Input.min = format(new Date(), "yyyy-MM-dd");
-    Input.value = format(new Date(), "yyyy-MM-dd");
+    Input.min = format(new Date(), "yyyy-MM-dd hh:mm");
+    Input.value = format(new Date(), "yyyy-MM-dd hh:mm");
 
     formInput.append(Input);
     return formInput;
@@ -80,6 +80,7 @@ const FormInput = (name = "input", displayName = "default") => {
   {
     var Input = document.createElement("select");
     Input.classList.add(`form__input-input`);
+
     Input.required = options.isRequired ?? false;
     Input.name = name;
     Input.id = name;
@@ -88,6 +89,8 @@ const FormInput = (name = "input", displayName = "default") => {
    
     options.choices.forEach(element => {
       const option = document.createElement("option");
+
+      // if (element.value == 0) option.defaultSelected = true
       option.value = element.value;
       option.innerText = element.content;
 

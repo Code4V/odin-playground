@@ -2,10 +2,7 @@ import FormInput from "./formInput";
 import { addTodo } from "../operations/todoOperations";
 import data from "../data/todo.json";
 import Todo from "../classes/Todo";
-import parseISO from "date-fns/parseISO";
 import { format } from "date-fns";
-import { displayController } from "../controllers/displayController";
-import { getStorage } from "../operations/storageOperations";
 
 const Form = () => {
   const formContainer = document.createElement("form");
@@ -85,9 +82,19 @@ const Form = () => {
     ].forEach((element) => {
       const formInput = element.childNodes[1];
 
-      if (formInput.id === "dueDate")
-        formInput.value = format(new Date(), "yyyy-MM-dd");
-      else formInput.value = "";
+      switch(formInput.id){
+        case 'dueDate':
+          formInput.value = format(new Date(), "yyyy-MM-dd");
+          break;
+
+        case 'number':
+          formInput.value = 0
+          break;
+
+        default:
+          formInput.value = "";
+      }
+      
     });
   });
 
