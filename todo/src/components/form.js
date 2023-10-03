@@ -99,7 +99,7 @@ const Form = () => {
 
       switch(formInput.id){
         case 'dueDate':
-          formInput.value = format(new Date(), "yyyy-MM-dd");
+          formInput.value = format(new Date(), "yyyy-MM-dd hh:mm");
           break;
 
         case 'number':
