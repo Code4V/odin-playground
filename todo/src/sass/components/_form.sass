@@ -1,9 +1,12 @@
+@use '../utilities' as *
+  
 .form
   display: flex
   flex-flow: column wrap
   gap: 1rem
   border-radius: .75rem
-  background: hsl(50deg 5% 95% / 35%)
+  max-width: 25rem
+  @include defaultBackground()
 
   &__input
 

@@ -1,3 +1,5 @@
+@use '../utilities' as *
+  
 .todo
   // background: blue
   // backdrop-filter: blur(1rem)
@@ -7,9 +9,8 @@
   display: flex
   flex-flow: column wrap
   border-radius: .75rem
-  
-  background: hsl(50deg 5% 95% / 35%)
-  box-shadow: .25rem .25rem 1rem hsl(0deg 0% 0.86% / 25%)
+
+  @include defaultBackground()
   // min-height: 15rem
 
   &__title

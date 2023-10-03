@@ -36,13 +36,8 @@ const Todo = (todoDetails, index, options = {}) => {
   todoDescription.classList.add("todo__content-description")
   todoDescription.textContent = todoDetails.description;
   
-  var dueDate = parseInt(todoDetails.dueDate);
-
-  const todoDueDate = document.createElement("p");
-  todoDueDate.classList.add("todo__actions-duedate")
-  todoDueDate.textContent = formatDistance(dueDate, new Date(), {addSuffix: true});
- 
-
+  
+  
   todoContentContainer.append(todoDescription);
 
   todo.append(todoTitleContainer, todoContentContainer)
@@ -58,8 +53,15 @@ const Todo = (todoDetails, index, options = {}) => {
   const editButton = new Image(16)
   editButton.src = Edit;
   editButton.classList.add("todo__actions-edit")
+  
+  var dueDate = parseInt(todoDetails.dueDate);
 
+  const todoDueDate = document.createElement("p");
+  todoDueDate.classList.add("todo__actions-duedate")
+  todoDueDate.textContent = formatDistance(dueDate, new Date(), {addSuffix: true});
+  
   actionsContainer.append(deleteButton, editButton, todoDueDate)  
+
   // if (todoDetails.priority > 0)
   //   todo.classList.add("todo-list__todos--priority");
 

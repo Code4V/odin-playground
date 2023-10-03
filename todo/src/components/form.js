@@ -5,17 +5,23 @@ import Todo from "../classes/Todo";
 import { format } from "date-fns";
 
 const Form = () => {
-  const formContainer = document.createElement("form");
-  formContainer.classList.add("form");
+
+  const formContainer = document.createElement("section");
+
+  const form = document.createElement('form')
+  form.classList.add("form");
+  form.classList.add("todo")
 
   const titleField = FormInput("title", "Title").InputField({
     placeholder: "Enter To-do Title",
     isRequired: true,
   });
+
   const projectField = FormInput("project", "Project").InputField({
     placeholder: "Choose Project",
     isRequired: true,
   });
+
   const numberField = FormInput("number", "Priority").SelectField({
     choices: [
       {
@@ -41,9 +47,12 @@ const Form = () => {
     ],
     isRequired: true,
   });
+
   const descriptionField = FormInput("description", "Description").TextArea({
+    placeholder: "What's on your mind?", 
     isRequired: true,
   });
+
   const dueDateField = FormInput("dueDate", "Due Date").DateField({
     isRequired: true,
   });
@@ -52,19 +61,25 @@ const Form = () => {
   formSubmit.type = "submit";
   formSubmit.textContent = "Add Todo";
 
-  formContainer.append(
-    titleField,
-    projectField,
+  const test = document.createElement("section");
+  test.classList.add("todo__title")
+
+  test.append(titleField, projectField)
+
+  form.append(
+    test,
+    
     numberField,
     descriptionField,
     dueDateField
   );
-  formContainer.appendChild(formSubmit);
 
-  formContainer.addEventListener("submit", (e) => {
+  form.appendChild(formSubmit);
+
+  form.addEventListener("submit", (e) => {
     e.preventDefault();
 
-    const FormEvent = new FormData(formContainer);
+    const FormEvent = new FormData(form);
     const res = Object.fromEntries(FormEvent);
     const date = new Date(res.dueDate).getTime();
 
@@ -97,6 +112,8 @@ const Form = () => {
       
     });
   });
+
+  formContainer.appendChild(form);
 
   return formContainer;
 };

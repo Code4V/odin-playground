@@ -131,7 +131,9 @@ textarea, input[type=date] {
   flex-flow: column wrap;
   gap: 1rem;
   border-radius: 0.75rem;
+  max-width: 25rem;
   background: hsla(50, 5%, 95%, 0.35);
+  box-shadow: 0.25rem 0.25rem 1rem hsla(0, 0%, 0.86%, 0.25);
 }
 .form__input-label {
   display: none;
