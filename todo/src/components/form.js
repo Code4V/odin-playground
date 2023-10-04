@@ -5,12 +5,11 @@ import Todo from "../classes/Todo";
 import { format } from "date-fns";
 
 const Form = () => {
-
   const formContainer = document.createElement("section");
 
-  const form = document.createElement('form')
+  const form = document.createElement("form");
   form.classList.add("form");
-  form.classList.add("todo")
+  form.classList.add("todo");
 
   const titleField = FormInput("title", "Title").InputField({
     placeholder: "Enter To-do Title",
@@ -49,7 +48,7 @@ const Form = () => {
   });
 
   const descriptionField = FormInput("description", "Description").TextArea({
-    placeholder: "What's on your mind?", 
+    placeholder: "What's on your mind?",
     isRequired: true,
   });
 
@@ -62,13 +61,13 @@ const Form = () => {
   formSubmit.textContent = "Add Todo";
 
   const test = document.createElement("section");
-  test.classList.add("todo__title")
+  test.classList.add("todo__title");
 
-  test.append(titleField, projectField)
+  test.append(titleField, projectField);
 
   form.append(
     test,
-    
+
     numberField,
     descriptionField,
     dueDateField
@@ -97,19 +96,18 @@ const Form = () => {
     ].forEach((element) => {
       const formInput = element.childNodes[1];
 
-      switch(formInput.id){
-        case 'dueDate':
+      switch (formInput.id) {
+        case "dueDate":
           formInput.value = format(new Date(), "yyyy-MM-dd hh:mm");
           break;
 
-        case 'number':
-          formInput.value = 0
+        case "number":
+          formInput.value = 0;
           break;
 
         default:
           formInput.value = "";
       }
-      
     });
   });
 
