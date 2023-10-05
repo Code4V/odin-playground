@@ -3,6 +3,8 @@ import { addTodo } from "../operations/todoOperations";
 import data from "../data/todo.json";
 import Todo from "../classes/Todo";
 import { format } from "date-fns";
+import addFilled from "@carbon/icons/lib/add/16";
+import { getAttributes, toSVG } from "@carbon/icon-helpers";
 
 const Form = () => {
   const formContainer = document.createElement("section");
@@ -54,10 +56,18 @@ const Form = () => {
     isRequired: true,
   });
 
+  const addIcon = toSVG({
+    ...addFilled, 
+    attrs: getAttributes(addFilled.attrs),
+  })
+
+  console.log(addIcon)
+
   const formSubmit = document.createElement("button");
   formSubmit.classList.add("form__submit")
   formSubmit.type = "submit";
-  formSubmit.textContent = "Add";
+  
+  formSubmit.appendChild(addIcon)
 
   const formTitle = document.createElement("section");
   formTitle.classList.add("todo__title");

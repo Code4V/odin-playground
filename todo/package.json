@@ -17,5 +17,9 @@
     "sass": "^1.66.1",
     "webpack": "^5.88.2",
     "webpack-cli": "^5.1.4"
+  },
+  "dependencies": {
+    "@carbon/icon-helpers": "^10.44.0",
+    "@carbon/icons": "^11.28.0"
   }
 }

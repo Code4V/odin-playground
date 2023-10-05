@@ -52,8 +52,8 @@ const FormInput = (name = "input", displayName = "default") => {
     Input.required = options.isRequired ?? false;
     Input.name = name;
     Input.id = name;
-    Input.min = format(new Date(), "yyyy-MM-dd hh:mm");
-    Input.value = format(new Date(), "yyyy-MM-dd hh:mm");
+    Input.min = format(new Date(), "yyyy-MM-dd'T'hh:mm");
+    Input.value = format(new Date(), "yyyy-MM-dd'T'hh:mm");
 
     formInput.append(Input);
     return formInput;

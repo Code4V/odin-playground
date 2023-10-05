@@ -157,6 +157,7 @@ textarea, input[type=datetime-local] {
   width: 100%;
 }
 .form__submit {
+  display: flex;
   margin-inline-start: auto;
   border-radius: 100svh;
   max-width: 50px;
