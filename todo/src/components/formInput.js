@@ -14,6 +14,7 @@ const FormInput = (name = "input", displayName = "default") => {
   const TextArea = (options = {}) => {
     var Input = document.createElement("textarea");
     Input.classList.add(`form__input-input`);
+    if(options.addClass) Input.classList.add(...options.addClass)
 
     Input.required = options.isRequired ?? false;
     Input.placeholder = options.placeholder ?? name;
@@ -28,6 +29,9 @@ const FormInput = (name = "input", displayName = "default") => {
     var Input = document.createElement("input");
     Input.type = "input";
     Input.classList.add(`form__input-input`);
+    
+    if(options.addClass) Input.classList.add(...options.addClass)
+    
     Input.required = options.isRequired ?? false;
     Input.placeholder = options.placeholder ?? name;
     Input.name = name;
@@ -42,6 +46,9 @@ const FormInput = (name = "input", displayName = "default") => {
 
     Input.type = "datetime-local";
     Input.classList.add(`form__input-input`);
+
+    if(options.addClass) Input.classList.add(...options.addClass)
+
     Input.required = options.isRequired ?? false;
     Input.name = name;
     Input.id = name;
@@ -56,6 +63,7 @@ const FormInput = (name = "input", displayName = "default") => {
     var Input = document.createElement("input");
     Input.type = "number";
     Input.classList.add(`form__input-input`);
+    if(options.addClass) Input.classList.add(...options.addClass)
     Input.required = options.isRequired ?? false;
     Input.placeholder = options.placeholder ?? name;
     Input.name = name;
@@ -80,6 +88,7 @@ const FormInput = (name = "input", displayName = "default") => {
   {
     var Input = document.createElement("select");
     Input.classList.add(`form__input-input`);
+    if(options.addClass) Input.classList.add(...options.addClass)
 
     Input.required = options.isRequired ?? false;
     Input.name = name;

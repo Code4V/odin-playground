@@ -19,6 +19,9 @@ const Form = () => {
   const projectField = FormInput("project", "Project").InputField({
     placeholder: "Choose Project",
     isRequired: true,
+    addClass: [
+      'form__input-input--small',
+    ]
   });
 
   const numberField = FormInput("number", "Priority").SelectField({
@@ -35,14 +38,6 @@ const Form = () => {
         value: 2,
         content: "High",
       },
-      {
-        value: 3,
-        content: "Urgent",
-      },
-      {
-        value: 4,
-        content: "ASAP",
-      },
     ],
     isRequired: true,
   });
@@ -50,6 +45,9 @@ const Form = () => {
   const descriptionField = FormInput("description", "Description").TextArea({
     placeholder: "What's on your mind?",
     isRequired: true,
+    addClass: [
+      "form__input-textarea", 
+    ]
   });
 
   const dueDateField = FormInput("dueDate", "Due Date").DateField({
@@ -57,23 +55,28 @@ const Form = () => {
   });
 
   const formSubmit = document.createElement("button");
+  formSubmit.classList.add("form__submit")
   formSubmit.type = "submit";
-  formSubmit.textContent = "Add Todo";
+  formSubmit.textContent = "Add";
 
-  const test = document.createElement("section");
-  test.classList.add("todo__title");
+  const formTitle = document.createElement("section");
+  formTitle.classList.add("todo__title");
 
-  test.append(titleField, projectField);
+  const formContent = document.createElement("section");
+  formContent.classList.add("todo__content");
+
+  const formActions = document.createElement("section")
+  formActions.classList.add("todo__actions");
+
+  formTitle.append(titleField, projectField, numberField);
+  formContent.append(descriptionField);
+  formActions.append(dueDateField, formSubmit)
 
   form.append(
-    test,
-
-    numberField,
-    descriptionField,
-    dueDateField
+    formTitle,
+    formContent,
+    formActions
   );
-
-  form.appendChild(formSubmit);
 
   form.addEventListener("submit", (e) => {
     e.preventDefault();

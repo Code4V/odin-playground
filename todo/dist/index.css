@@ -87,6 +87,7 @@ textarea, input[type=datetime-local] {
 .todo {
   font-size: calc(1rem - 2px);
   min-width: 25rem;
+  max-width: 25rem;
   padding: 0.5rem;
   display: flex;
   flex-flow: column wrap;
@@ -107,6 +108,7 @@ textarea, input[type=datetime-local] {
   margin-block: 0.25rem;
   padding-block: 0.35rem;
   border-block-start: 0.12rem solid hsla(46, 10%, 30%, 0.8);
+  word-break: break-all;
 }
 .todo__actions {
   display: flex;
@@ -130,7 +132,6 @@ textarea, input[type=datetime-local] {
 .form {
   display: flex;
   flex-flow: column wrap;
-  gap: 1rem;
   border-radius: 0.75rem;
   max-width: 25rem;
   background: hsla(50, 5%, 95%, 0.35);
@@ -144,9 +145,26 @@ textarea, input[type=datetime-local] {
   background-color: hsla(0, 0%, 50%, 0);
   border: 0;
 }
+.form__input-input--small {
+  max-width: 150px;
+}
 .form__input-input:focus {
   border-radius: 0;
   outline: 0;
+}
+.form__input-textarea {
+  resize: none;
+  width: 100%;
+}
+.form__submit {
+  margin-inline-start: auto;
+  border-radius: 100svh;
+  max-width: 50px;
+  border: 0;
+  transition: 250ms background-color ease-in;
+}
+.form__submit:hover {
+  background-color: hsla(0, 0%, 50%, 0.6);
 }
 
 * {

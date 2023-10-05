@@ -66,10 +66,7 @@ class DisplayController {
   };
 
   toggleFilter() {
-    if (!this.#isFiltered)
-      this.#isFiltered = true;
-    else 
-      this.#isFiltered = false;
+    this.#isFiltered = !this.#isFiltered ? true : false;
     
     return this;
   }
