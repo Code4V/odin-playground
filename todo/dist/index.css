@@ -40,8 +40,7 @@ table {
   border-spacing: 0;
 }
 
-body {
-  font-family: "Arial";
+body, * {
   font-family: "Lato";
 }
 
@@ -134,6 +133,7 @@ textarea, input[type=datetime-local] {
   flex-flow: column wrap;
   border-radius: 0.75rem;
   max-width: 25rem;
+  margin-inline: auto;
   background: hsla(50, 5%, 95%, 0.35);
   box-shadow: 0.25rem 0.25rem 1rem hsla(0, 0%, 0.86%, 0.25);
 }
@@ -144,6 +144,7 @@ textarea, input[type=datetime-local] {
   border-radius: 0px;
   background-color: hsla(0, 0%, 50%, 0);
   border: 0;
+  color: hsl(47.08, 80.6%, 50.32%);
 }
 .form__input-input--small {
   max-width: 150px;
@@ -151,6 +152,10 @@ textarea, input[type=datetime-local] {
 .form__input-input:focus {
   border-radius: 0;
   outline: 0;
+}
+.form__input-input::placeholder {
+  font-weight: 600;
+  color: hsl(47.08, 80.6%, 50.32%);
 }
 .form__input-textarea {
   resize: none;

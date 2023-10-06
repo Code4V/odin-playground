@@ -566,7 +566,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
   \**********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _data_todo_json__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./data/todo.json */ \"./src/data/todo.json\");\n/* harmony import */ var _operations_storageOperations__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./operations/storageOperations */ \"./src/operations/storageOperations.js\");\n/* harmony import */ var _controllers_displayController__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./controllers/displayController */ \"./src/controllers/displayController.js\");\n/* harmony import */ var _components_form__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/form */ \"./src/components/form.js\");\n/* harmony import */ var _assets_TodoBackground_webp__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./assets/TodoBackground.webp */ \"./src/assets/TodoBackground.webp\");\n/* harmony import */ var _assets_Alt_jpg__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./assets/Alt.jpg */ \"./src/assets/Alt.jpg\");\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\nconst main = document.querySelector(\"#content\");\r\n\r\n(0,_operations_storageOperations__WEBPACK_IMPORTED_MODULE_1__[\"default\"])();\r\n\r\ndocument.addEventListener(\"DOMContentLoaded\", async () => {\r\n  const mainContainer = document.createElement(\"main\");\r\n  main.appendChild((0,_components_form__WEBPACK_IMPORTED_MODULE_3__[\"default\"])());\r\n\r\n  const backgroundImage = new Image();\r\n  backgroundImage.classList.add(\"background\");\r\n  backgroundImage.src = _assets_Alt_jpg__WEBPACK_IMPORTED_MODULE_5__;\r\n\r\n  main.appendChild(backgroundImage);\r\n\r\n  main.appendChild(mainContainer);\r\n\r\n  _controllers_displayController__WEBPACK_IMPORTED_MODULE_2__[\"default\"].toggleFilter();\r\n  _controllers_displayController__WEBPACK_IMPORTED_MODULE_2__[\"default\"].displayList(_data_todo_json__WEBPACK_IMPORTED_MODULE_0__);\r\n});\r\n\r\n// console.log(await (await fetch(\"https://reqres.in/api/users/\")).json());\r\n\r\n// console.log(new Date(\"September-09-2023\").getTime())\r\n\n\n//# sourceURL=webpack://todo/./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _data_todo_json__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./data/todo.json */ \"./src/data/todo.json\");\n/* harmony import */ var _operations_storageOperations__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./operations/storageOperations */ \"./src/operations/storageOperations.js\");\n/* harmony import */ var _controllers_displayController__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./controllers/displayController */ \"./src/controllers/displayController.js\");\n/* harmony import */ var _components_form__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/form */ \"./src/components/form.js\");\n/* harmony import */ var _assets_TodoBackground_jpg__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./assets/TodoBackground.jpg */ \"./src/assets/TodoBackground.jpg\");\n/* harmony import */ var _assets_Alt_jpg__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./assets/Alt.jpg */ \"./src/assets/Alt.jpg\");\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\nconst main = document.querySelector(\"#content\");\r\n\r\n(0,_operations_storageOperations__WEBPACK_IMPORTED_MODULE_1__[\"default\"])();\r\n\r\ndocument.addEventListener(\"DOMContentLoaded\", async () => {\r\n  const mainContainer = document.createElement(\"main\");\r\n  main.appendChild((0,_components_form__WEBPACK_IMPORTED_MODULE_3__[\"default\"])());\r\n\r\n  const backgroundImage = new Image(1920, 1080);\r\n  backgroundImage.classList.add(\"background\");\r\n  backgroundImage.src = _assets_TodoBackground_jpg__WEBPACK_IMPORTED_MODULE_4__;\r\n\r\n  main.appendChild(backgroundImage);\r\n\r\n  main.appendChild(mainContainer);\r\n\r\n\r\n  _controllers_displayController__WEBPACK_IMPORTED_MODULE_2__[\"default\"].toggleFilter();\r\n  _controllers_displayController__WEBPACK_IMPORTED_MODULE_2__[\"default\"].displayList(_data_todo_json__WEBPACK_IMPORTED_MODULE_0__);\r\n});\r\n\r\n// console.log(await (await fetch(\"https://reqres.in/api/users/\")).json());\r\n\r\n// console.log(new Date(\"September-09-2023\").getTime())\r\n\n\n//# sourceURL=webpack://todo/./src/index.js?");
 
 /***/ }),
 
@@ -610,13 +610,13 @@ eval("module.exports = __webpack_require__.p + \"1a92fcfa3a804e5323ab.jpg\";\n\n
 
 /***/ }),
 
-/***/ "./src/assets/TodoBackground.webp":
-/*!****************************************!*\
-  !*** ./src/assets/TodoBackground.webp ***!
-  \****************************************/
+/***/ "./src/assets/TodoBackground.jpg":
+/*!***************************************!*\
+  !*** ./src/assets/TodoBackground.jpg ***!
+  \***************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-eval("module.exports = __webpack_require__.p + \"b5ccb1afbbbc2e096e59.webp\";\n\n//# sourceURL=webpack://todo/./src/assets/TodoBackground.webp?");
+eval("module.exports = __webpack_require__.p + \"853aa263b5afd5e70c8c.jpg\";\n\n//# sourceURL=webpack://todo/./src/assets/TodoBackground.jpg?");
 
 /***/ }),
 
