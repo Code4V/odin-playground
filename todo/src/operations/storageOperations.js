@@ -3,13 +3,8 @@ export default function clearStorage() {
   window.sessionStorage.clear();
 }
 
-async function setStorage(todoData) {
-  const setPromise = new Promise((resolve, reject) => {
-    // if (localStorage.length != 0) {
-    //   reject("Local Storage Already Filled");
-    //   return;
-    // }
-
+function setStorage(todoData) {
+  const setPromise = new Promise((resolve) => {
     todoData.forEach((element, index) => {
       localStorage.setItem(
         `${element.project}-${index}`,
@@ -20,19 +15,14 @@ async function setStorage(todoData) {
     resolve("Data Filled Successfully");
   });
 
-  try {
-    const useSet = await setPromise;
-    console.log(useSet);
-  } catch (err) {
-    console.log(err);
-  }
+  return setPromise;
 }
 
 function getStorage() {
   let todo = [];
   let storageItem;
 
-  for (var i = 0; i < localStorage.length; i++) {
+  for (let i = 0; i < localStorage.length; i++) {
     storageItem = JSON.parse(
       localStorage.getItem(Object.keys(localStorage)[i])
     );

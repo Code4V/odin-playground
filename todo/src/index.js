@@ -23,7 +23,8 @@ document.addEventListener("DOMContentLoaded", async () => {
   main.appendChild(mainContainer);
 
 
-  displayController.toggleFilter();
+  // displayController.toggleFilter();
+  displayController.toggleDateOrder();
   displayController.displayList(data);
 });
 

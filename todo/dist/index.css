@@ -155,7 +155,7 @@ textarea, input[type=datetime-local] {
 }
 .form__input-input::placeholder {
   font-weight: 600;
-  color: hsl(47.08, 80.6%, 50.32%);
+  color: hsla(47.08, 80.6%, 50.32%, 0.5);
 }
 .form__input-textarea {
   resize: none;

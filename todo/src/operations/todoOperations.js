@@ -63,7 +63,6 @@ const deleteTodo = (currentData, dataIndex) => {
 
     clearStorage();
     console.log("AFTER CLEAR", { currentData, dataIndex });
-    // setStorage(currentData);
     
     resolve("Todo successfully deleted");
   });

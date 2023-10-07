@@ -61,8 +61,6 @@ const Form = () => {
     attrs: getAttributes(addFilled.attrs),
   })
 
-  console.log(addIcon)
-
   const formSubmit = document.createElement("button");
   formSubmit.classList.add("form__submit")
   formSubmit.type = "submit";

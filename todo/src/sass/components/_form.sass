@@ -6,11 +6,10 @@
   border-radius: .75rem
   max-width: 25rem
   margin-inline: auto
-  
+
   @include defaultBackground()
 
   &__input
-    
 
     &-label
       display: none
@@ -20,7 +19,6 @@
       background-color: hsl(0deg 0% 50% / 0%)
       border: 0
       color: hsl(47.08deg 80.6% 50.32%)
-      
 
       &--small
         max-width: 150px
@@ -31,12 +29,12 @@
 
       &::placeholder
         font-weight: 600
-        color: hsl(47.08deg 80.6% 50.32%)
+        color: hsl(47.08deg 80.6% 50.32% / 50%)
 
     &-textarea
       resize: none
       width: 100%
-  
+
   &__submit
     display: flex
     margin-inline-start: auto
@@ -47,5 +45,3 @@
 
     &:hover
       background-color: hsl(0deg 0% 50% / 60%)
-
- 
