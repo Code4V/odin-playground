@@ -31,6 +31,7 @@ const FormInput = (name = "input", displayName = "default") => {
     Input.classList.add(`form__input-input`);
     
     if(options.addClass) Input.classList.add(...options.addClass)
+    if(options.value) Input.value = options.value
     
     Input.required = options.isRequired ?? false;
     Input.placeholder = options.placeholder ?? name;

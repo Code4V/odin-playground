@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "webpack:watch": "webpack build --watch",
-    "sass:watch": "sass src/sass/index.sass dist/index.css --watch",
+    "webpack": "webpack build --watch",
+    "sass": "sass src/sass/index.sass dist/index.css --watch",
     "test": "jest"
   },
   "keywords": [],

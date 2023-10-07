@@ -4,6 +4,9 @@ import { deleteTodo } from "../operations/todoOperations";
 import Trash from "../assets/trash.png";
 import Edit from "../assets/pencil.png";
 import format from "date-fns/format";
+import FormInput from "./formInput";
+import Certificate from "@carbon/icons/lib/checkmark--filled/16";
+import { getAttributes, toSVG } from "@carbon/icon-helpers";
 
 const Todo = (todoDetails, index, options = {}) => {
   const todo = document.createElement("div");
@@ -48,7 +51,15 @@ const Todo = (todoDetails, index, options = {}) => {
   const editButton = new Image(16);
   editButton.src = Edit;
   editButton.classList.add("todo__actions-edit");
+  
+  const editButtonCheck = toSVG({
+    ...Certificate, 
+    attrs: getAttributes(Certificate.attrs)
+  });
 
+  editButtonCheck.src = Edit;
+  editButtonCheck.style.color = "darkgreen";
+  
   var dueDate = parseInt(todoDetails.dueDate);
 
   const todoDueDate = document.createElement("p");
@@ -74,6 +85,20 @@ const Todo = (todoDetails, index, options = {}) => {
 
   deleteButton.addEventListener("click", () => {
     deleteTodo(getStorage(), `${todoDetails.project}-${index}`);
+  });
+
+  editButton.addEventListener("click", () => {
+    
+    const test = FormInput("test", "TESTING LANG").InputField({
+      value: todoDetails.title,
+    });
+    todoTitle.replaceWith(test);
+    
+    editButton.replaceWith(editButtonCheck);
+    
+    editButtonCheck.addEventListener("click", ()=> {
+
+    });
   });
 
   todo.appendChild(actionsContainer);
