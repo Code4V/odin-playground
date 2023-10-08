@@ -43,14 +43,7 @@ const addTodo = (currentData, data) => {
 
 const deleteTodo = (currentData, dataIndex) => {
   const deletePromise = new Promise((resolve, reject) => {
-    // if (
-    //   currentData.filter((element, index) => index === dataIndex).length == 0
-    // ) {
-    //   reject("Data not found");
-    //   return;
-    // }
     
-    // currentData.splice(dataIndex, 1);
     localStorage.removeItem(dataIndex);
     currentData = getStorage();
 
