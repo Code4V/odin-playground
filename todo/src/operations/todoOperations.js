@@ -71,4 +71,11 @@ const deleteTodo = (currentData, dataIndex) => {
   displayController.displayList(currentData)
 };
 
-export { addTodo, deleteTodo  };
+const editTodo = (dataIndex, updatedData) => 
+{
+  updatedData = JSON.stringify(updatedData);
+
+  localStorage.setItem(dataIndex, updatedData);
+}
+
+export { addTodo, deleteTodo, editTodo };

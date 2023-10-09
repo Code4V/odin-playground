@@ -1,6 +1,6 @@
 import { parseISO, formatRelative, formatDistance } from "date-fns";
 import { getStorage } from "../operations/storageOperations";
-import { deleteTodo } from "../operations/todoOperations";
+import { deleteTodo, editTodo } from "../operations/todoOperations";
 import Trash from "../assets/trash.png";
 import Edit from "../assets/pencil.png";
 import format from "date-fns/format";
@@ -51,15 +51,15 @@ const Todo = (todoDetails, index, options = {}) => {
   const editButton = new Image(16);
   editButton.src = Edit;
   editButton.classList.add("todo__actions-edit");
-  
+
   const editButtonCheck = toSVG({
-    ...Certificate, 
-    attrs: getAttributes(Certificate.attrs)
+    ...Certificate,
+    attrs: getAttributes(Certificate.attrs),
   });
 
   editButtonCheck.src = Edit;
   editButtonCheck.style.color = "darkgreen";
-  
+
   var dueDate = parseInt(todoDetails.dueDate);
 
   const todoDueDate = document.createElement("p");
@@ -88,17 +88,25 @@ const Todo = (todoDetails, index, options = {}) => {
   });
 
   editButton.addEventListener("click", () => {
-    
+    console.log(localStorage.getItem(`${todoDetails.project}-${index}`));
+
     const test = FormInput("test", "TESTING LANG").InputField({
       value: todoDetails.title,
     });
-    todoTitle.replaceWith(test);
-    
-    editButton.replaceWith(editButtonCheck);
-    
-    editButtonCheck.addEventListener("click", ()=> {
 
-    });
+    todoTitle.replaceWith(test);
+
+    editButton.replaceWith(editButtonCheck);
+  });
+
+  editButtonCheck.addEventListener("click", () => {
+    console.log(document.querySelector("#test"));
+
+    todoDetails.title = document.querySelector("#test").value;
+
+    editTodo(`${todoDetails.project}-${index}`, todoDetails);
+
+    editButtonCheck.replaceWith(editButton);
   });
 
   todo.appendChild(actionsContainer);
