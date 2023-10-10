@@ -90,19 +90,25 @@ const Todo = (todoDetails, index, options = {}) => {
   editButton.addEventListener("click", () => {
     console.log(localStorage.getItem(`${todoDetails.project}-${index}`));
 
-    const test = FormInput("test", "TESTING LANG").InputField({
+    const todoUpdate = FormInput("titleUpdate", "Enter new title").InputField({
       value: todoDetails.title,
     });
 
-    todoTitle.replaceWith(test);
+    const todoUpdateDescription = FormInput("descriptionUpdate", "Enter new Description").TextArea({
+      
+    })
+
+
+
+    todoTitle.replaceWith(todoUpdate);
 
     editButton.replaceWith(editButtonCheck);
   });
 
   editButtonCheck.addEventListener("click", () => {
-    console.log(document.querySelector("#test"));
+    console.log(document.querySelector("#titleUpdate"));
 
-    todoDetails.title = document.querySelector("#test").value;
+    todoDetails.title = document.querySelector("#titleUpdate").value;
 
     editTodo(`${todoDetails.project}-${index}`, todoDetails);
 

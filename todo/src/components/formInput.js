@@ -11,6 +11,13 @@ const FormInput = (name = "input", displayName = "default") => {
 
   formInput.append(Label);
 
+  /** 
+  * Options includes:
+  * @param { array || string } addClass - defaults to NULL
+  * @param { boolean } isRequired - defaults to False
+  * @param { string } placeholder  - defaults to the name
+  * @param { string } value - defaults to NULL
+  */
   const TextArea = (options = {}) => {
     var Input = document.createElement("textarea");
     Input.classList.add(`form__input-input`);
@@ -26,6 +33,13 @@ const FormInput = (name = "input", displayName = "default") => {
     return formInput;
   };
 
+  /** 
+  * Options includes:
+  * @param { array || string } addClass - defaults to NULL
+  * @param { boolean } isRequired - defaults to False
+  * @param { string } placeholder  - defaults to the name
+  * @param { string } value - defaults to NULL
+  */
   const InputField = (options = {}) => {
     var Input = document.createElement("input");
     Input.type = "input";
@@ -43,6 +57,13 @@ const FormInput = (name = "input", displayName = "default") => {
     return formInput;
   };
 
+  /** 
+  * Options includes:
+  * @param { array || string } addClass - defaults to NULL
+  * @param { boolean } isRequired - defaults to False
+  * @param { string } placeholder  - defaults to the name
+  * @param { string } value - defaults to NULL
+  */
   const DateField = (options = {}) => {
     var Input = document.createElement("input");
 
@@ -62,6 +83,13 @@ const FormInput = (name = "input", displayName = "default") => {
     return formInput;
   };
 
+  /** 
+  * Options includes:
+  * @param { array || string } addClass - defaults to NULL
+  * @param { boolean } isRequired - defaults to False
+  * @param { string } placeholder  - defaults to the name
+  * @param { string } value - defaults to NULL
+  */
   const NumberField = (options = {}) => {
     var Input = document.createElement("input");
     Input.type = "number";
@@ -90,6 +118,14 @@ const FormInput = (name = "input", displayName = "default") => {
     return formInput;
   };
 
+  /** 
+  * Options includes:
+  * @param { array || string } addClass - defaults to NULL
+  * @param { array } choices - will return early if choices are NULL
+  * @param { boolean } isRequired - defaults to False
+  * @param { string } placeholder  - defaults to the name
+  * @param { string } value - defaults to NULL
+  */
   const SelectField = (options = {}) =>
   {
     var Input = document.createElement("select");
