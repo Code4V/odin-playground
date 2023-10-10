@@ -3,7 +3,7 @@ import displayController from "../controllers/displayController";
 import clearStorage, { getStorage, setStorage } from "./storageOperations";
 
 /**
- * 
+ *
  * @param { Todo } data => A Todo object to be added to LocalStorage
  * @returns A Promise Object
  */
@@ -25,7 +25,7 @@ const addTodo = (data) => {
       `${data.project}-${localStorage.length}`,
       JSON.stringify(data)
     );
-    
+
     const currentData = getStorage();
     displayController.displayList();
 
@@ -40,9 +40,9 @@ const deleteTodo = (dataIndex) => {
     localStorage.removeItem(dataIndex);
     const currentData = getStorage();
     console.log({
-      current: currentData
-    })
-    
+      current: currentData,
+    });
+
     if (currentData.length === 0) {
       // clearStorage();
       displayController.displayList();

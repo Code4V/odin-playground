@@ -24,25 +24,19 @@ class DisplayController {
     if (localStorage.length === 0) await setStorage(dataList);
     // this.#currentData = getStorage();
 
-    if (this.#currentData.length != localStorage.length) this.#currentData = getStorage();
+    if (this.#currentData.length != localStorage.length)
+      this.#currentData = getStorage();
 
-    console.log([
-      dataList,
-      this.#currentData,
-    ])
+    console.log([dataList, this.#currentData]);
 
     if (dataList.length != 0) this.#currentData = dataList;
 
     if (localStorage.length != 0) dataList = getStorage();
-    else 
-    {
+    else {
       dataList = this.#currentData;
     }
 
     if (this.#currentData.length === 0) this.#currentData = dataList;
-
-
-
 
     if (this.#sortByDate) {
       dataList = sortByDate(dataList, { category: "dueDate" });

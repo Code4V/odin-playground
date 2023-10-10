@@ -11,18 +11,18 @@ const FormInput = (name = "input", displayName = "default") => {
 
   formInput.append(Label);
 
-  /** 
-  * Options includes:
-  * @param { array || string } addClass - defaults to NULL
-  * @param { boolean } isRequired - defaults to False
-  * @param { string } placeholder  - defaults to the name
-  * @param { string } value - defaults to NULL
-  */
+  /**
+   * Options includes:
+   * @param { array || string } addClass - defaults to NULL
+   * @param { boolean } isRequired - defaults to False
+   * @param { string } placeholder  - defaults to the name
+   * @param { string } value - defaults to NULL
+   */
   const TextArea = (options = {}) => {
     var Input = document.createElement("textarea");
     Input.classList.add(`form__input-input`);
-    if(options.addClass) Input.classList.add(...options.addClass)
-    if(options.value) Input.value = options.value
+    if (options.addClass) Input.classList.add(...options.addClass);
+    if (options.value) Input.value = options.value;
 
     Input.required = options.isRequired ?? false;
     Input.placeholder = options.placeholder ?? name;
@@ -33,21 +33,21 @@ const FormInput = (name = "input", displayName = "default") => {
     return formInput;
   };
 
-  /** 
-  * Options includes:
-  * @param { array || string } addClass - defaults to NULL
-  * @param { boolean } isRequired - defaults to False
-  * @param { string } placeholder  - defaults to the name
-  * @param { string } value - defaults to NULL
-  */
+  /**
+   * Options includes:
+   * @param { array || string } addClass - defaults to NULL
+   * @param { boolean } isRequired - defaults to False
+   * @param { string } placeholder  - defaults to the name
+   * @param { string } value - defaults to NULL
+   */
   const InputField = (options = {}) => {
     var Input = document.createElement("input");
     Input.type = "input";
     Input.classList.add(`form__input-input`);
-    
-    if(options.addClass) Input.classList.add(...options.addClass)
-    if(options.value) Input.value = options.value
-    
+
+    if (options.addClass) Input.classList.add(...options.addClass);
+    if (options.value) Input.value = options.value;
+
     Input.required = options.isRequired ?? false;
     Input.placeholder = options.placeholder ?? name;
     Input.name = name;
@@ -57,21 +57,21 @@ const FormInput = (name = "input", displayName = "default") => {
     return formInput;
   };
 
-  /** 
-  * Options includes:
-  * @param { array || string } addClass - defaults to NULL
-  * @param { boolean } isRequired - defaults to False
-  * @param { string } placeholder  - defaults to the name
-  * @param { string } value - defaults to NULL
-  */
+  /**
+   * Options includes:
+   * @param { array || string } addClass - defaults to NULL
+   * @param { boolean } isRequired - defaults to False
+   * @param { string } placeholder  - defaults to the name
+   * @param { string } value - defaults to NULL
+   */
   const DateField = (options = {}) => {
     var Input = document.createElement("input");
 
     Input.type = "datetime-local";
     Input.classList.add(`form__input-input`);
 
-    if(options.addClass) Input.classList.add(...options.addClass)
-    if(options.value) Input.value = options.value
+    if (options.addClass) Input.classList.add(...options.addClass);
+    if (options.value) Input.value = options.value;
 
     Input.required = options.isRequired ?? false;
     Input.name = name;
@@ -83,21 +83,21 @@ const FormInput = (name = "input", displayName = "default") => {
     return formInput;
   };
 
-  /** 
-  * Options includes:
-  * @param { array || string } addClass - defaults to NULL
-  * @param { boolean } isRequired - defaults to False
-  * @param { string } placeholder  - defaults to the name
-  * @param { string } value - defaults to NULL
-  */
+  /**
+   * Options includes:
+   * @param { array || string } addClass - defaults to NULL
+   * @param { boolean } isRequired - defaults to False
+   * @param { string } placeholder  - defaults to the name
+   * @param { string } value - defaults to NULL
+   */
   const NumberField = (options = {}) => {
     var Input = document.createElement("input");
     Input.type = "number";
     Input.classList.add(`form__input-input`);
-    
-    if(options.addClass) Input.classList.add(...options.addClass)
-    if(options.value) Input.value = options.value
-    
+
+    if (options.addClass) Input.classList.add(...options.addClass);
+    if (options.value) Input.value = options.value;
+
     Input.required = options.isRequired ?? false;
     Input.placeholder = options.placeholder ?? name;
     Input.name = name;
@@ -106,11 +106,10 @@ const FormInput = (name = "input", displayName = "default") => {
     Input.max = 4;
 
     Input.addEventListener("focusout", (e) => {
-      console.log(Input.max, Input.min)
+      console.log(Input.max, Input.min);
       if (Input.value > Input.max) {
         Input.value = Input.max;
-      }
-      else if (Input.value < Input.min) {
+      } else if (Input.value < Input.min) {
         Input.value = Input.min;
       }
     });
@@ -118,29 +117,28 @@ const FormInput = (name = "input", displayName = "default") => {
     return formInput;
   };
 
-  /** 
-  * Options includes:
-  * @param { array || string } addClass - defaults to NULL
-  * @param { array } choices - will return early if choices are NULL
-  * @param { boolean } isRequired - defaults to False
-  * @param { string } placeholder  - defaults to the name
-  * @param { string } value - defaults to NULL
-  */
-  const SelectField = (options = {}) =>
-  {
+  /**
+   * Options includes:
+   * @param { array || string } addClass - defaults to NULL
+   * @param { array } choices - will return early if choices are NULL
+   * @param { boolean } isRequired - defaults to False
+   * @param { string } placeholder  - defaults to the name
+   * @param { string } value - defaults to NULL
+   */
+  const SelectField = (options = {}) => {
     var Input = document.createElement("select");
     Input.classList.add(`form__input-input`);
-    
-    if(options.addClass) Input.classList.add(...options.addClass)
-    if(options.value) Input.value = options.value
+
+    if (options.addClass) Input.classList.add(...options.addClass);
+    if (options.value) Input.value = options.value;
 
     Input.required = options.isRequired ?? false;
     Input.name = name;
     Input.id = name;
 
-    if(!options.choices) return;
-   
-    options.choices.forEach(element => {
+    if (!options.choices) return;
+
+    options.choices.forEach((element) => {
       const option = document.createElement("option");
 
       // if (element.value == 0) option.defaultSelected = true
@@ -148,13 +146,13 @@ const FormInput = (name = "input", displayName = "default") => {
       option.innerText = element.content;
 
       Input.appendChild(option);
-    })
+    });
 
     formInput.append(Input);
-    return formInput;    
-  }
+    return formInput;
+  };
 
-  return { TextArea, InputField, DateField, NumberField, SelectField  };
+  return { TextArea, InputField, DateField, NumberField, SelectField };
 };
 
 export default FormInput;
