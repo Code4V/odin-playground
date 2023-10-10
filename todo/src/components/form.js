@@ -87,7 +87,7 @@ const Form = () => {
     await addTodo(
       new Todo(res.title, res.description, date, res.project, res.number),
     );
-    
+
     [
       titleField,
       projectField,

@@ -1,56 +1,54 @@
-import { parseISO, formatRelative, formatDistance } from "date-fns";
-import { getStorage } from "../operations/storageOperations";
-import { deleteTodo, editTodo } from "../operations/todoOperations";
-import Trash from "../assets/trash.png";
-import Edit from "../assets/pencil.png";
-import format from "date-fns/format";
-import FormInput from "./formInput";
-import Certificate from "@carbon/icons/lib/checkmark--filled/16";
-import { getAttributes, toSVG } from "@carbon/icon-helpers";
+import { formatDistance } from 'date-fns';
+import Certificate from '@carbon/icons/lib/checkmark--filled/16';
+import { getAttributes, toSVG } from '@carbon/icon-helpers';
+import { deleteTodo, editTodo } from '../operations/todoOperations';
+import Trash from '../assets/trash.png';
+import Edit from '../assets/pencil.png';
+import FormInput from './formInput';
 
 const Todo = (todoDetails, index, options = {}) => {
-  const todo = document.createElement("div");
-  todo.classList.add("todo");
+  const todo = document.createElement('div');
+  todo.classList.add('todo');
   todo.dataset.order = index;
 
   if (options.duration != null) {
     todo.style.animationDuration = options.duration;
   }
 
-  const todoTitleContainer = document.createElement("div");
-  todoTitleContainer.classList.add("todo__title");
+  const todoTitleContainer = document.createElement('div');
+  todoTitleContainer.classList.add('todo__title');
 
-  const todoTitle = document.createElement("h4");
-  todoTitle.classList.add("todo__title-header");
+  const todoTitle = document.createElement('h4');
+  todoTitle.classList.add('todo__title-header');
   todoTitle.textContent = todoDetails.title;
 
-  const todoComplete = document.createElement("p");
-  todoComplete.classList.add("todo__title-status");
-  todoComplete.textContent = todoDetails.isComplete ? "Complete" : "Incomplete";
+  const todoComplete = document.createElement('p');
+  todoComplete.classList.add('todo__title-status');
+  todoComplete.textContent = todoDetails.isComplete ? 'Complete' : 'Incomplete';
 
   todoTitleContainer.append(todoTitle, todoComplete);
 
-  const todoContentContainer = document.createElement("div");
-  todoContentContainer.classList.add("todo__content");
+  const todoContentContainer = document.createElement('div');
+  todoContentContainer.classList.add('todo__content');
 
-  const todoDescription = document.createElement("p");
-  todoDescription.classList.add("todo__content-description");
+  const todoDescription = document.createElement('p');
+  todoDescription.classList.add('todo__content-description');
   todoDescription.textContent = todoDetails.description;
 
   todoContentContainer.append(todoDescription);
 
   todo.append(todoTitleContainer, todoContentContainer);
 
-  const actionsContainer = document.createElement("div");
-  actionsContainer.classList.add("todo__actions");
+  const actionsContainer = document.createElement('div');
+  actionsContainer.classList.add('todo__actions');
 
   const deleteButton = new Image(16);
   deleteButton.src = Trash;
-  deleteButton.classList.add("todo__actions-delete");
+  deleteButton.classList.add('todo__actions-delete');
 
   const editButton = new Image(16);
   editButton.src = Edit;
-  editButton.classList.add("todo__actions-edit");
+  editButton.classList.add('todo__actions-edit');
 
   const editButtonCheck = toSVG({
     ...Certificate,
@@ -58,12 +56,12 @@ const Todo = (todoDetails, index, options = {}) => {
   });
 
   editButtonCheck.src = Edit;
-  editButtonCheck.style.color = "darkgreen";
+  editButtonCheck.style.color = 'darkgreen';
 
-  var dueDate = parseInt(todoDetails.dueDate);
+  const dueDate = parseInt(todoDetails.dueDate, 10);
 
-  const todoDueDate = document.createElement("p");
-  todoDueDate.classList.add("todo__actions-duedate");
+  const todoDueDate = document.createElement('p');
+  todoDueDate.classList.add('todo__actions-duedate');
   todoDueDate.textContent = formatDistance(dueDate, new Date(), {
     addSuffix: true,
   });
@@ -83,27 +81,21 @@ const Todo = (todoDetails, index, options = {}) => {
   //   ${todoDetails.project}
   //   `;
 
-  deleteButton.addEventListener("click", async () => {
-    try {
-      await deleteTodo(`${todoDetails.project}-${index}`);
-    } catch (err) {
-      console.log(err);
-    }
+  deleteButton.addEventListener('click', async () => {
+    await deleteTodo(`${todoDetails.project}-${index}`);
   });
 
-  editButton.addEventListener("click", () => {
-    console.log(localStorage.getItem(`${todoDetails.project}-${index}`));
-
-    const todoUpdate = FormInput("titleUpdate", "Enter new title").InputField({
+  editButton.addEventListener('click', () => {
+    const todoUpdate = FormInput('titleUpdate', 'Enter new title').InputField({
       value: todoDetails.title,
     });
 
     const todoUpdateDescription = FormInput(
-      "descriptionUpdate",
-      "Enter new Description"
+      'descriptionUpdate',
+      'Enter new Description',
     ).TextArea({
       value: todoDetails.description,
-      addClass: ["form__input-textarea"],
+      addClass: ['form__input-textarea'],
     });
 
     todoTitle.replaceWith(todoUpdate);
@@ -112,12 +104,14 @@ const Todo = (todoDetails, index, options = {}) => {
     editButton.replaceWith(editButtonCheck);
   });
 
-  editButtonCheck.addEventListener("click", () => {
-    console.log(document.querySelector("#titleUpdate"));
+  editButtonCheck.addEventListener('click', () => {
+    const todoIndex = `${todoDetails.project}-${index}`;
 
-    todoDetails.title = document.querySelector("#titleUpdate").value;
+    const newTodo = todoDetails;
 
-    editTodo(`${todoDetails.project}-${index}`, todoDetails);
+    newTodo.title = document.querySelector('#titleUpdate').value;
+
+    editTodo(todoIndex, newTodo);
 
     editButtonCheck.replaceWith(editButton);
   });

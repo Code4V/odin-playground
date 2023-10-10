@@ -1,12 +1,12 @@
-import { format } from "date-fns";
+import { format } from 'date-fns';
 
-const FormInput = (name = "input", displayName = "default") => {
-  const formInput = document.createElement("div");
-  formInput.classList.add("form__input");
+const FormInput = (name = 'input', displayName = 'default') => {
+  const formInput = document.createElement('div');
+  formInput.classList.add('form__input');
 
-  const Label = document.createElement("label");
-  Label.classList.add(`form__input-label`);
-  Label.setAttribute("for", name);
+  const Label = document.createElement('label');
+  Label.classList.add('form__input-label');
+  Label.setAttribute('for', name);
   Label.textContent = displayName;
 
   formInput.append(Label);
@@ -19,8 +19,8 @@ const FormInput = (name = "input", displayName = "default") => {
    * @param { string } value - defaults to NULL
    */
   const TextArea = (options = {}) => {
-    var Input = document.createElement("textarea");
-    Input.classList.add(`form__input-input`);
+    const Input = document.createElement('textarea');
+    Input.classList.add('form__input-input');
     if (options.addClass) Input.classList.add(...options.addClass);
     if (options.value) Input.value = options.value;
 
@@ -41,9 +41,9 @@ const FormInput = (name = "input", displayName = "default") => {
    * @param { string } value - defaults to NULL
    */
   const InputField = (options = {}) => {
-    var Input = document.createElement("input");
-    Input.type = "input";
-    Input.classList.add(`form__input-input`);
+    const Input = document.createElement('input');
+    Input.type = 'input';
+    Input.classList.add('form__input-input');
 
     if (options.addClass) Input.classList.add(...options.addClass);
     if (options.value) Input.value = options.value;
@@ -65,10 +65,10 @@ const FormInput = (name = "input", displayName = "default") => {
    * @param { string } value - defaults to NULL
    */
   const DateField = (options = {}) => {
-    var Input = document.createElement("input");
+    const Input = document.createElement('input');
 
-    Input.type = "datetime-local";
-    Input.classList.add(`form__input-input`);
+    Input.type = 'datetime-local';
+    Input.classList.add('form__input-input');
 
     if (options.addClass) Input.classList.add(...options.addClass);
     if (options.value) Input.value = options.value;
@@ -76,8 +76,8 @@ const FormInput = (name = "input", displayName = "default") => {
     Input.required = options.isRequired ?? false;
     Input.name = name;
     Input.id = name;
-    Input.min = format(new Date(), "yyyy-MM-dd HH:mm");
-    Input.value = format(new Date(), "yyyy-MM-dd HH:mm");
+    Input.min = format(new Date(), 'yyyy-MM-dd HH:mm');
+    Input.value = format(new Date(), 'yyyy-MM-dd HH:mm');
 
     formInput.append(Input);
     return formInput;
@@ -91,9 +91,9 @@ const FormInput = (name = "input", displayName = "default") => {
    * @param { string } value - defaults to NULL
    */
   const NumberField = (options = {}) => {
-    var Input = document.createElement("input");
-    Input.type = "number";
-    Input.classList.add(`form__input-input`);
+    const Input = document.createElement('input');
+    Input.type = 'number';
+    Input.classList.add('form__input-input');
 
     if (options.addClass) Input.classList.add(...options.addClass);
     if (options.value) Input.value = options.value;
@@ -105,8 +105,7 @@ const FormInput = (name = "input", displayName = "default") => {
     Input.min = 0;
     Input.max = 4;
 
-    Input.addEventListener("focusout", (e) => {
-      console.log(Input.max, Input.min);
+    Input.addEventListener('focusout', () => {
       if (Input.value > Input.max) {
         Input.value = Input.max;
       } else if (Input.value < Input.min) {
@@ -126,8 +125,8 @@ const FormInput = (name = "input", displayName = "default") => {
    * @param { string } value - defaults to NULL
    */
   const SelectField = (options = {}) => {
-    var Input = document.createElement("select");
-    Input.classList.add(`form__input-input`);
+    const Input = document.createElement('select');
+    Input.classList.add('form__input-input');
 
     if (options.addClass) Input.classList.add(...options.addClass);
     if (options.value) Input.value = options.value;
@@ -136,10 +135,10 @@ const FormInput = (name = "input", displayName = "default") => {
     Input.name = name;
     Input.id = name;
 
-    if (!options.choices) return;
+    if (!options.choices) return formInput;
 
     options.choices.forEach((element) => {
-      const option = document.createElement("option");
+      const option = document.createElement('option');
 
       // if (element.value == 0) option.defaultSelected = true
       option.value = element.value;
@@ -152,7 +151,9 @@ const FormInput = (name = "input", displayName = "default") => {
     return formInput;
   };
 
-  return { TextArea, InputField, DateField, NumberField, SelectField };
+  return {
+    TextArea, InputField, DateField, NumberField, SelectField,
+  };
 };
 
 export default FormInput;

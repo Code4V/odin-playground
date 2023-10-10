@@ -1,4 +1,3 @@
-import { format } from "date-fns";
 import TodoList from "../components/todoList";
 import clearStorage, {
   getStorage,
