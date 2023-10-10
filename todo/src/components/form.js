@@ -86,17 +86,24 @@ const Form = () => {
     formActions
   );
 
-  form.addEventListener("submit", (e) => {
+  form.addEventListener("submit", async (e) => {
     e.preventDefault();
 
     const FormEvent = new FormData(form);
     const res = Object.fromEntries(FormEvent);
     const date = new Date(res.dueDate).getTime();
 
-    addTodo(
-      data,
-      new Todo(res.title, res.description, date, res.project, res.number)
-    );
+    try
+    {
+      
+      await addTodo(
+        new Todo(res.title, res.description, date, res.project, res.number)
+      );
+    }
+    catch (err)
+    {
+      consol.log(err)
+    }
 
     [
       titleField,

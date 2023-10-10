@@ -2,16 +2,13 @@ import TodoList from "../components/todoList";
 import displayController from "../controllers/displayController";
 import clearStorage, { getStorage, setStorage } from "./storageOperations";
 
-const addTodo = (currentData, data) => {
-  // var storedData = filteredProject.from(localStorage);
-  // if (storedData.includes(JSON.stringify(data))) return alert("ENGK");
-
+/**
+ * 
+ * @param { Todo } data => A Todo object to be added to LocalStorage
+ * @returns A Promise Object
+ */
+const addTodo = (data) => {
   const addPromise = new Promise((resolve, reject) => {
-    if (!currentData) {
-      reject("No data has been inserted!");
-      return;
-    }
-
     if (typeof data !== "object") {
       reject("Data must be an Object");
       return;
@@ -24,58 +21,48 @@ const addTodo = (currentData, data) => {
 
     data = data.todoDetails;
 
-    localStorage.setItem(`${data.project}-${localStorage.length}`, JSON.stringify(data));
-    currentData = getStorage();
+    localStorage.setItem(
+      `${data.project}-${localStorage.length}`,
+      JSON.stringify(data)
+    );
+    
+    const currentData = getStorage();
+    displayController.displayList();
 
     resolve("Item has been added!");
   });
 
-  addPromise
-    .then((message) => {
-      console.log(message);
-    })
-    .catch((err) => {
-      console.log(err);
-    });
+  return addPromise;
+};
 
-  displayController.displayList(currentData)
- };
-
-const deleteTodo = (currentData, dataIndex) => {
+const deleteTodo = (dataIndex) => {
   const deletePromise = new Promise((resolve, reject) => {
-    
     localStorage.removeItem(dataIndex);
-    currentData = getStorage();
-
+    const currentData = getStorage();
+    console.log({
+      current: currentData
+    })
+    
     if (currentData.length === 0) {
-      clearStorage();
-      displayList(currentData);
+      // clearStorage();
+      displayController.displayList();
       reject("Data is now empty");
       return;
     }
 
-    clearStorage();
-    console.log("AFTER CLEAR", { currentData, dataIndex });
-    
+    // clearStorage();
+
+    displayController.displayList();
     resolve("Todo successfully deleted");
   });
-  
-  deletePromise
-  .then((message) => {
-    console.log(message);
-  })
-  .catch((err) => {
-    console.log(err);
-  });
-  
-  displayController.displayList(currentData)
+
+  return deletePromise;
 };
 
-const editTodo = (dataIndex, updatedData) => 
-{
+const editTodo = (dataIndex, updatedData) => {
   updatedData = JSON.stringify(updatedData);
 
   localStorage.setItem(dataIndex, updatedData);
-}
+};
 
 export { addTodo, deleteTodo, editTodo };

@@ -83,8 +83,16 @@ const Todo = (todoDetails, index, options = {}) => {
   //   ${todoDetails.project}
   //   `;
 
-  deleteButton.addEventListener("click", () => {
-    deleteTodo(getStorage(), `${todoDetails.project}-${index}`);
+  deleteButton.addEventListener("click", async () => {
+    try 
+    {
+      await deleteTodo(`${todoDetails.project}-${index}`);
+    }  
+    catch (err)
+    {
+      console.log(err);
+    }
+  
   });
 
   editButton.addEventListener("click", () => {
@@ -95,12 +103,15 @@ const Todo = (todoDetails, index, options = {}) => {
     });
 
     const todoUpdateDescription = FormInput("descriptionUpdate", "Enter new Description").TextArea({
-      
+      value: todoDetails.description,
+      addClass: [
+        "form__input-textarea", 
+      ],
     })
 
-
-
+    
     todoTitle.replaceWith(todoUpdate);
+    todoDescription.replaceWith(todoUpdateDescription);
 
     editButton.replaceWith(editButtonCheck);
   });
