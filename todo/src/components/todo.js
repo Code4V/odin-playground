@@ -10,6 +10,7 @@ const Todo = (todoDetails, index, options = {}) => {
   const todo = document.createElement('div');
   todo.classList.add('todo');
   todo.dataset.order = index;
+  todo.setAttribute("id", `${todoDetails.project}-${index}`);
 
   if (options.duration != null) {
     todo.style.animationDuration = options.duration;

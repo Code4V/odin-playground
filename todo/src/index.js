@@ -1,19 +1,21 @@
-import data from './data/todo.json';
-import clearStorage, { setStorage } from './operations/storageOperations';
-import displayController from './controllers/displayController';
-import Form from './components/form';
-import Background from './assets/TodoBackground.jpg';
+import data from "./data/todo.json";
+import clearStorage, { setStorage } from "./operations/storageOperations";
+import displayController from "./controllers/displayController";
+import todoController from "./controllers/todoController";
+import Form from "./components/form";
+import Background from "./assets/TodoBackground.jpg";
+import TodoController from "./controllers/todoController";
 
-const main = document.querySelector('#content');
+const main = document.querySelector("#content");
 
 clearStorage();
 
-document.addEventListener('DOMContentLoaded', async () => {
-  const mainContainer = document.createElement('main');
+document.addEventListener("DOMContentLoaded", () => {
+  const mainContainer = document.createElement("main");
   main.appendChild(Form());
 
   const backgroundImage = new Image(1920, 1080);
-  backgroundImage.classList.add('background');
+  backgroundImage.classList.add("background");
   backgroundImage.src = Background;
 
   main.appendChild(backgroundImage);
@@ -23,7 +25,11 @@ document.addEventListener('DOMContentLoaded', async () => {
   // displayController.toggleFilter();
   displayController.toggleDateOrder();
   displayController.displayList(data);
+
 });
+const todos = document.querySelectorAll(".todo-list__todos");
+console.log("this", todos);
+
 
 // console.log(await (await fetch("https://reqres.in/api/users/")).json());
 
