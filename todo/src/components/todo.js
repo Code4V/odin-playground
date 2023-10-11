@@ -1,7 +1,7 @@
 import { formatDistance } from 'date-fns';
 import Certificate from '@carbon/icons/lib/checkmark--filled/16';
 import { getAttributes, toSVG } from '@carbon/icon-helpers';
-import { deleteTodo, editTodo } from '../operations/todoOperations';
+// import { deleteTodo, editTodo } from '../operations/todoOperations';
 import Trash from '../assets/trash.png';
 import Edit from '../assets/pencil.png';
 import FormInput from './formInput';
@@ -82,7 +82,7 @@ const Todo = (todoDetails, index, options = {}) => {
   //   `;
 
   deleteButton.addEventListener('click', async () => {
-    await deleteTodo(`${todoDetails.project}-${index}`);
+    // await deleteTodo(`${todoDetails.project}-${index}`);
   });
 
   editButton.addEventListener('click', () => {
@@ -105,13 +105,13 @@ const Todo = (todoDetails, index, options = {}) => {
   });
 
   editButtonCheck.addEventListener('click', () => {
-    const todoIndex = `${todoDetails.project}-${index}`;
+    // const todoIndex = `${todoDetails.project}-${index}`;
 
     const newTodo = todoDetails;
 
     newTodo.title = document.querySelector('#titleUpdate').value;
 
-    editTodo(todoIndex, newTodo);
+    // editTodo(todoIndex, newTodo);
 
     editButtonCheck.replaceWith(editButton);
   });

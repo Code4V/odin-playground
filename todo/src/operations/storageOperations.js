@@ -19,10 +19,10 @@ function setStorage(todoData) {
 }
 
 function getStorage() {
-  let todo = [];
+  const todo = [];
   let storageItem;
 
-  for (let i = 0; i < localStorage.length; i++) {
+  for (let i = 0; i < localStorage.length; i += 1) {
     storageItem = JSON.parse(
       localStorage.getItem(Object.keys(localStorage)[i])
     );

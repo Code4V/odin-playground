@@ -1,4 +1,3 @@
-import displayController from '../controllers/displayController';
 import { getStorage } from './storageOperations';
 
 /**
@@ -18,14 +17,12 @@ const addTodo = (data) => {
       return;
     }
 
-    data = data.todoDetails;
+    const updatedData = data.todoDetails;
 
     localStorage.setItem(
-      `${data.project}-${localStorage.length}`,
-      JSON.stringify(data),
+      `${updatedData.project}-${localStorage.length}`,
+      JSON.stringify(updatedData),
     );
-
-    displayController.displayList();
 
     resolve('Item has been added!');
   });
@@ -39,15 +36,10 @@ const deleteTodo = (dataIndex) => {
     const currentData = getStorage();
 
     if (currentData.length === 0) {
-      // clearStorage();
-      displayController.displayList();
       reject(new Error('Data is now empty'));
       return;
     }
 
-    // clearStorage();
-
-    displayController.displayList();
     resolve('Todo successfully deleted');
   });
 
@@ -55,9 +47,9 @@ const deleteTodo = (dataIndex) => {
 };
 
 const editTodo = (dataIndex, updatedData) => {
-  updatedData = JSON.stringify(updatedData);
+  const processedData = JSON.stringify(updatedData);
 
-  localStorage.setItem(dataIndex, updatedData);
+  localStorage.setItem(dataIndex, processedData);
 };
 
 export { addTodo, deleteTodo, editTodo };

@@ -6,7 +6,9 @@
   "scripts": {
     "webpack": "webpack build --watch",
     "sass": "sass src/sass/index.sass dist/index.css --watch",
-    "test": "jest"
+    "test": "jest",
+    "lint": "eslint src/components src/controllers src/operations",
+    "lint:fix": "eslint src/components src/controllers src/operations --fix"
   },
   "keywords": [],
   "author": "",

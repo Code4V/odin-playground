@@ -1,36 +1,34 @@
-import TodoList from "../components/todoList";
+import TodoList from '../components/todoList';
 import clearStorage, {
   getStorage,
   setStorage,
-} from "../operations/storageOperations";
-import parseISO from "date-fns/parseISO";
-import { sortByDate, filterProjects } from "../operations/dataOperations";
+} from '../operations/storageOperations';
+import { sortByDate, filterProjects } from '../operations/dataOperations';
 
 class DisplayController {
   #isFiltered = false;
+
   #sortByDate = false;
+
   #currentData = [];
 
   constructor() {
     if (DisplayController.instance == null) {
       DisplayController.instance = this;
     }
-
-    return DisplayController.instance;
   }
 
   displayList = async (dataList = []) => {
     if (localStorage.length === 0) await setStorage(dataList);
     // this.#currentData = getStorage();
 
-    if (this.#currentData.length != localStorage.length)
+    if (this.#currentData.length !== localStorage.length) {
       this.#currentData = getStorage();
+    }
 
-    console.log([dataList, this.#currentData]);
+    if (dataList.length !== 0) this.#currentData = dataList;
 
-    if (dataList.length != 0) this.#currentData = dataList;
-
-    if (localStorage.length != 0) dataList = getStorage();
+    if (localStorage.length !== 0) dataList = getStorage();
     else {
       dataList = this.#currentData;
     }
@@ -38,56 +36,53 @@ class DisplayController {
     if (this.#currentData.length === 0) this.#currentData = dataList;
 
     if (this.#sortByDate) {
-      dataList = sortByDate(dataList, { category: "dueDate" });
+      this.#currentData = sortByDate(dataList, { category: 'dueDate' });
       clearStorage();
       await setStorage(dataList);
     }
 
-    let projects = filterProjects(dataList);
+    const projects = filterProjects(dataList);
 
-    const mainTodoListContainer = document.querySelector("main");
-    mainTodoListContainer.innerHTML = "";
+    const mainTodoListContainer = document.querySelector('main');
+    mainTodoListContainer.innerHTML = '';
 
     if (!this.#isFiltered) {
       mainTodoListContainer.appendChild(TodoList(dataList));
     } else {
       clearStorage();
-      if (!projects["projects"].length)
+      if (!projects.projects.length) {
         mainTodoListContainer.appendChild(TodoList([]));
+      }
 
-      projects["filteredProject"].forEach((element) => {
-        let currentProj = Object.keys(element)[0];
-        projects["projects"].forEach(async (project, index) => {
-          var duration = index * 500 + 500;
+      projects.filteredProject.forEach((element) => {
+        const currentProj = Object.keys(element)[0];
+        projects.projects.forEach(async (project, index) => {
+          let duration = index * 500 + 500;
           duration = duration > 2500 ? 2500 : duration;
 
-          if (project == currentProj) {
-            console.log(project);
-
+          if (project === currentProj) {
             mainTodoListContainer.appendChild(
               TodoList(element[project], {
                 projectName: [project],
                 duration: `${[duration]}ms`,
-              })
+              }),
             );
 
             await setStorage(element[project]);
-          } else return;
+          }
         });
       });
     }
-
-    return this;
   };
 
   toggleFilter() {
-    this.#isFiltered = !this.#isFiltered ? true : false;
+    this.#isFiltered = !this.#isFiltered;
 
     return this;
   }
 
   toggleDateOrder() {
-    this.#sortByDate = !this.#sortByDate ? true : false;
+    this.#sortByDate = !this.#sortByDate;
 
     return this;
   }
