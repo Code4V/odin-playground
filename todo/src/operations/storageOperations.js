@@ -7,11 +7,9 @@ function setStorage(todoData) {
   todoData.forEach((element, index) => {
     localStorage.setItem(
       `${element.project}-${index}`,
-      JSON.stringify(element)
+      JSON.stringify(element),
     );
   });
-
-  return setPromise;
 }
 
 function getStorage() {
@@ -20,8 +18,9 @@ function getStorage() {
 
   for (let i = 0; i < localStorage.length; i += 1) {
     storageItem = JSON.parse(
-      localStorage.getItem(Object.keys(localStorage)[i])
+      localStorage.getItem(Object.keys(localStorage)[i]),
     );
+    console.log(Object.keys(localStorage)[i]);
     todo.push(storageItem);
   }
 

@@ -10,7 +10,7 @@ const Todo = (todoDetails, index, options = {}) => {
   const todo = document.createElement('div');
   todo.classList.add('todo');
   todo.dataset.order = index;
-  todo.setAttribute("id", `${todoDetails.project}-${index}`);
+  todo.setAttribute('id', `${todoDetails.project}-${index}`);
 
   if (options.duration != null) {
     todo.style.animationDuration = options.duration;
@@ -82,9 +82,9 @@ const Todo = (todoDetails, index, options = {}) => {
   //   ${todoDetails.project}
   //   `;
 
-  deleteButton.addEventListener('click', async () => {
-    // await deleteTodo(`${todoDetails.project}-${index}`);
-  });
+  // deleteButton.addEventListener('click', async () => {
+  //   // await deleteTodo(`${todoDetails.project}-${index}`);
+  // });
 
   editButton.addEventListener('click', () => {
     const todoUpdate = FormInput('titleUpdate', 'Enter new title').InputField({

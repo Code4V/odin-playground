@@ -18,9 +18,9 @@ class DisplayController {
     }
   }
 
-  displayList = (dataList = []) => {
+  displayTodoList = (dataList = []) => {
     if (localStorage.length === 0) setStorage(dataList);
-    // this.#currentData = getStorage();
+    if (this.#currentData.length === 0) this.#currentData = dataList;
 
     if (this.#currentData.length !== localStorage.length) {
       this.#currentData = getStorage();
@@ -28,12 +28,7 @@ class DisplayController {
 
     if (dataList.length !== 0) this.#currentData = dataList;
 
-    if (localStorage.length !== 0) dataList = getStorage();
-    else {
-      dataList = this.#currentData;
-    }
-
-    if (this.#currentData.length === 0) this.#currentData = dataList;
+    if (localStorage.length !== 0) dataList = this.#currentData;
 
     if (this.#sortByDate) {
       this.#currentData = sortByDate(dataList, { category: 'dueDate' });

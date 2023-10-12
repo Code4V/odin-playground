@@ -5,6 +5,7 @@ import todoController from "./controllers/todoController";
 import Form from "./components/form";
 import Background from "./assets/TodoBackground.jpg";
 
+
 const main = document.querySelector("#content");
 
 clearStorage();
@@ -21,15 +22,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
   main.appendChild(mainContainer);
 
-  // displayController.toggleFilter();
+  displayController.toggleFilter();
   displayController.toggleDateOrder();
-  displayController.displayList(data);
+  displayController.displayTodoList(data);
 
-  console.log(todoController.getTodos);
+  todoController.getTodos()
+  todoController.createTodoEvents();
 });
-
-
-
-// console.log(await (await fetch("https://reqres.in/api/users/")).json());
-
-// console.log(new Date("September-09-2023").getTime())

@@ -30,14 +30,32 @@ const addTodo = (data) => {
   return addPromise;
 };
 
+/**
+ *
+ * @param {string || array} dataIndex
+ * @returns Promise
+ */
 const deleteTodo = (dataIndex) => {
   const deletePromise = new Promise((resolve, reject) => {
-    localStorage.removeItem(dataIndex);
+    if (typeof dataIndex === 'number') reject(new Error('Index should indicate the Project Name'));
+
+    switch (Array.isArray(dataIndex)) {
+      case false:
+        localStorage.removeItem(dataIndex);
+        break;
+      case true:
+        dataIndex.forEach((element) => {
+          localStorage.removeItem(element);
+        });
+        break;
+      default:
+        reject(new Error('Index must compose of the Project Name and Index'));
+        break;
+    }
     const currentData = getStorage();
 
     if (currentData.length === 0) {
       reject(new Error('Data is now empty'));
-      return;
     }
 
     resolve('Todo successfully deleted');
