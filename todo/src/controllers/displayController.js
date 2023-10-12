@@ -18,8 +18,8 @@ class DisplayController {
     }
   }
 
-  displayList = async (dataList = []) => {
-    if (localStorage.length === 0) await setStorage(dataList);
+  displayList = (dataList = []) => {
+    if (localStorage.length === 0) setStorage(dataList);
     // this.#currentData = getStorage();
 
     if (this.#currentData.length !== localStorage.length) {
@@ -38,7 +38,7 @@ class DisplayController {
     if (this.#sortByDate) {
       this.#currentData = sortByDate(dataList, { category: 'dueDate' });
       clearStorage();
-      await setStorage(dataList);
+      setStorage(dataList);
     }
 
     const projects = filterProjects(dataList);
@@ -56,7 +56,7 @@ class DisplayController {
 
       projects.filteredProject.forEach((element) => {
         const currentProj = Object.keys(element)[0];
-        projects.projects.forEach(async (project, index) => {
+        projects.projects.forEach((project, index) => {
           let duration = index * 500 + 500;
           duration = duration > 2500 ? 2500 : duration;
 
@@ -68,7 +68,7 @@ class DisplayController {
               }),
             );
 
-            await setStorage(element[project]);
+            setStorage(element[project]);
           }
         });
       });

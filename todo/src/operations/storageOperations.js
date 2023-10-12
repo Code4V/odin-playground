@@ -4,15 +4,11 @@ export default function clearStorage() {
 }
 
 function setStorage(todoData) {
-  const setPromise = new Promise((resolve) => {
-    todoData.forEach((element, index) => {
-      localStorage.setItem(
-        `${element.project}-${index}`,
-        JSON.stringify(element)
-      );
-    });
-
-    resolve("Data Filled Successfully");
+  todoData.forEach((element, index) => {
+    localStorage.setItem(
+      `${element.project}-${index}`,
+      JSON.stringify(element)
+    );
   });
 
   return setPromise;

@@ -4,7 +4,6 @@ import displayController from "./controllers/displayController";
 import todoController from "./controllers/todoController";
 import Form from "./components/form";
 import Background from "./assets/TodoBackground.jpg";
-import TodoController from "./controllers/todoController";
 
 const main = document.querySelector("#content");
 
@@ -26,9 +25,9 @@ document.addEventListener("DOMContentLoaded", () => {
   displayController.toggleDateOrder();
   displayController.displayList(data);
 
+  console.log(todoController.getTodos);
 });
-const todos = document.querySelectorAll(".todo-list__todos");
-console.log("this", todos);
+
 
 
 // console.log(await (await fetch("https://reqres.in/api/users/")).json());

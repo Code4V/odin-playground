@@ -1,15 +1,19 @@
 class TodoController {
 
-  getTodos()
-  {
-    return new Promise((resolve) => {
-      const todos = document.querySelectorAll('.todo-list__todos');
+  #currentTodos = [];
 
-      resolve(todos);
-    })
+  get getTodos()
+  {
+    this.#currentTodos = document.querySelectorAll(".todo-list__todos");
+
+    return this.#currentTodos;
+  }
+
+  get updateTodos()
+  {
+    this.#currentTodos = document.querySelectorAll(".todo-list__todos");
   }
 }
+const todoController = new TodoController();
 
-
-
-export default TodoController;
+export default todoController;
