@@ -1,7 +1,4 @@
 import { formatDistance } from 'date-fns';
-import Certificate from '@carbon/icons/lib/checkmark--filled/16';
-import { getAttributes, toSVG } from '@carbon/icon-helpers';
-// import { deleteTodo, editTodo } from '../operations/todoOperations';
 import Trash from '../assets/trash.png';
 import Edit from '../assets/pencil.png';
 import FormInput from './formInput';
@@ -51,14 +48,6 @@ const Todo = (todoDetails, index, options = {}) => {
   editButton.src = Edit;
   editButton.classList.add('todo__actions-edit');
 
-  const editButtonCheck = toSVG({
-    ...Certificate,
-    attrs: getAttributes(Certificate.attrs),
-  });
-
-  editButtonCheck.src = Edit;
-  editButtonCheck.style.color = 'darkgreen';
-
   const dueDate = parseInt(todoDetails.dueDate, 10);
 
   const todoDueDate = document.createElement('p');
@@ -86,36 +75,36 @@ const Todo = (todoDetails, index, options = {}) => {
   //   // await deleteTodo(`${todoDetails.project}-${index}`);
   // });
 
-  editButton.addEventListener('click', () => {
-    const todoUpdate = FormInput('titleUpdate', 'Enter new title').InputField({
-      value: todoDetails.title,
-    });
+  // editButton.addEventListener('click', () => {
+  //   const todoUpdate = FormInput('titleUpdate', 'Enter new title').InputField({
+  //     value: todoDetails.title,
+  //   });
 
-    const todoUpdateDescription = FormInput(
-      'descriptionUpdate',
-      'Enter new Description',
-    ).TextArea({
-      value: todoDetails.description,
-      addClass: ['form__input-textarea'],
-    });
+  //   const todoUpdateDescription = FormInput(
+  //     'descriptionUpdate',
+  //     'Enter new Description',
+  //   ).TextArea({
+  //     value: todoDetails.description,
+  //     addClass: ['form__input-textarea'],
+  //   });
 
-    todoTitle.replaceWith(todoUpdate);
-    todoDescription.replaceWith(todoUpdateDescription);
+  //   todoTitle.replaceWith(todoUpdate);
+  //   todoDescription.replaceWith(todoUpdateDescription);
 
-    editButton.replaceWith(editButtonCheck);
-  });
+  //   editButton.replaceWith(editButtonCheck);
+  // });
 
-  editButtonCheck.addEventListener('click', () => {
-    // const todoIndex = `${todoDetails.project}-${index}`;
+  // // editButtonCheck.addEventListener('click', () => {
+  // //   // const todoIndex = `${todoDetails.project}-${index}`;
 
-    const newTodo = todoDetails;
+  // //   const newTodo = todoDetails;
 
-    newTodo.title = document.querySelector('#titleUpdate').value;
+  // //   newTodo.title = document.querySelector('#titleUpdate').value;
 
-    // editTodo(todoIndex, newTodo);
+  // //   // editTodo(todoIndex, newTodo);
 
-    editButtonCheck.replaceWith(editButton);
-  });
+  // //   editButtonCheck.replaceWith(editButton);
+  // });
 
   todo.appendChild(actionsContainer);
 

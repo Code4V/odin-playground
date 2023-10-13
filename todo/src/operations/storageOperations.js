@@ -27,4 +27,13 @@ function getStorage() {
   return todo;
 }
 
-export { setStorage, getStorage };
+function getLocalStorageItem(dataIndex)
+{
+  if(typeof dataIndex === 'number') 
+    return new Error("Index must be composed of Project followed by the Index");
+  
+    return JSON.parse(localStorage.getItem(dataIndex));
+}
+
+
+export { setStorage, getStorage, getLocalStorageItem };
