@@ -76,9 +76,20 @@ class TodoController {
 
         const newTodo = getLocalStorageItem(element.id);
 
-        newTodo.title = document.querySelector('#titleUpdate').value;
+        
+        const todoUpdate = document.querySelector('#titleUpdate');
+        const descriptionUpdate = document.querySelector('#descriptionUpdate');
+
+        newTodo.title = todoUpdate.value;
+        newTodo.description = descriptionUpdate.value
 
         editTodo(element.id, newTodo);
+
+        titleContent.textContent = todoUpdate.value;
+        descriptionContent.textContent = descriptionUpdate.value;
+
+        todoUpdate.replaceWith(titleContent);
+        descriptionUpdate.replaceWith(descriptionContent);
 
         editButtonCheck.replaceWith(editButtonAction);
       })
