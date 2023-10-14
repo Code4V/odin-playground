@@ -100,8 +100,15 @@ textarea, input[type=datetime-local] {
 .todo__title-header {
   font-weight: 700;
 }
-.todo__title-status {
+.todo__title-priority {
+  font-weight: 600;
   margin-inline-start: auto;
+  padding-inline: 0.5rem;
+  border-radius: 100svh;
+  background-color: hsla(50, 5%, 95%, 0.85);
+}
+.todo__title-status {
+  margin-inline-start: 0.5rem;
 }
 .todo__content {
   margin-block: 0.25rem;
@@ -141,6 +148,7 @@ textarea, input[type=datetime-local] {
   display: none;
 }
 .form__input-input {
+  max-height: calc(1rem - 2px);
   border-radius: 0px;
   background-color: hsla(0, 0%, 50%, 0);
   border: 0;
@@ -158,6 +166,7 @@ textarea, input[type=datetime-local] {
   color: hsla(47.08, 80.6%, 50.32%, 0.5);
 }
 .form__input-textarea {
+  min-height: 1.5rem;
   resize: none;
   width: 100%;
 }

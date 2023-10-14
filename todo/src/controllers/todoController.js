@@ -1,9 +1,9 @@
-import { deleteTodo, editTodo } from '../operations/todoOperations';
-import displayController from './displayController';
 import Certificate from '@carbon/icons/lib/checkmark--filled/16';
 import { getAttributes, toSVG } from '@carbon/icon-helpers';
+import { deleteTodo, editTodo } from '../operations/todoOperations';
+import displayController from './displayController';
 import FormInput from '../components/formInput';
-import { getLocalStorageItem, getStorage } from '../operations/storageOperations';
+import { getLocalStorageItem } from '../operations/storageOperations';
 
 class TodoController {
   #currentTodos = [];
@@ -25,7 +25,7 @@ class TodoController {
       const descriptionContent = element.childNodes[1].childNodes[0];
 
       const editButtonCheck = toSVG({
-      ...Certificate,
+        ...Certificate,
         attrs: getAttributes(Certificate.attrs),
       });
 
@@ -53,7 +53,6 @@ class TodoController {
       });
 
       editButtonAction.addEventListener('click', () => {
-
         const todoUpdate = FormInput('titleUpdate', 'Enter new title').InputField({
           value: titleContent.textContent,
         });
@@ -70,18 +69,16 @@ class TodoController {
         descriptionContent.replaceWith(todoUpdateDescription);
 
         editButtonAction.replaceWith(editButtonCheck);
-      })
+      });
 
       editButtonCheck.addEventListener('click', () => {
-
         const newTodo = getLocalStorageItem(element.id);
 
-        
         const todoUpdate = document.querySelector('#titleUpdate');
         const descriptionUpdate = document.querySelector('#descriptionUpdate');
 
         newTodo.title = todoUpdate.value;
-        newTodo.description = descriptionUpdate.value
+        newTodo.description = descriptionUpdate.value;
 
         editTodo(element.id, newTodo);
 
@@ -92,8 +89,7 @@ class TodoController {
         descriptionUpdate.replaceWith(descriptionContent);
 
         editButtonCheck.replaceWith(editButtonAction);
-      })
-
+      });
     });
   }
 }

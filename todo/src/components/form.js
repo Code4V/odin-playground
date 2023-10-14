@@ -4,6 +4,7 @@ import { getAttributes, toSVG } from '@carbon/icon-helpers';
 import FormInput from './formInput';
 import { addTodo } from '../operations/todoOperations';
 import Todo from '../classes/Todo';
+import displayController from '../controllers/displayController';
 
 const Form = () => {
   const formContainer = document.createElement('section');
@@ -85,8 +86,10 @@ const Form = () => {
     const date = new Date(res.dueDate).getTime();
 
     await addTodo(
-      new Todo(res.title, res.description, date, res.project, res.number),
+      new Todo(res.title, res.description, date, res.project.trim(), res.number),
     );
+
+    displayController.displayTodoList();
 
     [
       titleField,

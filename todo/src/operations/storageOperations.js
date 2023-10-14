@@ -20,20 +20,16 @@ function getStorage() {
     storageItem = JSON.parse(
       localStorage.getItem(Object.keys(localStorage)[i]),
     );
-    console.log(Object.keys(localStorage)[i]);
     todo.push(storageItem);
   }
 
   return todo;
 }
 
-function getLocalStorageItem(dataIndex)
-{
-  if(typeof dataIndex === 'number') 
-    return new Error("Index must be composed of Project followed by the Index");
-  
-    return JSON.parse(localStorage.getItem(dataIndex));
-}
+function getLocalStorageItem(dataIndex) {
+  if (typeof dataIndex === 'number') { return new Error('Index must be composed of Project followed by the Index'); }
 
+  return JSON.parse(localStorage.getItem(dataIndex));
+}
 
 export { setStorage, getStorage, getLocalStorageItem };

@@ -18,7 +18,8 @@ class DisplayController {
     }
   }
 
-  displayTodoList = (dataList = []) => {
+  displayTodoList = (todoData = []) => {
+    let dataList = todoData;
     if (localStorage.length === 0) setStorage(dataList);
     if (this.#currentData.length === 0) this.#currentData = dataList;
 

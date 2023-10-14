@@ -1,13 +1,18 @@
 import { formatDistance } from 'date-fns';
 import Trash from '../assets/trash.png';
 import Edit from '../assets/pencil.png';
-import FormInput from './formInput';
 
-const Todo = (todoDetails, index, options = {}) => {
+const Todo = (
+  {
+    project, title, priority, isComplete, description, dueDate,
+  },
+  index,
+  options = {},
+) => {
   const todo = document.createElement('div');
   todo.classList.add('todo');
   todo.dataset.order = index;
-  todo.setAttribute('id', `${todoDetails.project}-${index}`);
+  todo.setAttribute('id', `${project}-${index}`);
 
   if (options.duration != null) {
     todo.style.animationDuration = options.duration;
@@ -18,20 +23,24 @@ const Todo = (todoDetails, index, options = {}) => {
 
   const todoTitle = document.createElement('h4');
   todoTitle.classList.add('todo__title-header');
-  todoTitle.textContent = todoDetails.title;
+  todoTitle.textContent = title;
+
+  const todoPriority = document.createElement('span');
+  todoPriority.classList.add('todo__title-priority');
+  todoPriority.textContent = priority;
 
   const todoComplete = document.createElement('p');
   todoComplete.classList.add('todo__title-status');
-  todoComplete.textContent = todoDetails.isComplete ? 'Complete' : 'Incomplete';
+  todoComplete.textContent = isComplete ? 'Complete' : 'Incomplete';
 
-  todoTitleContainer.append(todoTitle, todoComplete);
+  todoTitleContainer.append(todoTitle, todoPriority, todoComplete);
 
   const todoContentContainer = document.createElement('div');
   todoContentContainer.classList.add('todo__content');
 
   const todoDescription = document.createElement('p');
   todoDescription.classList.add('todo__content-description');
-  todoDescription.textContent = todoDetails.description;
+  todoDescription.textContent = description;
 
   todoContentContainer.append(todoDescription);
 
@@ -48,17 +57,17 @@ const Todo = (todoDetails, index, options = {}) => {
   editButton.src = Edit;
   editButton.classList.add('todo__actions-edit');
 
-  const dueDate = parseInt(todoDetails.dueDate, 10);
+  const formattedDueDate = parseInt(dueDate, 10);
 
   const todoDueDate = document.createElement('p');
   todoDueDate.classList.add('todo__actions-duedate');
-  todoDueDate.textContent = formatDistance(dueDate, new Date(), {
+  todoDueDate.textContent = formatDistance(formattedDueDate, new Date(), {
     addSuffix: true,
   });
 
   actionsContainer.append(deleteButton, editButton, todoDueDate);
 
-  // if (todoDetails.priority > 0)
+  // if (todoDetails.priority > 0
   //   todo.classList.add("todo-list__todos--priority");
 
   //   var intDate = parseInt(todoDetails.dueDate);
@@ -70,41 +79,6 @@ const Todo = (todoDetails, index, options = {}) => {
   //   ${todoDetails.priority}
   //   ${todoDetails.project}
   //   `;
-
-  // deleteButton.addEventListener('click', async () => {
-  //   // await deleteTodo(`${todoDetails.project}-${index}`);
-  // });
-
-  // editButton.addEventListener('click', () => {
-  //   const todoUpdate = FormInput('titleUpdate', 'Enter new title').InputField({
-  //     value: todoDetails.title,
-  //   });
-
-  //   const todoUpdateDescription = FormInput(
-  //     'descriptionUpdate',
-  //     'Enter new Description',
-  //   ).TextArea({
-  //     value: todoDetails.description,
-  //     addClass: ['form__input-textarea'],
-  //   });
-
-  //   todoTitle.replaceWith(todoUpdate);
-  //   todoDescription.replaceWith(todoUpdateDescription);
-
-  //   editButton.replaceWith(editButtonCheck);
-  // });
-
-  // // editButtonCheck.addEventListener('click', () => {
-  // //   // const todoIndex = `${todoDetails.project}-${index}`;
-
-  // //   const newTodo = todoDetails;
-
-  // //   newTodo.title = document.querySelector('#titleUpdate').value;
-
-  // //   // editTodo(todoIndex, newTodo);
-
-  // //   editButtonCheck.replaceWith(editButton);
-  // });
 
   todo.appendChild(actionsContainer);
 
