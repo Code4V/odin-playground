@@ -5,64 +5,56 @@ import { getStorage } from './storageOperations';
  * @param { Todo } data => A Todo object to be added to LocalStorage
  * @returns A Promise Object
  */
-const addTodo = (data) => {
-  const addPromise = new Promise((resolve, reject) => {
-    if (typeof data !== 'object') {
-      reject(new Error('Data must be an Object'));
-      return;
-    }
+const addTodo = (data) => new Promise((resolve, reject) => {
+  if (typeof data !== 'object') {
+    reject(new Error('Data must be an Object'));
+    return;
+  }
 
-    if (data.constructor.name !== 'Todo') {
-      reject(new Error('Must be type of Todo'));
-      return;
-    }
+  if (data.constructor.name !== 'Todo') {
+    reject(new Error('Must be type of Todo'));
+    return;
+  }
 
-    const updatedData = data.todoDetails;
+  const updatedData = data.todoDetails;
 
-    localStorage.setItem(
-      `${updatedData.project}-${localStorage.length}`,
-      JSON.stringify(updatedData),
-    );
+  localStorage.setItem(
+    `${updatedData.project}-${localStorage.length}`,
+    JSON.stringify(updatedData),
+  );
 
-    resolve('Item has been added!');
-  });
-
-  return addPromise;
-};
+  resolve('Item has been added!');
+});
 
 /**
  *
  * @param {string || array} dataIndex
  * @returns Promise
  */
-const deleteTodo = (dataIndex) => {
-  const deletePromise = new Promise((resolve, reject) => {
-    if (typeof dataIndex === 'number') reject(new Error('Index should indicate the Project Name'));
+const deleteTodo = (dataIndex) => new Promise((resolve, reject) => {
+  if (typeof dataIndex === 'number') reject(new Error('Index should indicate the Project Name'));
 
-    switch (Array.isArray(dataIndex)) {
-      case false:
-        localStorage.removeItem(dataIndex);
-        break;
-      case true:
-        dataIndex.forEach((element) => {
-          localStorage.removeItem(element);
-        });
-        break;
-      default:
-        reject(new Error('Index must compose of the Project Name and Index'));
-        break;
-    }
-    const currentData = getStorage();
+  switch (Array.isArray(dataIndex)) {
+    case false:
+      localStorage.removeItem(dataIndex);
+      break;
+    case true:
+      dataIndex.forEach((element) => {
+        localStorage.removeItem(element);
+      });
+      break;
+    default:
+      reject(new Error('Index must compose of the Project Name and Index'));
+      break;
+  }
+  const currentData = getStorage();
 
-    if (currentData.length === 0) {
-      reject(new Error('Data is now empty'));
-    }
+  if (currentData.length === 0) {
+    reject(new Error('Data is now empty'));
+  }
 
-    resolve('Todo successfully deleted');
-  });
-
-  return deletePromise;
-};
+  resolve('Todo successfully deleted');
+});
 
 const editTodo = (dataIndex, updatedData) => {
   const processedData = JSON.stringify(updatedData);

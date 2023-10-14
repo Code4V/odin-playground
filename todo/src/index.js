@@ -18,7 +18,6 @@ document.addEventListener("DOMContentLoaded", () => {
   backgroundImage.classList.add("background");
   backgroundImage.src = Background;
 
-  main.appendChild(backgroundImage);
 
   main.appendChild(mainContainer);
 

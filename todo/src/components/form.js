@@ -86,7 +86,13 @@ const Form = () => {
     const date = new Date(res.dueDate).getTime();
 
     await addTodo(
-      new Todo(res.title, res.description, date, res.project.trim(), res.number),
+      new Todo(
+        res.title,
+        res.description,
+        date,
+        res.project.trim(),
+        parseInt(res.number, 10),
+      ),
     );
 
     displayController.displayTodoList();

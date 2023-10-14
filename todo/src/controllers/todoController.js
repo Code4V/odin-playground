@@ -53,7 +53,10 @@ class TodoController {
       });
 
       editButtonAction.addEventListener('click', () => {
-        const todoUpdate = FormInput('titleUpdate', 'Enter new title').InputField({
+        const todoUpdate = FormInput(
+          'titleUpdate',
+          'Enter new title',
+        ).InputField({
           value: titleContent.textContent,
         });
 

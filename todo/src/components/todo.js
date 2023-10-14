@@ -25,9 +25,26 @@ const Todo = (
   todoTitle.classList.add('todo__title-header');
   todoTitle.textContent = title;
 
+  let formattedPriority;
+
+  switch (priority) {
+    case 0:
+      formattedPriority = 'Low';
+      break;
+    case 1:
+      formattedPriority = 'Normal';
+      break;
+    case 2:
+      formattedPriority = 'High';
+      break;
+    default:
+      formattedPriority = "Unknown Value";
+    
+  }
+
   const todoPriority = document.createElement('span');
   todoPriority.classList.add('todo__title-priority');
-  todoPriority.textContent = priority;
+  todoPriority.textContent = formattedPriority;
 
   const todoComplete = document.createElement('p');
   todoComplete.classList.add('todo__title-status');
@@ -66,19 +83,6 @@ const Todo = (
   });
 
   actionsContainer.append(deleteButton, editButton, todoDueDate);
-
-  // if (todoDetails.priority > 0
-  //   todo.classList.add("todo-list__todos--priority");
-
-  //   var intDate = parseInt(todoDetails.dueDate);
-  //   var createdDate = parseInt(todoDetails.createdAt)
-  // todo.textContent = `
-  //   ${todoDetails.title} ${todoDetails.description}
-  //   ${format(intDate, 'MMMM-dd-yyyy')} ${format(createdDate, 'MMMM-dd-yyyy')}
-
-  //   ${todoDetails.priority}
-  //   ${todoDetails.project}
-  //   `;
 
   todo.appendChild(actionsContainer);
 
