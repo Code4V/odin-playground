@@ -1,6 +1,7 @@
 import { formatDistance } from 'date-fns';
 import Trash from '../assets/trash.png';
 import Edit from '../assets/pencil.png';
+import { formatTodoPriority } from '../operations/todoOperations';
 
 const Todo = (
   {
@@ -25,26 +26,9 @@ const Todo = (
   todoTitle.classList.add('todo__title-header');
   todoTitle.textContent = title;
 
-  let formattedPriority;
-
-  switch (priority) {
-    case 0:
-      formattedPriority = 'Low';
-      break;
-    case 1:
-      formattedPriority = 'Normal';
-      break;
-    case 2:
-      formattedPriority = 'High';
-      break;
-    default:
-      formattedPriority = "Unknown Value";
-    
-  }
-
   const todoPriority = document.createElement('span');
   todoPriority.classList.add('todo__title-priority');
-  todoPriority.textContent = formattedPriority;
+  todoPriority.textContent = formatTodoPriority(priority);
 
   const todoComplete = document.createElement('p');
   todoComplete.classList.add('todo__title-status');

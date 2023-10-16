@@ -8,8 +8,6 @@ import Background from "./assets/TodoBackground.jpg";
 
 const main = document.querySelector("#content");
 
-clearStorage();
-
 document.addEventListener("DOMContentLoaded", () => {
   const mainContainer = document.createElement("main");
   main.appendChild(Form());

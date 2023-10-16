@@ -1,6 +1,6 @@
 import Certificate from '@carbon/icons/lib/checkmark--filled/16';
 import { getAttributes, toSVG } from '@carbon/icon-helpers';
-import { deleteTodo, editTodo } from '../operations/todoOperations';
+import { deleteTodo, editTodo, formatTodoPriority } from '../operations/todoOperations';
 import displayController from './displayController';
 import FormInput from '../components/formInput';
 import { getLocalStorageItem } from '../operations/storageOperations';
@@ -22,6 +22,8 @@ class TodoController {
   createTodoEvents() {
     this.#currentTodos.forEach((element) => {
       const titleContent = element.childNodes[0].childNodes[0];
+      const priorityContent = element.childNodes[0].childNodes[1];
+
       const descriptionContent = element.childNodes[1].childNodes[0];
 
       const editButtonCheck = toSVG({
@@ -68,8 +70,32 @@ class TodoController {
           addClass: ['form__input-textarea'],
         });
 
+
+        const todoUpdatePriority = FormInput('priorityUpdate', 'Priority').SelectField({
+          choices: [
+            {
+              value: 0,
+              content: 'Low',
+            },
+            {
+              value: 1,
+              content: 'Normal',
+            },
+            {
+              value: 2,
+              content: 'High',
+            },
+          ],
+          addClass: ['form__input-priority'],
+          isRequired: true,
+        });
+
+        todoUpdatePriority.classList.add('todo__title-priority');
+
         titleContent.replaceWith(todoUpdate);
         descriptionContent.replaceWith(todoUpdateDescription);
+        priorityContent.replaceWith(todoUpdatePriority);
+
 
         editButtonAction.replaceWith(editButtonCheck);
       });
@@ -79,17 +105,22 @@ class TodoController {
 
         const todoUpdate = document.querySelector('#titleUpdate');
         const descriptionUpdate = document.querySelector('#descriptionUpdate');
+        const todoUpdatePriority = document.querySelector('#priorityUpdate');
 
         newTodo.title = todoUpdate.value;
         newTodo.description = descriptionUpdate.value;
+        newTodo.priority = parseInt(todoUpdatePriority.value, 10);
 
         editTodo(element.id, newTodo);
 
         titleContent.textContent = todoUpdate.value;
         descriptionContent.textContent = descriptionUpdate.value;
+        priorityContent.textContent = formatTodoPriority(newTodo.priority);
 
+        
         todoUpdate.replaceWith(titleContent);
         descriptionUpdate.replaceWith(descriptionContent);
+        todoUpdatePriority.replaceWith(priorityContent)
 
         editButtonCheck.replaceWith(editButtonAction);
       });

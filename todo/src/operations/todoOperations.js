@@ -62,4 +62,26 @@ const editTodo = (dataIndex, updatedData) => {
   localStorage.setItem(dataIndex, processedData);
 };
 
-export { addTodo, deleteTodo, editTodo };
+const formatTodoPriority = (todoPriority) => {
+  if (todoPriority === null) return new Error("Value must not be Null")
+
+  let formattedPriority;
+
+  switch (todoPriority) {
+    case 0:
+      formattedPriority = 'Low';
+      break;
+    case 1:
+      formattedPriority = 'Normal';
+      break;
+    case 2:
+      formattedPriority = 'High';
+      break;
+    default:
+      formattedPriority = 'Unknown Value';
+  }
+
+  return formattedPriority;
+}
+
+export { addTodo, deleteTodo, editTodo, formatTodoPriority };
