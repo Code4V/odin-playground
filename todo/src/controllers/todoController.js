@@ -8,7 +8,8 @@ import { getLocalStorageItem } from '../operations/storageOperations';
 class TodoController {
   #currentTodos = [];
 
-  getTodos() {
+
+  #getTodos() {
     return new Promise((resolve, reject) => {
       this.#currentTodos = document.querySelectorAll('.todo-list__todos');
       if (this.#currentTodos.length === 0) {
@@ -20,6 +21,8 @@ class TodoController {
   }
 
   createTodoEvents() {
+    this.#getTodos();
+    
     this.#currentTodos.forEach((element) => {
       const titleContent = element.childNodes[0].childNodes[0];
       const priorityContent = element.childNodes[0].childNodes[1];
@@ -44,12 +47,6 @@ class TodoController {
         }
 
         displayController.displayTodoList();
-
-        try {
-          await this.getTodos();
-        } catch (err) {
-          // console.log(err);
-        }
 
         this.createTodoEvents();
       });

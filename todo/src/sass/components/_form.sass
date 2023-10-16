@@ -1,4 +1,5 @@
 @use '../utilities' as *
+@use '../abstracts' as *
 
 .form
   display: flex
@@ -19,7 +20,7 @@
       border-radius: 0px
       background-color: hsl(0deg 0% 50% / 0%)
       border: 0
-      color: hsl(47.08deg 80.6% 50.32%)
+      // color: hsl(47.08 80.6% 50.32%)
 
       &--small
         max-width: 150px
@@ -30,7 +31,7 @@
 
       &::placeholder
         font-weight: 600
-        color: hsl(47.08deg 80.6% 50.32% / 50%)
+        color: var(--text-light)
 
     &-textarea
       min-height: 1.5rem

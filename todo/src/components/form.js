@@ -5,6 +5,7 @@ import FormInput from './formInput';
 import { addTodo } from '../operations/todoOperations';
 import Todo from '../classes/Todo';
 import displayController from '../controllers/displayController';
+import todoController from '../controllers/todoController';
 
 const Form = () => {
   const formContainer = document.createElement('section');
@@ -96,6 +97,7 @@ const Form = () => {
     );
 
     displayController.displayTodoList();
+    todoController.createTodoEvents();
 
     [
       titleField,

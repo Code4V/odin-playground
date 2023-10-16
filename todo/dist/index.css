@@ -41,6 +41,24 @@ table {
   border-spacing: 0;
 }
 
+:root[data-theme=light] {
+  --text: hsl(43, 41%, 10%);
+  --text-light: hsl(43 41% 10% / .5);
+  --background: hsl(42, 43%, 91%);
+  --primary: hsl(221, 43%, 37%);
+  --secondary: hsl(40, 43%, 89%);
+  --accent: hsl(221, 43%, 49%);
+  --accent-dark: hsl(221, 43%, 19%);
+}
+
+:root[data-theme=dark] {
+  --text: hsl(43, 41%, 90%);
+  --background: hsl(42, 43%, 9%);
+  --primary: hsl(221, 43%, 63%);
+  --secondary: hsl(40, 43%, 11%);
+  --accent: hsl(221, 43%, 51%);
+}
+
 body, * {
   font-family: "Inter";
 }
@@ -61,6 +79,7 @@ textarea, input[type=datetime-local] {
   backdrop-filter: blur(0.5rem);
 }
 .todo-list__header {
+  color: var(--accent);
   order: -2;
   font-size: 2rem;
   font-weight: 700;
@@ -152,7 +171,6 @@ textarea, input[type=datetime-local] {
   border-radius: 0px;
   background-color: hsla(0, 0%, 50%, 0);
   border: 0;
-  color: hsl(47.08, 80.6%, 50.32%);
 }
 .form__input-input--small {
   max-width: 150px;
@@ -163,7 +181,7 @@ textarea, input[type=datetime-local] {
 }
 .form__input-input::placeholder {
   font-weight: 600;
-  color: hsla(47.08, 80.6%, 50.32%, 0.5);
+  color: var(--text-light);
 }
 .form__input-textarea {
   min-height: 1.5rem;
@@ -182,8 +200,22 @@ textarea, input[type=datetime-local] {
   background-color: hsla(0, 0%, 50%, 0.6);
 }
 
+.navbar {
+  display: flex;
+  background-color: var(--primary);
+  position: sticky;
+  top: 0;
+  min-height: 2.5rem;
+  align-items: center;
+}
+.navbar__header {
+  font-size: 2rem;
+  font-weight: 900;
+}
+
 * {
   box-sizing: border-box;
+  color: var(--text);
 }
 
 .main {
@@ -202,6 +234,10 @@ main {
   overflow: hidden;
   margin-inline: auto;
   max-width: 90rem;
+}
+
+body {
+  background-color: var(--background);
 }
 
 .background {
