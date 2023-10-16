@@ -9,7 +9,7 @@ import NavBar from "./components/navbar";
 
 const main = document.querySelector("#content");
 
-// console.log(document.documentElement.setAttribute('data-theme', 'dark'));
+console.log(document.documentElement.attributes);
 
 document.addEventListener("DOMContentLoaded", () => {
   const mainContainer = document.createElement("main");

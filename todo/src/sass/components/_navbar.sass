@@ -3,11 +3,24 @@
 .navbar
   display: flex
   background-color: var(--primary)
-  position: sticky
+  position: fixed
   top: 0
+  z-index: 99
+  min-width: 100%
   min-height: 2.5rem
   align-items: center
 
+  justify-content: space-between
+
   &__header
     font-size: 2rem
-    font-weight: 900
+    font-weight: 800
+
+    margin-inline-start: 1rem
+
+  &__theme-switcher
+    display: flex
+    margin-inline-end: 1rem
+
+    svg
+      stroke: var(--secondary)

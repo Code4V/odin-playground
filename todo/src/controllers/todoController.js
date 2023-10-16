@@ -22,7 +22,7 @@ class TodoController {
 
   createTodoEvents() {
     this.#getTodos();
-    
+
     this.#currentTodos.forEach((element) => {
       const titleContent = element.childNodes[0].childNodes[0];
       const priorityContent = element.childNodes[0].childNodes[1];

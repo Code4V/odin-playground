@@ -160,6 +160,7 @@ textarea, input[type=datetime-local] {
   border-radius: 0.75rem;
   max-width: 26rem;
   margin-inline: auto;
+  margin-block-start: 5rem;
   background: hsla(50, 5%, 95%, 0.35);
   box-shadow: 0.25rem 0.25rem 1rem hsla(0, 0%, 0.86%, 0.25);
 }
@@ -203,14 +204,25 @@ textarea, input[type=datetime-local] {
 .navbar {
   display: flex;
   background-color: var(--primary);
-  position: sticky;
+  position: fixed;
   top: 0;
+  z-index: 99;
+  min-width: 100%;
   min-height: 2.5rem;
   align-items: center;
+  justify-content: space-between;
 }
 .navbar__header {
   font-size: 2rem;
-  font-weight: 900;
+  font-weight: 800;
+  margin-inline-start: 1rem;
+}
+.navbar__theme-switcher {
+  display: flex;
+  margin-inline-end: 1rem;
+}
+.navbar__theme-switcher svg {
+  stroke: var(--secondary);
 }
 
 * {
