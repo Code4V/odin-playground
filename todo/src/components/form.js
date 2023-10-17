@@ -1,6 +1,4 @@
 import { format } from 'date-fns';
-import addFilled from '@carbon/icons/lib/add/16';
-import { getAttributes, toSVG } from '@carbon/icon-helpers';
 import FormInput from './formInput';
 import { addTodo } from '../operations/todoOperations';
 import Todo from '../classes/Todo';
@@ -53,16 +51,10 @@ const Form = () => {
     isRequired: true,
   });
 
-  const addIcon = toSVG({
-    ...addFilled,
-    attrs: getAttributes(addFilled.attrs),
-  });
-
   const formSubmit = document.createElement('button');
   formSubmit.classList.add('form__submit');
   formSubmit.type = 'submit';
-
-  formSubmit.appendChild(addIcon);
+  formSubmit.innerText = 'Add';
 
   const formTitle = document.createElement('section');
   formTitle.classList.add('todo__title');

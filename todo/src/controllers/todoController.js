@@ -8,7 +8,6 @@ import { getLocalStorageItem } from '../operations/storageOperations';
 class TodoController {
   #currentTodos = [];
 
-
   #getTodos() {
     return new Promise((resolve, reject) => {
       this.#currentTodos = document.querySelectorAll('.todo-list__todos');
@@ -67,7 +66,6 @@ class TodoController {
           addClass: ['form__input-textarea'],
         });
 
-
         const todoUpdatePriority = FormInput('priorityUpdate', 'Priority').SelectField({
           choices: [
             {
@@ -93,7 +91,6 @@ class TodoController {
         descriptionContent.replaceWith(todoUpdateDescription);
         priorityContent.replaceWith(todoUpdatePriority);
 
-
         editButtonAction.replaceWith(editButtonCheck);
       });
 
@@ -110,14 +107,13 @@ class TodoController {
 
         editTodo(element.id, newTodo);
 
-        titleContent.textContent = todoUpdate.value;
-        descriptionContent.textContent = descriptionUpdate.value;
+        titleContent.textContent = newTodo.title;
+        descriptionContent.textContent = newTodo.description;
         priorityContent.textContent = formatTodoPriority(newTodo.priority);
 
-        
-        todoUpdate.replaceWith(titleContent);
-        descriptionUpdate.replaceWith(descriptionContent);
-        todoUpdatePriority.replaceWith(priorityContent)
+        todoUpdate.parentElement.replaceWith(titleContent);
+        descriptionUpdate.parentElement.replaceWith(descriptionContent);
+        todoUpdatePriority.parentElement.replaceWith(priorityContent);
 
         editButtonCheck.replaceWith(editButtonAction);
       });

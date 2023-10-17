@@ -63,7 +63,7 @@ const editTodo = (dataIndex, updatedData) => {
 };
 
 const formatTodoPriority = (todoPriority) => {
-  if (todoPriority === null) return new Error("Value must not be Null")
+  if (todoPriority === null) return new Error('Value must not be Null');
 
   let formattedPriority;
 
@@ -82,6 +82,8 @@ const formatTodoPriority = (todoPriority) => {
   }
 
   return formattedPriority;
-}
+};
 
-export { addTodo, deleteTodo, editTodo, formatTodoPriority };
+export {
+  addTodo, deleteTodo, editTodo, formatTodoPriority,
+};

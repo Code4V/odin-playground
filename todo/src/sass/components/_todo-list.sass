@@ -2,13 +2,13 @@
   
 .todo-list
   display: flex
-  gap: 1.25rem
-  // justify-content: space-between
+  gap: 1.75rem
   margin-inline: auto
+  justify-content: center
   // width: 95%
   flex-flow: row wrap
   margin-block: .5rem
-  padding: .5rem .5rem 3rem .5rem
+  padding: .5rem 1rem 3rem 1rem
   overflow: hidden
   // transition: 1000ms linear ease-in
   border-radius: .75rem
@@ -28,6 +28,11 @@
 
     &--priority
       order: -1
+
+@media (min-width: 768px) 
+  .todo-list
+    justify-content: space-between
+
 
 @keyframes fadeIn
   0%

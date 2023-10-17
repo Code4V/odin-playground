@@ -1,18 +1,17 @@
 @use '../utilities' as *
+@use '../abstracts' as *
 
 .todo
-  // background: blue
-  // backdrop-filter: blur(1rem)
+  --small-fonts: .75rem
   font-size: calc(1rem - 2px)
-  min-width: 25rem
-  max-width: 26rem
+  min-width: 20rem
+  max-width: 21rem
   padding: .5rem
   display: flex
   flex-flow: column wrap
   border-radius: .75rem
 
   @include defaultBackground()
-  // min-height: 15rem
 
   &__title
     display: flex
@@ -21,12 +20,16 @@
       font-weight: 700
 
     &-priority
-      font-weight: 600
       margin-inline-start: auto
+      padding-block-start: 1px
       padding-inline: .5rem
       border-radius: 100svh
-      background-color: hsl(50deg 5% 95% / 85%)
-    
+      background-color: var(--accent)
+      color: var(--secondary)
+      font-size: var(--small-fonts)
+
+      text-align: center
+
     &-status
       margin-inline-start: .5rem
 
@@ -57,4 +60,6 @@
       filter: invert(18%) sepia(99%) saturate(2134%) hue-rotate(213deg) brightness(102%) contrast(91%)
 
     &-duedate
+      align-self: flex-end
+      font-size: var(--small-fonts)
       margin-inline-start: auto

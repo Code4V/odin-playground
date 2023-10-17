@@ -19,8 +19,19 @@
     margin-inline-start: 1rem
 
   &__theme-switcher
-    display: flex
     margin-inline-end: 1rem
 
-    svg
-      stroke: var(--secondary)
+    &--moon
+      background-color: var(--night-button) 
+
+    &--sun
+      background-color: var(--day-button)
+
+    &-icon
+      fill: var(--highlight)
+
+      &--moon
+        stroke: var(--day-button)
+
+      &--sun
+        stroke: var(--night-button)

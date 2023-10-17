@@ -7,3 +7,14 @@ body, *
 
 textarea, input[type="datetime-local"] 
   font-family: inherit
+
+button
+  display: flex
+  margin-inline-start: auto
+  border-radius: 100svh
+  border: 0
+  transition: 250ms background-color ease-in
+  background-color: var(--highlight)
+
+  &:hover
+    background-color: hsl(0deg 0% 50% / 60%)
