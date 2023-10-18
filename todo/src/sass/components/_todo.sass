@@ -10,24 +10,31 @@
   display: flex
   flex-flow: column wrap
   border-radius: .75rem
+  position: relative
+  transition: 500ms ease-in
+
+  &--edit-mode
+    border: .05rem solid var(--highlight)
 
   @include defaultBackground()
 
   &__title
     display: flex
+    max-height: calc(1rem - 2px)
 
     &-header
       font-weight: 700
 
     &-priority
       margin-inline-start: auto
-      padding-block-start: 1px
+      padding-block-start: .065rem
       padding-inline: .5rem
       border-radius: 100svh
       background-color: var(--accent)
       color: var(--secondary)
       font-size: var(--small-fonts)
 
+      font-weight: 700
       text-align: center
 
     &-status
@@ -44,7 +51,7 @@
       // color: hsl(50, 30, 30, .5)
 
   &__actions
-
+    margin-block-start: auto
     display: flex
 
     &-delete, &-edit

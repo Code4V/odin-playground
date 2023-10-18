@@ -52,13 +52,14 @@ table {
   --text-light: hsl(43 41% 10% / .5);
   --background: hsl(42, 43%, 91%);
   --primary: hsl(221, 43%, 37%);
-  --secondary: hsl(40, 43%, 89%);
+  --secondary: hsl(40, 43%, 85%);
   --accent: hsl(221, 43%, 49%);
   --accent-dark: hsl(221, 43%, 19%);
 }
 
 :root[data-theme=dark] {
   --text: hsl(43, 41%, 90%);
+  --text-light: hsl(43 41% 10% / .5);
   --background: hsl(42, 43%, 9%);
   --primary: hsl(221, 43%, 63%);
   --secondary: hsl(40, 43%, 11%);
@@ -71,6 +72,11 @@ body, * {
 
 textarea, input[type=datetime-local] {
   font-family: inherit;
+}
+
+select {
+  -moz-appearance: none;
+  -webkit-appearance: none;
 }
 
 button {
@@ -87,10 +93,9 @@ button:hover {
 
 .todo-list {
   display: flex;
-  gap: 1.75rem;
+  gap: 1.25rem;
   margin-inline: auto;
-  justify-content: center;
-  flex-flow: row wrap;
+  flex-flow: column wrap;
   margin-block: 0.5rem;
   padding: 0.5rem 1rem 3rem 1rem;
   overflow: hidden;
@@ -102,7 +107,6 @@ button:hover {
   order: -2;
   font-size: 2rem;
   font-weight: 700;
-  flex: 1 1 100%;
 }
 .todo-list__todos {
   animation: 500ms cubic-bezier(0.27, 0.32, 0, 1.03) fadeIn forwards;
@@ -111,11 +115,6 @@ button:hover {
   order: -1;
 }
 
-@media (min-width: 768px) {
-  .todo-list {
-    justify-content: space-between;
-  }
-}
 @keyframes fadeIn {
   0% {
     transform: translateY(-200px);
@@ -135,23 +134,30 @@ button:hover {
   display: flex;
   flex-flow: column wrap;
   border-radius: 0.75rem;
+  position: relative;
+  transition: 500ms ease-in;
   background: hsla(50, 5%, 95%, 0.35);
   box-shadow: 0.25rem 0.25rem 0.8rem hsla(0, 0%, 0.86%, 0.15);
 }
+.todo--edit-mode {
+  border: 0.05rem solid var(--highlight);
+}
 .todo__title {
   display: flex;
+  max-height: calc(1rem - 2px);
 }
 .todo__title-header {
   font-weight: 700;
 }
 .todo__title-priority {
   margin-inline-start: auto;
-  padding-block-start: 1px;
+  padding-block-start: 0.065rem;
   padding-inline: 0.5rem;
   border-radius: 100svh;
   background-color: var(--accent);
   color: var(--secondary);
   font-size: var(--small-fonts);
+  font-weight: 700;
   text-align: center;
 }
 .todo__title-status {
@@ -164,6 +170,7 @@ button:hover {
   word-break: break-all;
 }
 .todo__actions {
+  margin-block-start: auto;
   display: flex;
 }
 .todo__actions-delete, .todo__actions-edit {
@@ -194,12 +201,15 @@ button:hover {
   background: hsla(50, 5%, 95%, 0.35);
   box-shadow: 0.25rem 0.25rem 0.8rem hsla(0, 0%, 0.86%, 0.15);
 }
+.form__input {
+  display: flex;
+  align-items: center;
+}
 .form__input-label {
   display: none;
 }
 .form__input-input {
   width: fit-content;
-  max-height: calc(1rem - 2px);
   border-radius: 0px;
   background-color: transparent;
   border: 0;
@@ -211,14 +221,20 @@ button:hover {
   border-radius: 0;
   outline: 0;
 }
-.form__input-input::placeholder {
-  font-weight: 600;
-  color: var(--text-light);
-}
 .form__input-textarea {
-  min-height: 1.5rem;
+  min-height: 0.5rem;
   resize: none;
   width: 100%;
+}
+.form__input-priority {
+  max-width: 3rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--secondary);
+}
+.form__input-input::placeholder, .form__input-textarea::placeholder, .form__input-priority::placeholder, .form__input-number::placeholder {
+  font-weight: 600;
+  color: var(--text-light);
 }
 .form__submit {
   font-weight: 600;
@@ -232,7 +248,7 @@ button:hover {
 
 .navbar {
   display: flex;
-  background-color: var(--primary);
+  background-color: var(--secondary);
   position: fixed;
   top: 0;
   z-index: 99;
@@ -246,14 +262,33 @@ button:hover {
   font-weight: 800;
   margin-inline-start: 1rem;
 }
+.navbar__header-main {
+  color: var(--primary);
+}
+.navbar__header-sub {
+  font-size: 1rem;
+  margin-inline-start: 0.25rem;
+}
 .navbar__theme-switcher {
   margin-inline-end: 1rem;
 }
 .navbar__theme-switcher--moon {
   background-color: var(--night-button);
 }
+.navbar__theme-switcher--moon:hover {
+  background-color: var(--day-button);
+}
+.navbar__theme-switcher--moon:hover .navbar__theme-switcher-icon--moon {
+  stroke: var(--night-button);
+}
 .navbar__theme-switcher--sun {
   background-color: var(--day-button);
+}
+.navbar__theme-switcher--sun:hover {
+  background-color: var(--night-button);
+}
+.navbar__theme-switcher--sun:hover .navbar__theme-switcher-icon--moon {
+  stroke: var(--day-button);
 }
 .navbar__theme-switcher-icon {
   fill: var(--highlight);
@@ -283,6 +318,8 @@ button:hover {
 }
 
 main {
+  display: flex;
+  flex-flow: row wrap;
   overflow: hidden;
   margin-inline: auto;
   max-width: 90rem;

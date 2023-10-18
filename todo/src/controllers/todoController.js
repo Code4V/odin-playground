@@ -51,11 +51,14 @@ class TodoController {
       });
 
       editButtonAction.addEventListener('click', () => {
+        element.classList.add('todo--edit-mode');
+
         const todoUpdate = FormInput(
           'titleUpdate',
           'Enter new title',
         ).InputField({
           value: titleContent.textContent,
+          addClass: ['form__input-input--small']
         });
 
         const todoUpdateDescription = FormInput(
@@ -111,6 +114,8 @@ class TodoController {
         descriptionContent.textContent = newTodo.description;
         priorityContent.textContent = formatTodoPriority(newTodo.priority);
 
+        element.classList.remove('todo--edit-mode');
+        
         todoUpdate.parentElement.replaceWith(titleContent);
         descriptionUpdate.parentElement.replaceWith(descriptionContent);
         todoUpdatePriority.parentElement.replaceWith(priorityContent);

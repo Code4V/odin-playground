@@ -2,7 +2,7 @@
 
 .navbar
   display: flex
-  background-color: var(--primary)
+  background-color: var(--secondary)
   position: fixed
   top: 0
   z-index: 99
@@ -15,8 +15,14 @@
   &__header
     font-size: 2rem
     font-weight: 800
-
     margin-inline-start: 1rem
+
+    &-main
+      color: var(--primary)
+
+    &-sub
+      font-size: 1rem
+      margin-inline-start: .25rem
 
   &__theme-switcher
     margin-inline-end: 1rem
@@ -24,14 +30,26 @@
     &--moon
       background-color: var(--night-button) 
 
+      &:hover
+        background-color: var(--day-button)
+      
+        & .navbar__theme-switcher-icon--moon
+          stroke: var(--night-button)
+
     &--sun
       background-color: var(--day-button)
 
+      &:hover
+        background-color: var(--night-button)
+      
+        & .navbar__theme-switcher-icon--moon
+          stroke: var(--day-button)
+    
     &-icon
       fill: var(--highlight)
 
       &--moon
         stroke: var(--day-button)
-
+        
       &--sun
         stroke: var(--night-button)

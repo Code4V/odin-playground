@@ -12,12 +12,14 @@
   @include defaultBackground()
 
   &__input
+    display: flex
+    align-items: center
+
     &-label
       display: none
 
     &-input
       width: fit-content
-      max-height: calc(1rem - 2px)
       border-radius: 0px
       background-color: transparent
       border: 0
@@ -30,18 +32,28 @@
         border-radius: 0
         outline: 0
 
+
+    &-textarea
+      // max-height: calc(1rem - 2px)
+      min-height: .5rem
+      resize: none
+      width: 100%
+
+    &-priority
+      max-width: 3rem
+      font-size: .75rem
+      font-weight: 700
+      color: var(--secondary)
+      // padding-block-end: .05rem
+
+    &-input, &-textarea, &-priority, &-number
       &::placeholder
         font-weight: 600
         color: var(--text-light)
 
-    &-textarea
-      min-height: 1.5rem
-      resize: none
-      width: 100%
-
   &__submit
     font-weight: 600
-    padding-inline: .5rem 
+    padding-inline: .5rem
     transition: 250ms background-color ease-in
     text-align: center
 
