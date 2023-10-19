@@ -45,6 +45,8 @@ table {
   --night-button: hsl(268,81%,33%);
   --day-button: hsl(50, 50%, 50%);
   --highlight: hsl(40, 50%, 50%);
+  --positive: hsl(120, 80%, 35%);
+  --negative: hsl(0, 80%, 35%);
 }
 
 :root[data-theme=light] {
@@ -135,12 +137,17 @@ button:hover {
   flex-flow: column wrap;
   border-radius: 0.75rem;
   position: relative;
-  transition: 500ms ease-in;
+  transition: 500ms ease-in outline;
+  outline-color: transparent;
   background: hsla(50, 5%, 95%, 0.35);
   box-shadow: 0.25rem 0.25rem 0.8rem hsla(0, 0%, 0.86%, 0.15);
 }
 .todo--edit-mode {
-  border: 0.05rem solid var(--highlight);
+  outline: 0.05rem solid var(--highlight);
+}
+.todo--expired {
+  outline: 0.15rem solid var(--negative);
+  outline-style: dashed;
 }
 .todo__title {
   display: flex;
@@ -233,7 +240,6 @@ button:hover {
   color: var(--secondary);
 }
 .form__input-input::placeholder, .form__input-textarea::placeholder, .form__input-priority::placeholder, .form__input-number::placeholder {
-  font-weight: 600;
   color: var(--text-light);
 }
 .form__submit {

@@ -11,10 +11,15 @@
   flex-flow: column wrap
   border-radius: .75rem
   position: relative
-  transition: 500ms ease-in
+  transition: 500ms ease-in outline
+  outline-color: transparent
 
   &--edit-mode
-    border: .05rem solid var(--highlight)
+    outline: .05rem solid var(--highlight)
+  
+  &--expired
+    outline: .15rem solid var(--negative)
+    outline-style: dashed    
 
   @include defaultBackground()
 
