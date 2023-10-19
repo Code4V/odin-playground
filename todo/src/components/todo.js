@@ -9,11 +9,17 @@ const Todo = (
   },
   index,
   options = {},
-) => {
+  ) => {
+
+  const formattedDueDate = parseInt(dueDate, 10);
+  
   const todo = document.createElement('div');
   todo.classList.add('todo');
   todo.dataset.order = index;
   todo.setAttribute('id', `${project}-${index}`);
+
+  if ((formattedDueDate - new Date().getTime()) < 0) 
+    todo.classList.add('todo--expired')
 
   if (options.duration != null) {
     todo.style.animationDuration = options.duration;
@@ -58,7 +64,6 @@ const Todo = (
   editButton.src = Edit;
   editButton.classList.add('todo__actions-edit');
 
-  const formattedDueDate = parseInt(dueDate, 10);
 
   const todoDueDate = document.createElement('p');
   todoDueDate.classList.add('todo__actions-duedate');
