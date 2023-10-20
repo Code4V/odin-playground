@@ -1,5 +1,32 @@
 @import url("https://fonts.googleapis.com/css2?family=Lato&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
+:root {
+  --night-button: hsl(268,81%,33%);
+  --day-button: hsl(50, 50%, 50%);
+  --highlight: hsl(40, 50%, 50%);
+  --positive: hsl(120, 80%, 35%);
+  --negative: hsl(0, 80%, 35%);
+}
+
+:root[data-theme=light] {
+  --text: hsl(43, 41%, 10%);
+  --text-light: hsl(43 41% 10% / .5);
+  --background: hsl(42, 43%, 91%);
+  --primary: hsl(221, 43%, 37%);
+  --secondary: hsl(40, 43%, 85%);
+  --accent: hsl(221, 43%, 49%);
+  --accent-dark: hsl(221, 43%, 19%);
+}
+
+:root[data-theme=dark] {
+  --text: hsl(43, 41%, 90%);
+  --text-light: hsl(43 21% 55%);
+  --background: hsl(42, 43%, 9%);
+  --primary: hsl(221, 43%, 63%);
+  --secondary: hsl(40, 43%, 11%);
+  --accent: hsl(221, 43%, 51%);
+}
+
 html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
   margin: 0;
   padding: 0;
@@ -41,33 +68,6 @@ table {
   border-spacing: 0;
 }
 
-:root {
-  --night-button: hsl(268,81%,33%);
-  --day-button: hsl(50, 50%, 50%);
-  --highlight: hsl(40, 50%, 50%);
-  --positive: hsl(120, 80%, 35%);
-  --negative: hsl(0, 80%, 35%);
-}
-
-:root[data-theme=light] {
-  --text: hsl(43, 41%, 10%);
-  --text-light: hsl(43 41% 10% / .5);
-  --background: hsl(42, 43%, 91%);
-  --primary: hsl(221, 43%, 37%);
-  --secondary: hsl(40, 43%, 85%);
-  --accent: hsl(221, 43%, 49%);
-  --accent-dark: hsl(221, 43%, 19%);
-}
-
-:root[data-theme=dark] {
-  --text: hsl(43, 41%, 90%);
-  --text-light: hsl(43 41% 10% / .5);
-  --background: hsl(42, 43%, 9%);
-  --primary: hsl(221, 43%, 63%);
-  --secondary: hsl(40, 43%, 11%);
-  --accent: hsl(221, 43%, 51%);
-}
-
 body, * {
   font-family: "Inter";
 }
@@ -79,6 +79,9 @@ textarea, input[type=datetime-local] {
 select {
   -moz-appearance: none;
   -webkit-appearance: none;
+}
+select option {
+  color: var(--text-light);
 }
 
 button {
@@ -167,6 +170,9 @@ button:hover {
   font-weight: 700;
   text-align: center;
 }
+.todo__title-priority > * {
+  color: var(--secondary);
+}
 .todo__title-status {
   margin-inline-start: 0.5rem;
 }
@@ -234,10 +240,8 @@ button:hover {
   width: 100%;
 }
 .form__input-priority {
-  max-width: 3rem;
   font-size: 0.75rem;
   font-weight: 700;
-  color: var(--secondary);
 }
 .form__input-input::placeholder, .form__input-textarea::placeholder, .form__input-priority::placeholder, .form__input-number::placeholder {
   color: var(--text-light);

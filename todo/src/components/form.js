@@ -39,6 +39,7 @@ const Form = () => {
       },
     ],
     isRequired: true,
+    addClass: ["form__input-priority"]
   });
 
   const descriptionField = FormInput('description', 'Description').TextArea({

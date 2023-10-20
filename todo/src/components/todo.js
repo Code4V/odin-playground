@@ -1,4 +1,8 @@
 import { formatDistance } from 'date-fns';
+import TrashIcon from '@carbon/icons/lib/trash-can/16';
+import EditIcon from '@carbon/icons/lib/edit/16';
+import { getAttributes, toSVG } from '@carbon/icon-helpers';
+
 import Trash from '../assets/trash.png';
 import Edit from '../assets/pencil.png';
 import { formatTodoPriority } from '../operations/todoOperations';
@@ -56,11 +60,19 @@ const Todo = (
   const actionsContainer = document.createElement('div');
   actionsContainer.classList.add('todo__actions');
 
-  const deleteButton = new Image(16);
+  const deleteButton = toSVG({
+    ...TrashIcon,
+    attrs: getAttributes(TrashIcon.attrs),
+  });
+
   deleteButton.src = Trash;
   deleteButton.classList.add('todo__actions-delete');
 
-  const editButton = new Image(16);
+  const editButton = toSVG({
+    ...EditIcon,
+    attrs: getAttributes(EditIcon.attrs),
+  })
+
   editButton.src = Edit;
   editButton.classList.add('todo__actions-edit');
 
