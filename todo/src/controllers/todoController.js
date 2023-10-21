@@ -33,6 +33,8 @@ class TodoController {
         attrs: getAttributes(Certificate.attrs),
       });
 
+      editButtonCheck.classList.add('todo__actions-confirm');
+
       const deleteButtonAction = element.childNodes[2].childNodes[0];
       const editButtonAction = element.childNodes[2].childNodes[1];
 

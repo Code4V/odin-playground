@@ -4,8 +4,6 @@
   --night-button: hsl(268,81%,33%);
   --day-button: hsl(50, 50%, 50%);
   --highlight: hsl(40, 50%, 50%);
-  --positive: hsl(120, 80%, 35%);
-  --negative: hsl(0, 80%, 35%);
 }
 
 :root[data-theme=light] {
@@ -13,9 +11,27 @@
   --text-light: hsl(43 41% 10% / .5);
   --background: hsl(42, 43%, 91%);
   --primary: hsl(221, 43%, 37%);
-  --secondary: hsl(40, 43%, 85%);
   --accent: hsl(221, 43%, 49%);
+  --secondary: hsl(40, 43%, 85%);
   --accent-dark: hsl(221, 43%, 19%);
+  --negative-900: hsl(0, 80%, 80%);
+  --negative-800: hsl(0, 80%, 70%);
+  --negative-700: hsl(0, 80%, 60%);
+  --negative-600: hsl(0, 80%, 53%);
+  --negative-500: hsl(0, 80%, 45%);
+  --negative-400: hsl(0, 80%, 35%);
+  --negative-300: hsl(0, 80%, 25%);
+  --negative-200: hsl(0, 80%, 20%);
+  --negative-100: hsl(0, 80%, 15%);
+  --positive-900: hsl(120, 80%, 75%);
+  --positive-800: hsl(120, 80%, 65%);
+  --positive-700: hsl(120, 80%, 55%);
+  --positive-600: hsl(120, 80%, 45%);
+  --positive-500: hsl(120, 80%, 35%);
+  --positive-400: hsl(120, 80%, 25%);
+  --positive-300: hsl(120, 80%, 15%);
+  --positive-200: hsl(120, 80%, 10%);
+  --positive-100: hsl(120, 80%, 5%);
 }
 
 :root[data-theme=dark] {
@@ -25,6 +41,24 @@
   --primary: hsl(221, 43%, 63%);
   --secondary: hsl(40, 43%, 11%);
   --accent: hsl(221, 43%, 51%);
+  --negative-900: hsl(0, 100%, 80%);
+  --negative-800: hsl(0, 100%, 70%);
+  --negative-700: hsl(0, 100%, 60%);
+  --negative-600: hsl(0, 100%, 50%);
+  --negative-500: hsl(0, 100%, 45%);
+  --negative-400: hsl(0, 100%, 35%);
+  --negative-300: hsl(0, 100%, 25%);
+  --negative-200: hsl(0, 100%, 20%);
+  --negative-100: hsl(0, 100%, 15%);
+  --positive-900: hsl(120, 100%, 75%);
+  --positive-800: hsl(120, 100%, 65%);
+  --positive-700: hsl(120, 100%, 55%);
+  --positive-600: hsl(120, 100%, 45%);
+  --positive-500: hsl(120, 100%, 35%);
+  --positive-400: hsl(120, 100%, 25%);
+  --positive-300: hsl(120, 100%, 15%);
+  --positive-200: hsl(120, 100%, 10%);
+  --positive-100: hsl(120, 100%, 5%);
 }
 
 html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
@@ -145,12 +179,12 @@ button:hover {
   background: hsla(50, 5%, 95%, 0.35);
   box-shadow: 0.25rem 0.25rem 0.8rem hsla(0, 0%, 0.86%, 0.15);
 }
-.todo--edit-mode {
-  outline: 0.05rem solid var(--highlight);
-}
 .todo--expired {
-  outline: 0.15rem solid var(--negative);
+  outline: 0.15rem solid var(--negative-500);
   outline-style: dashed;
+}
+.todo--edit-mode {
+  outline: 0.15rem solid var(--highlight);
 }
 .todo__title {
   display: flex;
@@ -193,10 +227,13 @@ button:hover {
   transform: scale(1.2);
 }
 .todo__actions-delete {
-  filter: invert(17%) sepia(79%) saturate(3196%) hue-rotate(348deg) brightness(98%) contrast(100%);
+  fill: var(--negative-500);
 }
 .todo__actions-edit {
-  filter: invert(18%) sepia(99%) saturate(2134%) hue-rotate(213deg) brightness(102%) contrast(91%);
+  fill: var(--primary);
+}
+.todo__actions-confirm {
+  fill: var(--positive-500);
 }
 .todo__actions-duedate {
   align-self: flex-end;

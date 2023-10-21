@@ -14,12 +14,13 @@
   transition: 500ms ease-in outline
   outline-color: transparent
 
-  &--edit-mode
-    outline: .05rem solid var(--highlight)
-  
   &--expired
-    outline: .15rem solid var(--negative)
+    outline: .15rem solid var(--negative-500)
     outline-style: dashed    
+  
+  &--edit-mode
+    outline: .15rem solid var(--highlight)
+  
 
   @include defaultBackground()
 
@@ -69,10 +70,13 @@
         transform: scale(1.2)
 
     &-delete
-      filter: invert(17%) sepia(79%) saturate(3196%) hue-rotate(348deg) brightness(98%) contrast(100%)
+      fill: var(--negative-500)
 
     &-edit
-      filter: invert(18%) sepia(99%) saturate(2134%) hue-rotate(213deg) brightness(102%) contrast(91%)
+      fill: var(--primary)
+
+    &-confirm 
+      fill: var(--positive-500)
 
     &-duedate
       align-self: flex-end
