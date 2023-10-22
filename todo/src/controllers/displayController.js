@@ -32,7 +32,7 @@ class DisplayController {
     if (localStorage.length !== 0) dataList = this.#currentData;
 
     if (this.#sortByDate) {
-      this.#currentData = sortTodoBy(dataList, { category: 'dueDate'});
+      this.#currentData = sortTodoBy(dataList, { category: 'dueDate', isAscending: true});
       clearStorage();
       setStorage(dataList);
     }
