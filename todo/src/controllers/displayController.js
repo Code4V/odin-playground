@@ -3,11 +3,11 @@ import clearStorage, {
   getStorage,
   setStorage,
 } from '../operations/storageOperations';
-import { sortByDate, filterProjects } from '../operations/dataOperations';
+import { sortTodoBy, filterProjects } from '../operations/dataOperations';
 
 class DisplayController {
   #isFiltered = false;
-
+  #isExpired = false;
   #sortByDate = false;
 
   #currentData = [];
@@ -32,9 +32,13 @@ class DisplayController {
     if (localStorage.length !== 0) dataList = this.#currentData;
 
     if (this.#sortByDate) {
-      this.#currentData = sortByDate(dataList, { category: 'dueDate' });
+      this.#currentData = sortTodoBy(dataList, { category: 'dueDate'});
       clearStorage();
       setStorage(dataList);
+    }
+
+    if(this.#isExpired){
+      
     }
 
     const projects = filterProjects(dataList);

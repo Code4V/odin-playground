@@ -130,6 +130,11 @@ button:hover {
   background-color: hsla(0, 0%, 50%, 0.6);
 }
 
+h1, h2, h3, h4, h5, h6 {
+  color: var(--accent);
+  font-weight: 700;
+}
+
 .todo-list {
   display: flex;
   gap: 1.25rem;
@@ -142,10 +147,8 @@ button:hover {
   backdrop-filter: blur(0.5rem);
 }
 .todo-list__header {
-  color: var(--accent);
   order: -2;
   font-size: 2rem;
-  font-weight: 700;
 }
 .todo-list__todos {
   animation: 500ms cubic-bezier(0.27, 0.32, 0, 1.03) fadeIn forwards;
@@ -209,6 +212,7 @@ button:hover {
 }
 .todo__title-status {
   margin-inline-start: 0.5rem;
+  padding-block-end: 0.05rem;
 }
 .todo__content {
   margin-block: 0.25rem;
@@ -247,7 +251,7 @@ button:hover {
   border-radius: 0.75rem;
   max-width: 26rem;
   margin-inline: auto;
-  margin-block-start: 5rem;
+  margin-block-start: 1rem;
   background: hsla(50, 5%, 95%, 0.35);
   box-shadow: 0.25rem 0.25rem 0.8rem hsla(0, 0%, 0.86%, 0.15);
 }
@@ -374,6 +378,11 @@ main {
 
 body {
   background-color: var(--background);
+}
+
+section > h2 {
+  text-align: center;
+  margin-block-start: 5rem;
 }
 
 .background {

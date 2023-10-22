@@ -1,6 +1,7 @@
 import { formatDistance } from 'date-fns';
 import TrashIcon from '@carbon/icons/lib/trash-can/16';
 import EditIcon from '@carbon/icons/lib/edit/16';
+import MarkIcon from '@carbon/icons/lib/certificate--check/16';
 import { getAttributes, toSVG } from '@carbon/icon-helpers';
 
 import Trash from '../assets/trash.png';
@@ -13,17 +14,15 @@ const Todo = (
   },
   index,
   options = {},
-  ) => {
-
+) => {
   const formattedDueDate = parseInt(dueDate, 10);
-  
+
   const todo = document.createElement('div');
   todo.classList.add('todo');
   todo.dataset.order = index;
   todo.setAttribute('id', `${project}-${index}`);
 
-  if ((formattedDueDate - new Date().getTime()) < 0) 
-    todo.classList.add('todo--expired')
+  if ((formattedDueDate - new Date().getTime()) < 0) { todo.classList.add('todo--expired'); }
 
   if (options.duration != null) {
     todo.style.animationDuration = options.duration;
@@ -40,11 +39,13 @@ const Todo = (
   todoPriority.classList.add('todo__title-priority');
   todoPriority.textContent = formatTodoPriority(priority);
 
-  const todoComplete = document.createElement('p');
-  todoComplete.classList.add('todo__title-status');
-  todoComplete.textContent = isComplete ? 'Complete' : 'Incomplete';
+  const todoMarkAsComlete = toSVG({
+    ...MarkIcon,
+    attrs: getAttributes(MarkIcon.attrs),
+  });
+  todoMarkAsComlete.classList.add('todo__title-status');
 
-  todoTitleContainer.append(todoTitle, todoPriority, todoComplete);
+  todoTitleContainer.append(todoTitle, todoPriority, todoMarkAsComlete);
 
   const todoContentContainer = document.createElement('div');
   todoContentContainer.classList.add('todo__content');
@@ -71,11 +72,10 @@ const Todo = (
   const editButton = toSVG({
     ...EditIcon,
     attrs: getAttributes(EditIcon.attrs),
-  })
+  });
 
   editButton.src = Edit;
   editButton.classList.add('todo__actions-edit');
-
 
   const todoDueDate = document.createElement('p');
   todoDueDate.classList.add('todo__actions-duedate');

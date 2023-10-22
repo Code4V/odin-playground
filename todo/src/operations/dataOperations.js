@@ -1,13 +1,21 @@
-const sortByDate = (dataList, options = {}) => {
+const sortTodoBy = (dataList, options = {}) => {
   const key = options.category;
 
   switch (typeof dataList[0]) {
     case 'object':
-      dataList.sort((fdata, sdata) => fdata[key] - sdata[key]);
+      dataList.sort((fdata, sdata) => {
+        if (options.isAscending) return fdata[key] - sdata[key];
+
+        return sdata[key] - fdata[key];
+      });
       break;
 
     default:
-      dataList.sort((fdata, sdata) => fdata - sdata);
+      dataList.sort((fdata, sdata) => {
+        if (options.isAscending) return fdata - sdata;
+
+        return sdata - fdata;
+      });
       break;
   }
 
@@ -44,4 +52,4 @@ const filterProjects = (todoData) => {
 };
 // module.exports = sortByDate;
 
-export { sortByDate, filterProjects };
+export { sortTodoBy, filterProjects };

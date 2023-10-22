@@ -8,6 +8,9 @@ import todoController from '../controllers/todoController';
 const Form = () => {
   const formContainer = document.createElement('section');
 
+  const formHeader = document.createElement('h2');
+  formHeader.textContent = 'Add your Todo here!';
+
   const form = document.createElement('form');
   form.classList.add('form');
   form.classList.add('todo');
@@ -39,7 +42,7 @@ const Form = () => {
       },
     ],
     isRequired: true,
-    addClass: ["form__input-priority"]
+    addClass: ['form__input-priority'],
   });
 
   const descriptionField = FormInput('description', 'Description').TextArea({
@@ -116,7 +119,7 @@ const Form = () => {
     });
   });
 
-  formContainer.appendChild(form);
+  formContainer.append(formHeader, form);
 
   return formContainer;
 };

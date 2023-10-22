@@ -60,7 +60,7 @@ class TodoController {
           'Enter new title',
         ).InputField({
           value: titleContent.textContent,
-          addClass: ['form__input-input--small']
+          addClass: ['form__input-input--small'],
         });
 
         const todoUpdateDescription = FormInput(
@@ -117,7 +117,7 @@ class TodoController {
         priorityContent.textContent = formatTodoPriority(newTodo.priority);
 
         element.classList.remove('todo--edit-mode');
-        
+
         todoUpdate.parentElement.replaceWith(titleContent);
         descriptionUpdate.parentElement.replaceWith(descriptionContent);
         todoUpdatePriority.parentElement.replaceWith(priorityContent);
