@@ -3,7 +3,11 @@ import clearStorage, {
   getStorage,
   setStorage,
 } from '../operations/storageOperations';
-import { sortTodoBy, filterProjects, filterExpired } from '../operations/dataOperations';
+import {
+  sortTodoBy,
+  filterProjects,
+  filterExpired,
+} from '../operations/dataOperations';
 
 class DisplayController {
   #isFiltered = false;
@@ -23,16 +27,18 @@ class DisplayController {
   displayTodoList = (todoData = []) => {
     let dataList = todoData;
     if (localStorage.length === 0) setStorage(dataList);
-    if (this.#currentData.length === 0) this.#currentData = getStorage();
-
-    if (this.#currentData.length != localStorage.length) {
-      this.#currentData = getStorage();
-    }
+    if (
+      this.#currentData.length === 0
+      || this.#currentData.length != localStorage.length
+    ) this.#currentData = getStorage();
 
     console.log(this.#currentData);
 
     if (this.#sortByDate) {
-      this.#currentData = sortTodoBy(this.#currentData, { category: 'dueDate', isAscending: true });
+      this.#currentData = sortTodoBy(this.#currentData, {
+        category: 'dueDate',
+        isAscending: true,
+      });
       clearStorage();
       setStorage(this.#currentData);
     }
@@ -41,7 +47,7 @@ class DisplayController {
       this.#currentData = filterExpired(this.#currentData);
     }
 
-    dataList = this.#currentData
+    dataList = this.#currentData;
 
     const projects = filterProjects(dataList);
 

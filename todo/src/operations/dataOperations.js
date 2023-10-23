@@ -26,7 +26,7 @@ const filterProjects = (todoData) => {
   const projects = [];
   const filteredProject = [];
 
-  console.log(todoData)
+  console.log(todoData);
 
   todoData.filter((element) => {
     if (!projects.includes(element.project)) projects.push(element.project);

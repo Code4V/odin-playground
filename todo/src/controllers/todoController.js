@@ -133,7 +133,7 @@ class TodoController {
         newTodo.isComplete = true;
 
         editTodo(element.id, newTodo);
-      })
+      });
     });
   }
 }

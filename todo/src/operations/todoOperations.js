@@ -67,7 +67,7 @@ const editTodo = (dataIndex, updatedData) => {
 
 //   dataFromStorage.isComplete = true;
 
-//   localStorage.setItem(dataIndex, dataFromStorage);  
+//   localStorage.setItem(dataIndex, dataFromStorage);
 // };
 
 const formatTodoPriority = (todoPriority) => {
@@ -93,5 +93,5 @@ const formatTodoPriority = (todoPriority) => {
 };
 
 export {
-  addTodo, deleteTodo, editTodo, formatTodoPriority, 
+  addTodo, deleteTodo, editTodo, formatTodoPriority,
 };
