@@ -1,4 +1,4 @@
-import { getStorage } from './storageOperations';
+import { getLocalStorageItem, getStorage } from './storageOperations';
 
 /**
  *
@@ -62,6 +62,14 @@ const editTodo = (dataIndex, updatedData) => {
   localStorage.setItem(dataIndex, processedData);
 };
 
+// const markTodoComplete = (dataIndex) => {
+//   const dataFromStorage = getLocalStorageItem(dataIndex);
+
+//   dataFromStorage.isComplete = true;
+
+//   localStorage.setItem(dataIndex, dataFromStorage);  
+// };
+
 const formatTodoPriority = (todoPriority) => {
   if (todoPriority === null) return new Error('Value must not be Null');
 
@@ -85,5 +93,5 @@ const formatTodoPriority = (todoPriority) => {
 };
 
 export {
-  addTodo, deleteTodo, editTodo, formatTodoPriority,
+  addTodo, deleteTodo, editTodo, formatTodoPriority, 
 };

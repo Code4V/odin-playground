@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", () => {
   main.appendChild(mainContainer);
 
   displayController.toggleFilter();
-  displayController.toggleDateOrder();
+  // displayController.toggleDateOrder();
   displayController.displayTodoList();
 
   todoController.createTodoEvents();

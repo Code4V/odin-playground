@@ -3,11 +3,13 @@ import clearStorage, {
   getStorage,
   setStorage,
 } from '../operations/storageOperations';
-import { sortTodoBy, filterProjects } from '../operations/dataOperations';
+import { sortTodoBy, filterProjects, filterExpired } from '../operations/dataOperations';
 
 class DisplayController {
   #isFiltered = false;
-  #isExpired = false;
+
+  #removeExpired = true;
+
   #sortByDate = false;
 
   #currentData = [];
@@ -21,25 +23,25 @@ class DisplayController {
   displayTodoList = (todoData = []) => {
     let dataList = todoData;
     if (localStorage.length === 0) setStorage(dataList);
-    if (this.#currentData.length === 0) this.#currentData = dataList;
+    if (this.#currentData.length === 0) this.#currentData = getStorage();
 
-    if (this.#currentData.length !== localStorage.length) {
+    if (this.#currentData.length != localStorage.length) {
       this.#currentData = getStorage();
     }
 
-    if (dataList.length !== 0) this.#currentData = dataList;
-
-    if (localStorage.length !== 0) dataList = this.#currentData;
+    console.log(this.#currentData);
 
     if (this.#sortByDate) {
-      this.#currentData = sortTodoBy(dataList, { category: 'dueDate', isAscending: true});
+      this.#currentData = sortTodoBy(this.#currentData, { category: 'dueDate', isAscending: true });
       clearStorage();
-      setStorage(dataList);
+      setStorage(this.#currentData);
     }
 
-    if(this.#isExpired){
-      
+    if (this.#removeExpired) {
+      this.#currentData = filterExpired(this.#currentData);
     }
+
+    dataList = this.#currentData
 
     const projects = filterProjects(dataList);
 
@@ -73,6 +75,8 @@ class DisplayController {
         });
       });
     }
+
+    dataList = [];
   };
 
   toggleFilter() {

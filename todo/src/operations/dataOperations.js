@@ -26,6 +26,8 @@ const filterProjects = (todoData) => {
   const projects = [];
   const filteredProject = [];
 
+  console.log(todoData)
+
   todoData.filter((element) => {
     if (!projects.includes(element.project)) projects.push(element.project);
 
@@ -48,8 +50,22 @@ const filterProjects = (todoData) => {
     filteredProject.push(newObject);
   });
 
+  console.log({ projects, filteredProject });
+
   return { projects, filteredProject };
+};
+
+const filterExpired = (todoData) => {
+  const remainingData = [];
+
+  todoData.filter((element) => {
+    if (element.dueDate > new Date().getTime()) remainingData.push(element);
+
+    return element;
+  });
+
+  return remainingData;
 };
 // module.exports = sortByDate;
 
-export { sortTodoBy, filterProjects };
+export { sortTodoBy, filterProjects, filterExpired };

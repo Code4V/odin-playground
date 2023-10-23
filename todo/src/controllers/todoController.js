@@ -11,9 +11,9 @@ class TodoController {
   #getTodos() {
     return new Promise((resolve, reject) => {
       this.#currentTodos = document.querySelectorAll('.todo-list__todos');
-      if (this.#currentTodos.length === 0) {
-        reject(new Error('No Data Yet'));
-      }
+      // if (this.#currentTodos.length === 0) {
+      //   reject(new Error('No Data Yet'));
+      // }
 
       resolve(this.#currentTodos);
     });
@@ -25,6 +25,8 @@ class TodoController {
     this.#currentTodos.forEach((element) => {
       const titleContent = element.childNodes[0].childNodes[0];
       const priorityContent = element.childNodes[0].childNodes[1];
+
+      const markAsCompleteButton = element.childNodes[0].childNodes[2];
 
       const descriptionContent = element.childNodes[1].childNodes[0];
 
@@ -124,6 +126,14 @@ class TodoController {
 
         editButtonCheck.replaceWith(editButtonAction);
       });
+
+      markAsCompleteButton.addEventListener('click', () => {
+        const newTodo = getLocalStorageItem(element.id);
+
+        newTodo.isComplete = true;
+
+        editTodo(element.id, newTodo);
+      })
     });
   }
 }

@@ -10,6 +10,7 @@ class Todo {
   #isComplete;
 
   constructor(title, description, dueDate = new Date().getTime(), project = "None", priority = 0) {
+    console.log(dueDate)
     this.#title = title;
     this.#description = description;
     this.#dueDate = dueDate;
