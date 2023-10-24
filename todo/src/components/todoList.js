@@ -25,6 +25,8 @@ const TodoList = (todoData, options = { projectName: 'All' }) => {
     let duration = (index * 500) + 500;
     duration = (duration > 5000) ? 5000 : duration;
 
+    if (element.isComplete) return;
+
     const todoElement = Todo(element, index, {
       duration: `${[duration]}ms`,
     });

@@ -1,4 +1,4 @@
-import { getLocalStorageItem, getStorage } from './storageOperations';
+import { getStorage } from './storageOperations';
 
 /**
  *
@@ -58,6 +58,8 @@ const deleteTodo = (dataIndex) => new Promise((resolve, reject) => {
 
 const editTodo = (dataIndex, updatedData) => {
   const processedData = JSON.stringify(updatedData);
+
+  console.log(updatedData);
 
   localStorage.setItem(dataIndex, processedData);
 };

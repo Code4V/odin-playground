@@ -29,10 +29,8 @@ class DisplayController {
     if (localStorage.length === 0) setStorage(dataList);
     if (
       this.#currentData.length === 0
-      || this.#currentData.length != localStorage.length
+      || this.#currentData.length !== localStorage.length
     ) this.#currentData = getStorage();
-
-    console.log(this.#currentData);
 
     if (this.#sortByDate) {
       this.#currentData = sortTodoBy(this.#currentData, {
@@ -82,8 +80,12 @@ class DisplayController {
       });
     }
 
-    dataList = [];
+    this.#currentData = [];
   };
+
+  updateCurrentData() {
+    this.#currentData = getStorage();
+  }
 
   toggleFilter() {
     this.#isFiltered = !this.#isFiltered;

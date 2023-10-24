@@ -26,8 +26,6 @@ const filterProjects = (todoData) => {
   const projects = [];
   const filteredProject = [];
 
-  console.log(todoData);
-
   todoData.filter((element) => {
     if (!projects.includes(element.project)) projects.push(element.project);
 
@@ -49,8 +47,6 @@ const filterProjects = (todoData) => {
 
     filteredProject.push(newObject);
   });
-
-  console.log({ projects, filteredProject });
 
   return { projects, filteredProject };
 };

@@ -9,7 +9,7 @@ class TodoController {
   #currentTodos = [];
 
   #getTodos() {
-    return new Promise((resolve, reject) => {
+    return new Promise((resolve) => {
       this.#currentTodos = document.querySelectorAll('.todo-list__todos');
       // if (this.#currentTodos.length === 0) {
       //   reject(new Error('No Data Yet'));
@@ -50,7 +50,6 @@ class TodoController {
         }
 
         displayController.displayTodoList();
-
         this.createTodoEvents();
       });
 
@@ -133,6 +132,10 @@ class TodoController {
         newTodo.isComplete = true;
 
         editTodo(element.id, newTodo);
+
+        displayController.updateCurrentData();
+        displayController.displayTodoList();
+        this.createTodoEvents();
       });
     });
   }
