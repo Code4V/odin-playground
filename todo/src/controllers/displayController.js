@@ -10,7 +10,7 @@ import {
 } from '../operations/dataOperations';
 
 class DisplayController {
-  #isFiltered = false;
+  #sortbyProject = false;
 
   #removeExpired = true;
 
@@ -53,7 +53,7 @@ class DisplayController {
     const mainTodoListContainer = document.querySelector('main');
     mainTodoListContainer.innerHTML = '';
 
-    if (!this.#isFiltered) {
+    if (!this.#sortbyProject) {
       mainTodoListContainer.appendChild(TodoList(dataList));
     } else {
       clearStorage();
@@ -66,16 +66,13 @@ class DisplayController {
         const currentProj = Object.keys(element)[0];
 
         projects.projects.forEach((project, index) => {
-          let duration = index * 500 + 500;
-          duration = duration > 2500 ? 2500 : duration;
 
           if (project === currentProj) {
             mainTodoListContainer.appendChild(
               TodoList(element[project], {
                 projectName: [project],
-                duration: `${[duration]}ms`,
               }),
-              
+
             );
 
             setStorage(element[project]);
@@ -92,7 +89,7 @@ class DisplayController {
   }
 
   toggleFilter() {
-    this.#isFiltered = !this.#isFiltered;
+    this.#sortbyProject = !this.#sortbyProject;
 
     return this;
   }
