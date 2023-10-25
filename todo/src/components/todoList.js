@@ -1,6 +1,6 @@
 import Todo from './todo';
 
-const TodoList = (todoData, options = { projectName: 'All' }) => {
+const TodoList = (todoData, options = { projectName: 'Todo List' }) => {
   const todosContainer = document.createElement('section');
   todosContainer.classList.add('todo-list');
 
@@ -25,7 +25,7 @@ const TodoList = (todoData, options = { projectName: 'All' }) => {
     let duration = (index * 500) + 500;
     duration = (duration > 5000) ? 5000 : duration;
 
-    if (element.isComplete) return;
+    // if (element.isComplete) return;
 
     const todoElement = Todo(element, index, {
       duration: `${[duration]}ms`,

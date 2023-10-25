@@ -351,6 +351,32 @@ h1, h2, h3, h4, h5, h6 {
   stroke: var(--night-button);
 }
 
+.filter-sorter {
+  display: flex;
+  min-width: 80%;
+  margin-inline: auto;
+}
+.filter-sorter__filters, .filter-sorter__sorters {
+  flex: 0 1 100%;
+  gap: 0.75rem;
+}
+.filter-sorter__filters > *:not(:nth-child(1)), .filter-sorter__sorters > *:not(:nth-child(1)) {
+  font-weight: 700;
+}
+.filter-sorter__filters--active, .filter-sorter__sorters--active {
+  background-color: var(--accent);
+  color: var(--secondary);
+}
+.filter-sorter__sorters {
+  display: flex;
+}
+.filter-sorter__sorters-label {
+  font-weight: 300;
+}
+.filter-sorter__sorters-project, .filter-sorter__sorters-date {
+  margin-inline-start: 0 !important;
+}
+
 * {
   box-sizing: border-box;
   color: var(--text);

@@ -37,6 +37,7 @@ class DisplayController {
         category: 'dueDate',
         isAscending: true,
       });
+      
       clearStorage();
       setStorage(this.#currentData);
     }
@@ -56,12 +57,14 @@ class DisplayController {
       mainTodoListContainer.appendChild(TodoList(dataList));
     } else {
       clearStorage();
+
       if (!projects.projects.length) {
         mainTodoListContainer.appendChild(TodoList([]));
       }
 
       projects.filteredProject.forEach((element) => {
         const currentProj = Object.keys(element)[0];
+
         projects.projects.forEach((project, index) => {
           let duration = index * 500 + 500;
           duration = duration > 2500 ? 2500 : duration;
@@ -72,6 +75,7 @@ class DisplayController {
                 projectName: [project],
                 duration: `${[duration]}ms`,
               }),
+              
             );
 
             setStorage(element[project]);

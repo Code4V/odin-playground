@@ -1,0 +1,30 @@
+@use '../abstracts' as *
+  
+.filter-sorter
+  display: flex
+  min-width: 80%
+  
+  margin-inline: auto
+
+  &__filters, &__sorters
+    flex: 0 1 100%
+    gap: .75rem
+
+    & > *:not(:nth-child(1))
+      font-weight: 700
+
+    &--active
+      background-color: var(--accent)
+      color: var(--secondary)
+
+  &__filters    
+
+  &__sorters
+    display: flex
+
+    &-label
+      font-weight: 300
+
+    &-project, &-date
+      margin-inline-start: 0 !important 
+
