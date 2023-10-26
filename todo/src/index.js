@@ -1,6 +1,6 @@
 // import data from "./data/todo.json";
 import clearStorage, { setStorage } from "./operations/storageOperations";
-import { setStorage as ExperimentalSetStorage, getStorage  } from "./operations/EXPERIMENTALstorageOperations";
+import { setStorage as ExperimentalSetStorage, getLocalStorageItem, getStorage  } from "./operations/EXPERIMENTALstorageOperations";
 import displayController from "./controllers/displayController";
 import todoController from "./controllers/todoController";
 import Form from "./components/form";
@@ -8,11 +8,36 @@ import Background from "./assets/TodoBackground.jpg";
 import NavBar from "./components/navbar";
 import FilterSorter from "./components/filtersortButtons";
 import data from "./data/todo.json";
+import { addTodo } from "./operations/EXPERIMENTALtodoOperations";
+import Todo from "./classes/Todo";
+import { sortTodoBy, filterProjects } from "./operations/dataOperations";
 
 const main = document.querySelector("#content");
 
-// ExperimentalSetStorage(data)
-// getStorage();
+/** +----------------------------------------------
+ *  TESTING AREA
+ * 
+ *  +----------------------------------------------
+ */
+ExperimentalSetStorage(data)
+
+
+addTodo(new Todo("Test", "DEASD", new Date().getTime(), "Crone"));
+addTodo(new Todo("Testsad", "DEAQWESD", new Date().getTime(), "assssASD"));
+
+console.log(getStorage());
+
+console.log(sortTodoBy(getStorage(), {category: 'dueDate',}))
+console.log(sortTodoBy(getStorage(), {category: 'priority',}))
+console.log(filterProjects(getStorage()));
+
+/** +----------------------------------------------
+ *  END OF TESTING AREA
+ * 
+ *  +----------------------------------------------
+ */ 
+
+console.log(getLocalStorageItem(0));
 
 document.addEventListener("DOMContentLoaded", () => {
   const mainContainer = document.createElement("main");

@@ -17,26 +17,16 @@ function setStorage(todoData) {
 }
 
 function getStorage() {
-  const todo = [];
-  const storageItem = getLocalStorageItem('todoData');
-
-  console.log(storageItem.todoData);
-
-  // for (let i = 0; i < localStorage.length; i += 1) {
-  //   const storageItem = JSON.parse(
-  //     localStorage.getItem(Object.keys(localStorage)[i]),
-  //   );
-  //   todo.push(storageItem);
-  // }
-
-  // console.log(todo)
-
-  return todo;
+  return getLocalStorageItem('todoData').todoData;
 }
 
 function getLocalStorageItem(dataIndex) {
-  if (typeof dataIndex === 'number') {
-    return new Error('Index must be composed of Project followed by the Index');
+  // if (typeof dataIndex === 'number') {
+  //   return new Error('Index must be composed of Project followed by the Index');
+  // }
+
+  if(dataIndex !== 'todoData') {
+    return JSON.parse(localStorage.getItem('todoData')).todoData[dataIndex];
   }
 
   return JSON.parse(localStorage.getItem(dataIndex));
