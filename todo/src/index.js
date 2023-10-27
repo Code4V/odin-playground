@@ -19,25 +19,25 @@ const main = document.querySelector("#content");
  * 
  *  +----------------------------------------------
  */
-ExperimentalSetStorage(data)
+// ExperimentalSetStorage(data)
 
 
-addTodo(new Todo("Test", "DEASD", new Date().getTime(), "Crone"));
-addTodo(new Todo("Testsad", "DEAQWESD", new Date().getTime(), "assssASD"));
+// addTodo(new Todo("Test", "DEASD", new Date().getTime(), "Crone"));
+// addTodo(new Todo("Testsad", "DEAQWESD", new Date().getTime(), "assssASD"));
 
-console.log(getStorage());
+// console.log(getStorage());
 
-console.log(sortTodoBy(getStorage(), {category: 'dueDate',}))
-console.log(sortTodoBy(getStorage(), {category: 'priority',}))
-console.log(filterProjects(getStorage()));
+// console.log(sortTodoBy(getStorage(), {category: 'dueDate',}))
+// console.log(sortTodoBy(getStorage(), {category: 'priority',}))
+// console.log(filterProjects(getStorage()));
 
+// console.log(getLocalStorageItem(0));
 /** +----------------------------------------------
  *  END OF TESTING AREA
  * 
  *  +----------------------------------------------
  */ 
 
-console.log(getLocalStorageItem(0));
 
 document.addEventListener("DOMContentLoaded", () => {
   const mainContainer = document.createElement("main");
@@ -53,6 +53,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   main.appendChild(mainContainer);
 
-  displayController.displayTodoList();
+  displayController.displayTodoList(data);
   todoController.createTodoEvents();
 });

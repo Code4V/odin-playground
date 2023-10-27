@@ -3,6 +3,12 @@ import clearStorage, {
   getStorage,
   setStorage,
 } from '../operations/storageOperations';
+
+import {
+  getStorage as EXPERIMENTAL_GETSTORAGE,
+  setStorage as EXPERIMENTAL_SETSTORAGE,
+} from '../operations/EXPERIMENTALstorageOperations';
+
 import {
   sortTodoBy,
   filterProjects,
@@ -26,11 +32,11 @@ class DisplayController {
 
   displayTodoList = (todoData = []) => {
     let dataList = todoData;
-    if (localStorage.length === 0) setStorage(dataList);
+    if (localStorage.length === 0) EXPERIMENTAL_SETSTORAGE(dataList);
     if (
       this.#currentData.length === 0
       || this.#currentData.length !== localStorage.length
-    ) this.#currentData = getStorage();
+    ) this.#currentData = EXPERIMENTAL_GETSTORAGE();
 
     if (this.#sortByDate) {
       this.#currentData = sortTodoBy(this.#currentData, {
@@ -75,7 +81,7 @@ class DisplayController {
 
             );
 
-            setStorage(element[project]);
+            // setStorage(element[project]);
           }
         });
       });

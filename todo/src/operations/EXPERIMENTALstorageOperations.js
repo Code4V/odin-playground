@@ -17,7 +17,9 @@ function setStorage(todoData) {
 }
 
 function getStorage() {
-  return getLocalStorageItem('todoData').todoData;
+  const data = getLocalStorageItem('todoData');
+
+  return data.todoData;
 }
 
 function getLocalStorageItem(dataIndex) {
