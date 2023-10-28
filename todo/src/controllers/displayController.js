@@ -17,10 +17,10 @@ import {
 
 class DisplayController {
   #sortbyProject = false;
-
-  #removeExpired = true;
-
   #sortByDate = false;
+
+  #filterExpired = false;
+
 
   #currentData = [];
 
@@ -35,7 +35,7 @@ class DisplayController {
     if (localStorage.length === 0) EXPERIMENTAL_SETSTORAGE(dataList);
     if (
       this.#currentData.length === 0
-      || this.#currentData.length !== localStorage.length
+      || this.#currentData.length !== EXPERIMENTAL_GETSTORAGE().length
     ) this.#currentData = EXPERIMENTAL_GETSTORAGE();
 
     if (this.#sortByDate) {
@@ -45,10 +45,10 @@ class DisplayController {
       });
       
       clearStorage();
-      setStorage(this.#currentData);
+      EXPERIMENTAL_SETSTORAGE(this.#currentData);
     }
 
-    if (this.#removeExpired) {
+    if (this.#filterExpired) {
       this.#currentData = filterExpired(this.#currentData);
     }
 
@@ -56,13 +56,15 @@ class DisplayController {
 
     const projects = filterProjects(dataList);
 
+    console.log(projects.filteredProject)
+
     const mainTodoListContainer = document.querySelector('main');
     mainTodoListContainer.innerHTML = '';
 
     if (!this.#sortbyProject) {
       mainTodoListContainer.appendChild(TodoList(dataList));
     } else {
-      clearStorage();
+      // clearStorage();
 
       if (!projects.projects.length) {
         mainTodoListContainer.appendChild(TodoList([]));
@@ -71,7 +73,7 @@ class DisplayController {
       projects.filteredProject.forEach((element) => {
         const currentProj = Object.keys(element)[0];
 
-        projects.projects.forEach((project, index) => {
+        projects.projects.forEach((project) => {
 
           if (project === currentProj) {
             mainTodoListContainer.appendChild(
@@ -87,14 +89,14 @@ class DisplayController {
       });
     }
 
-    this.#currentData = [];
+    // this.#currentData = [];
   };
 
   updateCurrentData() {
     this.#currentData = getStorage();
   }
 
-  toggleFilter() {
+  toggleProjectOrder() {
     this.#sortbyProject = !this.#sortbyProject;
 
     return this;

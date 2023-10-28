@@ -30,7 +30,7 @@ const FilterSorter = () => {
   filterSorterContainer.append(filterContainer, sortContainer)
 
   sortbyProject.onclick = () => {
-    displayController.toggleFilter();
+    displayController.toggleProjectOrder();
     sortbyProject.classList.toggle('filter-sorter__sorters--active');
 
     displayController.displayTodoList();

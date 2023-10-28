@@ -53,6 +53,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   main.appendChild(mainContainer);
 
-  displayController.displayTodoList(data);
+  displayController.displayTodoList();
   todoController.createTodoEvents();
 });
