@@ -1,5 +1,5 @@
 import { getStorage } from './storageOperations';
-import { getStorage as ExperimentalGetStorage, setStorage as ExperimentalSetStorage } from './EXPERIMENTALstorageOperations';
+import { getStorage as ExperimentalGetStorage, setStorage as ExperimentalSetStorage, getLocalStorageItem } from './EXPERIMENTALstorageOperations';
 
 /**
  *
@@ -21,7 +21,7 @@ const addTodo = (data) => new Promise((resolve, reject) => {
   currentData.push(data.todoDetails);
 
   ExperimentalSetStorage(currentData);
-  
+
   // const updatedData = data.todoDetails;
 
   // localStorage.setItem(
@@ -38,34 +38,29 @@ const addTodo = (data) => new Promise((resolve, reject) => {
  * @returns Promise
  */
 const deleteTodo = (dataIndex) => new Promise((resolve, reject) => {
-  if (typeof dataIndex === 'number') reject(new Error('Index should indicate the Project Name'));
+  // if (typeof dataIndex === 'number') reject(new Error('Index should indicate the Project Name'));
+  const currentData = getLocalStorageItem();
 
-  switch (Array.isArray(dataIndex)) {
-    case false:
-      localStorage.removeItem(dataIndex);
-      break;
-    case true:
-      dataIndex.forEach((element) => {
-        localStorage.removeItem(element);
-      });
-      break;
-    default:
-      reject(new Error('Index must compose of the Project Name and Index'));
-      break;
-  }
-  const currentData = getStorage();
+  const indicatedProject = dataIndex.split('-')[0];
+
+  delete currentData.todoData[indicatedProject][dataIndex];
+  const newStorageData = [];
+
+  Object.values(currentData.todoData).forEach((element) => {
+    newStorageData.push(...(Object.values(element)));
+  });
 
   if (currentData.length === 0) {
     reject(new Error('Data is now empty'));
   }
+
+  ExperimentalSetStorage(newStorageData);
 
   resolve('Todo successfully deleted');
 });
 
 const editTodo = (dataIndex, updatedData) => {
   const processedData = JSON.stringify(updatedData);
-
-  console.log(updatedData);
 
   localStorage.setItem(dataIndex, processedData);
 };

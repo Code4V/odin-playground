@@ -1,6 +1,7 @@
 import { format } from "date-fns";
 
 class Todo {
+  #id;
   #title;
   #description;
   #dueDate;
@@ -23,10 +24,12 @@ class Todo {
     this.#createdAt = new Date().getTime();
     this.#project = project;
     this.#isComplete = false;
+    this.#id = `${project}-${Math.round(Math.random() * 1000)}`
   }
 
   get todoDetails() {
     return {
+      id: this.#id,
       project: this.#project,
       title: this.#title,
       description: this.#description,

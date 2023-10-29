@@ -1,5 +1,5 @@
-import displayController from "../controllers/displayController";
-import todoController from "../controllers/todoController";
+import displayController from '../controllers/displayController';
+import todoController from '../controllers/todoController';
 
 const FilterSorter = () => {
   const filterSorterContainer = document.createElement('section');
@@ -11,7 +11,7 @@ const FilterSorter = () => {
   const sortContainer = document.createElement('div');
   sortContainer.classList.add('filter-sorter__sorters');
 
-  const sortbyText = document.createElement('span');  
+  const sortbyText = document.createElement('span');
   sortbyText.classList.add('filter-sorter__sorters-label');
   sortbyText.textContent = 'Sort By:';
 
@@ -27,7 +27,7 @@ const FilterSorter = () => {
 
   sortContainer.append(sortbyText, sortbyProject, sortbyDate);
 
-  filterSorterContainer.append(filterContainer, sortContainer)
+  filterSorterContainer.append(filterContainer, sortContainer);
 
   sortbyProject.onclick = () => {
     displayController.toggleProjectOrder();
@@ -43,7 +43,7 @@ const FilterSorter = () => {
 
     displayController.displayTodoList();
     todoController.createTodoEvents();
-  }
+  };
 
   return filterSorterContainer;
 };

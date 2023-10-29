@@ -10,7 +10,7 @@ import { formatTodoPriority } from '../operations/todoOperations';
 
 const Todo = (
   {
-    project, title, priority, isComplete, description, dueDate,
+    project, title, priority, isComplete, description, dueDate, id,
   },
   index,
   options = {},
@@ -20,7 +20,7 @@ const Todo = (
   const todo = document.createElement('div');
   todo.classList.add('todo');
   todo.dataset.order = index;
-  todo.setAttribute('id', `${project}-${index}`);
+  todo.setAttribute('id', id);
 
   if ((formattedDueDate - new Date().getTime()) < 0) { todo.classList.add('todo--expired'); }
 

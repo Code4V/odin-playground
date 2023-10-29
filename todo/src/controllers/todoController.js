@@ -1,6 +1,6 @@
 import Certificate from '@carbon/icons/lib/checkmark--filled/16';
 import { getAttributes, toSVG } from '@carbon/icon-helpers';
-import { deleteTodo, editTodo, formatTodoPriority } from '../operations/todoOperations';
+import { deleteTodo, editTodo, formatTodoPriority } from '../operations/EXPERIMENTALtodoOperations';
 import displayController from './displayController';
 import FormInput from '../components/formInput';
 import { getLocalStorageItem } from '../operations/storageOperations';

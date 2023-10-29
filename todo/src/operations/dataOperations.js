@@ -1,5 +1,3 @@
-import { setStorage } from "./EXPERIMENTALstorageOperations";
-
 const sortTodoBy = (dataList, options = {}) => {
   const key = options.category;
 
@@ -37,7 +35,7 @@ const filterProjects = (todoData) => {
   projects.sort();
 
   projects.forEach((projectName) => {
-    const newObject = []
+    const newObject = [];
 
     todoData.forEach((innerElement) => {
       if (innerElement.project === projectName) {
@@ -48,8 +46,8 @@ const filterProjects = (todoData) => {
     filteredProject[projectName] = newObject;
   });
 
-  let newArray = [];
-  Object.values(filteredProject).forEach(element => {
+  const newArray = [];
+  Object.values(filteredProject).forEach((element) => {
     newArray.push(...element);
   });
 
