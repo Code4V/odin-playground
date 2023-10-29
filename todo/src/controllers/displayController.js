@@ -1,26 +1,25 @@
-import TodoList from '../components/todoList';
+import TodoList from "../components/todoList";
 import clearStorage, {
   getStorage,
   setStorage,
-} from '../operations/storageOperations';
+} from "../operations/storageOperations";
 
 import {
   getStorage as EXPERIMENTAL_GETSTORAGE,
   setStorage as EXPERIMENTAL_SETSTORAGE,
-} from '../operations/EXPERIMENTALstorageOperations';
+} from "../operations/EXPERIMENTALstorageOperations";
 
 import {
   sortTodoBy,
   filterProjects,
   filterExpired,
-} from '../operations/dataOperations';
+} from "../operations/dataOperations";
 
 class DisplayController {
   #sortbyProject = false;
   #sortByDate = false;
 
   #filterExpired = false;
-
 
   #currentData = [];
 
@@ -34,16 +33,17 @@ class DisplayController {
     let dataList = todoData;
     if (localStorage.length === 0) EXPERIMENTAL_SETSTORAGE(dataList);
     if (
-      this.#currentData.length === 0
-      || this.#currentData.length !== EXPERIMENTAL_GETSTORAGE().length
-    ) this.#currentData = EXPERIMENTAL_GETSTORAGE();
+      this.#currentData.length === 0 ||
+      this.#currentData.length !== EXPERIMENTAL_GETSTORAGE().length
+    )
+      this.#currentData = EXPERIMENTAL_GETSTORAGE();
 
     if (this.#sortByDate) {
       this.#currentData = sortTodoBy(this.#currentData, {
-        category: 'dueDate',
+        category: "dueDate",
         isAscending: true,
       });
-      
+
       clearStorage();
       EXPERIMENTAL_SETSTORAGE(this.#currentData);
     }
@@ -54,39 +54,28 @@ class DisplayController {
 
     dataList = this.#currentData;
 
-    const projects = filterProjects(dataList);
-
-    console.log(projects.filteredProject)
-
-    const mainTodoListContainer = document.querySelector('main');
-    mainTodoListContainer.innerHTML = '';
-
+    const mainTodoListContainer = document.querySelector("main");
+    mainTodoListContainer.innerHTML = "";
+    
     if (!this.#sortbyProject) {
       mainTodoListContainer.appendChild(TodoList(dataList));
+    
     } else {
-      // clearStorage();
 
+      const projects = filterProjects(dataList);
+      
       if (!projects.projects.length) {
         mainTodoListContainer.appendChild(TodoList([]));
       }
+      
+      projects.projects.forEach((projectName) => {
+        mainTodoListContainer.appendChild(
+          TodoList(projects.filteredProject[projectName], {
+            projectName: projectName,
+          })
+          );
 
-      projects.filteredProject.forEach((element) => {
-        const currentProj = Object.keys(element)[0];
-
-        projects.projects.forEach((project) => {
-
-          if (project === currentProj) {
-            mainTodoListContainer.appendChild(
-              TodoList(element[project], {
-                projectName: [project],
-              }),
-
-            );
-
-            // setStorage(element[project]);
-          }
         });
-      });
     }
 
     // this.#currentData = [];

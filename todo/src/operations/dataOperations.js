@@ -1,3 +1,5 @@
+import { setStorage } from "./EXPERIMENTALstorageOperations";
+
 const sortTodoBy = (dataList, options = {}) => {
   const key = options.category;
 
@@ -24,7 +26,7 @@ const sortTodoBy = (dataList, options = {}) => {
 
 const filterProjects = (todoData) => {
   const projects = [];
-  const filteredProject = [];
+  const filteredProject = {};
 
   todoData.filter((element) => {
     if (!projects.includes(element.project)) projects.push(element.project);
@@ -34,18 +36,21 @@ const filterProjects = (todoData) => {
 
   projects.sort();
 
-  projects.forEach((outerElement) => {
-    const newObject = {
-      [outerElement]: [],
-    };
+  projects.forEach((projectName) => {
+    const newObject = []
 
     todoData.forEach((innerElement) => {
-      if (innerElement.project === outerElement) {
-        newObject[outerElement].push(innerElement);
+      if (innerElement.project === projectName) {
+        newObject.push(innerElement);
       }
     });
 
-    filteredProject.push(newObject);
+    filteredProject[projectName] = newObject;
+  });
+
+  let newArray = [];
+  Object.values(filteredProject).forEach(element => {
+    newArray.push(...element);
   });
 
   return { projects, filteredProject };

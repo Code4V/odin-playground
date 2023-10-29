@@ -1,3 +1,5 @@
+import { filterProjects } from "./dataOperations";
+
 export default function clearStorage() {
   window.localStorage.clear();
   window.sessionStorage.clear();
@@ -6,10 +8,14 @@ export default function clearStorage() {
 function setStorage(todoData) {
 
   const todoObject = {};
-  todoObject.todoData = todoData;
+  todoObject.todoData = {};
 
-  console.log(todoObject)
-  
+  const arrangedTodo = filterProjects(todoData);
+
+  arrangedTodo.projects.forEach(projectName => {
+    todoObject.todoData[projectName] = arrangedTodo.filteredProject[projectName]
+  })
+
   localStorage.setItem(
     "todoData",
     JSON.stringify(todoObject)
@@ -17,9 +23,15 @@ function setStorage(todoData) {
 }
 
 function getStorage() {
-  const data = getLocalStorageItem('todoData');
+  const data = getLocalStorageItem('todoData').todoData;
 
-  return data.todoData;
+  const arrangedTodoData = [];
+  
+  Object.values(data).forEach(element =>{
+    arrangedTodoData.push(...element)
+  })
+
+  return arrangedTodoData;
 }
 
 function getLocalStorageItem(dataIndex) {

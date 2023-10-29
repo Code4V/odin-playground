@@ -19,7 +19,7 @@ const main = document.querySelector("#content");
  * 
  *  +----------------------------------------------
  */
-// ExperimentalSetStorage(data)
+ExperimentalSetStorage(data)
 
 
 // addTodo(new Todo("Test", "DEASD", new Date().getTime(), "Crone"));
