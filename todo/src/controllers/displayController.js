@@ -6,7 +6,7 @@ import clearStorage, {
 
 import {
   getStorage as EXPERIMENTAL_GETSTORAGE,
-  setStorage as EXPERIMENTAL_SETSTORAGE,
+  setTodoStorage as EXPERIMENTAL_SETSTORAGE,
 } from '../operations/EXPERIMENTALstorageOperations';
 
 import {
@@ -16,13 +16,13 @@ import {
 } from '../operations/dataOperations';
 
 class DisplayController {
+  #sortByPriority = true;
+
   #sortbyProject = false;
 
   #sortByDate = false;
 
   #filterExpired = false;
-
-  #testMap = new Map();
 
   #currentData = [];
 
@@ -40,15 +40,11 @@ class DisplayController {
       || this.#currentData.length !== EXPERIMENTAL_GETSTORAGE().length
     ) this.#currentData = EXPERIMENTAL_GETSTORAGE();
 
-    if (this.#sortByDate) {
-      this.#currentData = sortTodoBy(this.#currentData, {
-        category: 'dueDate',
-        isAscending: true,
-      });
-
-      clearStorage();
-      EXPERIMENTAL_SETSTORAGE(this.#currentData);
-    }
+    if (this.#sortByDate) this.#todoSorter('dueDate', true);
+    else this.#todoSorter('dueDate', false);
+    
+    if (this.#sortByPriority) this.#todoSorter('priority', false);
+    else this.#todoSorter('priority', true);
 
     if (this.#filterExpired) {
       this.#currentData = filterExpired(this.#currentData);
@@ -80,24 +76,56 @@ class DisplayController {
     }
   };
 
-  updateCurrentData() {
-    this.#currentData = EXPERIMENTAL_GETSTORAGE();
+  #todoSorter(sortBy, isAscending = true) {
+    this.#currentData = sortTodoBy(this.#currentData, {
+      category: sortBy,
+      isAscending,
+    });
+
+    EXPERIMENTAL_SETSTORAGE(this.#currentData);
   }
 
   get isSortedByProject() {
     return this.#sortbyProject;
   }
 
+  get isSortedByDate() {
+    return this.#sortByDate;
+  }
+
+  get isSortedByPriority() {
+    return this.#sortByPriority;
+  }
+
+  updateCurrentData() {
+    this.#currentData = EXPERIMENTAL_GETSTORAGE();
+  }
+
   toggleProjectOrder() {
     this.#sortbyProject = !this.#sortbyProject;
 
+    localStorage.setItem('isSortedByProject', this.#sortbyProject);
     return this;
   }
 
   toggleDateOrder() {
     this.#sortByDate = !this.#sortByDate;
 
+    localStorage.setItem('isSortedByDate', this.#sortByDate);
     return this;
+  }
+
+  togglePriority() {
+    this.#sortByPriority = !this.#sortByPriority;
+
+    localStorage.setItem('isSortedByPriority', this.#sortByPriority);
+    return this;
+  }
+
+  applyPreferences() {
+    this.#sortbyProject = JSON.parse(localStorage.getItem('isSortedByProject'));
+    this.#sortByDate = JSON.parse(localStorage.getItem('isSortedByDate'));
+    this.#sortByPriority = JSON.parse(localStorage.getItem('isSortedByPriority'));
   }
 }
 

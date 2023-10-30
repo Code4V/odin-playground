@@ -6,7 +6,7 @@ export default function clearStorage() {
   window.sessionStorage.clear();
 }
 
-function setStorage(todoData) {
+function setTodoStorage(todoData) {
   const todoObject = {};
   todoObject.todoData = {};
 
@@ -45,4 +45,4 @@ function getStorage() {
   return convertTodoObjectsToArray(data);
 }
 
-export { setStorage, getStorage, getLocalStorageItem };
+export { setTodoStorage, getStorage, getLocalStorageItem };

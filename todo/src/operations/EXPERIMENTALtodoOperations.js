@@ -3,7 +3,7 @@ import { getStorage } from './storageOperations';
 import convertTodoObjectsToArray from './todoObjectProcessor';
 import {
   getStorage as ExperimentalGetStorage,
-  setStorage as ExperimentalSetStorage,
+  setTodoStorage as ExperimentalSetStorage,
   getLocalStorageItem,
 } from './EXPERIMENTALstorageOperations';
 
