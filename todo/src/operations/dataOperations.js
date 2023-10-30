@@ -46,11 +46,6 @@ const filterProjects = (todoData) => {
     filteredProject[projectName] = newObject;
   });
 
-  const newArray = [];
-  Object.values(filteredProject).forEach((element) => {
-    newArray.push(...element);
-  });
-
   return { projects, filteredProject };
 };
 

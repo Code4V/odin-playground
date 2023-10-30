@@ -81,7 +81,7 @@ class DisplayController {
   };
 
   updateCurrentData() {
-    this.#currentData = getStorage();
+    this.#currentData = EXPERIMENTAL_GETSTORAGE();
   }
 
   get isSortedByProject() {

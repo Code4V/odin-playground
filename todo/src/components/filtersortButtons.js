@@ -33,6 +33,7 @@ const FilterSorter = () => {
     displayController.toggleProjectOrder();
     sortbyProject.classList.toggle('filter-sorter__sorters--active');
 
+    displayController.updateCurrentData();
     displayController.displayTodoList();
     todoController.createTodoEvents();
   };

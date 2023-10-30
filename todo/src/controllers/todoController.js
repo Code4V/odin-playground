@@ -1,16 +1,20 @@
-import Certificate from '@carbon/icons/lib/checkmark--filled/16';
-import { getAttributes, toSVG } from '@carbon/icon-helpers';
-import { deleteTodo, editTodo, formatTodoPriority } from '../operations/EXPERIMENTALtodoOperations';
-import displayController from './displayController';
-import FormInput from '../components/formInput';
-import { getLocalStorageItem } from '../operations/storageOperations';
+import Certificate from "@carbon/icons/lib/checkmark--filled/16";
+import { getAttributes, toSVG } from "@carbon/icon-helpers";
+import {
+  deleteTodo,
+  editTodo,
+  formatTodoPriority,
+} from "../operations/EXPERIMENTALtodoOperations";
+import displayController from "./displayController";
+import FormInput from "../components/formInput";
+import { getLocalStorageItem } from "../operations/EXPERIMENTALstorageOperations";
 
 class TodoController {
   #currentTodos = [];
 
   #getTodos() {
     return new Promise((resolve) => {
-      this.#currentTodos = document.querySelectorAll('.todo-list__todos');
+      this.#currentTodos = document.querySelectorAll(".todo-list__todos");
       // if (this.#currentTodos.length === 0) {
       //   reject(new Error('No Data Yet'));
       // }
@@ -35,12 +39,12 @@ class TodoController {
         attrs: getAttributes(Certificate.attrs),
       });
 
-      editButtonCheck.classList.add('todo__actions-confirm');
+      editButtonCheck.classList.add("todo__actions-confirm");
 
       const deleteButtonAction = element.childNodes[2].childNodes[0];
       const editButtonAction = element.childNodes[2].childNodes[1];
 
-      deleteButtonAction.addEventListener('click', async () => {
+      deleteButtonAction.addEventListener("click", async () => {
         // console.log(element.id);
 
         try {
@@ -53,45 +57,48 @@ class TodoController {
         this.createTodoEvents();
       });
 
-      editButtonAction.addEventListener('click', () => {
-        element.classList.add('todo--edit-mode');
+      editButtonAction.addEventListener("click", () => {
+        element.classList.add("todo--edit-mode");
 
         const todoUpdate = FormInput(
-          'titleUpdate',
-          'Enter new title',
+          "titleUpdate",
+          "Enter new title"
         ).InputField({
           value: titleContent.textContent,
-          addClass: ['form__input-input--small'],
+          addClass: ["form__input-input--small"],
         });
 
         const todoUpdateDescription = FormInput(
-          'descriptionUpdate',
-          'Enter new Description',
+          "descriptionUpdate",
+          "Enter new Description"
         ).TextArea({
           value: descriptionContent.textContent,
-          addClass: ['form__input-textarea'],
+          addClass: ["form__input-textarea"],
         });
 
-        const todoUpdatePriority = FormInput('priorityUpdate', 'Priority').SelectField({
+        const todoUpdatePriority = FormInput(
+          "priorityUpdate",
+          "Priority"
+        ).SelectField({
           choices: [
             {
               value: 0,
-              content: 'Low',
+              content: "Low",
             },
             {
               value: 1,
-              content: 'Normal',
+              content: "Normal",
             },
             {
               value: 2,
-              content: 'High',
+              content: "High",
             },
           ],
-          addClass: ['form__input-priority'],
+          addClass: ["form__input-priority"],
           isRequired: true,
         });
 
-        todoUpdatePriority.classList.add('todo__title-priority');
+        todoUpdatePriority.classList.add("todo__title-priority");
 
         titleContent.replaceWith(todoUpdate);
         descriptionContent.replaceWith(todoUpdateDescription);
@@ -100,12 +107,12 @@ class TodoController {
         editButtonAction.replaceWith(editButtonCheck);
       });
 
-      editButtonCheck.addEventListener('click', () => {
+      editButtonCheck.addEventListener("click", () => {
         const newTodo = getLocalStorageItem(element.id);
 
-        const todoUpdate = document.querySelector('#titleUpdate');
-        const descriptionUpdate = document.querySelector('#descriptionUpdate');
-        const todoUpdatePriority = document.querySelector('#priorityUpdate');
+        const todoUpdate = document.querySelector("#titleUpdate");
+        const descriptionUpdate = document.querySelector("#descriptionUpdate");
+        const todoUpdatePriority = document.querySelector("#priorityUpdate");
 
         newTodo.title = todoUpdate.value;
         newTodo.description = descriptionUpdate.value;
@@ -117,7 +124,7 @@ class TodoController {
         descriptionContent.textContent = newTodo.description;
         priorityContent.textContent = formatTodoPriority(newTodo.priority);
 
-        element.classList.remove('todo--edit-mode');
+        element.classList.remove("todo--edit-mode");
 
         todoUpdate.parentElement.replaceWith(titleContent);
         descriptionUpdate.parentElement.replaceWith(descriptionContent);
@@ -126,7 +133,7 @@ class TodoController {
         editButtonCheck.replaceWith(editButtonAction);
       });
 
-      markAsCompleteButton.addEventListener('click', () => {
+      markAsCompleteButton.addEventListener("click", () => {
         const newTodo = getLocalStorageItem(element.id);
 
         newTodo.isComplete = true;

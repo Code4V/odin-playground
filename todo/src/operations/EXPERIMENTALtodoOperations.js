@@ -1,5 +1,11 @@
 import { getStorage } from './storageOperations';
-import { getStorage as ExperimentalGetStorage, setStorage as ExperimentalSetStorage, getLocalStorageItem } from './EXPERIMENTALstorageOperations';
+
+import convertTodoObjectsToArray from './todoObjectProcessor';
+import {
+  getStorage as ExperimentalGetStorage,
+  setStorage as ExperimentalSetStorage,
+  getLocalStorageItem,
+} from './EXPERIMENTALstorageOperations';
 
 /**
  *
@@ -38,31 +44,28 @@ const addTodo = (data) => new Promise((resolve, reject) => {
  * @returns Promise
  */
 const deleteTodo = (dataIndex) => new Promise((resolve, reject) => {
-  // if (typeof dataIndex === 'number') reject(new Error('Index should indicate the Project Name'));
   const currentData = getLocalStorageItem();
-
   const indicatedProject = dataIndex.split('-')[0];
 
+  if (typeof dataIndex === 'number') reject(new Error('Index should indicate the Project Name'));
+
+  if (currentData.todoData[indicatedProject] === null) reject(new Error('Project does not Exist!'));
+
+  if (currentData.length === 0) reject(new Error('Data is empty'));
+
   delete currentData.todoData[indicatedProject][dataIndex];
-  const newStorageData = [];
 
-  Object.values(currentData.todoData).forEach((element) => {
-    newStorageData.push(...(Object.values(element)));
-  });
-
-  if (currentData.length === 0) {
-    reject(new Error('Data is now empty'));
-  }
-
-  ExperimentalSetStorage(newStorageData);
+  ExperimentalSetStorage(convertTodoObjectsToArray(currentData.todoData));
 
   resolve('Todo successfully deleted');
 });
 
 const editTodo = (dataIndex, updatedData) => {
-  const processedData = JSON.stringify(updatedData);
+  const currentData = getLocalStorageItem();
 
-  localStorage.setItem(dataIndex, processedData);
+  currentData.todoData[dataIndex.split('-')[0]][dataIndex] = updatedData;
+
+  ExperimentalSetStorage(convertTodoObjectsToArray(currentData.todoData));
 };
 
 // const markTodoComplete = (dataIndex) => {
