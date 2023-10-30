@@ -1,8 +1,8 @@
-import displayController from "../controllers/displayController";
-import todoController from "../controllers/todoController";
+import displayController from '../controllers/displayController';
+import todoController from '../controllers/todoController';
 
 function addOnClick(actionButton) {
-  console.log(actionButton)
+  console.log(actionButton);
   actionButton.onclick = () => {
     switch (actionButton.textContent) {
       case 'Project':
@@ -21,7 +21,7 @@ function addOnClick(actionButton) {
         displayController.toggleProjectOrder();
         break;
     }
-    actionButton.classList.toggle("filter-sorter__sorters--active");
+    actionButton.classList.toggle('filter-sorter__sorters--active');
 
     displayController.updateCurrentData();
     displayController.displayTodoList();
@@ -32,39 +32,36 @@ function addOnClick(actionButton) {
 const FilterSorter = () => {
   displayController.applyPreferences();
 
-  const filterSorterContainer = document.createElement("section");
-  filterSorterContainer.classList.add("filter-sorter");
+  const filterSorterContainer = document.createElement('section');
+  filterSorterContainer.classList.add('filter-sorter');
 
-  const filterContainer = document.createElement("div");
-  filterContainer.classList.add("filter-sorter__filters");
+  const filterContainer = document.createElement('div');
+  filterContainer.classList.add('filter-sorter__filters');
 
-  const sortContainer = document.createElement("div");
-  sortContainer.classList.add("filter-sorter__sorters");
+  const sortContainer = document.createElement('div');
+  sortContainer.classList.add('filter-sorter__sorters');
 
-  const sortbyText = document.createElement("span");
-  sortbyText.classList.add("filter-sorter__sorters-label");
-  sortbyText.textContent = "Sort By:";
+  const sortbyText = document.createElement('span');
+  sortbyText.classList.add('filter-sorter__sorters-label');
+  sortbyText.textContent = 'Sort By:';
 
-  const sortbyProject = document.createElement("button");
-  if (displayController.isSortedByProject)
-    sortbyProject.classList.add("filter-sorter__sorters--active");
-  sortbyProject.classList.add("filter-sorter__sorters-project");
-  sortbyProject.type = "button";
-  sortbyProject.textContent = "Project";
+  const sortbyProject = document.createElement('button');
+  if (displayController.isSortedByProject) sortbyProject.classList.add('filter-sorter__sorters--active');
+  sortbyProject.classList.add('filter-sorter__sorters-project');
+  sortbyProject.type = 'button';
+  sortbyProject.textContent = 'Project';
 
-  const sortbyDate = document.createElement("button");
-  if (displayController.isSortedByDate)
-    sortbyDate.classList.add("filter-sorter__sorters--active");
-  sortbyDate.classList.add("filter-sorter__sorters-date");
-  sortbyDate.type = "button";
-  sortbyDate.textContent = "Date";
+  const sortbyDate = document.createElement('button');
+  if (displayController.isSortedByDate) sortbyDate.classList.add('filter-sorter__sorters--active');
+  sortbyDate.classList.add('filter-sorter__sorters-date');
+  sortbyDate.type = 'button';
+  sortbyDate.textContent = 'Date';
 
-  const sortbyPriority = document.createElement("button");
-  if (displayController.isSortedByPriority)
-    sortbyPriority.classList.add("filter-sorter__sorters--active");
-  sortbyPriority.classList.add("filter-sorter__sorters-date");
-  sortbyPriority.type = "button";
-  sortbyPriority.textContent = "Priority";
+  const sortbyPriority = document.createElement('button');
+  if (displayController.isSortedByPriority) sortbyPriority.classList.add('filter-sorter__sorters--active');
+  sortbyPriority.classList.add('filter-sorter__sorters-date');
+  sortbyPriority.type = 'button';
+  sortbyPriority.textContent = 'Priority';
 
   sortContainer.append(sortbyText, sortbyPriority, sortbyProject, sortbyDate);
 

@@ -152,7 +152,11 @@ const FormInput = (name = 'input', displayName = 'default') => {
   };
 
   return {
-    TextArea, InputField, DateField, NumberField, SelectField,
+    TextArea,
+    InputField,
+    DateField,
+    NumberField,
+    SelectField,
   };
 };
 

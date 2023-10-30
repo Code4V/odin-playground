@@ -42,7 +42,7 @@ class DisplayController {
 
     if (this.#sortByDate) this.#todoSorter('dueDate', true);
     else this.#todoSorter('dueDate', false);
-    
+
     if (this.#sortByPriority) this.#todoSorter('priority', false);
     else this.#todoSorter('priority', true);
 

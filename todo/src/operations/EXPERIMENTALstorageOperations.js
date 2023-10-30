@@ -1,4 +1,5 @@
 import { filterProjects } from './dataOperations';
+import { setStorage } from './storageOperations';
 import convertTodoObjectsToArray from './todoObjectProcessor';
 
 export default function clearStorage() {
@@ -41,6 +42,8 @@ function getLocalStorageItem(dataIndex = 'todoData') {
 
 function getStorage() {
   const data = getLocalStorageItem('todoData').todoData;
+
+  if (data === null) setTodoStorage([]);
 
   return convertTodoObjectsToArray(data);
 }

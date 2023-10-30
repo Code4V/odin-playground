@@ -22,7 +22,9 @@ const Todo = (
   todo.dataset.order = index;
   todo.setAttribute('id', id);
 
-  if ((formattedDueDate - new Date().getTime()) < 0) { todo.classList.add('todo--expired'); }
+  if (formattedDueDate - new Date().getTime() < 0) {
+    todo.classList.add('todo--expired');
+  }
 
   if (options.duration != null) {
     todo.style.animationDuration = options.duration;

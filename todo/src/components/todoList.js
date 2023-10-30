@@ -22,8 +22,8 @@ const TodoList = (todoData, options = { projectName: 'Todo List' }) => {
   }
 
   todoData.forEach((element, index) => {
-    let duration = (index * 500) + 500;
-    duration = (duration > 5000) ? 5000 : duration;
+    let duration = index * 500 + 500;
+    duration = duration > 5000 ? 5000 : duration;
 
     // if (element.isComplete) return;
 
