@@ -41,11 +41,11 @@ function getLocalStorageItem(dataIndex = 'todoData') {
 }
 
 function getStorage() {
-  const data = getLocalStorageItem('todoData').todoData;
+  const data = getLocalStorageItem('todoData');
 
   if (data === null) setTodoStorage([]);
 
-  return convertTodoObjectsToArray(data);
+  return convertTodoObjectsToArray(data.todoData);
 }
 
 export { setTodoStorage, getStorage, getLocalStorageItem };
