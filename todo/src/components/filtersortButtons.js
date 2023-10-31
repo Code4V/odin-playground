@@ -1,67 +1,79 @@
-import displayController from '../controllers/displayController';
-import todoController from '../controllers/todoController';
+import displayController from "../controllers/displayController";
+import todoController from "../controllers/todoController";
 
 function addOnClick(actionButton) {
-  console.log(actionButton);
-  actionButton.onclick = () => {
-    switch (actionButton.textContent) {
-      case 'Project':
-        displayController.toggleProjectOrder();
-        break;
+  return new Promise((resolve, reject) => {
+    if (typeof actionButton !== "object")
+      reject(new Error("Must be type of Object"));
 
-      case 'Date':
-        displayController.toggleDateOrder();
-        break;
+    if (actionButton.constructor.name !== "HTMLButtonElement")
+      reject(new Error(`Object must be an HTML Button Element`));
 
-      case 'Priority':
-        displayController.togglePriority();
-        break;
+    actionButton.onclick = () => {
+      switch (actionButton.textContent) {
+        case "Project":
+          displayController.toggleProjectOrder();
+          break;
 
-      default:
-        displayController.toggleProjectOrder();
-        break;
-    }
-    actionButton.classList.toggle('filter-sorter__sorters--active');
+        case "Date":
+          displayController.toggleDateOrder();
+          break;
 
-    displayController.updateCurrentData();
-    displayController.displayTodoList();
-    todoController.createTodoEvents();
-  };
+        case "Priority":
+          displayController.togglePriority();
+          break;
+
+        default:
+          displayController.toggleProjectOrder();
+          break;
+      }
+      actionButton.classList.toggle("filter-sorter__sorters--active");
+
+      displayController.updateCurrentData();
+      displayController.displayTodoList();
+      todoController.createTodoEvents();
+    };
+
+    resolve("Onclick successfully Added!");
+  });
 }
 
 const FilterSorter = () => {
   displayController.applyPreferences();
 
-  const filterSorterContainer = document.createElement('section');
-  filterSorterContainer.classList.add('filter-sorter');
+  const filterSorterContainer = document.createElement("section");
+  filterSorterContainer.classList.add("filter-sorter");
 
-  const filterContainer = document.createElement('div');
-  filterContainer.classList.add('filter-sorter__filters');
+  const filterContainer = document.createElement("div");
+  filterContainer.classList.add("filter-sorter__filters");
 
-  const sortContainer = document.createElement('div');
-  sortContainer.classList.add('filter-sorter__sorters');
+  const sortContainer = document.createElement("div");
+  sortContainer.classList.add("filter-sorter__sorters");
 
-  const sortbyText = document.createElement('span');
-  sortbyText.classList.add('filter-sorter__sorters-label');
-  sortbyText.textContent = 'Sort By:';
+  const sortbyText = document.createElement("span");
+  sortbyText.classList.add("filter-sorter__sorters-label");
+  sortbyText.textContent = "Sort By:";
 
-  const sortbyProject = document.createElement('button');
-  if (displayController.isSortedByProject) sortbyProject.classList.add('filter-sorter__sorters--active');
-  sortbyProject.classList.add('filter-sorter__sorters-project');
-  sortbyProject.type = 'button';
-  sortbyProject.textContent = 'Project';
+  const sortbyProject = document.createElement("button");
+  if (displayController.isSortedByProject)
+    sortbyProject.classList.add("filter-sorter__sorters--active");
+  sortbyProject.classList.add("filter-sorter__sorters-project");
+  sortbyProject.type = "button";
+  sortbyProject.textContent = "Project";
 
-  const sortbyDate = document.createElement('button');
-  if (displayController.isSortedByDate) sortbyDate.classList.add('filter-sorter__sorters--active');
-  sortbyDate.classList.add('filter-sorter__sorters-date');
-  sortbyDate.type = 'button';
-  sortbyDate.textContent = 'Date';
+  const sortbyDate = document.createElement("button");
+  if (displayController.isSortedByDate)
+    sortbyDate.classList.add("filter-sorter__sorters--active");
+  sortbyDate.classList.add("filter-sorter__sorters-date");
+  sortbyDate.type = "button";
+  sortbyDate.textContent = "Date";
 
-  const sortbyPriority = document.createElement('button');
-  if (displayController.isSortedByPriority) sortbyPriority.classList.add('filter-sorter__sorters--active');
-  sortbyPriority.classList.add('filter-sorter__sorters-date');
-  sortbyPriority.type = 'button';
-  sortbyPriority.textContent = 'Priority';
+  const sortbyPriority = document.createElement("button");
+  if (displayController.isSortedByPriority)
+    sortbyPriority.classList.add("filter-sorter__sorters--active");
+  sortbyPriority.classList.add("filter-sorter__sorters-date");
+  sortbyPriority.type = "button";
+  sortbyPriority.textContent = "Priority";
 
   sortContainer.append(sortbyText, sortbyPriority, sortbyProject, sortbyDate);
 
@@ -70,6 +82,8 @@ const FilterSorter = () => {
   addOnClick(sortbyProject);
   addOnClick(sortbyDate);
   addOnClick(sortbyPriority);
+
+  addOnClick("test");
 
   return filterSorterContainer;
 };
