@@ -1,37 +1,53 @@
+import { filterProjects } from './dataOperations';
+import convertTodoObjectsToArray from './todoObjectProcessor';
+
 export default function clearStorage() {
   window.localStorage.clear();
   window.sessionStorage.clear();
 }
 
-function setStorage(todoData) {
-  todoData.forEach((element, index) => {
-    localStorage.setItem(
-      `${element.project}-${index}`,
-      JSON.stringify(element),
-    );
+function setTodoStorage(todoData) {
+  const todoObject = {};
+  todoObject.todoData = {};
+
+  const arrangedTodo = filterProjects(todoData);
+
+  arrangedTodo.projects.forEach((projectName) => {
+    const test = {};
+
+    arrangedTodo.filteredProject[projectName].forEach((element) => {
+      test[element.id] = element;
+    });
+
+    todoObject.todoData[projectName] = test;
   });
+
+  localStorage.setItem('todoData', JSON.stringify(todoObject));
 }
 
-function getStorage() {
-  const todo = [];
-  let storageItem;
-
-  for (let i = 0; i < localStorage.length; i += 1) {
-    storageItem = JSON.parse(
-      localStorage.getItem(Object.keys(localStorage)[i]),
-    );
-    todo.push(storageItem);
-  }
-
-  return todo;
-}
-
-function getLocalStorageItem(dataIndex) {
+function getLocalStorageItem(dataIndex = 'todoData') {
   if (typeof dataIndex === 'number') {
     return new Error('Index must be composed of Project followed by the Index');
+  }
+
+  if (dataIndex !== 'todoData') {
+    return JSON.parse(localStorage.getItem('todoData')).todoData[
+      dataIndex.split('-')[0]
+    ][dataIndex];
   }
 
   return JSON.parse(localStorage.getItem(dataIndex));
 }
 
-export { setStorage, getStorage, getLocalStorageItem };
+function getTodoStorage() {
+  const data = getLocalStorageItem('todoData');
+
+  if (data === null) {
+    setTodoStorage([]);
+    return getTodoStorage();
+  }  
+  
+  return convertTodoObjectsToArray(data.todoData);
+}
+
+export { setTodoStorage, getTodoStorage, getLocalStorageItem };

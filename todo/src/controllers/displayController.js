@@ -1,13 +1,8 @@
 import TodoList from '../components/todoList';
 import clearStorage, {
-  getStorage,
-  setStorage,
+  getTodoStorage,
+  setTodoStorage,
 } from '../operations/storageOperations';
-
-import {
-  getStorage as EXPERIMENTAL_GETSTORAGE,
-  setTodoStorage as EXPERIMENTAL_SETSTORAGE,
-} from '../operations/EXPERIMENTALstorageOperations';
 
 import {
   sortTodoBy,
@@ -34,11 +29,11 @@ class DisplayController {
 
   displayTodoList = (todoData = []) => {
     let dataList = todoData;
-    if (localStorage.length === 0) EXPERIMENTAL_SETSTORAGE(dataList);
+    if (localStorage.length === 0) setTodoStorage(dataList);
     if (
       this.#currentData.length === 0
-      || this.#currentData.length !== EXPERIMENTAL_GETSTORAGE().length
-    ) this.#currentData = EXPERIMENTAL_GETSTORAGE();
+      || this.#currentData.length !== getTodoStorage().length
+    ) this.#currentData = getTodoStorage();
 
     if (this.#sortByDate) this.#todoSorter('dueDate', true);
     else this.#todoSorter('dueDate', false);
@@ -60,7 +55,7 @@ class DisplayController {
     } else {
       const projects = filterProjects(dataList);
 
-      EXPERIMENTAL_SETSTORAGE(dataList);
+      setTodoStorage(dataList);
 
       if (!projects.projects.length) {
         mainTodoListContainer.appendChild(TodoList([]));
@@ -82,7 +77,7 @@ class DisplayController {
       isAscending,
     });
 
-    EXPERIMENTAL_SETSTORAGE(this.#currentData);
+    setTodoStorage(this.#currentData);
   }
 
   get isSortedByProject() {
@@ -98,7 +93,7 @@ class DisplayController {
   }
 
   updateCurrentData() {
-    this.#currentData = EXPERIMENTAL_GETSTORAGE();
+    this.#currentData = getTodoStorage();
   }
 
   toggleProjectOrder() {

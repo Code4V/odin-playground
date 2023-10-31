@@ -369,6 +369,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 .filter-sorter__sorters {
   display: flex;
+  align-items: center;
 }
 .filter-sorter__sorters-label {
   font-weight: 300;

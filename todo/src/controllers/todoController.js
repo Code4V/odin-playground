@@ -4,10 +4,10 @@ import {
   deleteTodo,
   editTodo,
   formatTodoPriority,
-} from '../operations/EXPERIMENTALtodoOperations';
+} from '../operations/todoOperations';
 import displayController from './displayController';
 import FormInput from '../components/formInput';
-import { getLocalStorageItem } from '../operations/EXPERIMENTALstorageOperations';
+import { getLocalStorageItem } from '../operations/storageOperations';
 
 class TodoController {
   #currentTodos = [];

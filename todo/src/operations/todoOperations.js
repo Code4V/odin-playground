@@ -1,4 +1,9 @@
-import { getStorage } from './storageOperations';
+import convertTodoObjectsToArray from './todoObjectProcessor';
+import {
+  getTodoStorage,
+  setTodoStorage, 
+  getLocalStorageItem
+} from './storageOperations';
 
 /**
  *
@@ -16,12 +21,17 @@ const addTodo = (data) => new Promise((resolve, reject) => {
     return;
   }
 
-  const updatedData = data.todoDetails;
+  const currentData = getTodoStorage();
+  currentData.push(data.todoDetails);
 
-  localStorage.setItem(
-    `${updatedData.project}-${localStorage.length}`,
-    JSON.stringify(updatedData),
-  );
+  setTodoStorage(currentData);
+
+  // const updatedData = data.todoDetails;
+
+  // localStorage.setItem(
+  //   `${updatedData.project}-${localStorage.length}`,
+  //   JSON.stringify(updatedData),
+  // );
 
   resolve('Item has been added!');
 });
@@ -32,34 +42,34 @@ const addTodo = (data) => new Promise((resolve, reject) => {
  * @returns Promise
  */
 const deleteTodo = (dataIndex) => new Promise((resolve, reject) => {
+  const currentData = getLocalStorageItem();
+  const indicatedProject = dataIndex.split('-')[0];
+
   if (typeof dataIndex === 'number') reject(new Error('Index should indicate the Project Name'));
 
-  switch (Array.isArray(dataIndex)) {
-    case false:
-      localStorage.removeItem(dataIndex);
-      break;
-    case true:
-      dataIndex.forEach((element) => {
-        localStorage.removeItem(element);
-      });
-      break;
-    default:
-      reject(new Error('Index must compose of the Project Name and Index'));
-      break;
-  }
-  const currentData = getStorage();
+  if (currentData.todoData[indicatedProject] === null) reject(new Error('Project does not Exist!'));
 
-  if (currentData.length === 0) {
-    reject(new Error('Data is now empty'));
-  }
+  if (currentData.length === 0) reject(new Error('Data is empty'));
+
+  delete currentData.todoData[indicatedProject][dataIndex];
+
+  setTodoStorage(convertTodoObjectsToArray(currentData.todoData));
 
   resolve('Todo successfully deleted');
 });
 
+/**
+ * 
+ * @param { string } dataIndex => Todo id 
+ * @param { Todo } updatedData => the updated Todo data
+ * @returns void
+ */
 const editTodo = (dataIndex, updatedData) => {
-  const processedData = JSON.stringify(updatedData);
+  const currentData = getLocalStorageItem();
 
-  localStorage.setItem(dataIndex, processedData);
+  currentData.todoData[dataIndex.split('-')[0]][dataIndex] = updatedData;
+
+  setTodoStorage(convertTodoObjectsToArray(currentData.todoData));
 };
 
 // const markTodoComplete = (dataIndex) => {
