@@ -9,23 +9,23 @@
   &__filters, &__sorters
     flex: 0 1 100%
     gap: .75rem
-
+    display: flex
+    align-items: center
+    
     & > *:not(:nth-child(1))
       font-weight: 700
+      margin-inline-start: 0 !important
+
+    &-label
+      font-weight: 300
 
     &--active
       background-color: var(--accent)
       color: var(--secondary)
 
   &__filters    
+    &-expired
 
   &__sorters
-    display: flex
-    align-items: center
-
-    &-label
-      font-weight: 300
-
     &-project, &-date
-      margin-inline-start: 0 !important 
 

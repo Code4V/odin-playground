@@ -15,3 +15,13 @@ document.addEventListener("DOMContentLoaded", () => {
   displayController.displayTodoList();
   todoController.createTodoEvents();
 });
+
+const test = ["test", "crap", "shessh"];
+
+console.log(test.map((element) => {
+  return element.toUpperCase()
+}));
+
+console.log(test.forEach((element) => element.toUpperCase()));
+
+console.log(test)

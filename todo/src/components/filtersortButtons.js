@@ -47,6 +47,16 @@ const FilterSorter = () => {
   const filterContainer = document.createElement("div");
   filterContainer.classList.add("filter-sorter__filters");
 
+  const filterbyText = document.createElement("span");
+  filterbyText.classList.add("filter-sorter__filters-label");
+  filterbyText.textContent = "Filter By:";
+
+  const filterbyExpired = document.createElement("button");
+  filterbyExpired.classList.add("filter-sorter__filters-expired");
+  filterbyExpired.textContent = "Expired";
+
+  filterContainer.append(filterbyText, filterbyExpired);
+
   const sortContainer = document.createElement("div");
   sortContainer.classList.add("filter-sorter__sorters");
 
@@ -71,7 +81,7 @@ const FilterSorter = () => {
   const sortbyPriority = document.createElement("button");
   if (displayController.isSortedByPriority)
     sortbyPriority.classList.add("filter-sorter__sorters--active");
-  sortbyPriority.classList.add("filter-sorter__sorters-date");
+  sortbyPriority.classList.add("filter-sorter__sorters-priority");
   sortbyPriority.type = "button";
   sortbyPriority.textContent = "Priority";
 
