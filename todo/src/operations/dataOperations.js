@@ -2,7 +2,7 @@ const sortTodoBy = (dataList, options = {}) => {
   const key = options.category;
 
   switch (typeof dataList[0]) {
-    case "object":
+    case 'object':
       dataList.sort((fdata, sdata) => {
         if (options.isAscending) return fdata[key] - sdata[key];
 
@@ -54,33 +54,24 @@ const sortByProject = (todoData) => {
   return filteredProject;
 };
 
-const filterBy = (todoData, { dataKey, isDate }) => {
+const filterBy = (todoData, { dataKey, isDate, isTrue = false }) => {
+  if (typeof todoData[0] !== 'object') return 'Must be a Todo List Object';
+
   const remainingData = todoData.filter((element) => {
-    switch (typeof dataKey) {
-      case "number":
-        if (isDate && element[dataKey] > new Date().getTime())
-          return element;
-        
-        if (element[dataKey]) return element;
+    switch (typeof element[dataKey]) {
+      case 'number':
+        if (isDate && element[dataKey] > new Date().getTime()) return element;
+        if (!isDate && element[dataKey] > 0) return element;
         break;
-      case "boolean":
-        if (element[options.dataKey] === true) return element;
+      case 'boolean':
+        if (element[dataKey] === isTrue) return element;
         break;
       default:
-        switch (typeof options.dataKey) {
-        }
-
         return element;
     }
   });
 
   return remainingData;
-};
-
-const filterComplete = (todoData) => {
-  const remainingData = todoData.filter((element) => {
-    if (element.isComplete === true) return element;
-  });
 };
 
 export { sortTodoBy, sortByProject, filterBy };

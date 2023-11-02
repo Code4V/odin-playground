@@ -1,8 +1,8 @@
 import convertTodoObjectsToArray from './todoObjectProcessor';
 import {
   getTodoStorage,
-  setTodoStorage, 
-  getLocalStorageItem
+  setTodoStorage,
+  getLocalStorageItem,
 } from './storageOperations';
 
 /**
@@ -59,8 +59,8 @@ const deleteTodo = (dataIndex) => new Promise((resolve, reject) => {
 });
 
 /**
- * 
- * @param { string } dataIndex => Todo id 
+ *
+ * @param { string } dataIndex => Todo id
  * @param { Todo } updatedData => the updated Todo data
  * @returns void
  */

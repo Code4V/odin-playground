@@ -45,8 +45,8 @@ function getTodoStorage() {
   if (data === null) {
     setTodoStorage([]);
     return getTodoStorage();
-  }  
-  
+  }
+
   return convertTodoObjectsToArray(data.todoData);
 }
 
