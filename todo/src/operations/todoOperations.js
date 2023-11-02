@@ -72,14 +72,6 @@ const editTodo = (dataIndex, updatedData) => {
   setTodoStorage(convertTodoObjectsToArray(currentData.todoData));
 };
 
-// const markTodoComplete = (dataIndex) => {
-//   const dataFromStorage = getLocalStorageItem(dataIndex);
-
-//   dataFromStorage.isComplete = true;
-
-//   localStorage.setItem(dataIndex, dataFromStorage);
-// };
-
 const formatTodoPriority = (todoPriority) => {
   if (todoPriority === null) return new Error('Value must not be Null');
 

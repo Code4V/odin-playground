@@ -93,8 +93,6 @@ const FilterSorter = () => {
   addOnClick(sortbyDate);
   addOnClick(sortbyPriority);
 
-  addOnClick("test");
-
   return filterSorterContainer;
 };
 

@@ -1,4 +1,4 @@
-import { filterProjects } from './dataOperations';
+import { sortByProject } from './dataOperations';
 import convertTodoObjectsToArray from './todoObjectProcessor';
 
 export default function clearStorage() {
@@ -10,16 +10,16 @@ function setTodoStorage(todoData) {
   const todoObject = {};
   todoObject.todoData = {};
 
-  const arrangedTodo = filterProjects(todoData);
+  const arrangedTodo = sortByProject(todoData);
 
-  arrangedTodo.projects.forEach((projectName) => {
-    const test = {};
+  Object.keys(arrangedTodo).forEach((projectName) => {
+    const todoData = {};
 
-    arrangedTodo.filteredProject[projectName].forEach((element) => {
-      test[element.id] = element;
+    arrangedTodo[projectName].forEach((element) => {
+      todoData[element.id] = element;
     });
 
-    todoObject.todoData[projectName] = test;
+    todoObject.todoData[projectName] = todoData;
   });
 
   localStorage.setItem('todoData', JSON.stringify(todoObject));
