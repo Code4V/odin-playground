@@ -5,6 +5,7 @@ import Background from "./assets/TodoBackground.jpg";
 import NavBar from "./components/navbar";
 import FilterSorter from "./components/filtersortButtons";
 import data from "./data/todo.json";
+import { setTodoStorage } from "./operations/storageOperations";
 
 const main = document.querySelector("#content");
 
@@ -15,13 +16,3 @@ document.addEventListener("DOMContentLoaded", () => {
   displayController.displayTodoList();
   todoController.createTodoEvents();
 });
-
-const test = ["test", "crap", "shessh"];
-
-console.log(test.map((element) => {
-  return element.toUpperCase()
-}));
-
-console.log(test.forEach((element) => element.toUpperCase()));
-
-console.log(test)

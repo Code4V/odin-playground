@@ -54,8 +54,9 @@ const sortByProject = (todoData) => {
   return filteredProject;
 };
 
-const filterBy = (todoData, { dataKey, isDate, isTrue = false }) => {
-  if (typeof todoData[0] !== 'object') return 'Must be a Todo List Object';
+const filterBy = (todoData = [], { dataKey, isDate, isTrue = false }) => {
+  if (todoData.length === 0) return todoData;
+  if (typeof todoData[0] !== 'object') return 'Todo Data must contain an array of Objects!';
 
   const remainingData = todoData.filter((element) => {
     switch (typeof element[dataKey]) {

@@ -20,6 +20,7 @@ function addOnClick(...actionButton) {
 
           case 'Incomplete':
             displayController.toggleIncomplete();
+            break;
 
           case 'Project':
             displayController.toggleProjectOrder();
@@ -37,8 +38,11 @@ function addOnClick(...actionButton) {
             displayController.toggleProjectOrder();
             break;
         }
-
-        element.classList.toggle('filter-sorter__sorters--active');
+        
+        if(element.parentNode.classList[0] === 'filter-sorter__sorters')
+          element.classList.toggle('filter-sorter__sorters--active');
+        else
+          element.classList.toggle('filter-sorter__filters--active')
 
         displayController.updateCurrentData();
         displayController.displayTodoList();
@@ -70,12 +74,12 @@ const FilterSorter = () => {
 
   const filterbyComplete = document.createElement('button');
   if (displayController.isFilteredByComplete) filterbyComplete.classList.add('filter-sorter__filters--active');
-  filterbyComplete.classList.add('filter-sorter__filters-expired');
+  filterbyComplete.classList.add('filter-sorter__filters-complete');
   filterbyComplete.textContent = 'Completed';
 
   const filterbyIncomplete = document.createElement('button');
   if (displayController.isFilteredByIncomplete) filterbyIncomplete.classList.add('filter-sorter__filters--active');
-  filterbyIncomplete.classList.add('filter-sorter__filters-expired');
+  filterbyIncomplete.classList.add('filter-sorter__filters-incomplete');
   filterbyIncomplete.textContent = 'Incomplete';
 
   filterContainer.append(
