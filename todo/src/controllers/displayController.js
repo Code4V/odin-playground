@@ -17,7 +17,11 @@ class DisplayController {
 
   #sortByDate = false;
 
-  #filterExpired = true;
+  #filterExpired = false;
+
+  #filterComplete = false;
+
+  #filterIncomplete = false;
 
   #currentData = [];
 
@@ -43,13 +47,11 @@ class DisplayController {
 
     dataList = this.#currentData;
 
-    if (this.#filterExpired) {
-      dataList = filterBy(dataList, {
-        dataKey: 'isComplete',
-      });
+    if (this.#filterExpired) dataList = filterBy(dataList, { dataKey: 'dueDate', isDate: true });
 
-      return;
-    }
+    if (this.#filterComplete) dataList = filterBy(dataList, { dataKey: 'isComplete', isTrue: true });
+
+    if (this.#filterIncomplete) dataList = filterBy(dataList, { dataKey: 'isComplete' });
 
     const mainTodoListContainer = document.querySelector('main');
     mainTodoListContainer.innerHTML = '';
@@ -92,6 +94,18 @@ class DisplayController {
     return this.#sortByPriority;
   }
 
+  get isFilteredByExpired() {
+    return this.#filterExpired;
+  }
+
+  get isFilteredByComplete() {
+    return this.#filterComplete;
+  }
+
+  get isFilteredByIncomplete() {
+    return this.#filterIncomplete;
+  }
+
   updateCurrentData() {
     this.#currentData = getTodoStorage();
   }
@@ -117,11 +131,41 @@ class DisplayController {
     return this;
   }
 
+  toggleExpired() {
+    this.#filterExpired = !this.#filterExpired;
+
+    localStorage.setItem('isFilteredByExpired', this.#filterExpired);
+    return this;
+  }
+
+  toggleComplete() {
+    this.#filterComplete = !this.#filterComplete;
+
+    localStorage.setItem('isFilteredByComplete', this.#filterComplete);
+    return this;
+  }
+
+  toggleIncomplete() {
+    this.#filterIncomplete = !this.#filterIncomplete;
+
+    localStorage.setItem('isFilteredByIncomplete', this.#filterIncomplete);
+    return this;
+  }
+
   applyPreferences() {
     this.#sortbyProject = JSON.parse(localStorage.getItem('isSortedByProject'));
     this.#sortByDate = JSON.parse(localStorage.getItem('isSortedByDate'));
     this.#sortByPriority = JSON.parse(
       localStorage.getItem('isSortedByPriority'),
+    );
+    this.#filterExpired = JSON.parse(
+      localStorage.getItem('isFilteredByExpired'),
+    );
+    this.#filterComplete = JSON.parse(
+      localStorage.getItem('isFilteredByComplete'),
+    );
+    this.#filterIncomplete = JSON.parse(
+      localStorage.getItem('isFilteredByIncomplete'),
     );
   }
 }

@@ -1,36 +1,50 @@
 import displayController from '../controllers/displayController';
 import todoController from '../controllers/todoController';
 
-function addOnClick(actionButton) {
+function addOnClick(...actionButton) {
   return new Promise((resolve, reject) => {
     if (typeof actionButton !== 'object') reject(new Error('Must be type of Object'));
 
-    if (actionButton.constructor.name !== 'HTMLButtonElement') reject(new Error('Object must be an HTML Button Element'));
+    if (actionButton[0].constructor.name !== 'HTMLButtonElement') reject(new Error('Object must be an HTML Button Element'));
 
-    actionButton.onclick = () => {
-      switch (actionButton.textContent) {
-        case 'Project':
-          displayController.toggleProjectOrder();
-          break;
+    actionButton.forEach((element) => {
+      element.onclick = () => {
+        switch (element.textContent) {
+          case 'Expired':
+            displayController.toggleExpired();
+            break;
 
-        case 'Date':
-          displayController.toggleDateOrder();
-          break;
+          case 'Completed':
+            displayController.toggleComplete();
+            break;
 
-        case 'Priority':
-          displayController.togglePriority();
-          break;
+          case 'Incomplete':
+            displayController.toggleIncomplete();
 
-        default:
-          displayController.toggleProjectOrder();
-          break;
-      }
-      actionButton.classList.toggle('filter-sorter__sorters--active');
+          case 'Project':
+            displayController.toggleProjectOrder();
+            break;
 
-      displayController.updateCurrentData();
-      displayController.displayTodoList();
-      todoController.createTodoEvents();
-    };
+          case 'Date':
+            displayController.toggleDateOrder();
+            break;
+
+          case 'Priority':
+            displayController.togglePriority();
+            break;
+
+          default:
+            displayController.toggleProjectOrder();
+            break;
+        }
+
+        element.classList.toggle('filter-sorter__sorters--active');
+
+        displayController.updateCurrentData();
+        displayController.displayTodoList();
+        todoController.createTodoEvents();
+      };
+    });
 
     resolve('Onclick successfully Added!');
   });
@@ -50,10 +64,26 @@ const FilterSorter = () => {
   filterbyText.textContent = 'Filter By:';
 
   const filterbyExpired = document.createElement('button');
+  if (displayController.isFilteredByExpired) filterbyExpired.classList.add('filter-sorter__filters--active');
   filterbyExpired.classList.add('filter-sorter__filters-expired');
   filterbyExpired.textContent = 'Expired';
 
-  filterContainer.append(filterbyText, filterbyExpired);
+  const filterbyComplete = document.createElement('button');
+  if (displayController.isFilteredByComplete) filterbyComplete.classList.add('filter-sorter__filters--active');
+  filterbyComplete.classList.add('filter-sorter__filters-expired');
+  filterbyComplete.textContent = 'Completed';
+
+  const filterbyIncomplete = document.createElement('button');
+  if (displayController.isFilteredByIncomplete) filterbyIncomplete.classList.add('filter-sorter__filters--active');
+  filterbyIncomplete.classList.add('filter-sorter__filters-expired');
+  filterbyIncomplete.textContent = 'Incomplete';
+
+  filterContainer.append(
+    filterbyText,
+    filterbyExpired,
+    filterbyComplete,
+    filterbyIncomplete,
+  );
 
   const sortContainer = document.createElement('div');
   sortContainer.classList.add('filter-sorter__sorters');
@@ -84,9 +114,16 @@ const FilterSorter = () => {
 
   filterSorterContainer.append(filterContainer, sortContainer);
 
-  addOnClick(sortbyProject);
-  addOnClick(sortbyDate);
-  addOnClick(sortbyPriority);
+  addOnClick(
+    filterbyExpired,
+    filterbyComplete,
+    filterbyIncomplete,
+    sortbyProject,
+    sortbyDate,
+    sortbyPriority,
+  );
+  // addOnClick(sortbyDate);
+  // addOnClick(sortbyPriority);
 
   return filterSorterContainer;
 };
