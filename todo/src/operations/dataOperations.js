@@ -62,7 +62,7 @@ const filterBy = (todoData = [], { dataKey, isDate, isTrue = false }) => {
     switch (typeof element[dataKey]) {
       case 'number':
         if (isDate && element[dataKey] < new Date().getTime()) return element;
-        if (!isDate && element[dataKey] > 0) return element;
+        else if (!isDate && element[dataKey] > 0) return element;
         break;
       case 'boolean':
         if (element[dataKey] === isTrue) return element;

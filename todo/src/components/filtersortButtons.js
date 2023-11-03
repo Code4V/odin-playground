@@ -18,10 +18,6 @@ function addOnClick(...actionButton) {
             displayController.toggleComplete();
             break;
 
-          case 'Incomplete':
-            displayController.toggleIncomplete();
-            break;
-
           case 'Project':
             displayController.toggleProjectOrder();
             break;
@@ -77,16 +73,10 @@ const FilterSorter = () => {
   filterbyComplete.classList.add('filter-sorter__filters-complete');
   filterbyComplete.textContent = 'Completed';
 
-  const filterbyIncomplete = document.createElement('button');
-  if (displayController.isFilteredByIncomplete) filterbyIncomplete.classList.add('filter-sorter__filters--active');
-  filterbyIncomplete.classList.add('filter-sorter__filters-incomplete');
-  filterbyIncomplete.textContent = 'Incomplete';
-
   filterContainer.append(
     filterbyText,
     filterbyExpired,
     filterbyComplete,
-    filterbyIncomplete,
   );
 
   const sortContainer = document.createElement('div');
@@ -121,13 +111,10 @@ const FilterSorter = () => {
   addOnClick(
     filterbyExpired,
     filterbyComplete,
-    filterbyIncomplete,
     sortbyProject,
     sortbyDate,
     sortbyPriority,
   );
-  // addOnClick(sortbyDate);
-  // addOnClick(sortbyPriority);
 
   return filterSorterContainer;
 };
