@@ -45,16 +45,16 @@ class DisplayController {
     else this.#todoSorter("priority", true);
 
     dataList = this.#currentData;
-    
-    if (this.#filterExpired)
-      dataList = filterBy(dataList, { dataKey: "dueDate", isDate: true });
-    
+
     if (this.#filterComplete) {
       dataList = filterBy(dataList, { dataKey: "isComplete", isTrue: true });
     } else dataList = filterBy(dataList, { dataKey: "isComplete" });
 
+    if (this.#filterExpired) {
+      dataList = this.#currentData;
+      dataList = filterBy(dataList, { dataKey: "dueDate", isDate: true });
+    }
     console.log(dataList);
-
 
     const mainTodoListContainer = document.querySelector("main");
     mainTodoListContainer.innerHTML = "";
