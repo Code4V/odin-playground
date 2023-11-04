@@ -54,6 +54,7 @@ const sortByProject = (todoData) => {
   return filteredProject;
 };
 
+// eslint-disable-next-line default-param-last
 const filterBy = (todoData = [], { dataKey, isDate, isTrue = false }) => {
   if (todoData.length === 0) return todoData;
   if (typeof todoData[0] !== 'object') return 'Todo Data must contain an array of Objects!';
@@ -62,7 +63,7 @@ const filterBy = (todoData = [], { dataKey, isDate, isTrue = false }) => {
     switch (typeof element[dataKey]) {
       case 'number':
         if (isDate && element[dataKey] < new Date().getTime()) return element;
-        else if (!isDate && element[dataKey] > 0) return element;
+        if (!isDate && element[dataKey] > 0) return element;
         break;
       case 'boolean':
         if (element[dataKey] === isTrue) return element;
@@ -70,6 +71,7 @@ const filterBy = (todoData = [], { dataKey, isDate, isTrue = false }) => {
       default:
         return element;
     }
+    return element;
   });
 
   return remainingData;

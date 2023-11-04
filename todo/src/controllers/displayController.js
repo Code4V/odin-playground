@@ -1,14 +1,14 @@
-import TodoList from "../components/todoList";
-import clearStorage, {
+import TodoList from '../components/todoList';
+import {
   getTodoStorage,
   setTodoStorage,
-} from "../operations/storageOperations";
+} from '../operations/storageOperations';
 
 import {
   sortTodoBy,
   sortByProject,
   filterBy,
-} from "../operations/dataOperations";
+} from '../operations/dataOperations';
 
 class DisplayController {
   #sortByPriority = true;
@@ -33,31 +33,29 @@ class DisplayController {
     let dataList = todoData;
     if (localStorage.length === 0) setTodoStorage(dataList);
     if (
-      this.#currentData.length === 0 ||
-      this.#currentData.length !== getTodoStorage().length
-    )
-      this.#currentData = getTodoStorage();
+      this.#currentData.length === 0
+      || this.#currentData.length !== getTodoStorage().length
+    ) this.#currentData = getTodoStorage();
 
-    if (this.#sortByDate) this.#todoSorter("dueDate", true);
-    else this.#todoSorter("dueDate", false);
+    if (this.#sortByDate) this.#todoSorter('dueDate', true);
+    else this.#todoSorter('dueDate', false);
 
-    if (this.#sortByPriority) this.#todoSorter("priority", false);
-    else this.#todoSorter("priority", true);
+    if (this.#sortByPriority) this.#todoSorter('priority', false);
+    else this.#todoSorter('priority', true);
 
     dataList = this.#currentData;
 
     if (this.#filterComplete) {
-      dataList = filterBy(dataList, { dataKey: "isComplete", isTrue: true });
-    } else dataList = filterBy(dataList, { dataKey: "isComplete" });
+      dataList = filterBy(dataList, { dataKey: 'isComplete', isTrue: true });
+    } else dataList = filterBy(dataList, { dataKey: 'isComplete' });
 
     if (this.#filterExpired) {
       dataList = this.#currentData;
-      dataList = filterBy(dataList, { dataKey: "dueDate", isDate: true });
+      dataList = filterBy(dataList, { dataKey: 'dueDate', isDate: true });
     }
-    console.log(dataList);
 
-    const mainTodoListContainer = document.querySelector("main");
-    mainTodoListContainer.innerHTML = "";
+    const mainTodoListContainer = document.querySelector('main');
+    mainTodoListContainer.innerHTML = '';
 
     if (!this.#sortbyProject) {
       mainTodoListContainer.appendChild(TodoList(dataList));
@@ -70,7 +68,7 @@ class DisplayController {
 
       Object.keys(projects).forEach((projectName) => {
         mainTodoListContainer.appendChild(
-          TodoList(projects[projectName], { projectName })
+          TodoList(projects[projectName], { projectName }),
         );
       });
     }
@@ -112,49 +110,49 @@ class DisplayController {
   toggleProjectOrder() {
     this.#sortbyProject = !this.#sortbyProject;
 
-    localStorage.setItem("isSortedByProject", this.#sortbyProject);
+    localStorage.setItem('isSortedByProject', this.#sortbyProject);
     return this;
   }
 
   toggleDateOrder() {
     this.#sortByDate = !this.#sortByDate;
 
-    localStorage.setItem("isSortedByDate", this.#sortByDate);
+    localStorage.setItem('isSortedByDate', this.#sortByDate);
     return this;
   }
 
   togglePriority() {
     this.#sortByPriority = !this.#sortByPriority;
 
-    localStorage.setItem("isSortedByPriority", this.#sortByPriority);
+    localStorage.setItem('isSortedByPriority', this.#sortByPriority);
     return this;
   }
 
   toggleExpired() {
     this.#filterExpired = !this.#filterExpired;
 
-    localStorage.setItem("isFilteredByExpired", this.#filterExpired);
+    localStorage.setItem('isFilteredByExpired', this.#filterExpired);
     return this;
   }
 
   toggleComplete() {
     this.#filterComplete = !this.#filterComplete;
 
-    localStorage.setItem("isFilteredByComplete", this.#filterComplete);
+    localStorage.setItem('isFilteredByComplete', this.#filterComplete);
     return this;
   }
 
   applyPreferences() {
-    this.#sortbyProject = JSON.parse(localStorage.getItem("isSortedByProject"));
-    this.#sortByDate = JSON.parse(localStorage.getItem("isSortedByDate"));
+    this.#sortbyProject = JSON.parse(localStorage.getItem('isSortedByProject'));
+    this.#sortByDate = JSON.parse(localStorage.getItem('isSortedByDate'));
     this.#sortByPriority = JSON.parse(
-      localStorage.getItem("isSortedByPriority")
+      localStorage.getItem('isSortedByPriority'),
     );
     this.#filterExpired = JSON.parse(
-      localStorage.getItem("isFilteredByExpired")
+      localStorage.getItem('isFilteredByExpired'),
     );
     this.#filterComplete = JSON.parse(
-      localStorage.getItem("isFilteredByComplete")
+      localStorage.getItem('isFilteredByComplete'),
     );
   }
 }

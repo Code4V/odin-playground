@@ -1,7 +1,6 @@
 import Todo from './todo';
 
 const TodoList = (todoData = [], options = { projectName: 'Todo List' }) => {
-  console.log("TODO ", todoData)
   const todosContainer = document.createElement('section');
   todosContainer.classList.add('todo-list');
 
