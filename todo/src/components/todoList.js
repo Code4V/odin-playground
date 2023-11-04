@@ -18,7 +18,7 @@ const TodoList = (todoData = [], options = { projectName: 'Todo List' }) => {
   }
 
   if (todoData.length === 0) {
-    todosContainer.innerHTML = 'NO DATA TO SHOW';
+    todosContainer.innerHTML = 'No current todos!';
     return todosContainer;
   }
 

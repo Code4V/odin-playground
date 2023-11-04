@@ -1,4 +1,4 @@
-import { format } from 'date-fns';
+import { format, addHours } from 'date-fns';
 
 const FormInput = (name = 'input', displayName = 'default') => {
   const formInput = document.createElement('div');
@@ -73,11 +73,13 @@ const FormInput = (name = 'input', displayName = 'default') => {
     if (options.addClass) Input.classList.add(...options.addClass);
     if (options.value) Input.value = options.value;
 
+    const currentDateTime = format(addHours(new Date(), 3), 'yyyy-MM-dd HH:mm');
+
     Input.required = options.isRequired ?? false;
     Input.name = name;
     Input.id = name;
-    Input.min = format(new Date(), 'yyyy-MM-dd HH:mm');
-    Input.value = format(new Date(), 'yyyy-MM-dd HH:mm');
+    Input.min = currentDateTime;
+    Input.value = currentDateTime;
 
     formInput.append(Input);
     return formInput;
