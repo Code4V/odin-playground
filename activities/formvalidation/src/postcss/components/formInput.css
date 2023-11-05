@@ -1,0 +1,8 @@
+.form__input {
+  
+  &-label {
+    margin-inline-end: .5rem;
+    font-weight: 600;
+  }
+
+}
