@@ -1,64 +1,91 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
 
-    <link rel="stylesheet" href="index.css">
-</head>
-<body>
+    <link rel="stylesheet" href="index.css" />
+  </head>
+  <body>
     <header class="header__container">
-        <img class="header__image"src="../assets/books.png" alt="" >
-        <h1>
-            <a href="../index.html">&lArr;</a>
-            SIMPLE LIBRARY APP
-        </h1>
-        <p><span class="subcontent">Welcome to Code4V's simple Library</span></p>
+      <img class="header__image" src="../assets/books.png" alt="" />
+      <h1>
+        <a href="../index.html">&lArr;</a>
+        SIMPLE LIBRARY APP
+      </h1>
+      <p><span class="subcontent">Welcome to Code4V's simple Library</span></p>
     </header>
     <main class="main__container">
-        <section class="left__container">
-            <h2>Current Books</h2>
-        
-            <div class="book_list">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Title</th>
-                            <th>Author</th>
-                            <th>Pages</th>
-                            <th>Status</th>
-                            <th>Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody id="table_body">
-                    </tbody>
-                </table>
-                
-            </div>
-            
-        </section>
+      <section class="left__container">
+        <h2>Current Books</h2>
 
-        <section class="right__container">
-            <div class="add__form">
-                <h2>Add Books</h2>
-                <form>
-                    <label for="bookTitle">Book Title</label>
-                    <input type="text" name="bookTitle" id="bookTitle" placeholder="Enter Title" required>
-            
-                    <label for="bookAuthor">Book Author</label>
-                    <input type="text" name="bookAuthor" id="bookAuthor" placeholder="Enter Author" required>
-                    
-                    <label for="bookPages">Book Pages</label>
-                    <input type="number" name="bookPages" id="bookPages" placeholder="Enter Pages" required>
-            
-                    <button type="submit" onclick="addBookToLibrary(event)">Add Book</button>
-                </form>
+        <div class="book_list">
+          <table>
+            <thead>
+              <tr>
+                <th>Title</th>
+                <th>Author</th>
+                <th>Pages</th>
+                <th>Status</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="table_body"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="right__container">
+        <div class="add__form">
+          <h2>Add Books</h2>
+          <form>
+            <label for="bookTitle">Book Title</label>
+            <div class="bookInputField bookTitleInputField">
+              <input
+                type="text"
+                name="bookTitle"
+                id="bookTitle"
+                placeholder="Enter Title"
+                required
+              />
+              <span id="bookTitleValidity"></span>
             </div>
-        </section>
+
+            <label for="bookAuthor">Book Author</label>
+            <div class="bookInputField">
+                <input
+                  type="text"
+                  name="bookAuthor"
+                  id="bookAuthor"
+                  placeholder="Enter Author"
+                  required
+                />
+                <span></span>
+            </div>
+
+            <label for="bookPages">Book Pages</label>
+            <div class="bookInputField">
+                <input
+                  type="number"
+                  name="bookPages"
+                  id="bookPages"
+                  placeholder="Enter Pages"
+                  max="600"
+                  required
+                />
+                <span></span>
+            </div>
+
+            <button type="submit" onclick="addBookToLibrary(event)">
+              Add Book
+            </button>
+          </form>
+        </div>
+      </section>
     </main>
 
     <script src="index.js"></script>
-</body>
+  </body>
 </html>

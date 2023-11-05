@@ -156,7 +156,7 @@ body {
   position: relative;
 }
 
-.nav-list__links:nth-child(4) > a::after {
+/* .nav-list__links:nth-child(4) > a::after {
   content: "On Going!";
 
   position: absolute;
@@ -170,7 +170,7 @@ body {
   background-color: white;
 
   transition: all 250ms ease-in-out;
-}
+} */
 
 .nav-list__links:nth-child(4) > a:hover::after {
   color: var(--font-solid);
