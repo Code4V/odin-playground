@@ -66,7 +66,7 @@ function checkInputValidity(inputElement) {
 
     setTimeout(() => {
         inputElement.nextElementSibling.innerHTML = '';
-    inputElement.nextElementSibling.setAttribute('style', '')  
+        inputElement.nextElementSibling.setAttribute('style', '')  
     }, 5000)
     
   } else {
@@ -101,7 +101,7 @@ function addBookToLibrary(e) {
   if (
     getPages.value === null ||
     getPages.value === undefined ||
-    getPages.value === ""
+    getPages.value === "" || getPages.value > 600
   )
     return false;
 

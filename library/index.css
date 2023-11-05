@@ -141,6 +141,12 @@ form label {
     position: relative;   
 }
 
+.bookInputField > input:valid 
+{
+    border: 1px solid green;
+    border-radius: 4px;
+}
+
 .bookInputField > span 
 {
     isolation: isolate;
@@ -165,7 +171,7 @@ form label {
     90%{
         opacity: 100;
     }
-    
+
     100% {
         opacity: 0;
     }
