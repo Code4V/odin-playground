@@ -396,7 +396,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
   \**********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _components_form__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/form */ \"./src/components/form.js\");\n\r\n\r\nconst main = document.querySelector(\"#main\");\r\n\r\nmain.append((0,_components_form__WEBPACK_IMPORTED_MODULE_0__[\"default\"])());\r\n\n\n//# sourceURL=webpack://formvalidation/./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _components_form__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/form */ \"./src/components/form.js\");\n\r\n\r\nconst main = document.querySelector(\"#main\");\r\n\r\nconst regex = new RegExp(\r\n  /(?<fullEmail>(?<emailName>\\w*\\.\\w*\\.\\w*\\.\\w*|\\w*\\.\\w*\\.\\w*|\\w*\\.\\w*|\\w*)(?<domainName>@\\w*)(?<topLevelDomain>\\.\\w*))/,\r\n  \"g\"\r\n);\r\n\r\nmain.append((0,_components_form__WEBPACK_IMPORTED_MODULE_0__[\"default\"])());\r\n\n\n//# sourceURL=webpack://formvalidation/./src/index.js?");
 
 /***/ }),
 
