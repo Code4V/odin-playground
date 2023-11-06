@@ -172,6 +172,8 @@ const FormInput = (name = 'input', displayName = 'default') => {
     Input.id = name;
     Input.minLength = options.minLength ?? 8;
 
+    Input.setAttribute('autocomplete', true);
+
     InvalidEntry.id = invalidID + name;
     formInput.append(Input);
     return formInput;
