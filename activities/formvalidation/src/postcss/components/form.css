@@ -2,4 +2,30 @@
 {
   display: flex;
   gap: 1rem;
+  flex-flow: row wrap;
+
+  width: 500px;
+
+  &__input {
+    
+    display: flex;
+    flex-flow: column;
+
+    position: relative;
+
+    &-label {
+      margin-inline-end: .5rem;
+      font-weight: 600;
+    }
+
+    &-invalid {
+      bottom: -1rem;
+      font-size: smaller;
+      position: absolute;
+
+      color: red;
+      pointer-events: none;
+    }
+
+  }
 }

@@ -1,15 +1,29 @@
-import { format, addHours } from 'date-fns';
+import { format, addHours } from "date-fns";
 
-const FormInput = (name = 'input', displayName = 'default') => {
-  const formInput = document.createElement('div');
-  formInput.classList.add('form__input');
+const FormInput = (name = "input", displayName = "default") => {
+  const formInput = document.createElement("div");
+  formInput.classList.add("form__input");
 
-  const Label = document.createElement('label');
-  Label.classList.add('form__input-label');
-  Label.setAttribute('for', name);
+  const Label = document.createElement("label");
+  Label.classList.add("form__input-label");
+  Label.setAttribute("for", name);
   Label.textContent = displayName;
+  
+  let invalidID = "invalid";
 
-  formInput.append(Label);
+  const InvalidEntry = document.createElement("span");
+  InvalidEntry.classList.add("form__input-invalid");
+  InvalidEntry.id = invalidID + name;
+
+  let Input = document.createElement("input");
+  Input.classList.add("form__input-input");
+  Input.type = "input";
+  Input.name = name;
+  Input.id = name;
+
+  
+
+  formInput.append(Label, InvalidEntry);
 
   /**
    * Options includes:
@@ -19,15 +33,12 @@ const FormInput = (name = 'input', displayName = 'default') => {
    * @param { string } value - defaults to NULL
    */
   const TextArea = (options = {}) => {
-    const Input = document.createElement('textarea');
-    Input.classList.add('form__input-input');
+    Input = document.createElement("textarea");
     if (options.addClass) Input.classList.add(...options.addClass);
     if (options.value) Input.value = options.value;
 
     Input.required = options.isRequired ?? false;
     Input.placeholder = options.placeholder ?? name;
-    Input.name = name;
-    Input.id = name;
 
     formInput.append(Input);
     return formInput;
@@ -41,18 +52,12 @@ const FormInput = (name = 'input', displayName = 'default') => {
    * @param { string } value - defaults to NULL
    */
   const InputField = (options = {}) => {
-    const Input = document.createElement('input');
-    Input.type = 'input';
-    Input.classList.add('form__input-input');
-
     if (options.addClass) Input.classList.add(...options.addClass);
     if (options.value) Input.value = options.value;
 
     Input.required = options.isRequired ?? false;
     Input.placeholder = options.placeholder ?? name;
-    Input.name = name;
-    Input.id = name;
-
+    
     formInput.append(Input);
     return formInput;
   };
@@ -65,19 +70,14 @@ const FormInput = (name = 'input', displayName = 'default') => {
    * @param { string } value - defaults to NULL
    */
   const DateField = (options = {}) => {
-    const Input = document.createElement('input');
-
-    Input.type = 'datetime-local';
-    Input.classList.add('form__input-input');
+    Input.type = "datetime-local";
 
     if (options.addClass) Input.classList.add(...options.addClass);
     if (options.value) Input.value = options.value;
 
-    const currentDateTime = format(addHours(new Date(), 3), 'yyyy-MM-dd HH:mm');
+    const currentDateTime = format(addHours(new Date(), 3), "yyyy-MM-dd HH:mm");
 
     Input.required = options.isRequired ?? false;
-    Input.name = name;
-    Input.id = name;
     Input.min = currentDateTime;
     Input.value = currentDateTime;
 
@@ -93,21 +93,17 @@ const FormInput = (name = 'input', displayName = 'default') => {
    * @param { string } value - defaults to NULL
    */
   const NumberField = (options = {}) => {
-    const Input = document.createElement('input');
-    Input.type = 'number';
-    Input.classList.add('form__input-input');
+    Input.type = "number";
 
     if (options.addClass) Input.classList.add(...options.addClass);
     if (options.value) Input.value = options.value;
 
     Input.required = options.isRequired ?? false;
     Input.placeholder = options.placeholder ?? name;
-    Input.name = name;
-    Input.id = name;
     Input.min = 0;
     Input.max = 4;
 
-    Input.addEventListener('focusout', () => {
+    Input.addEventListener("focusout", () => {
       if (Input.value > Input.max) {
         Input.value = Input.max;
       } else if (Input.value < Input.min) {
@@ -127,8 +123,7 @@ const FormInput = (name = 'input', displayName = 'default') => {
    * @param { string } value - defaults to NULL
    */
   const SelectField = (options = {}) => {
-    const Input = document.createElement('select');
-    Input.classList.add('form__input-input');
+    Input = document.createElement("select");
 
     if (options.addClass) Input.classList.add(...options.addClass);
     if (options.value) Input.value = options.value;
@@ -137,10 +132,11 @@ const FormInput = (name = 'input', displayName = 'default') => {
     Input.name = name;
     Input.id = name;
 
+    InvalidEntry.id = invalidID + name;
     if (!options.choices) return formInput;
 
     options.choices.forEach((element) => {
-      const option = document.createElement('option');
+      const option = document.createElement("option");
 
       // if (element.value == 0) option.defaultSelected = true
       option.value = element.value;
@@ -153,12 +149,59 @@ const FormInput = (name = 'input', displayName = 'default') => {
     return formInput;
   };
 
+  const EmailField = (options = {}) => {
+    Input.type = "email";
+    
+    if (options.addClass) Input.classList.add(...options.addClass);
+    if (options.value) Input.value = options.value;
+    
+    Input.required = options.isRequired ?? false;
+    Input.placeholder = options.placeholder ?? name;
+
+    formInput.append(Input);
+    return formInput;
+  }
+
+  const PasswordField = (options = {}) => {
+    Input.type = "password";
+
+    if (options.addClass) Input.classList.add(...options.addClass);
+    if (options.value) Input.value = options.value;
+
+    Input.required = options.isRequired ?? false;
+    Input.placeholder = options.placeholder ?? name;
+    Input.name = name;
+    Input.id = name;
+    Input.minLength = 8;
+
+
+    InvalidEntry.id = invalidID + name;
+    formInput.append(Input);
+    return formInput;
+  };
+  
+  const SubmitForm = (options = {}) => {
+    Input.type = "submit";
+
+    if (options.addClass) Input.classList.add(...options.addClass);
+    if (options.value) Input.value = options.value;
+
+    Input.placeholder = options.placeholder ?? name;
+    
+    formInput.append(Input);
+    return formInput;
+  };
+
+
   return {
     TextArea,
     InputField,
     DateField,
     NumberField,
     SelectField,
+    PasswordField,
+    EmailField,
+    SubmitForm,
   };
 };
 
