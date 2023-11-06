@@ -59,8 +59,8 @@ export default function Form() {
   };
 
   Object.values(inputElementObjects).forEach((element) => {
-    element.addEventListener('input', (innerElement) => {
-      document.querySelector(`#invalid${innerElement.id}`).textContent = validateInput(innerElement.email);
+    element.addEventListener('input', () => {
+      document.querySelector(`#invalid${element.id}`).textContent = validateInput(element);
     });
   });
 
@@ -73,11 +73,12 @@ export default function Form() {
       inputElementObjects.zip.setCustomValidity(
         'Not a valid Philippine Zip Code',
       );
-
-      document.querySelector(
-        `#invalid${inputElementObjects.zip.id}`,
-      ).textContent = inputElementObjects.zip.validationMessage;
+    } else {
+      inputElementObjects.zip.setCustomValidity('');
     }
+    document.querySelector(
+      `#invalid${inputElementObjects.zip.id}`,
+    ).textContent = inputElementObjects.zip.validationMessage;
   });
 
   inputElementObjects.cpassword.addEventListener('input', () => {
@@ -90,18 +91,16 @@ export default function Form() {
       inputElementObjects.cpassword.setCustomValidity(
         'Password does not Match!',
       );
-
-      document.querySelector(
-        `#invalid${inputElementObjects.password.id}`,
-      ).textContent = inputElementObjects.password.validationMessage;
-      document.querySelector(
-        `#invalid${inputElementObjects.cpassword.id}`,
-      ).textContent = inputElementObjects.cpassword.validationMessage;
+    } else {
+      inputElementObjects.password.setCustomValidity('');
+      inputElementObjects.cpassword.setCustomValidity('');
     }
-  });
-
-  inputElementObjects.email.addEventListener('input', () => {
-    document.querySelector(`#invalid${inputElementObjects.email.id}`).textContent = validateInput(inputElementObjects.email);
+    document.querySelector(
+      `#invalid${inputElementObjects.password.id}`,
+    ).textContent = inputElementObjects.password.validationMessage;
+    document.querySelector(
+      `#invalid${inputElementObjects.cpassword.id}`,
+    ).textContent = inputElementObjects.cpassword.validationMessage;
   });
 
   submitButton.addEventListener('click', (ev) => {
