@@ -70,8 +70,6 @@ export default function Form() {
       document.querySelector(`#invalid${element.id}`).textContent = element.validationMessage;
     });
 
-    console.log(inputElements[2].value.length);
-
     if (!regex.test(inputElements[2].value) || inputElements[2].value.length > 4) {
       inputElements[2].setCustomValidity('Not a valid Philippine Zip Code');
 
