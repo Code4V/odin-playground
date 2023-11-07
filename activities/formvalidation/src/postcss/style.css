@@ -8,6 +8,12 @@
   font-family: 'Urbanist';
 }
 
+body
+{
+  background: hsl(150, 50%, 95%);
+  /* background: white; */
+}
+
 div#main
 {
   display: flex;

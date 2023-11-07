@@ -31,6 +31,7 @@ export default function Form() {
   });
   const submitButton = FormInput('submit', 'Submit').SubmitForm({
     placeholder: 'Submit',
+    addClass: ['form__input-submit'],
   });
 
   form.append(
@@ -103,11 +104,18 @@ export default function Form() {
     ).textContent = inputElementObjects.cpassword.validationMessage;
   });
 
-  submitButton.addEventListener('click', (ev) => {
+  form.addEventListener('submit', (ev) => {
     ev.preventDefault();
 
     // const formData = new FormData(form);
     // const formEntries = Object.fromEntries(formData);
+
+    // const inputVerification = Object.values(inputElementObjects).map((inputElement) => {
+    //   if (!inputElement.validity.valid) return false;
+    //   return true;
+    // });
+
+    return true;
   });
 
   return form;
