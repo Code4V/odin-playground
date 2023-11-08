@@ -4,7 +4,7 @@
   flex-flow: row wrap;
   margin-block: 10rem;
 
-  width: 40%;
+  width: 80%;
 
   &__input {
     display: flex;
@@ -25,7 +25,7 @@
     }
 
     &-invalid {
-      bottom: -1rem;
+      bottom: -1.5rem;
       font-size: smaller;
       position: absolute;
 
@@ -63,10 +63,10 @@
       margin-inline-start: auto;
       border: none;
 
-      width: 80%;
+      width: 150px;
       
       position: relative;
-      min-height: 2.5rem;
+      min-height: 2.125rem;
 
       filter: none;
 
@@ -75,7 +75,7 @@
         inset: 0;
         z-index: 1;
 
-        width: 95%;
+        width: 93%;
         height: 75%;
         position: absolute;
 
@@ -114,4 +114,11 @@
       }
     }
   }
+}
+
+@media (min-width: 640px) {
+  .form {
+    width: 30%;
+  }
+
 }
