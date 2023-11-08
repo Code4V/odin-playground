@@ -180,12 +180,13 @@ const FormInput = (name = 'input', displayName = 'default') => {
   };
 
   const SubmitForm = (options = {}) => {
+    Input = document.createElement('button');
     Input.type = 'submit';
 
     if (options.addClass) Input.classList.add(...options.addClass);
     if (options.value) Input.value = options.value;
 
-    Input.placeholder = options.placeholder ?? name;
+    Input.textContent = options.placeholder ?? name;
 
     formInput.append(Input);
     return formInput;

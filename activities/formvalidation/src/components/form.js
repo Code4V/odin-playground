@@ -60,12 +60,12 @@ export default function Form() {
   };
 
   Object.values(inputElementObjects).forEach((element) => {
-    element.addEventListener('input', () => {
+    element.addEventListener('focusout', () => {
       document.querySelector(`#invalid${element.id}`).textContent = validateInput(element);
     });
   });
 
-  inputElementObjects.zip.addEventListener('input', () => {
+  inputElementObjects.zip.addEventListener('focusout', () => {
     const zipCodeRegexPH = /\d{4}/g;
     if (
       !zipCodeRegexPH.test(inputElementObjects.zip.value)
@@ -82,7 +82,7 @@ export default function Form() {
     ).textContent = inputElementObjects.zip.validationMessage;
   });
 
-  inputElementObjects.cpassword.addEventListener('input', () => {
+  inputElementObjects.cpassword.addEventListener('focusout', () => {
     if (
       inputElementObjects.password.value !== inputElementObjects.cpassword.value
     ) {
