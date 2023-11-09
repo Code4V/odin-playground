@@ -15,7 +15,7 @@ export default function Form() {
     choices: [
       {
         value: '0',
-        content: ' Philippines ',
+        content: 'Philippines',
       },
       {
         value: '1',

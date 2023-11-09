@@ -1,0 +1,42 @@
+.congrats {
+  display: none;
+  padding: 0.5rem 2rem;
+
+  position: fixed;
+
+  top: 50%;
+  left: 50%;
+
+  background-color: hsl(150, 50%, 95%);
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 12px hsl(217, 72%, 18%, 30%);
+  
+  border-radius: 4px;
+  
+  z-index: 99;
+  
+  & > * {
+    text-align: center;
+    margin-block: 0.5rem;
+  }
+
+  &__icon {
+    display: block;
+    font-size: 5rem;
+    line-height: 6rem;
+  }
+
+  &__close {
+    display: block;
+    margin-inline: auto;
+    background-color: hsl(150, 50%, 95%);
+
+
+    border: none;
+    filter: drop-shadow(8px 3px 4px hsl(217, 72%, 18%, 19%))
+      drop-shadow(-3px -5px 4px hsla(150, 50%, 100%, 100%));
+
+
+    padding: 0.125rem 2rem;
+  }
+}
