@@ -11,9 +11,24 @@ export default function Form() {
     isRequired: true,
     placeholder: 'Enter your Email Address',
   });
-  const countryInput = FormInput('country', 'Country').InputField({
+  const countryInput = FormInput('country', 'Country').SelectField({
+    choices: [
+      {
+        value: '0',
+        content: ' Philippines ',
+      },
+      {
+        value: '1',
+        content: 'Canada',
+      },
+      {
+        value: '2',
+        content: 'China',
+      },
+    ],
     isRequired: true,
     placeholder: 'Select Country',
+    addClass: ['form__input-input'],
   });
   const zipInput = FormInput('zip', 'Zip Code').InputField({
     isRequired: true,
@@ -34,12 +49,19 @@ export default function Form() {
     addClass: ['form__input-submit'],
   });
 
+  const showPass = document.createElement('button');
+  showPass.setAttribute('style', 'display: none;');
+  showPass.classList.add('form__input-submit');
+  showPass.type = 'button';
+  showPass.innerText = 'ShowPass';
+
   form.append(
     emailInput,
     countryInput,
     zipInput,
     passInput,
     cpassInput,
+    showPass,
     submitButton,
   );
 
@@ -51,7 +73,7 @@ export default function Form() {
     cpassInput,
   ].map((element) => element.childNodes[2]);
 
-  const inputElementObjects = {
+  const inputObjects = {
     [inputElements[0].id]: inputElements[0],
     [inputElements[1].id]: inputElements[1],
     [inputElements[2].id]: inputElements[2],
@@ -59,49 +81,81 @@ export default function Form() {
     [inputElements[4].id]: inputElements[4],
   };
 
-  Object.values(inputElementObjects).forEach((element) => {
+  Object.values(inputObjects).forEach((element) => {
     element.addEventListener('focusout', () => {
       document.querySelector(`#invalid${element.id}`).textContent = validateInput(element);
     });
   });
 
-  inputElementObjects.zip.addEventListener('focusout', () => {
-    const zipCodeRegexPH = /\d{4}/g;
-    if (
-      !zipCodeRegexPH.test(inputElementObjects.zip.value)
-      || inputElementObjects.zip.value.length > 4
-    ) {
-      inputElementObjects.zip.setCustomValidity(
-        'Not a valid Philippine Zip Code',
-      );
-    } else {
-      inputElementObjects.zip.setCustomValidity('');
+  inputObjects.zip.addEventListener('focusout', () => {
+    const countryZipRegex = {
+      Philippines: /\d{4}/,
+      Canada: /[A-Z][0-9][A-Z]/,
+      China: /[0-9]{6}/,
+    };
+
+    switch (inputObjects.country.value) {
+      case '0':
+        if (
+          !countryZipRegex.Philippines.test(inputObjects.zip.value)
+          || inputObjects.zip.value.length > 4
+        ) {
+          inputObjects.zip.setCustomValidity('Not a valid Philippine Zip Code');
+        } else {
+          inputObjects.zip.setCustomValidity('');
+        }
+        break;
+      case '1':
+        if (
+          !countryZipRegex.Canada.test(inputObjects.zip.value)
+          || inputObjects.zip.value.length > 3
+        ) {
+          inputObjects.zip.setCustomValidity('Not a valid Canada Zip Code');
+        } else {
+          inputObjects.zip.setCustomValidity('');
+        }
+        break;
+      case '2':
+        if (
+          !countryZipRegex.China.test(inputObjects.zip.value)
+          || inputObjects.zip.value.length > 6
+        ) {
+          inputObjects.zip.setCustomValidity('Not a valid China Zip Code');
+        } else {
+          inputObjects.zip.setCustomValidity('');
+        }
+        break;
+      default:
+        break;
     }
-    document.querySelector(
-      `#invalid${inputElementObjects.zip.id}`,
-    ).textContent = inputElementObjects.zip.validationMessage;
+    document.querySelector(`#invalid${inputObjects.zip.id}`).textContent = inputObjects.zip.validationMessage;
   });
 
-  inputElementObjects.cpassword.addEventListener('focusout', () => {
-    if (
-      inputElementObjects.password.value !== inputElementObjects.cpassword.value
-    ) {
-      inputElementObjects.password.setCustomValidity(
-        'Password does not Match!',
-      );
-      inputElementObjects.cpassword.setCustomValidity(
-        'Password does not Match!',
-      );
+  inputObjects.country.addEventListener('focusout', () => {
+    inputObjects.zip.value = '';
+  });
+
+  inputObjects.cpassword.addEventListener('focusout', () => {
+    if (inputObjects.cpassword.validity.tooShort) {
+      inputObjects.cpassword.setCustomValidity(`You need ${minLength - parseInt(inputObjects.cpassword.value.length, 10)} letters more!`);
+    } else if (inputObjects.password.value !== inputObjects.cpassword.value) {
+      inputObjects.password.setCustomValidity('Password does not Match!');
+      inputObjects.cpassword.setCustomValidity('Password does not Match!');
     } else {
-      inputElementObjects.password.setCustomValidity('');
-      inputElementObjects.cpassword.setCustomValidity('');
+      inputObjects.password.setCustomValidity('');
+      inputObjects.cpassword.setCustomValidity('');
     }
-    document.querySelector(
-      `#invalid${inputElementObjects.password.id}`,
-    ).textContent = inputElementObjects.password.validationMessage;
-    document.querySelector(
-      `#invalid${inputElementObjects.cpassword.id}`,
-    ).textContent = inputElementObjects.cpassword.validationMessage;
+    document.querySelector(`#invalid${inputObjects.cpassword.id}`).textContent = inputObjects.cpassword.validationMessage;
+  });
+
+  showPass.addEventListener('mousedown', () => {
+    inputObjects.password.type = 'text';
+    inputObjects.cpassword.type = 'text';
+  });
+
+  showPass.addEventListener('mouseup', () => {
+    inputObjects.password.type = 'password';
+    inputObjects.cpassword.type = 'password';
   });
 
   form.addEventListener('submit', (ev) => {
@@ -110,7 +164,7 @@ export default function Form() {
     // const formData = new FormData(form);
     // const formEntries = Object.fromEntries(formData);
 
-    // const inputVerification = Object.values(inputElementObjects).map((inputElement) => {
+    // const inputVerification = Object.values(inputObjects).map((inputElement) => {
     //   if (!inputElement.validity.valid) return false;
     //   return true;
     // });

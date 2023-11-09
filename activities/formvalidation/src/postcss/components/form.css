@@ -2,7 +2,7 @@
   display: flex;
   gap: 2rem;
   flex-flow: row wrap;
-  margin-block: 10rem;
+  margin-block-end: 10rem;
 
   width: 80%;
 
@@ -38,7 +38,7 @@
       margin-block-start: 0.5rem;
       background: hsl(150, 50%, 95%);
       border-radius: 4px;
-      padding: 4px 8px;
+      padding: 6px 12px;
       border: none;
       filter: drop-shadow(8px 3px 4px hsl(217, 72%, 18%, 19%))
         drop-shadow(-3px -5px 4px hsla(150, 50%, 100%, 100%));
@@ -89,7 +89,6 @@
       &::before {
         box-shadow: 3px 2px 4px hsl(217, 72%, 18%, 19%) inset,
           -2px -3px 4px hsla(150, 50%, 100%, 100%) inset;
-
         opacity: 1;
       }
 
