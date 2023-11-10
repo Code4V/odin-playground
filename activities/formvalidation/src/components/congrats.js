@@ -11,7 +11,7 @@ export default function Congrats() {
   congratsText.textContent = 'Congrats! All fields are valid';
 
   const congratsClose = document.createElement('button');
-  congratsClose.classList.add('congrats__closed');
+  congratsClose.classList.add('congrats__close');
   congratsClose.type = 'button';
   congratsClose.textContent = 'Close';
 
