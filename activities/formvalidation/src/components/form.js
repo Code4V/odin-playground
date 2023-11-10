@@ -1,5 +1,6 @@
 import FormInput from './formInput';
-import validateInput from '../operations/inputValidator';
+import validateInput, { validatePassword } from '../operations/inputValidator';
+import Congrats from './congrats';
 
 export default function Form() {
   const form = document.createElement('form');
@@ -135,17 +136,17 @@ export default function Form() {
     inputObjects.zip.value = '';
   });
 
-  inputObjects.cpassword.addEventListener('focusout', () => {
-    if (inputObjects.cpassword.validity.tooShort) {
-      inputObjects.cpassword.setCustomValidity(`You need ${minLength - parseInt(inputObjects.cpassword.value.length, 10)} letters more!`);
-    } else if (inputObjects.password.value !== inputObjects.cpassword.value) {
-      inputObjects.password.setCustomValidity('Password does not Match!');
-      inputObjects.cpassword.setCustomValidity('Password does not Match!');
-    } else {
-      inputObjects.password.setCustomValidity('');
-      inputObjects.cpassword.setCustomValidity('');
-    }
-    document.querySelector(`#invalid${inputObjects.cpassword.id}`).textContent = inputObjects.cpassword.validationMessage;
+  [inputObjects.password, inputObjects.cpassword].forEach((passInputs) => {
+    passInputs.addEventListener('focusout', () => {
+      if (passInputs.validity.tooShort) {
+        passInputs.setCustomValidity(`You need ${minLength - parseInt(passInputs.value.length, 10)} letters more!`);
+      }
+      if (inputObjects.password.value !== passInputs.value) {
+        passInputs.setCustomValidity('Password does not Match!');
+      }
+      passInputs.setCustomValidity(validatePassword(passInputs.value));
+      document.querySelector(`#invalid${passInputs.id}`).textContent = passInputs.validationMessage;
+    });
   });
 
   showPass.addEventListener('mousedown', () => {
@@ -169,7 +170,7 @@ export default function Form() {
     //   return true;
     // });
 
-    return true;
+    return document.querySelector('#main').insertAdjacentElement('afterbegin', Congrats());
   });
 
   return form;

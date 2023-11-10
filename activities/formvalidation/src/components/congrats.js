@@ -1,4 +1,7 @@
 export default function Congrats() {
+  const congratsBackdrop = document.createElement('section');
+  congratsBackdrop.classList.add('backdrop', 'backdrop--appear');
+
   const congrats = document.createElement('div');
   congrats.classList.add('congrats');
 
@@ -16,5 +19,12 @@ export default function Congrats() {
   congratsClose.textContent = 'Close';
 
   congrats.append(congratsClapping, congratsText, congratsClose);
-  return congrats;
+
+  congratsBackdrop.appendChild(congrats);
+
+  congratsClose.addEventListener('click', () => {
+    congratsBackdrop.remove();
+  });
+
+  return congratsBackdrop;
 }

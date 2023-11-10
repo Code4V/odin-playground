@@ -11,3 +11,25 @@ export default function validateInput(inputElement) {
 
   return inputElement.validationMessage;
 }
+
+export function validatePassword(password) {
+  const passwordRegex = {
+    capitalLetters: /(?<capital>[A-Z]+)/gm,
+    specialCharacters: /[$&+,:;=?@#|'<>.^*()%!-]+/gm,
+    numbers: /[0-9]/gm,
+  };
+
+  if (!passwordRegex.capitalLetters.test(password)) {
+    return 'Password must contain a Capital Letter!';
+  }
+
+  if (!passwordRegex.specialCharacters.test(password)) {
+    return 'Password must contain a Special Character!';
+  }
+
+  if (!passwordRegex.numbers.test(password)) {
+    return 'Password must contain a Number!';
+  }
+
+  return '';
+}
