@@ -9,7 +9,8 @@ This is a repository for my Odin Project's JavaScript course, All the assignment
 - [X] Library
 - [X] Tic-tac-toe
 - [X] Restaurant Menu 
-- [ ] To-Do List | *On Progress*
+- [X] To-Do List
+- [ ] Weather App
 
 ## Additional Info
 
