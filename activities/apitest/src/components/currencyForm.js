@@ -46,7 +46,6 @@ const CurrencyForm = async () => {
     resultNode.parentElement.classList.remove('result--appear');
 
     const amountResult = ((await convertCurrency(selectFrom.childNodes[2].value, selectTo.childNodes[2].value, fromInput.childNodes[2].value)).toString()).split('.');
-    
 
     resultNode.textContent = amountResult[0];
     resultNodeDot.textContent = amountResult[1];

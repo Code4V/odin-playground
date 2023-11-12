@@ -12,6 +12,10 @@ This is a repository for my Odin Project's JavaScript course, All the assignment
 - [X] To-Do List
 - [ ] Weather App
 
+## Extra Activities
+- [X] Form Validation
+- [X] Currency Converter (API Test)
+
 ## Additional Info
 
 You can freely browse my codes and suggest any improvement. Thank You! :heart:
