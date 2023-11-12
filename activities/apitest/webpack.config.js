@@ -23,6 +23,7 @@ const config = {
     plugins: [
         new HtmlWebpackPlugin({
             template: 'index.html',
+            minify: true,
         }),
 
         // Add your plugins here

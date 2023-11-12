@@ -1,0 +1,21 @@
+.form {
+
+  &__input {
+    display: flex;
+    flex-flow: column wrap;
+    gap: .25rem;
+
+    &-label {
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+    
+    &-input, select, button {
+      padding: .3rem .3rem .3rem .4rem;
+
+      border: 1px solid;
+    }
+
+  }
+
+}

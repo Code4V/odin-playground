@@ -1,16 +1,16 @@
-console.log("Hello World!");
+import './style/index.css';
+const { default: CurrencyForm } = require("./components/currencyForm");
 
 
-const body = document.querySelector('body');
+const main = document.querySelector('#main');
 
-const img = document.createElement('img');
-img.src = '#';
+document.addEventListener('DOMContentLoaded', async () => {
+  
+  main.append(await CurrencyForm());
 
-body.append(img);
-const result = fetch('https://api.giphy.com/v1/gifs/translate?api_key=KDsLm21pdY4eS41gCPj9mrrCjYSA5Nai&s=cats');
-result.then((response) => {
-  return response.json();
-}).then(result => {
-  console.log(result)
-  img.src = result.data.images.original.url;
+  const result = await fetch('https://cdn.jsdelivr.net/gh/fawazahmed0/currency-api@1/latest/currencies/php/jpy.json', {
+    mode: 'cors',
+  });
+
+  console.log((await result.json()).jpy)
 })
