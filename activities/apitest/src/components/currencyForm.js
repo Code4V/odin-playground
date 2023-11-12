@@ -38,18 +38,24 @@ const CurrencyForm = async () => {
 
   currencyForm.append(fromInput, selectFrom, selectTo, convertButton);
 
-  const body = document.querySelector('body');
-  const p = document.createElement('p');
-
+  
   currencyForm.addEventListener('submit', async (ev) => {
+    const resultNode = document.querySelector('#amount-whole');
+    const resultNodeDot = document.querySelector('#amount-float');
     ev.preventDefault();
+    resultNode.parentElement.classList.remove('result--appear');
 
-    p.textContent = await convertCurrency(selectFrom.childNodes[2].value, selectTo.childNodes[2].value, fromInput.childNodes[2].value);
+    const amountResult = ((await convertCurrency(selectFrom.childNodes[2].value, selectTo.childNodes[2].value, fromInput.childNodes[2].value)).toString()).split('.');
+    
+
+    resultNode.textContent = amountResult[0];
+    resultNodeDot.textContent = amountResult[1];
+
+    resultNode.parentElement.classList.add('result--appear');
+
     
   })
 
-  body.append(p);
-  
   return currencyForm;
 };
 
