@@ -1,19 +1,21 @@
 import './style/index.sass';
 import GetWeather from './operations/weatherFunctions';
 import Header from './components/header';
+import Weather from './components/weather';
 
 const main = document.querySelector('#main');
 
-document.addEventListener('DOMContentLoaded', async () => {
-  // console.log(Intl.DateTimeFormat().resolvedOptions().timeZone)
-  try {
-    const { location, current } = await GetWeather();
+main.append(Header())
 
-    console.table({location, current})
+// console.log(Intl.DateTimeFormat().resolvedOptions().timeZone)
 
-  } catch (err) {
-    console.log(err)
-  }
+try {
+  const WeatherInfo = await GetWeather();
 
-  main.append(Header())
-})
+  console.table(WeatherInfo);
+  
+  // main.append(await Weather(WeatherInfo))
+
+} catch (err) {
+  console.log(err)
+}

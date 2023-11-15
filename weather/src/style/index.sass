@@ -3,7 +3,16 @@
 @use './components' as *
 
 * 
-  font-family: 'Playfair Display'
+  font-family: 'DM Sans'
 
-p 
-  font-family: 'Dosis'
+body
+  background-color: $background
+
+main 
+  max-width: 90%
+  margin-inline: auto
+
+@media (min-width: 764px)
+  main 
+    max-width: 60% 
+

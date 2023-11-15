@@ -11,26 +11,35 @@ async function getCurrentCity () {
 
   } catch (err) {
 
-    return { err };
+    console.log(err)
+
+    return 'Manila';
   }
 }
 
 /**
  * 
- * @param { string } place 
+ * @param { string } place -> gets the Current City if the place param is empty
  * @returns Object -> contains the location and current weather
  */
 export default async function GetWeather(place = null){
   let currentCity;
+  try {
   if (place === null) currentCity = await getCurrentCity();
   if (!currentCity) currentCity = place;
 
-  try {
     const response = await fetch(`https://api.weatherapi.com/v1/current.json?key=${WEATHER_API_PUBKEY}&q=${currentCity}&aqi=no`, {
       mode: 'cors',
     });    
+    
     const { location, current } = await response.json();
-    return { location, current };
+
+    return { 
+      cityName: location.name, 
+      tempIcon: current.condition.icon,
+      temp: current.temp_c,
+      temp_f: current.temp_f,
+    };
 
   } catch (err) {
     
