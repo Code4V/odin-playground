@@ -1,24 +1,69 @@
+@use './../abstract' as *
+  
 .weather 
   display: flex
   flex-flow: column wrap
+  background: $white
+
+  max-width: 300px
+  padding: 1rem
+  border-radius: 1rem
+  margin-inline: auto
 
   &__header
+    margin-block-end: .5rem
+
     h3
-      font-size: 2rem
-      font-weight: 600
+      font-size: 2.5rem
       text-transform: uppercase
+      font-weight: 600
+
 
   &__body 
     display: flex
+    gap: .5rem
+
+    &-icon
+      flex: 0 1 5rem
+      position: relative
+      overflow: hidden
+
+      &::after
+        content: '' 
+        inset: 0
+
+        position: absolute
+        width: 10%
+        left: 100%
+        box-shadow: 0 0 1rem $primary
+        opacity: .5
+
+      &::before
+        content: '' 
+        inset: 0
+
+        position: absolute
+        width: 10%
+        left: 100%
+        box-shadow: 0 0 4rem $primary
+        opacity: 1
+      
+      img
+        min-width: 150%
+        object-fit: fill
+        height: auto
+
 
     &-info 
       div 
         display: flex
         align-items: flex-end
 
+
         span 
-          font-size: 1.75rem
+          font-size: 4rem
           font-weight: 600
 
         p
           font-weight: 300
+          font-size: .75rem

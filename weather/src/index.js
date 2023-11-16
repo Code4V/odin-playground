@@ -14,7 +14,7 @@ try {
 
   console.table(WeatherInfo);
   
-  // main.append(await Weather(WeatherInfo))
+  main.append(await Weather(WeatherInfo))
 
 } catch (err) {
   console.log(err)

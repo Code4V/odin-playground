@@ -1,6 +1,6 @@
 let Weather;
 
-export default Weather = async ({cityName, tempIcon, temp}) => {
+export default Weather = async ({cityName, tempIcon, temp, feelslike, lastUpdated}) => {
 
   const weatherWrapper = document.createElement('div');
   weatherWrapper.classList.add('weather');
@@ -9,7 +9,7 @@ export default Weather = async ({cityName, tempIcon, temp}) => {
   weatherHeader.classList.add('weather__header');
 
   const weatherTitle = document.createElement('h3');
-  weatherTitle.textContent = cityName ?? 'Cpuldn\'t Get City';
+  weatherTitle.textContent = cityName ?? 'Couldn\'t Get City';
 
   weatherHeader.append(weatherTitle);
 
@@ -42,7 +42,19 @@ export default Weather = async ({cityName, tempIcon, temp}) => {
 
   weatherBody.append(weatherIconContainer, weatherInfoContainer);
 
-  weatherWrapper.append(weatherHeader, weatherBody);
+  const weatherFooter = document.createElement('div');
+  weatherFooter.classList.add('weather__footer');
+
+  const weatherFeelsLike = document.createElement('p');
+  weatherFeelsLike.textContent = `${feelslike}°` ?? `0°`;
+
+  const weatherLastUpdate = document.createElement('p');
+ weatherLastUpdate.textContent = lastUpdated;
+
+  weatherFooter.append(weatherFeelsLike, weatherLastUpdate);
+
+
+  weatherWrapper.append(weatherHeader, weatherBody, weatherFooter);
 
   return weatherWrapper;
 }
