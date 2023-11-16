@@ -87,7 +87,7 @@ export async function GetForecast() {
 
     const { forecast, location } = await response.json();
 
-    console.log(location)
+    console.log(forecast)
 
     const forecastArray = [];
     forecast.forecastday.forEach(day => {
@@ -96,6 +96,10 @@ export async function GetForecast() {
         tempIcon: day.day.condition.icon,
         temp: day.day.avgtemp_c,
         temp_f: day.day.avgtemp_f,
+        mintemp: day.day.mintemp_c,
+        mintemp_f: day.day.mintemp_f,
+        maxtemp: day.day.maxtemp_c,
+        maxtemp_f: day.day.maxtemp_f,
       });
     })
 
