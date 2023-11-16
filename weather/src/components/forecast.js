@@ -1,4 +1,6 @@
-export default function Forecast ({date, tempIcon, temp, temp_f, mintemp, maxtemp}) {
+export default function Forecast({
+  date, tempIcon, temp, temp_f, mintemp, maxtemp,
+}) {
   const Forecast = document.createElement('div');
   Forecast.classList.add('forecast');
 
@@ -8,7 +10,7 @@ export default function Forecast ({date, tempIcon, temp, temp_f, mintemp, maxtem
 
   const ForecastIconContainer = document.createElement('div');
   ForecastIconContainer.classList.add('forecast__icon');
-  
+
   const ForecastIcon = document.createElement('img');
   ForecastIcon.src = tempIcon ?? '#';
 
@@ -26,7 +28,7 @@ export default function Forecast ({date, tempIcon, temp, temp_f, mintemp, maxtem
   const ForecastHigh = document.createElement('span');
   ForecastHigh.textContent = `${maxtemp}`;
 
-  ForecastFooter.append(ForecastLow, ForecastAve, ForecastHigh)
+  ForecastFooter.append(ForecastLow, ForecastAve, ForecastHigh);
 
   Forecast.append(dateContent, ForecastIconContainer, ForecastFooter);
 
