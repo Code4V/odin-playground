@@ -1,5 +1,3 @@
-import 'dotenv/config';
-
 const { WEATHER_API_PUBKEY, IPINFO_API_PUBKEY } = process.env;
 
 async function getCurrentCity() {
@@ -28,6 +26,8 @@ function queryBuilder(query = {
 
   weatherAPIBase = `${weatherAPIBase}key=${WEATHER_API_PUBKEY}`;
 
+  console.log(weatherAPIBase);
+
   return weatherAPIBase;
 }
 
@@ -43,17 +43,10 @@ export default async function GetWeather(place = null) {
     if (place === null) currentCity = await getCurrentCity();
     if (!currentCity) currentCity = place;
 
-    const response = await fetch(queryBuilder({ method: 'current.json', q: currentCity }), {
-      mode: 'cors',
-    });
+    const response = await fetch(queryBuilder({ method: 'current.json', q: currentCity }), { mode: 'cors', method: 'GET' });
 
     if (response.status >= 400) throw new Error('Something Went Wrong!');
-    console.log(response.status);
     const { location, current } = await response.json();
-
-    console.table(location);
-
-    console.table(current);
 
     return {
       cityName: location.name,
