@@ -1,36 +1,36 @@
 export default function Forecast({
-  date, tempIcon, temp, temp_f, mintemp, maxtemp,
+  date, tempIcon, temp, mintemp, maxtemp,
 }) {
-  const Forecast = document.createElement('div');
-  Forecast.classList.add('forecast');
+  const forecast = document.createElement('div');
+  forecast.classList.add('forecast');
 
   const dateContent = document.createElement('p');
   dateContent.classList.add('forecast__date');
   dateContent.textContent = date;
 
-  const ForecastIconContainer = document.createElement('div');
-  ForecastIconContainer.classList.add('forecast__icon');
+  const forecastIconContainer = document.createElement('div');
+  forecastIconContainer.classList.add('forecast__icon');
 
-  const ForecastIcon = document.createElement('img');
-  ForecastIcon.src = tempIcon ?? '#';
+  const forecastIcon = document.createElement('img');
+  forecastIcon.src = tempIcon ?? '#';
 
-  ForecastIconContainer.append(ForecastIcon);
+  forecastIconContainer.append(forecastIcon);
 
-  const ForecastFooter = document.createElement('div');
-  ForecastFooter.classList.add('forecast__footer');
+  const forecastFooter = document.createElement('div');
+  forecastFooter.classList.add('forecast__footer');
 
-  const ForecastLow = document.createElement('span');
-  ForecastLow.textContent = `${mintemp}`;
+  const forecastLow = document.createElement('span');
+  forecastLow.textContent = `${mintemp}`;
 
-  const ForecastAve = document.createElement('span');
-  ForecastAve.textContent = `${temp}`;
+  const forecastAve = document.createElement('span');
+  forecastAve.textContent = `${temp}`;
 
-  const ForecastHigh = document.createElement('span');
-  ForecastHigh.textContent = `${maxtemp}`;
+  const forecastHigh = document.createElement('span');
+  forecastHigh.textContent = `${maxtemp}`;
 
-  ForecastFooter.append(ForecastLow, ForecastAve, ForecastHigh);
+  forecastFooter.append(forecastLow, forecastAve, forecastHigh);
 
-  Forecast.append(dateContent, ForecastIconContainer, ForecastFooter);
+  forecast.append(dateContent, forecastIconContainer, forecastFooter);
 
-  return Forecast;
+  return forecast;
 }

@@ -5,13 +5,13 @@
   flex-flow: column wrap
   background: $white
 
-  max-width: 300px
+  max-width: fit-content
   padding: 1rem
   border-radius: 1rem
   margin-inline: auto
 
   &__header
-    margin-block-end: .5rem
+    margin-block: 1rem
 
     h3
       font-size: 2.5rem
@@ -27,24 +27,29 @@
       flex: 0 1 5rem
       position: relative
       overflow: hidden
+      display: flex
 
       
       img
         // min-width: 150%
         object-fit: fill
         height: auto
-
+        margin-block: auto
 
     &-info 
       div 
         display: flex
         align-items: flex-end
 
-
         span 
-          font-size: 4rem
+          font-size: 8rem
           font-weight: 600
 
         p
           font-weight: 300
           font-size: .75rem
+  
+  &__footer
+    display: flex
+    gap: 1rem
+    justify-content: space-around

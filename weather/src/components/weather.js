@@ -1,7 +1,6 @@
-let Weather;
-
-export default Weather = async ({cityName, tempIcon, temp, feelslike, lastUpdated}) => {
-
+export default function Weather({
+  cityName, tempIcon, temp, feelslike, lastUpdated,
+}) {
   const weatherWrapper = document.createElement('div');
   weatherWrapper.classList.add('weather');
 
@@ -26,7 +25,7 @@ export default Weather = async ({cityName, tempIcon, temp, feelslike, lastUpdate
   weatherIconContainer.append(weatherIcon);
 
   const weatherInfoContainer = document.createElement('div');
-  weatherInfoContainer.classList.add('weather__body-info')
+  weatherInfoContainer.classList.add('weather__body-info');
 
   const weatherTempContainer = document.createElement('div');
 
@@ -34,27 +33,33 @@ export default Weather = async ({cityName, tempIcon, temp, feelslike, lastUpdate
   weatherTemperatureHeader.textContent = 'Temperature';
 
   const weatherTemperature = document.createElement('span');
-  weatherTemperature.textContent = `${temp}°` ?? `0°`;
+  weatherTemperature.textContent = `${temp}°` ?? '0°';
 
-  weatherTempContainer.append(weatherTemperature, weatherTemperatureHeader);
+  weatherTempContainer.append(weatherTemperature);
 
   weatherInfoContainer.append(weatherTempContainer);
 
-  weatherBody.append(weatherIconContainer, weatherInfoContainer);
+  weatherBody.append(
+    weatherInfoContainer,
+    weatherIconContainer,
+  );
 
   const weatherFooter = document.createElement('div');
   weatherFooter.classList.add('weather__footer');
 
   const weatherFeelsLike = document.createElement('p');
-  weatherFeelsLike.textContent = `${feelslike}°` ?? `0°`;
+  weatherFeelsLike.textContent = `${feelslike}°` ?? '0°';
 
   const weatherLastUpdate = document.createElement('p');
- weatherLastUpdate.textContent = lastUpdated;
+  weatherLastUpdate.textContent = lastUpdated;
 
   weatherFooter.append(weatherFeelsLike, weatherLastUpdate);
 
-
-  weatherWrapper.append(weatherHeader, weatherBody, weatherFooter);
+  weatherWrapper.append(
+    weatherBody,
+    weatherHeader,
+    weatherFooter,
+  );
 
   return weatherWrapper;
 }

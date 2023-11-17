@@ -1,6 +1,4 @@
-let Header;
-
-export default Header = () => {
+export default function Header() {
   const headerWrapper = document.createElement('header');
   headerWrapper.classList.add('header');
 
@@ -9,7 +7,7 @@ export default Header = () => {
   header.innerHTML = 'Weather <span>API</span>';
 
   const headerSub = document.createElement('p');
-  headerSub.textContent = 'please check the console for the meantime!'
+  headerSub.textContent = 'please check the console for the meantime!';
 
   headerWrapper.append(header, headerSub);
 

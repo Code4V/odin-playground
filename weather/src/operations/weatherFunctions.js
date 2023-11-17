@@ -66,9 +66,12 @@ export default async function GetWeather(place = null) {
   }
 }
 
-export async function GetForecast() {
+export async function GetForecast(place = null) {
+  let currentCity;
   try {
-    const response = await fetch(queryBuilder({ method: 'forecast.json', q: 'Quezon City', days: 7 }));
+    if (place === null) currentCity = await getCurrentCity();
+    if (!currentCity) currentCity = place;
+    const response = await fetch(queryBuilder({ method: 'forecast.json', q: currentCity, days: 7 }));
 
     const { forecast, location } = await response.json();
 
