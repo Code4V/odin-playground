@@ -12,10 +12,9 @@ class DisplayController {
   }
 
   async render() {
-    const currentPlace = 'Bristol';
+    // const currentPlace = 'Bristol';
     this.#main = document.querySelector('#main');
     const weatherTodayLocal = await GetWeather();
-
     const forecastLocal = await GetForecast();
 
     this.#main.append(
