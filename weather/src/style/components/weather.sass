@@ -4,11 +4,11 @@
   display: flex
   flex-flow: column wrap
   background: $white
-
+  height: fit-content
   // min-width: 100%
   padding: 1rem
   border-radius: 1rem
-  margin-inline: auto
+  animation: appearFromTop 1000ms cubic-bezier(.35,.06,.17,1) forwards
 
   &__header
     margin-block: 1rem
@@ -57,4 +57,12 @@
 @media (min-width: 764px) 
   .weather 
     max-width: fit-content
+
+@keyframes appearFromTop 
+  0% 
+    opacity: 0
+    transform: translateY(-50px)
+  100%
+    opacity: 1
+    transform: translateY(0)
   

@@ -26,8 +26,6 @@ function queryBuilder(query = {
 
   weatherAPIBase = `${weatherAPIBase}key=${WEATHER_API_PUBKEY}`;
 
-  console.log(weatherAPIBase);
-
   return weatherAPIBase;
 }
 

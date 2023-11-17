@@ -3,6 +3,7 @@ export default function Weather({
 }) {
   const weatherWrapper = document.createElement('div');
   weatherWrapper.classList.add('weather');
+  weatherWrapper.id = 'weather';
 
   const weatherHeader = document.createElement('div');
   weatherHeader.classList.add('weather__header');
