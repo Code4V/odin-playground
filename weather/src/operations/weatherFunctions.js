@@ -44,7 +44,7 @@ export default async function GetWeather(place = null) {
     const response = await fetch(queryBuilder({ method: 'current.json', q: currentCity }), { mode: 'cors', method: 'GET' });
     if (response.status >= 400) {
       return {
-        message: 'Something Went Wrong',
+        message: 'No matching city found!',
       };
     }
     const { location, current } = await response.json();

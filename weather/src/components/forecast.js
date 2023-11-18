@@ -4,9 +4,12 @@ export default function Forecast({
   const forecast = document.createElement('div');
   forecast.classList.add('forecast');
 
-  const dateContent = document.createElement('p');
+  const dateContent = document.createElement('span');
   dateContent.classList.add('forecast__date');
   dateContent.textContent = date;
+
+  const forecastInfoContainer = document.createElement('div');
+  forecastInfoContainer.classList.add('forecast__info');
 
   const forecastIconContainer = document.createElement('div');
   forecastIconContainer.classList.add('forecast__icon');
@@ -20,17 +23,17 @@ export default function Forecast({
   forecastFooter.classList.add('forecast__footer');
 
   const forecastLow = document.createElement('span');
-  forecastLow.textContent = `${mintemp}`;
+  forecastLow.textContent = `${mintemp}°`;
 
   const forecastAve = document.createElement('span');
-  forecastAve.textContent = `${temp}`;
+  forecastAve.textContent = `${temp}°`;
 
   const forecastHigh = document.createElement('span');
-  forecastHigh.textContent = `${maxtemp}`;
+  forecastHigh.textContent = `${maxtemp}°`;
 
   forecastFooter.append(forecastLow, forecastAve, forecastHigh);
 
-  forecast.append(dateContent, forecastIconContainer, forecastFooter);
+  forecast.append(forecastIconContainer, forecastFooter, dateContent);
 
   return forecast;
 }
