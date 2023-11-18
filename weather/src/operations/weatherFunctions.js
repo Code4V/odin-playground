@@ -42,8 +42,11 @@ export default async function GetWeather(place = null) {
     if (!currentCity) currentCity = place;
 
     const response = await fetch(queryBuilder({ method: 'current.json', q: currentCity }), { mode: 'cors', method: 'GET' });
-
-    if (response.status >= 400) throw new Error('Something Went Wrong!');
+    if (response.status >= 400) {
+      return {
+        message: 'Something Went Wrong',
+      };
+    }
     const { location, current } = await response.json();
 
     return {

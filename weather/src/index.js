@@ -8,7 +8,7 @@ const main = document.querySelector('#main');
 main.append(Header(), Search());
 
 try {
-  displayController.render();
+  displayController.renderWeather();
 } catch (err) {
   console.log(err);
 }

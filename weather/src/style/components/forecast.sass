@@ -3,8 +3,24 @@
 .forecast
   flex: 1 0 100%
   background-color: $white
-
+  padding: .5rem 1rem
+  display: flex
+  animation: appearFromTop 1200ms cubic-bezier(.35,.06,.17,1) forwards
+  border-radius: 1rem
+  
   &__footer
     display: flex
     justify-content: space-evenly
     align-items: center
+
+  &:nth-child(2)
+    animation-duration: 1500ms
+
+  &:nth-child(3)
+    animation-duration: 2000ms
+  
+  &:nth-child(4),
+  &:nth-child(5),
+  &:nth-child(6),
+  &:nth-child(7)
+    animation-duration: 2500ms

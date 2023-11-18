@@ -1,9 +1,19 @@
 export default function Weather({
-  cityName, tempIcon, temp, feelslike, lastUpdated,
+  cityName, tempIcon, temp, feelslike, lastUpdated, message,
 }) {
   const weatherWrapper = document.createElement('div');
   weatherWrapper.classList.add('weather');
   weatherWrapper.id = 'weather';
+
+  console.log(message);
+
+  if (message !== undefined) {
+    const weatherErrorHolder = document.createElement('h3');
+    weatherErrorHolder.classList.add('weather__header');
+    weatherErrorHolder.textContent = message;
+    weatherWrapper.append(weatherErrorHolder);
+    return weatherWrapper;
+  }
 
   const weatherHeader = document.createElement('div');
   weatherHeader.classList.add('weather__header');

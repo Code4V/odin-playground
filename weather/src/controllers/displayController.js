@@ -13,10 +13,11 @@ class DisplayController {
     }
   }
 
-  async render() {
+  async renderWeather() {
     const weatherTodayLocal = await GetWeather();
     const forecastLocal = await GetForecast();
 
+    console.log(weatherTodayLocal);
     this.#weatherInfo.classList.add('weather-forecast');
     this.#weatherInfo.append(
       Weather(weatherTodayLocal),
@@ -38,6 +39,17 @@ class DisplayController {
   refresh() {
     this.#removeChildNodes(this.#weatherInfo);
     return this.render();
+  }
+
+  async renderWeatherForecast(place) {
+    this.#removeChildNodes(this.#weatherInfo);
+    const reqWeather = await GetWeather(place);
+    const reqForecast = await GetForecast(place);
+
+    this.#weatherInfo.append(
+      Weather(reqWeather),
+      ForecastList(reqForecast.forecast),
+    );
   }
 }
 
