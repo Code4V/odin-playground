@@ -11,9 +11,25 @@
     padding: .5rem 1rem
     border-radius: 1rem
     border: 0
+    background: $background
+
+
 
   &__submit
     background-color: $secondary
     border: 0
-    padding: .5rem 1rem
+    padding: .125rem 1rem
     border-radius: 1rem
+    display: flex
+    align-items: center
+    transition: 450ms ease-in opacity,  150ms ease-in transform
+    opacity: .75
+
+    svg
+      width: 1.2rem
+      height: 1.1rem
+      fill: $primary
+
+    &:hover 
+      opacity: 1
+      transform: scale(.9)

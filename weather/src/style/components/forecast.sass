@@ -2,24 +2,30 @@
 
 .forecast
   flex: 0 0 100%
-  background-color: $white
+  background-color: $background
   padding: .5rem 1rem
   display: flex
   animation: appearFromTop 1200ms cubic-bezier(.35,.06,.17,1) forwards
   border-radius: 1rem
   justify-content: flex-start
+  flex-flow: row wrap
 
   &__date 
     display: inline
     margin-block: auto
     margin-inline-start: auto
-    
+    opacity: .6
+    font-weight: 600   
 
   &__footer
     display: flex
     align-items: center
     gap: 4rem
     margin-inline-start: auto
+
+    span
+      color: $primary
+      font-weight: 600
 
   &__info 
     display: flex

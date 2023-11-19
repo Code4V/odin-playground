@@ -1,3 +1,5 @@
+import { format } from 'date-fns';
+
 export default function Forecast({
   date, tempIcon, temp, mintemp, maxtemp,
 }) {
@@ -6,7 +8,7 @@ export default function Forecast({
 
   const dateContent = document.createElement('span');
   dateContent.classList.add('forecast__date');
-  dateContent.textContent = date;
+  dateContent.textContent = format(new Date(date), 'EE');
 
   const forecastInfoContainer = document.createElement('div');
   forecastInfoContainer.classList.add('forecast__info');
@@ -31,7 +33,7 @@ export default function Forecast({
   const forecastHigh = document.createElement('span');
   forecastHigh.textContent = `${maxtemp}°`;
 
-  forecastFooter.append(forecastLow, forecastAve, forecastHigh);
+  forecastFooter.append(forecastAve);
 
   forecast.append(forecastIconContainer, forecastFooter, dateContent);
 
