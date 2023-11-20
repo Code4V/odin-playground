@@ -11,19 +11,17 @@ class DisplayController {
     if (DisplayController.instance === null) {
       DisplayController.instance = this;
     }
+    this.#weatherInfo.classList.add('weather-forecast');
   }
 
   async renderWeather() {
     const weatherTodayLocal = await GetWeather();
     const forecastLocal = await GetForecast();
 
-    console.log(weatherTodayLocal);
-    this.#weatherInfo.classList.add('weather-forecast');
     this.#weatherInfo.append(
       Weather(weatherTodayLocal),
       ForecastList(forecastLocal.forecast),
     );
-
     this.#main.append(
       this.#weatherInfo,
     );
