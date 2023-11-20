@@ -22,7 +22,6 @@ function all(arr = [], callback) {
   if (!callback(arr[0])) return false;
 
   arr.shift();
-
   return all(arr, callback);
 }
 
@@ -33,12 +32,21 @@ function productOfArray(arr = []) {
 
 function contains(haystack, needle) {
   if (Object.values(haystack)[0] === undefined) return false;
-  if (Object.values(haystack).includes(needle)) return true;
-  
-  console.log(haystack)
-  // console.log(Object.values(haystack)[0])
+  for (var key in haystack) {
+    if (Object.values(haystack[key]).includes(needle) || haystack[key] === needle)
+      return true
+  }
   return contains(Object.values(haystack)[0], needle);
 }
+
+const arrayads = [
+  [[5], 3],
+  0,
+  2,
+  ['foo'],
+  [],
+  [4, [5,6]]
+]
 
 var nestedObject = {
     data: {
@@ -53,14 +61,16 @@ var nestedObject = {
                 thing2: {
                   shoo: 34,
                 }
-            }
-        }
-    }
+            },
+            stuff2: 'sheesh'
+        },
+      },
+    data2: 'krak krak'
 }
 
-console.log(all([1, 2, 9], (num) => num < 7));
+console.log(all([1, 2, 49], (num) => num < 7));
 console.log(sumRange(5));
 console.log(power(2, 5));
 console.log(factorial(6));
 console.log(productOfArray([1, 2, 3]));
-console.log(contains(nestedObject, 34))
+console.log(contains(nestedObject, 'sheesh'))
