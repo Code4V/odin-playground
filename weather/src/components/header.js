@@ -6,10 +6,9 @@ export default function Header() {
   header.classList.add('header__title');
   header.innerHTML = 'Weather <span>API</span>';
 
-  const headerSub = document.createElement('p');
-  headerSub.textContent = 'please check the console for the meantime!';
-
-  headerWrapper.append(header, headerSub);
+  headerWrapper.append(
+    header,
+  );
 
   return headerWrapper;
 }

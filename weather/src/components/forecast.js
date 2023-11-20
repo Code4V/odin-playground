@@ -3,12 +3,17 @@ import { format } from 'date-fns';
 export default function Forecast({
   date, tempIcon, temp, mintemp, maxtemp,
 }) {
+  let formattedDate;
+  if (new Date(date).getDate() === new Date().getDate()) {
+    formattedDate = 'Today';
+  } else formattedDate = format(new Date(date), 'EE');
+
   const forecast = document.createElement('div');
   forecast.classList.add('forecast');
 
   const dateContent = document.createElement('span');
   dateContent.classList.add('forecast__date');
-  dateContent.textContent = format(new Date(date), 'EE');
+  dateContent.textContent = formattedDate;
 
   const forecastInfoContainer = document.createElement('div');
   forecastInfoContainer.classList.add('forecast__info');

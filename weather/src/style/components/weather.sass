@@ -3,9 +3,10 @@
 .weather 
   display: flex
   flex-flow: column wrap
+  margin-block-end: 3rem
   // background: $white
   height: fit-content
-  max-width: 20rem
+  // max-width: 20rem
   padding: 1rem
   border-radius: 1rem
   animation: appearFromTop 1000ms cubic-bezier(.35,.06,.17,1) forwards
@@ -53,6 +54,28 @@
     display: flex
     gap: 1rem
     justify-content: space-around
+    align-items: center
+
+    > div 
+      display: flex
+      gap: .5rem
+      align-items: center
+      background: $secondary
+      padding: .1rem .5rem
+      border-radius: 1rem
+
+      p, svg 
+        color: #000000
+        opacity: .65
+        font-weight: 600
+
+      svg 
+        stroke: #000000
+
+    > p
+      font-weight: 300
+
+
 
 @media (min-width: 1024px)
   .weather 
