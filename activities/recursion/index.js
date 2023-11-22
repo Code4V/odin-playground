@@ -1,6 +1,3 @@
-console.log('test sd');
-
-
 function sumRange(num) {
   if (num === 1) return 1;
   return num + sumRange(num-1);
@@ -105,14 +102,66 @@ function khan(num) {
   }
 }
 
+function multiplesOfThreeAndFive(limit = 1000) {
+  if (limit === 0) return 0;
+
+  limit = limit - 1;
+  if (limit % 3 === 0 || limit % 5 === 0){
+    return limit = limit + multiplesOfThreeAndFive(limit);
+  }
+
+  return multiplesOfThreeAndFive(limit);
+}
+
+function mergeSort(arr = []) {
+  if (arr.length === 1) return arr[0];
+  let arrHalfSize = arr.length/2;
+
+  let leftArr = arr.slice(0, arrHalfSize);
+  let rightArr = arr.slice(arrHalfSize+1, arrHalfSize);
+  let temp = 0;
+  let sortedArray = [];
+
+  if (leftArr.length >= 2 ) {
+    mergeSort(leftArr);
+  }
+
+  if (leftArr.length >= 2) {
+    mergeSort(rightArr);
+  }
+
+  if (arr[0] > arr[1]) {
+    temp = arr[1];
+    arr[1] = arr[0];
+    arr[0] = temp; 
+  }
+  // sortedArr.push(arr);
+  console.log(
+    arr
+  )
+  
+  // return sortedArr;
+}
+
+
 /**
+ * Get array from user
+ * Take array then half it to left and right
+ * If left array length is more than 2
+ *  Take array then half it to left and right
+ * If array length is two
+ *  
  * 
  * 
  */
 
-console.log(khan(6));
-console.log(fibsRec(8));
-console.log(fibonacci(8));
+console.log( 
+  mergeSort([4,3,1,14,1,1,8,5,2,8,7])
+);
+
+// console.log(khan(6));
+// console.log(fibsRec(8));
+// console.log(fibonacci(8));
 
 var nestedObject = {
     data: {
@@ -143,12 +192,12 @@ const arrayads = [
   [4, [5,6]]
 ]
 
-console.log(all([1, 2, 49], (num) => num < 7));
-console.log(sumRange(5));
-console.log(power(2, 5));
-console.log(factorial(12));
-console.log(productOfArray([1, 2, 3]));
-console.log(contains(nestedObject, 'sheesh'))
-console.log(totalIntegers(arrayads))
-console.log(SumSquares([1, 3, 3, 3]))
-console.log(replicate(10, 123))
+// console.log(all([1, 2, 49], (num) => num < 7));
+// console.log(sumRange(5));
+// console.log(power(2, 5));
+// console.log(factorial(12));
+// console.log(productOfArray([1, 2, 3]));
+// console.log(contains(nestedObject, 'sheesh'))
+// console.log(totalIntegers(arrayads))
+// console.log(SumSquares([1, 3, 3, 3]))
+// console.log(replicate(10, 123))
