@@ -95,10 +95,11 @@ function fibsRec(num, currNum = 1, nextNum = 0, prevNum = 0) {
 }
 
 function khan(num) {
+  let arrayKhan = []; 
   if ( num < 2 ) {
     return num ;
   } else {
-    return [(khan(num-2) + khan(num-1))];
+    return arrayKhan.concat(khan(num-2) + khan(num-1));
   }
 }
 
@@ -114,33 +115,54 @@ function multiplesOfThreeAndFive(limit = 1000) {
 }
 
 function mergeSort(arr = []) {
-  if (arr.length === 1) return arr[0];
-  let arrHalfSize = arr.length/2;
+  if (arr.length === 1) return arr;
 
+  let arrHalfSize = Math.round(arr.length/2);
   let leftArr = arr.slice(0, arrHalfSize);
-  let rightArr = arr.slice(arrHalfSize+1, arrHalfSize);
+  let rightArr = arr.slice(arrHalfSize, arr.length);
   let temp = 0;
-  let sortedArray = [];
 
-  if (leftArr.length >= 2 ) {
-    mergeSort(leftArr);
+  const sortedArray = [];
+
+  console.log({
+    leftArr,
+    rightArr })
+    ;
+
+  const leftArrayNew = mergeSort(leftArr);
+  const rightArrayNew = mergeSort(rightArr);
+
+  console.log(leftArrayNew, "LEFT");
+  console.log(rightArrayNew, "RIGHT");
+  // sortedArray.concat(leftArrayNew)
+
+  // console.log(arr.length, "LENGTH");
+  let i = 0, j = 0;
+  while ( true ) {
+    console.log(i, j)
+    console.log(leftArrayNew[i], rightArrayNew[j], "HOOY")
+    
+    if (leftArrayNew[i] < rightArrayNew[j] || rightArrayNew[j] === undefined) {
+      sortedArray.push(leftArrayNew[i]);
+      i = i + 1;
+    } else {
+      sortedArray.push(rightArrayNew[j]);
+      j = j + 1;
+    }
+    if (leftArrayNew[i] === undefined || rightArrayNew[j] === undefined) break;
   }
 
-  if (leftArr.length >= 2) {
-    mergeSort(rightArr);
-  }
+  console.log(sortedArray, "CON");
 
-  if (arr[0] > arr[1]) {
-    temp = arr[1];
-    arr[1] = arr[0];
-    arr[0] = temp; 
-  }
+  // return sortedArray
   // sortedArr.push(arr);
-  console.log(
-    arr
-  )
-  
-  // return sortedArr;
+  // console.log(
+  //   arr
+  // )
+
+  // console.log(sortedArray)
+
+  return sortedArray;
 }
 
 
@@ -155,9 +177,9 @@ function mergeSort(arr = []) {
  * 
  */
 
-console.log( 
-  mergeSort([4,3,1,14,1,1,8,5,2,8,7])
-);
+// console.log( 
+  mergeSort([4, 3,1,14,1,1,8,5,2,8,7])
+// );
 
 // console.log(khan(6));
 // console.log(fibsRec(8));
