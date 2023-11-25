@@ -1,16 +1,16 @@
 function sumRange(num) {
   if (num === 1) return 1;
-  return num + sumRange(num-1);
+  return num + sumRange(num - 1);
 }
 
 function power(num, powerTo) {
   if (powerTo === 0) return 1;
-  return num * power(num, powerTo-1);
+  return num * power(num, powerTo - 1);
 }
 
 function factorial(num) {
   if (num === 1) return 1;
-  return num * factorial(num-1);
+  return num * factorial(num - 1);
 }
 
 function all(arr = [], callback) {
@@ -23,7 +23,7 @@ function all(arr = [], callback) {
 }
 
 function productOfArray(arr = []) {
-  if (arr[0] === undefined) return 1;  
+  if (arr[0] === undefined) return 1;
   return arr.shift() * productOfArray(arr);
 }
 
@@ -49,23 +49,23 @@ function SumSquares(arr = []) {
   if (arr.length === 0) return 0;
   let totalSquare = 0;
   if (Array.isArray(arr[0])) totalSquare = totalSquare + SumSquares(arr[0]);
-  if(Number.isInteger(arr[0])) totalSquare = arr[0] * arr[0];
+  if (Number.isInteger(arr[0])) totalSquare = arr[0] * arr[0];
   arr.shift();
   return totalSquare + SumSquares(arr);
 }
 
 function replicate(repetition, num) {
   if (repetition <= 0) return [];
-  return [num].concat(replicate(repetition-1, num));
+  return [num].concat(replicate(repetition - 1, num));
 }
 
 function collatz(num) {
-  var steps = 0; 
+  var steps = 0;
   if (num == 1) return steps;
   if (num % 2 === 0) num = num / 2;
-  else num = ( 3 * num ) + 1;
+  else num = (3 * num) + 1;
   steps = steps + 1;
-  return steps + collatz(num); 
+  return steps + collatz(num);
 }
 
 function fibonacci(num) {
@@ -75,10 +75,10 @@ function fibonacci(num) {
 
   let fibArray = [];
   let i = 0;
-  while ( i < num ){
+  while (i < num) {
     fibArray.push(prevNum);
     nexNum = prevNum + currNum;
-    prevNum = currNum; 
+    prevNum = currNum;
     currNum = nexNum;
 
     i = i + 1;
@@ -87,19 +87,19 @@ function fibonacci(num) {
 }
 
 function fibsRec(num, currNum = 1, nextNum = 0, prevNum = 0) {
-  if (num === 1) return [ 0 ];
+  if (num === 1) return [0];
   nextNum = prevNum + currNum;
   prevNum = currNum;
   currNum = nextNum;
-  return [prevNum].concat(fibsRec(num-1, currNum, nextNum, prevNum)).sort((a, b) => a - b);
+  return [prevNum].concat(fibsRec(num - 1, currNum, nextNum, prevNum)).sort((a, b) => a - b);
 }
 
 function khan(num) {
-  let arrayKhan = []; 
-  if ( num < 2 ) {
-    return num ;
+  let arrayKhan = [];
+  if (num < 2) {
+    return num;
   } else {
-    return arrayKhan.concat(khan(num-2) + khan(num-1));
+    return arrayKhan.concat(khan(num - 2) + khan(num - 1));
   }
 }
 
@@ -107,52 +107,62 @@ function multiplesOfThreeAndFive(limit = 1000) {
   if (limit === 0) return 0;
 
   limit = limit - 1;
-  if (limit % 3 === 0 || limit % 5 === 0){
+  if (limit % 3 === 0 || limit % 5 === 0) {
     return limit = limit + multiplesOfThreeAndFive(limit);
   }
 
   return multiplesOfThreeAndFive(limit);
 }
 
-function mergeSort(arr = []) {
+/**
+ * Get array from user
+ * Take array then half it to left and right
+ * If left array length is more than 2
+ *  Take array then half it to left and right
+ * If array length is 1 return array
+ *  
+ * 
+ * 
+ * 
+ */
+function mergeSort(arr = [], from = 'left') {
   if (arr.length === 1) return arr;
 
-  let arrHalfSize = Math.round(arr.length/2);
+  let arrHalfSize = Math.round(arr.length / 2);
   let leftArr = arr.slice(0, arrHalfSize);
   let rightArr = arr.slice(arrHalfSize, arr.length);
   let temp = 0;
 
   const sortedArray = [];
 
-  console.log({
-    leftArr,
-    rightArr })
-    ;
-
   const leftArrayNew = mergeSort(leftArr);
-  const rightArrayNew = mergeSort(rightArr);
+  const rightArrayNew = mergeSort(rightArr, 'right');
 
-  console.log(leftArrayNew, "LEFT");
-  console.log(rightArrayNew, "RIGHT");
   // sortedArray.concat(leftArrayNew)
 
   // console.log(arr.length, "LENGTH");
   let i = 0, j = 0;
-  while ( true ) {
-    console.log(i, j)
-    console.log(leftArrayNew[i], rightArrayNew[j], "HOOY")
-    
-    if (leftArrayNew[i] < rightArrayNew[j] || rightArrayNew[j] === undefined) {
+  while (true) {
+    console.table({
+      leftArrayNew,
+      leftArr,
+      rightArrayNew,
+      from
+    })
+    if (leftArrayNew[i] < rightArrayNew[j]) {
       sortedArray.push(leftArrayNew[i]);
       i = i + 1;
+    } else if (leftArrayNew[i] === rightArrayNew[j]) {
+      sortedArray.push(leftArrayNew[i], rightArrayNew[j])
+      i = i + 1;
+      j = j + 1;
     } else {
       sortedArray.push(rightArrayNew[j]);
       j = j + 1;
     }
     if (leftArrayNew[i] === undefined || rightArrayNew[j] === undefined) break;
   }
-
-  console.log(sortedArray, "CON");
+  console.log(sortedArray)
 
   // return sortedArray
   // sortedArr.push(arr);
@@ -166,44 +176,35 @@ function mergeSort(arr = []) {
 }
 
 
-/**
- * Get array from user
- * Take array then half it to left and right
- * If left array length is more than 2
- *  Take array then half it to left and right
- * If array length is two
- *  
- * 
- * 
- */
 
 // console.log( 
-  mergeSort([4, 3,1,14,1,1,8,5,2,8,7])
+mergeSort([4, 3, 1, 14])
 // );
+
 
 // console.log(khan(6));
 // console.log(fibsRec(8));
 // console.log(fibonacci(8));
 
 var nestedObject = {
-    data: {
-        info: {
-            stuff: {
-                thing: {
-                  moreStuff: {
-                        magicNumber: 44,
-                        something: 'foo2'
-                    }
-                },
-                thing2: {
-                  shoo: 34,
-                }
-            },
-            stuff2: 'sheesh'
+  data: {
+    info: {
+      stuff: {
+        thing: {
+          moreStuff: {
+            magicNumber: 44,
+            something: 'foo2'
+          }
         },
+        thing2: {
+          shoo: 34,
+        }
       },
-      data2: 'krak krak'
-    }
+      stuff2: 'sheesh'
+    },
+  },
+  data2: 'krak krak'
+}
 
 const arrayads = [
   [[5], 3, 5],
@@ -211,7 +212,7 @@ const arrayads = [
   2,
   ['foo'],
   [],
-  [4, [5,6]]
+  [4, [5, 6]]
 ]
 
 // console.log(all([1, 2, 49], (num) => num < 7));
