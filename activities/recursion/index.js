@@ -131,57 +131,29 @@ function mergeSort(arr = [], from = 'left') {
   let arrHalfSize = Math.round(arr.length / 2);
   let leftArr = arr.slice(0, arrHalfSize);
   let rightArr = arr.slice(arrHalfSize, arr.length);
-  let temp = 0;
 
   const sortedArray = [];
-  // sortedArray.concat(leftArrayNew)
 
-  console.log(arr);
-
-  // let i = 0, j = 0;
   const leftArrayNew = mergeSort(leftArr);
   const rightArrayNew = mergeSort(rightArr, 'right');
-  
-  console.table({
-    arr,
-    leftArrayNew,
-    // leftArr,
-    rightArrayNew,
-    // rightArr,
-    from
-  })
-
-  let i = 0;
 
   while (true) {
-    // console.table({leftArrayNew,  rightArrayNew, rightLength: rightArrayNew.length});
-    if (leftArrayNew.length === 0 || rightArrayNew.length === 0 ) return sortedArray;
-
+    if (leftArrayNew.length === 0 || rightArrayNew.length === 0 ) break;
     if (leftArrayNew[0] <= rightArrayNew[0]) {
       sortedArray.push(leftArrayNew[0]);
       leftArrayNew.shift();
-      // console.log(leftArrayNewR
     } else if (leftArrayNew[0] > rightArrayNew[0]) {
       sortedArray.push(rightArrayNew[0]);
       rightArrayNew.shift();
     }
-    i++;
-    if ( i === 10 ) break;
   }
-  // return sortedArray
-  // sortedArr.push(arr);
-  // console.log(
-  //   arr
-  // )
 
-  // console.log(sortedArray)
-
-  // return sortedArray;
+  return sortedArray.concat(leftArrayNew, rightArrayNew);
 }
 
 
 console.log( 
-mergeSort([4, 3,5,978,34, 1, 14])
+mergeSort([4,2, 4, 51, 12, 12, 123, 41, 123])
 );
 
 // console.log(khan(6));
