@@ -119,8 +119,8 @@ function multiplesOfThreeAndFive(limit = 1000) {
  * Take array then half it to left and right
  * If left array length is more than 2
  *  Take array then half it to left and right
- * If array length is 1 return array
- *  
+ *  If array length is 1 return array
+ * 
  * 
  * 
  * 
@@ -134,36 +134,40 @@ function mergeSort(arr = [], from = 'left') {
   let temp = 0;
 
   const sortedArray = [];
-
-  const leftArrayNew = mergeSort(leftArr);
-  const rightArrayNew = mergeSort(rightArr, 'right');
-
   // sortedArray.concat(leftArrayNew)
 
-  // console.log(arr.length, "LENGTH");
-  let i = 0, j = 0;
-  while (true) {
-    console.table({
-      leftArrayNew,
-      leftArr,
-      rightArrayNew,
-      from
-    })
-    if (leftArrayNew[i] < rightArrayNew[j]) {
-      sortedArray.push(leftArrayNew[i]);
-      i = i + 1;
-    } else if (leftArrayNew[i] === rightArrayNew[j]) {
-      sortedArray.push(leftArrayNew[i], rightArrayNew[j])
-      i = i + 1;
-      j = j + 1;
-    } else {
-      sortedArray.push(rightArrayNew[j]);
-      j = j + 1;
-    }
-    if (leftArrayNew[i] === undefined || rightArrayNew[j] === undefined) break;
-  }
-  console.log(sortedArray)
+  console.log(arr);
 
+  // let i = 0, j = 0;
+  const leftArrayNew = mergeSort(leftArr);
+  const rightArrayNew = mergeSort(rightArr, 'right');
+  
+  console.table({
+    arr,
+    leftArrayNew,
+    // leftArr,
+    rightArrayNew,
+    // rightArr,
+    from
+  })
+
+  let i = 0;
+
+  while (true) {
+    // console.table({leftArrayNew,  rightArrayNew, rightLength: rightArrayNew.length});
+    if (leftArrayNew.length === 0 || rightArrayNew.length === 0 ) return sortedArray;
+
+    if (leftArrayNew[0] <= rightArrayNew[0]) {
+      sortedArray.push(leftArrayNew[0]);
+      leftArrayNew.shift();
+      // console.log(leftArrayNewR
+    } else if (leftArrayNew[0] > rightArrayNew[0]) {
+      sortedArray.push(rightArrayNew[0]);
+      rightArrayNew.shift();
+    }
+    i++;
+    if ( i === 10 ) break;
+  }
   // return sortedArray
   // sortedArr.push(arr);
   // console.log(
@@ -172,15 +176,13 @@ function mergeSort(arr = [], from = 'left') {
 
   // console.log(sortedArray)
 
-  return sortedArray;
+  // return sortedArray;
 }
 
 
-
-// console.log( 
-mergeSort([4, 3, 1, 14])
-// );
-
+console.log( 
+mergeSort([4, 3,5,978,34, 1, 14])
+);
 
 // console.log(khan(6));
 // console.log(fibsRec(8));
