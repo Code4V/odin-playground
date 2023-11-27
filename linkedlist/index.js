@@ -23,5 +23,7 @@ test2.prepend(new Node('Shheshh'));
 
 console.log(test2.toString);
 test2.pop();
+test2.pop();
 console.log(test2.toString);
+
 console.log(test2.size);

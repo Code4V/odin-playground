@@ -42,23 +42,15 @@ module.exports = class LinkedList {
   }
 
   pop() {
-    // const tempNode = this.#cloneHeadNode;
-    // let checkNextNode;
+    let tempNode = this.#head;
 
-    // while (tempNode.nextNode != null) {
-    //   checkNextNode = tempNode.nextNode;
-    //   tempNode.nextNode = checkNextNode.nextNode;
-    // }
-
-    // this.#goToLastNode(this.#head) = null;
- 
-
-
-
-    // console.log(tempNode.nextNode)
-
-
-    
+    while (tempNode != null) {
+      if(tempNode.nextNode.nextNode == null) {
+        tempNode.nextNode = null;
+        break;
+      }
+      tempNode = tempNode.nextNode;
+    }
   }
   
   get #cloneHeadNode() {
@@ -83,17 +75,14 @@ module.exports = class LinkedList {
 
   get toString() {
     let result = '';
-    const tempNode = this.#cloneHeadNode;
+    let tempNode = this.#cloneHeadNode;
 
-    result += `[ ${this.#head.value} ] -> `;
-
-    while (tempNode.nextNode != null) {
-      const checkNextNode = tempNode.nextNode;
-      result += `[ ${checkNextNode.value} ] -> `;
-      tempNode.nextNode = checkNextNode.nextNode;
+    while (tempNode != null) {
+      result += `[ ${tempNode.value} ] -> `;
+      tempNode = tempNode.nextNode;
     }
 
-    result += ` null `;
+    result += ` ${tempNode} `;
 
     return result
   }
