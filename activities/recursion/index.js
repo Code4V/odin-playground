@@ -125,20 +125,14 @@ function multiplesOfThreeAndFive(limit = 1000) {
  * 
  * 
  */
-function mergeSort(arr = [], from = 'left') {
+function mergeSort(arr = []) {
   if (arr.length === 1) return arr;
-
-  let arrHalfSize = Math.round(arr.length / 2);
-  let leftArr = arr.slice(0, arrHalfSize);
-  let rightArr = arr.slice(arrHalfSize, arr.length);
-
+  
   const sortedArray = [];
+  const leftArrayNew = mergeSort(arr.splice(0, Math.round(arr.length / 2)));
+  const rightArrayNew = mergeSort(arr);
 
-  const leftArrayNew = mergeSort(leftArr);
-  const rightArrayNew = mergeSort(rightArr, 'right');
-
-  while (true) {
-    if (leftArrayNew.length === 0 || rightArrayNew.length === 0 ) break;
+  while (leftArrayNew.length != 0 && rightArrayNew.length != 0 ) {
     if (leftArrayNew[0] <= rightArrayNew[0]) {
       sortedArray.push(leftArrayNew[0]);
       leftArrayNew.shift();
@@ -153,7 +147,8 @@ function mergeSort(arr = [], from = 'left') {
 
 
 console.log( 
-mergeSort([4,2, 4, 51, 12, 12, 123, 41, 123])
+mergeSort([4,2, 4, 51, 1, 2, 312, 124, 23, 91, 12, 12, 123, 41, 123, 1]),
+mergeSort(['te', 'azd', 'axdw', 'qwe', 'z']),
 );
 
 // console.log(khan(6));
