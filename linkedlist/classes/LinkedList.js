@@ -39,6 +39,8 @@ module.exports = class LinkedList {
     const oldHead = this.#head;
     Node.nextNode = oldHead;
     this.#head = Node;
+    
+    this.#size = this.#size + 1;
   }
 
   pop() {
@@ -51,6 +53,8 @@ module.exports = class LinkedList {
       }
       tempNode = tempNode.nextNode;
     }
+
+    this.#size = this.#size - 1;
   }
   
   get #cloneHeadNode() {
@@ -78,7 +82,7 @@ module.exports = class LinkedList {
     let tempNode = this.#cloneHeadNode;
 
     while (tempNode != null) {
-      result += `[ ${tempNode.value} ] -> `;
+      result += `( ${tempNode.value} ) -> `;
       tempNode = tempNode.nextNode;
     }
 
