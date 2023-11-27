@@ -50,7 +50,7 @@ module.exports = class LinkedList {
     //   tempNode.nextNode = checkNextNode.nextNode;
     // }
 
-    this.#goToLastNode(this.#head) = null;
+    // this.#goToLastNode(this.#head) = null;
  
 
 
