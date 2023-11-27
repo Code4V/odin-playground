@@ -1,5 +1,3 @@
-'use strict';
-
 module.exports = class Node {
   #value = null; 
   #nextNode = null;
@@ -10,6 +8,10 @@ module.exports = class Node {
 
   get value () {
     return this.#value;
+  }
+
+  set value (value) {
+    this.#value = value;
   }
 
   set nextNode(Node) {
