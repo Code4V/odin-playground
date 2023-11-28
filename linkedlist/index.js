@@ -1,11 +1,14 @@
+'use strict';
+
 const Node = require('./classes/Node');
 const LinkedList = require('./classes/LinkedList');
+
 
 const test = new Node(123);
 const newNode = new Node(333);
 const newNodeA = new Node(3343);
 const newNodeB = new Node(1343);
-const test2 = new LinkedList(test)
+const linkedList = new LinkedList(test)
 
 // console.log(test.nextNode.nextNode.value);
 
@@ -15,15 +18,35 @@ const test2 = new LinkedList(test)
 //   test.nextNode = next.nextNode;
 // }
 
-test2.append(newNode);
-test2.append(newNodeA);
-test2.append(newNodeB);
+linkedList.append(newNode);
+linkedList.append(newNodeA);
+linkedList.append(newNodeB);
 
-test2.prepend(new Node('Shheshh'));
+linkedList.prepend(new Node('Shheshh'));
 
-console.log(test2.toString);
-test2.pop();
-test2.pop();
-console.log(test2.toString);
+// console.log(linkedList.toString);
+linkedList.prepend(new Node('ASDeshh'));
+linkedList.pop();
+linkedList.pop();
+// console.log(linkedList.toString);
 
-console.log(test2.size);
+const NEEDLE = 'Shheshh';
+
+// console.log(linkedList.tail.value)
+// console.log(linkedList.contains(NEEDLE))
+// console.log(linkedList.find(NEEDLE))
+
+linkedList.insertAt(new Node('test'), 0)
+linkedList.insertAt(new Node('tes23t'), 0)
+linkedList.insertAt(new Node('tes12t'), 0)
+linkedList.insertAt(new Node('wetest'), 2)
+
+console.log(
+  linkedList.toString
+);
+
+linkedList.removeAt(7)
+
+console.log(
+  linkedList.toString
+);
