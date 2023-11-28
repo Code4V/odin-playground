@@ -7,11 +7,29 @@ module.exports = class Node {
     this.#value = NodeValue;
   }
 
+  get value () {
+    return this.#value;
+  }
+
+  /**
+   * @param {Node | null} Node
+   */
   set leftNode (Node) {
     this.#leftNode = Node;
   }
 
+  get leftNode () {
+    return this.#leftNode
+  }
+
+  /**
+   * @param {Node | null} Node
+   */
   set rightNode (Node) {
     this.#rightNode = Node;
+  }
+
+  get rightNode () {
+    return this.#rightNode
   }
 };

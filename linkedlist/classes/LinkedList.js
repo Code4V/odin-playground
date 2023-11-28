@@ -24,12 +24,16 @@ module.exports = class LinkedList {
   /**
    * @param {(arg0: Node) => void} Node
    */
-  append(Node) {
+  append(NodeValue) {
+    const newNode = new Node(NodeValue);
     const latestNode = this.#head;
-    if (latestNode.nextNode == null) {
-      this.#head.nextNode = Node;
+    if (latestNode == null) {
+      this.#head = newNode;
+    }
+    else if (latestNode.nextNode == null) {
+      this.#head.nextNode = newNode;
     } else {
-      this.#goToLastNode(latestNode).nextNode = Node
+      this.#goToLastNode(latestNode).nextNode = newNode
     }
     this.#size = this.#size + 1;
   }
