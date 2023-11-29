@@ -60,7 +60,7 @@ module.exports = class Tree {
           break;
         }
         treeCopy = treeCopy.leftNode;
-      } else if (newNode.value === treeCopy.value){
+      } else if (newNode.value === treeCopy.value) {
         return new Error('Value already exist in tree!');
       }
     }
@@ -90,18 +90,16 @@ module.exports = class Tree {
       }
     }
 
-    console.log(treeCopy.leftNode)
-
     if (treeCopy == null) {
       return new Error('Node not found!');
     }
 
     if (nodeChild.leftNode == null && nodeChild.rightNode == null) {
-      if (treeCopy.rightNode != null && 
-          node === treeCopy.rightNode.value) {
+      if (treeCopy.rightNode != null &&
+        node === treeCopy.rightNode.value) {
         treeCopy.rightNode = null;
-      } else if (treeCopy.leftNode != null && 
-          node === treeCopy.leftNode.value) {
+      } else if (treeCopy.leftNode != null &&
+        node === treeCopy.leftNode.value) {
         treeCopy.leftNode = null;
       }
 
@@ -117,7 +115,6 @@ module.exports = class Tree {
       }
       else {
         while (treeCopyRight != null) {
-          console.log(treeCopyRight)
           if (treeCopyRight.leftNode.leftNode == null) {
             lastLeftNode = treeCopyRight.leftNode.value;
             treeCopyRight.leftNode = treeCopyRight.leftNode.rightNode ?? null;
@@ -132,20 +129,77 @@ module.exports = class Tree {
       return null;
     }
 
-
     if (nodeChild.leftNode != null || nodeChild.rightNode != null) {
-      if(treeCopy.rightNode != null && node === treeCopy.rightNode.value){
+      if (treeCopy.rightNode != null && node === treeCopy.rightNode.value) {
         treeCopy.rightNode = nodeChild.rightNode ?? nodeChild.leftNode;
-      } else if (treeCopy.leftNode != null && node === treeCopy.leftNode.value){
+      } else if (treeCopy.leftNode != null && node === treeCopy.leftNode.value) {
         treeCopy.leftNode = nodeChild.leftNode ?? nodeChild.rightNode;
       }
 
       return null;
     }
-  
-
-    this.prettyPrint(nodeChild, 'CHILD ');
-
-    this.prettyPrint(treeCopy, 'PARENT ');
   }
+
+  find(node) {
+    let treeCopy = this.root;
+
+    while (!Object.is(treeCopy, null)) {
+      if (node > treeCopy.value) {
+        treeCopy = treeCopy.rightNode;
+      } else if (node < treeCopy.value) {
+        treeCopy = treeCopy.leftNode;
+      } else if (node === treeCopy.value) {
+        return treeCopy;
+      }
+    }
+
+    return null;
+  }
+
+  levelOrder(callback = null) {
+    const queueArray = [];
+    const values = [];
+
+    let treeCopy = this.root;
+
+    queueArray.push(treeCopy)
+    while (treeCopy != null) {  
+      if (!Object.is(treeCopy.leftNode, null)){
+        queueArray.push(treeCopy.leftNode);
+      }
+      if (!Object.is(treeCopy.rightNode, null)){
+        queueArray.push(treeCopy.rightNode);
+      }
+      values.push(queueArray.shift().value);
+      treeCopy = queueArray[0];
+    }
+
+    if(typeof callback == 'function')
+      return callback(values);
+    else return values;
+    // callback(values)
+  }
+
+  inOrder() {
+    let treeCopy = this.root;
+    const queueArray = [];
+
+    queueArray.push(treeCopy);
+    while (treeCopy != null) {
+      if (!Object.is(treeCopy.leftNode, null)) {
+        queueArray.push(treeCopy.value);
+        treeCopy = treeCopy.leftNode;
+
+        continue;
+      }
+
+      console.log(treeCopy.value)
+      treeCopy = queueArray.pop();
+
+      if (!Object.is(treeCopy.rightNode, null)) {
+      
+      }
+
+      }
+    }
 }

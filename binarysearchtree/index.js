@@ -25,4 +25,10 @@ BinaryTree.delete(324)
 BinaryTree.delete(67)
 BinaryTree.delete(23)
 
+console.log(BinaryTree.levelOrder((e) => {
+  return e.sort((a,b) => a-b);
+}));
+
+BinaryTree.inOrder();
+
 BinaryTree.prettyPrint(BinaryTree.root)
