@@ -11,6 +11,10 @@ module.exports = class Node {
     return this.#value;
   }
 
+  set value (Node) {
+    this.#value = Node;
+  }
+
   /**
    * @param {Node | null} Node
    */
