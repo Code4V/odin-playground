@@ -33,6 +33,5 @@ BinaryTree.insert(1231)
 
 // console.log(BinaryTree.levelOrder())
 
-console.log(BinaryTree.inOrder());
-
-BinaryTree.prettyPrint(BinaryTree.root)
+BinaryTree.prettyPrint(BinaryTree.root);
+BinaryTree.inOrder();

@@ -180,31 +180,28 @@ module.exports = class Tree {
     // callback(values)
   }
 
-  #inOrder(node) {
-    // let treeCopy = this.root;
-    // const queueArray = [];
-
-    
-    if (node == null) return;
-    this.#inOrder(node.leftNode);
-    console.log(node.value);
-    this.#inOrder(node.rightNode);
-
-    // while (treeCopy != null) {
-    //   console.log(treeCopy.value);
-    //   if(!Object.is(treeCopy.rightNode, null) || !Object.is(treeCopy.leftNode, null)){
-    //     queueArray.push(treeCopy);
-    //   }
-
-    //   if(Object.is(treeCopy.leftNode, null)){
-    //     treeCopy = queueArray.pop();
-    //   }
-
-    //   treeCopy = treeCopy.leftNode;
-    // }
-  }
-
   inOrder() {
-    return this.#inOrder(this.root);
+    let treeCopy = this.root;
+    const stackArray = [];
+    const values = [];
+    
+    while (treeCopy != null) {
+      if (!Object.is(treeCopy, null)) {
+        stackArray.push(treeCopy)
+      }
+      treeCopy = treeCopy.leftNode;
+      
+      while (treeCopy != null && stackArray != 0) {
+        treeCopy = stackArray.pop();
+        values.push(treeCopy.value);
+        treeCopy = treeCopy.rightNode;
+      }
+
+      if (stackArray.length === 0) {
+        break;
+      }
+    }
+
+    console.log(values)
   }
 }
