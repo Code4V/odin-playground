@@ -163,43 +163,48 @@ module.exports = class Tree {
     let treeCopy = this.root;
 
     queueArray.push(treeCopy)
-    while (treeCopy != null) {  
-      if (!Object.is(treeCopy.leftNode, null)){
+    while (treeCopy != null) {
+      if (!Object.is(treeCopy.leftNode, null)) {
         queueArray.push(treeCopy.leftNode);
       }
-      if (!Object.is(treeCopy.rightNode, null)){
+      if (!Object.is(treeCopy.rightNode, null)) {
         queueArray.push(treeCopy.rightNode);
       }
       values.push(queueArray.shift().value);
       treeCopy = queueArray[0];
     }
 
-    if(typeof callback == 'function')
+    if (typeof callback == 'function')
       return callback(values);
     else return values;
     // callback(values)
   }
 
+  #inOrder(node) {
+    // let treeCopy = this.root;
+    // const queueArray = [];
+
+    
+    if (node == null) return;
+    this.#inOrder(node.leftNode);
+    console.log(node.value);
+    this.#inOrder(node.rightNode);
+
+    // while (treeCopy != null) {
+    //   console.log(treeCopy.value);
+    //   if(!Object.is(treeCopy.rightNode, null) || !Object.is(treeCopy.leftNode, null)){
+    //     queueArray.push(treeCopy);
+    //   }
+
+    //   if(Object.is(treeCopy.leftNode, null)){
+    //     treeCopy = queueArray.pop();
+    //   }
+
+    //   treeCopy = treeCopy.leftNode;
+    // }
+  }
+
   inOrder() {
-    let treeCopy = this.root;
-    const queueArray = [];
-
-    queueArray.push(treeCopy);
-    while (treeCopy != null) {
-      if (!Object.is(treeCopy.leftNode, null)) {
-        queueArray.push(treeCopy.value);
-        treeCopy = treeCopy.leftNode;
-
-        continue;
-      }
-
-      console.log(treeCopy.value)
-      treeCopy = queueArray.pop();
-
-      if (!Object.is(treeCopy.rightNode, null)) {
-      
-      }
-
-      }
-    }
+    return this.#inOrder(this.root);
+  }
 }
