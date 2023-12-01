@@ -10,7 +10,8 @@ module.exports = class Tree {
       return arr.indexOf(e) === i;
     })
 
-    const arrSorted = arrFiltered.sort((a, b) => a - b);
+    // const arrSorted = arrFiltered.sort((a, b) => a - b);
+    const arrSorted = [...new Set(arr.sort((a, b) => a - b))];
 
     const arrMidIndex = Math.floor(arrSorted.length / 2);
     const arrMid = arrSorted[arrMidIndex];
@@ -292,13 +293,12 @@ module.exports = class Tree {
 
   }
 
-  height(Node) {
-    let treeCopy = this.root;
+  #getHeight(Node = this.root, Needle = null) {
     let queueArray = [];
     let height = 0;
 
-    queueArray.push(treeCopy)
-    while (treeCopy != null) {
+    queueArray.push(Node)
+    while (Node != null) {
       let nodeCount = queueArray.length;
 
       if (nodeCount == 0) {
@@ -306,21 +306,33 @@ module.exports = class Tree {
       } else height = height + 1;
 
       while (nodeCount > 0) {
-        treeCopy = queueArray.shift();
+        Node = queueArray.shift();
 
-        if (treeCopy.value == Node) {
+        if (Node.value == Needle) {
           height = 1;
         }
 
-        if (treeCopy.leftNode != null)
-          queueArray.push(treeCopy.leftNode);
+        if (Node.leftNode != null)
+          queueArray.push(Node.leftNode);
 
-        if (treeCopy.rightNode != null)
-          queueArray.push(treeCopy.rightNode);
+        if (Node.rightNode != null)
+          queueArray.push(Node.rightNode);
 
         nodeCount = nodeCount - 1;
       }
     }
+  }
+
+  height(Needle) {
+    return this.#getHeight(this.root, Needle);
+  }
+
+  isBalanced() {
+    const leftNodeHeight = this.#getHeight(this.root.leftNode);
+    const rightNodeHeight = this.#getHeight(this.root.rightNode);
+
+    if (Math.abs(leftNodeHeight - rightNodeHeight) > 1) return false;
+    return true;
   }
 
   rebalance() {

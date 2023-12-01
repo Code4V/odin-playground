@@ -2,45 +2,73 @@ const Tree = require('./classes/Tree');
 
 const BinaryTree = new Tree();
 
-// console.log(
-  BinaryTree.buildTree([5,3123, 41513, 23, 8, 4, 3, 5, 7, 9, 67, 6345,12312,41241,1231,2,10,1111, 324])
-// );
+// Creates an array with the given length
+function randArray(length = 10, multiplyBy = 100) {
+  const arr = [];
+  for (let i = 0; i < parseInt(length[0] ?? length, 10); i = i + 1) {
+    arr.push(Math.round(Math.random() * multiplyBy));
+  }
+  return arr;
+}
 
-// BinaryTree.buildTree([1,2,3,4,5,6,7])
-BinaryTree.insert(6)
-BinaryTree.insert(999)
-BinaryTree.insert(979)
-BinaryTree.insert(980)
-BinaryTree.insert(1230)
-BinaryTree.insert(1231)
+// Builds the initial Tree
+BinaryTree.buildTree(randArray`50 ${100}`)
 
-// BinaryTree.prettyPrint(BinaryTree.root)
+// Prints the Initial Tree
+BinaryTree.prettyPrint(BinaryTree.root, 'INITIAL  ');
 
-// BinaryTree.delete(6)
-// BinaryTree.delete(999)
-// BinaryTree.delete(12312)
-// BinaryTree.delete(1111)
-// BinaryTree.delete(3123)
-// BinaryTree.delete(5)
-// BinaryTree.delete(41241)
-// BinaryTree.delete(324)
-// BinaryTree.delete(67)
-// BinaryTree.delete(23)
-
-
-// console.log(BinaryTree.levelOrder())
-
-BinaryTree.prettyPrint(BinaryTree.root);
-
+// Shows if Tree is balanced, the Level, Pre, Post, and In Order
 console.log(
-  BinaryTree.levelOrder(), // Breadth-First
-  BinaryTree.inOrder(), //LDR
-  BinaryTree.preOrder(), //DLR
-  BinaryTree.postOrder(), //LRD
-  BinaryTree.height(41513),
-  BinaryTree.depth(980),
+  '\n === INITIAL BST === \n',
+  BinaryTree.isBalanced(),
+  '\n',
+  '\n === LEVEL ORDER === \n',
+  BinaryTree.levelOrder(),
+  '\n === PRE ORDER === \n',
+  BinaryTree.preOrder(),
+  '\n === POST ORDER === \n',
+  BinaryTree.postOrder(),
+  '\n === IN ORDER === \n',
+  BinaryTree.inOrder(),
+  '\n',
 )
 
+// Inserts 10 new values > 100 to the BST
+randArray(10, 150).forEach(e => BinaryTree.insert(e));
+
+// Reprints the Tree
+BinaryTree.prettyPrint(BinaryTree.root, 'BEFORE  ');
+
+// Checks if balanced (SHOULD BE NOT BALANCE)
+console.log(
+  '\n',
+  BinaryTree.isBalanced(),
+  '\n',
+);
+
+// Rebalance
 BinaryTree.rebalance();
 
-BinaryTree.prettyPrint(BinaryTree.root);
+// Recheck if balanced
+console.log(
+  '\n',
+  BinaryTree.isBalanced(),
+  '\n',
+);
+
+// Recheck the BST after rebalancing
+console.log(
+  '\n === AFTER REBALANCE === \n',
+  '\n',
+  '\n === LEVEL ORDER === \n',
+  BinaryTree.levelOrder(),
+  '\n === PRE ORDER === \n',
+  BinaryTree.preOrder(),
+  '\n === POST ORDER === \n',
+  BinaryTree.postOrder(),
+  '\n === IN ORDER === \n',
+  BinaryTree.inOrder(),
+  '\n'
+)
+
+BinaryTree.prettyPrint(BinaryTree.root, 'AFTER  ');
