@@ -27,11 +27,14 @@ BinaryTree.insert(1231)
 // BinaryTree.delete(67)
 // BinaryTree.delete(23)
 
-// console.log(BinaryTree.levelOrder((e) => {
-//   return e.sort((a,b) => a-b);
-// }));
 
 // console.log(BinaryTree.levelOrder())
 
 BinaryTree.prettyPrint(BinaryTree.root);
-BinaryTree.inOrder();
+
+console.log(
+  BinaryTree.levelOrder(), // Breadth-First
+  BinaryTree.inOrder(), //LDR
+  BinaryTree.preOrder(), //DLR
+  BinaryTree.postOrder(), //LRD
+)

@@ -180,28 +180,95 @@ module.exports = class Tree {
     // callback(values)
   }
 
-  inOrder() {
+  inOrder(callback) {
     let treeCopy = this.root;
     const stackArray = [];
     const values = [];
     
-    while (treeCopy != null) {
-      if (!Object.is(treeCopy, null)) {
+    while (treeCopy != null || stackArray.length > 0) {
+      while (treeCopy != null) {
         stackArray.push(treeCopy)
+        treeCopy = treeCopy.leftNode;
       }
-      treeCopy = treeCopy.leftNode;
       
-      while (treeCopy != null && stackArray != 0) {
-        treeCopy = stackArray.pop();
+      
+      treeCopy = stackArray.pop();
+      values.push(treeCopy.value);
+      treeCopy = treeCopy.rightNode;
+    }
+
+    if (typeof callback == 'function')
+      return callback(values);
+    else return values;
+  }
+
+  preOrder(callback) {
+    let treeCopy = this.root;
+    const stackArray = [];
+    const values = [];
+    
+    while (treeCopy != null || stackArray.length > 0) {
+      while (treeCopy != null) {
+        stackArray.push(treeCopy)
         values.push(treeCopy.value);
-        treeCopy = treeCopy.rightNode;
+        treeCopy = treeCopy.leftNode;
+      }
+      
+      
+      treeCopy = stackArray.pop();
+      treeCopy = treeCopy.rightNode;
+    }
+    
+    if (typeof callback == 'function')
+      return callback(values);
+    else return values;
+  }
+
+  postOrder(callback) {
+    let treeCopy = this.root;
+    const stackArray = [];
+    const values = [];
+    while (treeCopy != null || stackArray.length > 0) {
+      while (treeCopy != null) {
+        if (treeCopy.rightNode != null)
+          stackArray.push(treeCopy.rightNode);
+        stackArray.push(treeCopy);
+
+        treeCopy = treeCopy.leftNode;
       }
 
+      treeCopy = stackArray.pop();
+      
       if (stackArray.length === 0) {
+        values.push(treeCopy.value);
         break;
+      }
+
+      if (treeCopy.rightNode != null && stackArray[stackArray.length-1].value == treeCopy.rightNode.value) {
+        stackArray.pop();
+        stackArray.push(treeCopy);
+        treeCopy = treeCopy.rightNode;
+      } else {
+        values.push(treeCopy.value);
+        treeCopy = null;
       }
     }
 
-    console.log(values)
+    if (typeof callback == 'function')
+      return callback(values);
+    else return values;
   }
+
+  maxHeight() {
+    let treeCopy = this.root;
+
+    while (treeCopy != null) {
+      
+    }
+  }
+
+  height(Node) {
+
+  }
+
 }
