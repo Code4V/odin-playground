@@ -259,16 +259,72 @@ module.exports = class Tree {
     else return values;
   }
 
-  maxHeight() {
+  depth(Node = null) {
     let treeCopy = this.root;
+    let queueArray = [];
+    let height = 0;
 
+    queueArray.push(treeCopy)
     while (treeCopy != null) {
-      
+      let nodeCount = queueArray.length;
+
+      if (nodeCount == 0) {
+        return height;
+      } else height = height + 1;
+
+      while (nodeCount > 0) {
+        treeCopy = queueArray.shift();
+
+        if (treeCopy.value == Node) {
+          queueArray = [];
+          break;
+        }
+
+        if (treeCopy.leftNode != null)
+          queueArray.push(treeCopy.leftNode);
+
+        if (treeCopy.rightNode != null)
+          queueArray.push(treeCopy.rightNode);
+
+        nodeCount = nodeCount - 1;
+      }
     }
+
   }
 
   height(Node) {
+    let treeCopy = this.root;
+    let queueArray = [];
+    let height = 0;
 
+    queueArray.push(treeCopy)
+    while (treeCopy != null) {
+      let nodeCount = queueArray.length;
+
+      if (nodeCount == 0) {
+        return height;
+      } else height = height + 1;
+
+      while (nodeCount > 0) {
+        treeCopy = queueArray.shift();
+
+        if (treeCopy.value == Node) {
+          height = 1;
+        }
+
+        if (treeCopy.leftNode != null)
+          queueArray.push(treeCopy.leftNode);
+
+        if (treeCopy.rightNode != null)
+          queueArray.push(treeCopy.rightNode);
+
+        nodeCount = nodeCount - 1;
+      }
+    }
+  }
+
+  rebalance() {
+    this.buildTree(this.inOrder());
   }
 
 }

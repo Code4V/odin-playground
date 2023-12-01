@@ -37,4 +37,10 @@ console.log(
   BinaryTree.inOrder(), //LDR
   BinaryTree.preOrder(), //DLR
   BinaryTree.postOrder(), //LRD
+  BinaryTree.height(41513),
+  BinaryTree.depth(980),
 )
+
+BinaryTree.rebalance();
+
+BinaryTree.prettyPrint(BinaryTree.root);
