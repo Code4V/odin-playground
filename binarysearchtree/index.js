@@ -34,7 +34,7 @@ console.log(
 )
 
 // Inserts 10 new values > 100 to the BST
-randArray(10, 150).forEach(e => BinaryTree.insert(e));
+randArray(100, 250).forEach(e => BinaryTree.insert(e));
 
 // Reprints the Tree
 BinaryTree.prettyPrint(BinaryTree.root, 'BEFORE  ');
