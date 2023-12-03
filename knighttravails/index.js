@@ -1,3 +1,17 @@
+const LinkedList = require('./classes/LinkedList');
+const AdjacencyList = require('./classes/AdjacencyList');
+
+const adjacencyListTest = new AdjacencyList();
+
+adjacencyListTest.newVertex();
+adjacencyListTest.newVertex();
+
+console.table(
+  adjacencyListTest.showList,
+);
+
+const linkedList = new LinkedList();
+
 function createMatrix(...vertices) {
   const sizeOfMatrix = parseInt(vertices[1] ?? vertices, 10);
   const matrix = [];
@@ -13,7 +27,6 @@ function createMatrix(...vertices) {
 }
 
 function generateVertices(...vertices) {
-  console.log(vertices)
   const numberOfVertices = parseInt(vertices[1] ?? vertices, 10);
   const verticesList = [];
 
@@ -75,18 +88,30 @@ return e[1];
 const vertices = mapped[mapped.length - 1] + 1;
 
 const adjacencyList = [];
+const adjacencyLinkedList = [];
 
 let it = 0;
 do {
   adjacencyList.push([]);
+  adjacencyLinkedList.push(new LinkedList());
   it = it + 1;
 } while (it < vertices);
 
+for (let i = 0; i < edgeList.length ; i = i + 1) {
+  if (!adjacencyLinkedList[edgeList[i][0]].contains(edgeList[i][1])) {
+    adjacencyLinkedList[edgeList[i][0]].append(edgeList[i][1]);
+    // adjacencyLinkedList[edgeList[i][1]].append(edgeList[i][0]);
+  }
+}
+
+adjacencyLinkedList.forEach(e => {
+  // console.log(e.toString)
+})
 
 for (let i = 0; i < edgeList.length ; i = i + 1) {
   if (!adjacencyList[edgeList[i][0]].includes(edgeList[i][1])) {
     adjacencyList[edgeList[i][0]].push(edgeList[i][1]);
-    adjacencyList[edgeList[i][1]].push(edgeList[i][0]);
+    // adjacencyList[edgeList[i][1]].push(edgeList[i][0]);
   }
 }
 
@@ -97,11 +122,11 @@ for (let i = 0; i < edgeList.length; i = i + 1) {
   adjacencyMatrix[edgeList[i][1]][edgeList[i][0]] = ' ◼ ';
 };
 
-console.group('EDGE LIST');
-  console.table(edgeList);
-console.groupEnd();
+// console.group('EDGE LIST');
+//   console.table(edgeList);
+// console.groupEnd();
 
-console.group('LIST AND MATRIX');
-  console.table(adjacencyList);
-  console.table(adjacencyMatrix);
-console.groupEnd();
+// console.group('LIST AND MATRIX');
+//   console.table(adjacencyList);
+//   console.table(adjacencyMatrix);
+// console.groupEnd();
