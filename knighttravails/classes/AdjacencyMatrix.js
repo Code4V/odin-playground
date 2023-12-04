@@ -16,8 +16,22 @@ module.exports = class AdjacencyMatrix {
   }
 
 
-  addEdge(src, dst) {
-    this.#matrix[src][dst] = 1;
+  addEdge(src, dst, options = { isUndirected: false  }) {
+    if (this.#matrix[src] == undefined) return null;
+    if (this.#matrix[src][dst] == undefined) return null;
+    
+    const { isUndirected } = options;
+    this.#matrix[src][dst] = '-';
+
+    if (isUndirected !== false) 
+      this.#matrix[dst][src] = '-';
+  }
+
+  removeEdge(src, dst) {
+    if (this.#matrix[src] == undefined) return null;
+    if (this.#matrix[src][col] == undefined) return null;
+
+    this.#matrix[src][dst] = 0;
   }
 
   find(row, col) {

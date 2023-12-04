@@ -1,4 +1,5 @@
 const AdjacencyList = require('./classes/AdjacencyList');
+const Matrix = require('./classes/AdjacencyMatrix');
 const ChessBoard = require('./classes/ChessBoard');
 function generateVertices(...vertices) {
   const numberOfVertices = parseInt(vertices[1] ?? vertices, 10);
@@ -17,51 +18,60 @@ function generateVertices(...vertices) {
 
   return verticesList;
 }
-
-const matrix = new ChessBoard(8);
+const matrix = new Matrix(8);
+const cbMatrix = new ChessBoard(8);
 const adjacencyList = new AdjacencyList();
-
 
 const edgeList = generateVertices`${10}`;
 
-edgeList.forEach(e => {
+const edgeListMan = [
+  [0,1], [1,2], [1,3], [2, 3], [2,5], [2, 7], [3,4], [4, 1],
+]
+
+edgeListMan.forEach(e => {
   // adjacencyList.addEdge(e[0], e[1]);
-  // matrix.addEdge(e[0], e[1])
-})
-
-console.table(
-  adjacencyList.showList,
-);
-
-// matrix.addEdge(2, 1)
-
-console.table(
-  matrix.matrix,
-)
-
-// for (let i = 0; i < matrix.size; i = i + 1) {
-//   for (let j = 0; j < matrix.size; j = j + 1) {
-//     // adjacencyList.addEdge(i, j);
-//     // matrix.generatePossibleMoves(i, j);
-//   }
-// }
-
-console.table(
-  matrix.generatePossibleMoves(4, 4),
-)
-
-matrix.nextMove();
-
-
-
-console.table(
-  matrix.moves
-)
+  // cbMatrix.addEdge(e[0], e[1]);
+  matrix.addEdge(e[0], e[1], {isUndirected: true})
+});
+console.group("\nMATRIX");
 
 console.table(
   matrix.matrix
 )
 
+console.groupEnd();
+
+
+console.table(
+  adjacencyList.showList,
+);
+
+// cbMatrix.addEdge(2, 1)
+
+// for (let i = 0; i < cbMatrix.size; i = i + 1) {
+//   for (let j = 0; j < cbMatrix.size; j = j + 1) {
+//     // adjacencyList.addEdge(i, j);
+//     // cbMatrix.generatePossibleMoves(i, j);
+//   }
+// }
+// console.table(
+  cbMatrix.generatePossibleMoves(0, 5),
+// )
+
+// console.table(
+  cbMatrix.nextMove(1, 7)
+// )
+
+// console.table(
+  cbMatrix.nextMove(3, 6)
+// )
+
+// cbMatrix.moves.forEach(e => console.table(e.showList))
+
+console.table(
+  cbMatrix.cbMatrix
+)
+
 console.log(
-  matrix.find(2, 2)
+  cbMatrix.pastMoves
 )

@@ -5,7 +5,7 @@ module.exports = class AdjacencyList {
 
   constructor(vertices = 8) {
     for (let i = 0; i < vertices; i = i + 1){
-      this.#adjacencyList.push(new LinkedList(i));
+      this.#adjacencyList.push(new LinkedList());
     }
   }
 
@@ -19,6 +19,12 @@ module.exports = class AdjacencyList {
     this.#adjacencyList[src].append(dst);
   }
 
+  findEdge(row, col) {
+    if (this.#adjacencyList[row] == null) return null;
+
+    return this.#adjacencyList[row].contains(col);
+  }
+
   get showList() {
     return this.#adjacencyList.map(e => e.toString)
   }
@@ -26,7 +32,7 @@ module.exports = class AdjacencyList {
   get edges() {
     const edgeList = [];
     this.#adjacencyList.forEach((e, i) => {
-      let currentNode = e.head.next;
+      let currentNode = e.head;
       while (currentNode != null) {
         edgeList.push([i, currentNode.data]);
         currentNode = currentNode.next;
