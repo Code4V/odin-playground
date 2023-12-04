@@ -1,5 +1,4 @@
 const AdjacencyMatrix = require("./AdjacencyMatrix");
-
 module.exports = class ChessBoard extends AdjacencyMatrix {
   #movesList = [];
   constructor(boardSize) {
@@ -12,7 +11,7 @@ module.exports = class ChessBoard extends AdjacencyMatrix {
     matrixCopy[row][col] = 'C';
     const moves = [];
 
-    moves.push([row, col])
+    // moves.push([row, col])
 
     if (matrixCopy[row + 2] != undefined) {
       if (!(col - 1 < 0)) {
@@ -74,6 +73,10 @@ module.exports = class ChessBoard extends AdjacencyMatrix {
     this.#movesList.push(moves);
 
     return matrixCopy;
+  }
+
+  nextMove(row, col)  {
+    console.log(this.#movesList)
   }
 
   get moves () {

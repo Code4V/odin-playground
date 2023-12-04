@@ -3,8 +3,10 @@ const LinkedList = require("./LinkedList")
 module.exports = class AdjacencyList {
   #adjacencyList = []; 
 
-  constructor() {
-
+  constructor(vertices = 8) {
+    for (let i = 0; i < vertices; i = i + 1){
+      this.#adjacencyList.push(new LinkedList(i));
+    }
   }
 
   newVertex(vertex = this.#adjacencyList.length) {

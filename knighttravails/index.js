@@ -12,7 +12,7 @@ function generateVertices(...vertices) {
     while (newVertex[0] === newVertex[1]) {
       newVertex[1] = Math.round(Math.random() * 7);
     }
-      verticesList.push(newVertex);
+    verticesList.push(newVertex);
   }
 
   return verticesList;
@@ -21,40 +21,47 @@ function generateVertices(...vertices) {
 const matrix = new ChessBoard(8);
 const adjacencyList = new AdjacencyList();
 
-adjacencyList.newVertex();
-adjacencyList.newVertex();
-adjacencyList.newVertex();
-adjacencyList.newVertex();
-adjacencyList.newVertex();
-adjacencyList.newVertex();
-adjacencyList.newVertex();
-adjacencyList.newVertex();
 
 const edgeList = generateVertices`${10}`;
 
 edgeList.forEach(e => {
-  adjacencyList.addEdge(e[0], e[1]);
-  matrix.addEdge(e[0], e[1])
+  // adjacencyList.addEdge(e[0], e[1]);
+  // matrix.addEdge(e[0], e[1])
 })
 
 console.table(
   adjacencyList.showList,
-  );
+);
 
-console.table(
-  adjacencyList.edges,
-)
+// matrix.addEdge(2, 1)
 
 console.table(
   matrix.matrix,
 )
-  
-for (let i = 0; i < matrix.size; i = i + 1) {
-  for (let j = 0; j < matrix.size; j = j +1) {
-    matrix.generatePossibleMoves(i, j);
-  }
-}
+
+// for (let i = 0; i < matrix.size; i = i + 1) {
+//   for (let j = 0; j < matrix.size; j = j + 1) {
+//     // adjacencyList.addEdge(i, j);
+//     // matrix.generatePossibleMoves(i, j);
+//   }
+// }
+
+console.table(
+  matrix.generatePossibleMoves(4, 4),
+)
+
+matrix.nextMove();
+
+
 
 console.table(
   matrix.moves
+)
+
+console.table(
+  matrix.matrix
+)
+
+console.log(
+  matrix.find(2, 2)
 )

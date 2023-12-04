@@ -15,13 +15,24 @@ module.exports = class AdjacencyMatrix {
     };
   }
 
+
   addEdge(src, dst) {
     this.#matrix[src][dst] = 1;
   }
 
+  find(row, col) {
+    if (this.#matrix[row] == undefined) return null;
+    if (this.#matrix[row][col] == undefined) return null;
+
+    if (this.#matrix[row][col] == 0) return false;
+
+    console.log(this.#matrix[row], 'FOUND')
+    return true;
+  }
+
   get size() {
     return this.#matrixSize;
-  }
+  }z
 
   get matrix() {
     return this.#matrix;
