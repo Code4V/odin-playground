@@ -15,15 +15,14 @@ module.exports = class AdjacencyMatrix {
     };
   }
 
-
-  addEdge(src, dst, options = { isUndirected: false  }) {
+  addEdge(src, dst, options = { isDirected: true  }) {
     if (this.#matrix[src] == undefined) return null;
     if (this.#matrix[src][dst] == undefined) return null;
     
-    const { isUndirected } = options;
+    const { isDirected } = options;
     this.#matrix[src][dst] = '-';
 
-    if (isUndirected !== false) 
+    if (isDirected !== true) 
       this.#matrix[dst][src] = '-';
   }
 
@@ -46,7 +45,7 @@ module.exports = class AdjacencyMatrix {
 
   get size() {
     return this.#matrixSize;
-  }z
+  }
 
   get matrix() {
     return this.#matrix;

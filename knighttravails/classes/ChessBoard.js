@@ -7,19 +7,22 @@ const AdjacencyMatrix = require("./AdjacencyMatrix");
 module.exports = class ChessBoard extends AdjacencyMatrix {
   #movesList = [];
   #pastMoves = [];
+
   constructor(boardSize) {
     super(boardSize);
   }
 
   generatePossibleMoves(row, col) {
-    const matrixCopy = new AdjacencyMatrix(8).matrix;
+    // const matrixCopy = new AdjacencyMatrix(8).matrix;
+    const matrixCopy = super.matrix;
 
     matrixCopy[row][col] = 'C';
+
     const moves = [];
 
     this.#pastMoves.push([row, col]);
 
-    this.#movesList.push(new AdjacencyList());
+    // this.#movesList.push(new AdjacencyList());
 
     if (matrixCopy[row + 2] != undefined) {
       if (!(col - 1 < 0)) {
@@ -27,7 +30,7 @@ module.exports = class ChessBoard extends AdjacencyMatrix {
 
         moves.push([row + 2, col - 1])
         
-        this.#movesList[this.#movesList.length - 1].addEdge(row+2, col-1)
+        // this.#movesList[this.#movesList.length - 1].addEdge(row+2, col-1)
       }
 
       if (!(col + 1 > 7)) {
@@ -35,7 +38,7 @@ module.exports = class ChessBoard extends AdjacencyMatrix {
 
         moves.push([row + 2, col + 1]);
 
-        this.#movesList[this.#movesList.length - 1].addEdge(row+2, col+1);
+        // this.#movesList[this.#movesList.length - 1].addEdge(row+2, col+1);
 
       }
       }
@@ -46,14 +49,14 @@ module.exports = class ChessBoard extends AdjacencyMatrix {
 
         moves.push([row + 1, col + 2])
 
-        this.#movesList[this.#movesList.length - 1].addEdge(row+1, col+2);
+        // this.#movesList[this.#movesList.length - 1].addEdge(row+1, col+2);
       }
 
       if (!(col - 2 < 0)) {
         matrixCopy[row + 1][col - 2] = 'P';
 
         moves.push([row + 1, col - 2])
-        this.#movesList[this.#movesList.length - 1].addEdge(row+1, col-2);
+        // this.#movesList[this.#movesList.length - 1].addEdge(row+1, col-2);
       }
     }
 
@@ -62,14 +65,14 @@ module.exports = class ChessBoard extends AdjacencyMatrix {
         matrixCopy[row - 2][col - 1] = 'P';
 
         moves.push([row - 2, col - 1])
-        this.#movesList[this.#movesList.length - 1].addEdge(row-2, col-1);
+        // this.#movesList[this.#movesList.length - 1].addEdge(row-2, col-1);
       }
 
       if (!(col + 1 > 7)) {
         matrixCopy[row - 2][col + 1] = 'P';
 
         moves.push([row - 2, col + 1])
-        this.#movesList[this.#movesList.length - 1].addEdge(row-2, col+1);
+        // this.#movesList[this.#movesList.length - 1].addEdge(row-2, col+1);
       }
     }
 
@@ -78,7 +81,7 @@ module.exports = class ChessBoard extends AdjacencyMatrix {
         matrixCopy[row - 1][col - 2] = 'P';
         moves.push([row - 1, col - 2])
 
-        this.#movesList[this.#movesList.length - 1].addEdge(row-1, col-2);
+        // this.#movesList[this.#movesList.length - 1].addEdge(row-1, col-2);
       }
 
       if (!(col + 2 > 7)) {
@@ -86,13 +89,14 @@ module.exports = class ChessBoard extends AdjacencyMatrix {
 
         moves.push([row - 1, col + 2])
 
-        this.#movesList[this.#movesList.length - 1].addEdge(row-1, col+2);
+        // this.#movesList[this.#movesList.length - 1].addEdge(row-1, col+2);
       }
     }
 
-    // this.#movesList.push(moves);
+    this.#movesList.push(moves);
 
-    return matrixCopy;
+    console.table(super.matrix)
+    return this.#movesList;
   }
 
   nextMove(row, col)  {
@@ -101,6 +105,12 @@ module.exports = class ChessBoard extends AdjacencyMatrix {
     }
 
     return this.generatePossibleMoves(row, col)
+  }
+
+  bfs() {
+    const queueArray = [];
+
+
   }
 
   get moves () {

@@ -31,7 +31,7 @@ const edgeListMan = [
 edgeListMan.forEach(e => {
   // adjacencyList.addEdge(e[0], e[1]);
   // cbMatrix.addEdge(e[0], e[1]);
-  matrix.addEdge(e[0], e[1], {isUndirected: true})
+  matrix.addEdge(e[0], e[1], { isDirected: true })
 });
 console.group("\nMATRIX");
 
@@ -59,11 +59,11 @@ console.table(
 // )
 
 // console.table(
-  cbMatrix.nextMove(1, 7)
+  // cbMatrix.nextMove(1, 7)
 // )
 
 // console.table(
-  cbMatrix.nextMove(3, 6)
+  // cbMatrix.nextMove(3, 6)
 // )
 
 // cbMatrix.moves.forEach(e => console.table(e.showList))
@@ -73,5 +73,5 @@ console.table(
 )
 
 console.log(
-  cbMatrix.pastMoves
+  cbMatrix.moves
 )
