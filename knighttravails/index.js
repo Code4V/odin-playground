@@ -55,8 +55,16 @@ console.table(
 //   }
 // }
 // console.table(
-  cbMatrix.generatePossibleMoves(0, 5),
+  // cbMatrix.generatePossibleMoves(0, 5);
 // )
+
+const goal = [0, 1];
+const start = [0, 1];
+
+console.log(start.map((e, i)=> {
+  if (e === goal[i]) return true;
+  return false;
+}).includes(false));
 
 // console.table(
   // cbMatrix.nextMove(1, 7)
@@ -67,11 +75,14 @@ console.table(
 // )
 
 // cbMatrix.moves.forEach(e => console.table(e.showList))
+console.log(
+  cbMatrix.bfs([0,0], [7, 7])
+);
 
 console.table(
-  cbMatrix.cbMatrix
+  // cbMatrix.cbMatrix
 )
 
 console.log(
-  cbMatrix.moves
+  cbMatrix.moves, 'HEY'
 )

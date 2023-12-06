@@ -107,10 +107,36 @@ module.exports = class ChessBoard extends AdjacencyMatrix {
     return this.generatePossibleMoves(row, col)
   }
 
-  bfs() {
+  bfs(start = [0,0], goal) {
     const queueArray = [];
+    const visited = [];
+    let currentNode = start;
 
+    queueArray.push(start)
 
+    // this.#movesList[this.#movesList.length - 1].forEach(e => queueArray.push(e));
+
+    // return queueArray;
+
+    while (currentNode != null || queueArray.length != 0) {
+      currentNode = queueArray.shift();
+      
+      if((visited.map(e => {
+        return e.map((el, i) => {
+          if (el === currentNode[i]) return true;
+          return false;
+        }).includes(false);
+      })).includes(false) === true) continue;
+      
+      this.generatePossibleMoves(currentNode[0], currentNode[1])[this.#movesList.length - 1].forEach(e => queueArray.push(e));
+
+      if (queueArray.map((e) => {
+        if (e[0] === goal[0] && e[1] === goal[1]) return true;
+        return false;
+      }).includes(true)) break;
+
+      visited.push(currentNode);
+    }
   }
 
   get moves () {
