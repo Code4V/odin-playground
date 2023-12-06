@@ -7,7 +7,7 @@ module.exports = class LinkedList {
   constructor(node = null) {
     if (node != null) {
       this.#head = new Node(node);
-    
+
       this.#size = this.#size + 1;
     }
   }
@@ -131,7 +131,7 @@ module.exports = class LinkedList {
       return new Error('Index not in Linked List');
     }
 
-    if(Index === 0) {
+    if (Index === 0) {
       this.#head = this.#head.next;
 
       return null;
@@ -144,7 +144,7 @@ module.exports = class LinkedList {
         tempNode.next = temp;
         break;
       };
-      
+
       tempNode = tempNode.next;
       i = i + 1;
     }
@@ -155,7 +155,7 @@ module.exports = class LinkedList {
   }
 
   get #cloneHeadNode() {
-    if (this.#head == null) return null; 
+    if (this.#head == null) return null;
 
     const clonedNode = new Node(this.#head.data);
     clonedNode.next = this.#head.next;
