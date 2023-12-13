@@ -95,7 +95,7 @@ module.exports = class ChessBoard extends AdjacencyMatrix {
 
     this.#movesList.push(moves);
 
-    console.table(super.matrix)
+    // console.table(this.#movesList[this.#movesList.length - 1])
     return this.#movesList;
   }
 
@@ -118,22 +118,35 @@ module.exports = class ChessBoard extends AdjacencyMatrix {
 
     // return queueArray;
 
-    while (currentNode != null || queueArray.length != 0) {
+    while (queueArray.length != 0) {
       currentNode = queueArray.shift();
+
+      if(currentNode == null) break
       
-      if((visited.map(e => {
-        return e.map((el, i) => {
-          if (el === currentNode[i]) return true;
-          return false;
-        }).includes(false);
-      })).includes(false) === true) continue;
+      // console.log(queueArray, 'CURRENT')
+      
+      // if((visited.map(e => {
+      //   return e.map((el, i) => {
+      //     if (el === currentNode[i]) return true;
+      //     return false;
+      //   }).includes(false);
+      // })).includes(false) === true) continue;
+      
+      if(visited.map(e => {
+        if (e[0] === currentNode[0] && e[1] === currentNode[1]) return true;
+        return false;
+      }).includes(true)) continue;
+      
+      console.log(currentNode);
       
       this.generatePossibleMoves(currentNode[0], currentNode[1])[this.#movesList.length - 1].forEach(e => queueArray.push(e));
 
-      if (queueArray.map((e) => {
+      
+      if (this.moves[this.moves.length - 1].map((e) => {
         if (e[0] === goal[0] && e[1] === goal[1]) return true;
         return false;
-      }).includes(true)) break;
+      }).includes(true)) console.log('FOUND A PATH');
+      
 
       visited.push(currentNode);
     }
