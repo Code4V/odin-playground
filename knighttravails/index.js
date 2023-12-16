@@ -76,13 +76,15 @@ console.log(start.map((e, i)=> {
 
 // cbMatrix.moves.forEach(e => console.table(e.showList))
 console.log(
-  cbMatrix.bfs([0,0], [7, 7])
+  cbMatrix.bfs([1,0], [7, 7])
 );
+
+// cbMatrix.generatePossibleMoves(7, 7)
 
 console.table(
   // cbMatrix.cbMatrix
 )
 
-console.log(
-  cbMatrix.moves, 'HEY'
+console.table(
+  // cbMatrix.moves
 )

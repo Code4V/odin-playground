@@ -21,82 +21,32 @@ module.exports = class ChessBoard extends AdjacencyMatrix {
     const moves = [];
 
     this.#pastMoves.push([row, col]);
+    
+    const POSSIBLE_MOVES = [
+      [2, -1],
+      [1, -2],
+      [-1, -2],
+      [-2, -1],
+      [2, 1],
+      [1, 2], 
+      [-1, 2],
+      [-2, 1]
+    ];
 
-    // this.#movesList.push(new AdjacencyList());
 
-    if (matrixCopy[row + 2] != undefined) {
-      if (!(col - 1 < 0)) {
-        matrixCopy[row + 2][col - 1] = 'P';
+    for(let i = 0; i < POSSIBLE_MOVES.length ; i = i + 1)
+    {
+      if ((row + POSSIBLE_MOVES[i][0]) > 7 || (row + POSSIBLE_MOVES[i][0]) < 0) continue;
+      if ((col + POSSIBLE_MOVES[i][1]) < 0 || (col + POSSIBLE_MOVES[i][1] > 7)) continue;
 
-        moves.push([row + 2, col - 1])
-        
-        // this.#movesList[this.#movesList.length - 1].addEdge(row+2, col-1)
-      }
-
-      if (!(col + 1 > 7)) {
-        matrixCopy[row + 2][col + 1] = 'P';
-
-        moves.push([row + 2, col + 1]);
-
-        // this.#movesList[this.#movesList.length - 1].addEdge(row+2, col+1);
-
-      }
-      }
-
-    if (matrixCopy[row + 1] != undefined) {
-      if (!(col + 2 > 7)) {
-        matrixCopy[row + 1][col + 2] = 'P';
-
-        moves.push([row + 1, col + 2])
-
-        // this.#movesList[this.#movesList.length - 1].addEdge(row+1, col+2);
-      }
-
-      if (!(col - 2 < 0)) {
-        matrixCopy[row + 1][col - 2] = 'P';
-
-        moves.push([row + 1, col - 2])
-        // this.#movesList[this.#movesList.length - 1].addEdge(row+1, col-2);
-      }
-    }
-
-    if (matrixCopy[row - 2] != undefined) {
-      if (!(col - 1 < 0)) {
-        matrixCopy[row - 2][col - 1] = 'P';
-
-        moves.push([row - 2, col - 1])
-        // this.#movesList[this.#movesList.length - 1].addEdge(row-2, col-1);
-      }
-
-      if (!(col + 1 > 7)) {
-        matrixCopy[row - 2][col + 1] = 'P';
-
-        moves.push([row - 2, col + 1])
-        // this.#movesList[this.#movesList.length - 1].addEdge(row-2, col+1);
-      }
-    }
-
-    if (matrixCopy[row - 1] != undefined) {
-      if (!(col - 2 < 0)) {
-        matrixCopy[row - 1][col - 2] = 'P';
-        moves.push([row - 1, col - 2])
-
-        // this.#movesList[this.#movesList.length - 1].addEdge(row-1, col-2);
-      }
-
-      if (!(col + 2 > 7)) {
-        matrixCopy[row - 1][col + 2] = 'P';
-
-        moves.push([row - 1, col + 2])
-
-        // this.#movesList[this.#movesList.length - 1].addEdge(row-1, col+2);
-      }
+      matrixCopy[row + POSSIBLE_MOVES[i][0]][col + POSSIBLE_MOVES[i][1]] = 'P';
+      moves.push([row + POSSIBLE_MOVES[i][0], col + POSSIBLE_MOVES[i][1]]);
     }
 
     this.#movesList.push(moves);
-
+    console.table(moves)
     // console.table(this.#movesList[this.#movesList.length - 1])
-    return this.#movesList;
+    return moves;
   }
 
   nextMove(row, col)  {
@@ -107,17 +57,17 @@ module.exports = class ChessBoard extends AdjacencyMatrix {
     return this.generatePossibleMoves(row, col)
   }
 
-  bfs(start = [0,0], goal) {
+  bfs(start = [0,0], goal = [7, 7]) {
     const queueArray = [];
     const visited = [];
+    const paths = [];
     let currentNode = start;
 
+    paths.push([start])
     queueArray.push(start)
 
     // this.#movesList[this.#movesList.length - 1].forEach(e => queueArray.push(e));
-
     // return queueArray;
-
     while (queueArray.length != 0) {
       currentNode = queueArray.shift();
 
@@ -137,19 +87,19 @@ module.exports = class ChessBoard extends AdjacencyMatrix {
         return false;
       }).includes(true)) continue;
       
-      console.log(currentNode);
+      // if(currentNode)
       
-      this.generatePossibleMoves(currentNode[0], currentNode[1])[this.#movesList.length - 1].forEach(e => queueArray.push(e));
+      this.generatePossibleMoves(currentNode[0], currentNode[1]).forEach(e => queueArray.push(e));
 
-      
       if (this.moves[this.moves.length - 1].map((e) => {
         if (e[0] === goal[0] && e[1] === goal[1]) return true;
         return false;
-      }).includes(true)) console.log('FOUND A PATH');
+      }).includes(true)) console.log('FOUND PATH');
       
-
       visited.push(currentNode);
     }
+
+    console.table(visited)
   }
 
   get moves () {
