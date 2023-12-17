@@ -21,7 +21,7 @@ module.exports = class ChessBoard extends AdjacencyMatrix {
     const moves = [];
 
     this.#pastMoves.push([row, col]);
-    
+
     const POSSIBLE_MOVES = [
       [2, -1],
       [1, -2],
@@ -33,18 +33,26 @@ module.exports = class ChessBoard extends AdjacencyMatrix {
       [-2, 1]
     ];
 
+    POSSIBLE_MOVES.forEach(e => {
+      if ((row + e[0]) > 7 || (row + e[0]) < 0) return;
+      if ((col + e[1]) < 0 || (col + e[1] > 7)) return;
 
-    for(let i = 0; i < POSSIBLE_MOVES.length ; i = i + 1)
-    {
-      if ((row + POSSIBLE_MOVES[i][0]) > 7 || (row + POSSIBLE_MOVES[i][0]) < 0) continue;
-      if ((col + POSSIBLE_MOVES[i][1]) < 0 || (col + POSSIBLE_MOVES[i][1] > 7)) continue;
+      matrixCopy[row + e[0]][col + e[1]] = 'P';
+      moves.push([row + e[0], col + e[1]]);
+    })
 
-      matrixCopy[row + POSSIBLE_MOVES[i][0]][col + POSSIBLE_MOVES[i][1]] = 'P';
-      moves.push([row + POSSIBLE_MOVES[i][0], col + POSSIBLE_MOVES[i][1]]);
-    }
+
+    // for(let i = 0; i < POSSIBLE_MOVES.length ; i = i + 1)
+    // {
+    //   if ((row + POSSIBLE_MOVES[i][0]) > 7 || (row + POSSIBLE_MOVES[i][0]) < 0) continue;
+    //   if ((col + POSSIBLE_MOVES[i][1]) < 0 || (col + POSSIBLE_MOVES[i][1] > 7)) continue;
+
+    //   matrixCopy[row + POSSIBLE_MOVES[i][0]][col + POSSIBLE_MOVES[i][1]] = 'P';
+    //   moves.push([row + POSSIBLE_MOVES[i][0], col + POSSIBLE_MOVES[i][1]]);
+    // }
 
     this.#movesList.push(moves);
-    console.table(moves)
+    // console.table(moves)
     // console.table(this.#movesList[this.#movesList.length - 1])
     return moves;
   }
@@ -81,20 +89,28 @@ module.exports = class ChessBoard extends AdjacencyMatrix {
       //     return false;
       //   }).includes(false);
       // })).includes(false) === true) continue;
-      
+      let nextMoves = this.generatePossibleMoves(currentNode[0], currentNode[1]);
+
+            
+      // this.generatePossibleMoves(currentNode[0], currentNode[1]).forEach(e => queueArray.push(e));
       if(visited.map(e => {
         if (e[0] === currentNode[0] && e[1] === currentNode[1]) return true;
         return false;
-      }).includes(true)) continue;
+      }).includes(true)) {
+
+        continue;
+      }
       
       // if(currentNode)
       
-      this.generatePossibleMoves(currentNode[0], currentNode[1]).forEach(e => queueArray.push(e));
 
       if (this.moves[this.moves.length - 1].map((e) => {
         if (e[0] === goal[0] && e[1] === goal[1]) return true;
         return false;
-      }).includes(true)) console.log('FOUND PATH');
+      }).includes(true)) {
+        console.log(queueArray, 'FOUND PATH', currentNode, '\n') 
+        continue; 
+      }
       
       visited.push(currentNode);
     }
