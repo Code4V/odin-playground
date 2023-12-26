@@ -71,7 +71,7 @@ module.exports = class ChessBoard extends AdjacencyMatrix {
     const paths = [];
     let currentNode = start;
 
-    paths.push([start])
+    paths.push([])
     queueArray.push(start)
 
     // this.#movesList[this.#movesList.length - 1].forEach(e => queueArray.push(e));
@@ -79,7 +79,7 @@ module.exports = class ChessBoard extends AdjacencyMatrix {
     while (queueArray.length != 0) {
       currentNode = queueArray.shift();
 
-      if(currentNode == null) break
+      if(currentNode == null) continue
       
       // console.log(queueArray, 'CURRENT')
       
@@ -90,16 +90,34 @@ module.exports = class ChessBoard extends AdjacencyMatrix {
       //   }).includes(false);
       // })).includes(false) === true) continue;
       let nextMoves = this.generatePossibleMoves(currentNode[0], currentNode[1]);
-
-            
-      // this.generatePossibleMoves(currentNode[0], currentNode[1]).forEach(e => queueArray.push(e));
-      if(visited.map(e => {
-        if (e[0] === currentNode[0] && e[1] === currentNode[1]) return true;
-        return false;
-      }).includes(true)) {
-
-        continue;
+      const test = {test: 'test123', test2: 'test211'}
+      
+      for (let moves in nextMoves) {
+        // console.log(nextMoves[moves])
+        if(!(visited.map(e => {
+          if (e[0] === currentNode[0] && e[1] === currentNode[1]) return true;
+          return false;
+        }).includes(true))) {
+          // continue;
+          nextMoves.forEach(e => queueArray.push(e));
+          visited.push(currentNode);
+          paths[moves].push(currentNode);
+        }
       }
+      // console.log('\n')
+      // for (let i = 0; i < nextMoves.length ; i = i + 1) {
+      //   if(visited.map(e => {
+      //     if (e[0] === currentNode[0] && e[1] === currentNode[1]) return true;
+      //     return false;
+      //   }).includes(true)) {
+      //     continue;
+      //   }
+      //   nextMoves.forEach(e => queueArray.push(e));
+      //   visited.push(currentNode);
+      //   paths[i].push(currentNode);
+      // }
+
+      // this.generatePossibleMoves(currentNode[0], currentNode[1]).forEach(e => queueArray.push(e));
       
       // if(currentNode)
       
@@ -108,14 +126,13 @@ module.exports = class ChessBoard extends AdjacencyMatrix {
         if (e[0] === goal[0] && e[1] === goal[1]) return true;
         return false;
       }).includes(true)) {
-        console.log(queueArray, 'FOUND PATH', currentNode, '\n') 
+        console.log(currentNode, '\n') 
         continue; 
       }
       
-      visited.push(currentNode);
     }
 
-    console.table(visited)
+  console.log(paths)
   }
 
   get moves () {
