@@ -1,4 +1,3 @@
-const AdjacencyList = require("./AdjacencyList");
 const AdjacencyMatrix = require("./AdjacencyMatrix");
 
 /**
@@ -28,7 +27,7 @@ module.exports = class ChessBoard extends AdjacencyMatrix {
       [-1, -2],
       [-2, -1],
       [2, 1],
-      [1, 2], 
+      [1, 2],
       [-1, 2],
       [-2, 1]
     ];
@@ -57,52 +56,54 @@ module.exports = class ChessBoard extends AdjacencyMatrix {
     return moves;
   }
 
-  nextMove(row, col)  {
-    if (!this.#movesList[this.#movesList.length-1].findEdge(row, col)) {
+  nextMove(row, col) {
+    if (!this.#movesList[this.#movesList.length - 1].findEdge(row, col)) {
       return 'Illegal Move';
     }
 
     return this.generatePossibleMoves(row, col)
   }
 
-  bfs(start = [0,0], goal = [7, 7]) {
+  bfs(start = [0, 0], goal = [7, 7]) {
     const queueArray = [];
     const visited = [];
     const paths = [];
     let currentNode = start;
 
-    paths.push([])
     queueArray.push(start)
-
+    
     // this.#movesList[this.#movesList.length - 1].forEach(e => queueArray.push(e));
     // return queueArray;
     while (queueArray.length != 0) {
+      console.log(queueArray)
       currentNode = queueArray.shift();
+      // if(currentNode == null) continue
 
-      if(currentNode == null) continue
-      
       // console.log(queueArray, 'CURRENT')
-      
+
       // if((visited.map(e => {
       //   return e.map((el, i) => {
       //     if (el === currentNode[i]) return true;
       //     return false;
       //   }).includes(false);
       // })).includes(false) === true) continue;
+      if (
+        visited.some(e => e[0] === currentNode[0] && e[1] === currentNode[1])
+      ) {
+        continue;
+      }
+
+      visited.push(currentNode);
+      paths.push(currentNode);
       let nextMoves = this.generatePossibleMoves(currentNode[0], currentNode[1]);
-      const test = {test: 'test123', test2: 'test211'}
-      
-      for (let moves in nextMoves) {
-        // console.log(nextMoves[moves])
-        if(!(visited.map(e => {
-          if (e[0] === currentNode[0] && e[1] === currentNode[1]) return true;
-          return false;
-        }).includes(true))) {
-          // continue;
-          nextMoves.forEach(e => queueArray.push(e));
-          visited.push(currentNode);
-          paths[moves].push(currentNode);
+      for (let moves of nextMoves) {
+        // console.log(moves)
+        if (
+          visited.some(e => e[0] === moves[0] && e[1] === moves[1])
+        ) {
+          continue;
         }
+        nextMoves.forEach(e => queueArray.push(e));
       }
       // console.log('\n')
       // for (let i = 0; i < nextMoves.length ; i = i + 1) {
@@ -118,28 +119,83 @@ module.exports = class ChessBoard extends AdjacencyMatrix {
       // }
 
       // this.generatePossibleMoves(currentNode[0], currentNode[1]).forEach(e => queueArray.push(e));
-      
+
       // if(currentNode)
-      
+
 
       if (this.moves[this.moves.length - 1].map((e) => {
         if (e[0] === goal[0] && e[1] === goal[1]) return true;
         return false;
       }).includes(true)) {
-        console.log(currentNode, '\n') 
-        continue; 
+        console.log(currentNode, '\n')
+        continue;
       }
-      
+
     }
 
-  console.log(paths)
+    console.log(paths)
   }
 
-  get moves () {
+  bfs2(start = [0, 0], goal = [7, 7]) {
+  const queueArray = [];
+  const visited = [];
+  const paths = [];
+  let currentNode = start;
+
+  queueArray.push([start]);
+
+  while (queueArray.length !== 0) {
+    const currentPath = queueArray.shift();
+    currentNode = currentPath[currentPath.length - 1];
+
+    // console.log(queueArray)
+
+    if (
+      visited.some(
+        (e) => e[0] === currentNode[0] && e[1] === currentNode[1]
+      )
+    ) {
+      continue;
+    }
+
+    visited.push(currentNode);
+
+    let nextMoves = this.generatePossibleMoves(currentNode[0], currentNode[1]);
+
+    for (let move of nextMoves) {
+      if (
+        visited.some(
+          (e) => e[0] === move[0] && e[1] === move[1]
+        )
+      ) {
+        continue;
+      }
+
+      // Create a new path by copying the current path and adding the move
+      const newPath = [...currentPath, move];
+      queueArray.push(newPath);
+
+      // console.log(visited)
+
+      // Check if the move reaches the goal
+      if (move[0] === goal[0] && move[1] === goal[1]) {
+        console.log("Goal reached:", newPath, "\n");
+        return newPath;
+        // paths.push(newPath);
+      }
+    }
+  }
+  // console.log(paths)
+  console.log("Goal not reached.");
+  return null;
+}
+
+
+  get moves() {
     return this.#movesList;
   }
 
-  get pastMoves () {
+  get pastMoves() {
     return this.#pastMoves;
   }
 
