@@ -18,73 +18,13 @@ function generateVertices(...vertices) {
 
   return verticesList;
 }
-const matrix = new Matrix(8);
+
 const cbMatrix = new ChessBoard(8);
-const adjacencyList = new AdjacencyList();
 
-const edgeList = generateVertices`${10}`;
-
-const edgeListMan = [
-  [0,1], [1,2], [1,3], [2, 3], [2,5], [2, 7], [3,4], [4, 1],
-]
-
-edgeListMan.forEach(e => {
-  // adjacencyList.addEdge(e[0], e[1]);
-  // cbMatrix.addEdge(e[0], e[1]);
-  matrix.addEdge(e[0], e[1], { isDirected: true })
-});
-console.group("\nMATRIX");
-
-console.table(
-  matrix.matrix
-)
-
-console.groupEnd();
-
-
-console.table(
-  adjacencyList.showList,
-);
-
-// cbMatrix.addEdge(2, 1)
-
-// for (let i = 0; i < cbMatrix.size; i = i + 1) {
-//   for (let j = 0; j < cbMatrix.size; j = j + 1) {
-//     // adjacencyList.addEdge(i, j);
-//     // cbMatrix.generatePossibleMoves(i, j);
-//   }
-// }
-// console.table(
-  // cbMatrix.generatePossibleMoves(0, 5);
-// )
-
-const goal = [0, 1];
-const start = [0, 1];
-
-console.log(start.map((e, i)=> {
-  if (e === goal[i]) return true;
-  return false;
-}).includes(false));
-
-// console.table(
-  // cbMatrix.nextMove(1, 7)
-// )
-
-// console.table(
-  // cbMatrix.nextMove(3, 6)
-// )
-
-// cbMatrix.moves.forEach(e => console.table(e.showList))
 console.log(
-  cbMatrix.bfs([0,0], [7, 7])
+  {
+    test_one: cbMatrix.knightMoves([0,0], [7, 7]),
+    test_two: cbMatrix.knightMoves([0,0], [3,3]),
+    test_three: cbMatrix.knightMoves([3,3], [0,0]),
+  }
 );
-
-// cbMatrix.generatePossibleMoves(7, 7)
-
-console.table(
-  // cbMatrix.cbMatrix
-)
-
-console.table(
-  // cbMatrix.moves
-)

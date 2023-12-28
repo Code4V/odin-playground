@@ -136,10 +136,9 @@ module.exports = class ChessBoard extends AdjacencyMatrix {
     console.log(paths)
   }
 
-  bfs2(start = [0, 0], goal = [7, 7]) {
+  knightMoves(start = [0, 0], goal = [7, 7]) {
   const queueArray = [];
   const visited = [];
-  const paths = [];
   let currentNode = start;
 
   queueArray.push([start]);
@@ -147,8 +146,6 @@ module.exports = class ChessBoard extends AdjacencyMatrix {
   while (queueArray.length !== 0) {
     const currentPath = queueArray.shift();
     currentNode = currentPath[currentPath.length - 1];
-
-    // console.log(queueArray)
 
     if (
       visited.some(
@@ -171,21 +168,14 @@ module.exports = class ChessBoard extends AdjacencyMatrix {
         continue;
       }
 
-      // Create a new path by copying the current path and adding the move
       const newPath = [...currentPath, move];
       queueArray.push(newPath);
 
-      // console.log(visited)
-
-      // Check if the move reaches the goal
       if (move[0] === goal[0] && move[1] === goal[1]) {
-        console.log("Goal reached:", newPath, "\n");
         return newPath;
-        // paths.push(newPath);
       }
     }
   }
-  // console.log(paths)
   console.log("Goal not reached.");
   return null;
 }
