@@ -1,3 +1,12 @@
 require('dotenv').config()
+const test = require('./src/functions/paymongo');
+(async () => {
+  const Link = await test();
+  
+  console.log(Link)
+})()
 
-console.log(process.env.PAYMONGO_PUBLIC)
+
+// link_X92xFBuMZ94mhyEect3yN9wj
+// https://pm.link/lakbayantesting/test/mNZywEP
+// mNZywEP
