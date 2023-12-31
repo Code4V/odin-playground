@@ -1,5 +1,16 @@
 require('dotenv').config()
 
+module.exports = class Paymongo {
+  #paymongo;
+  
+  constructor(paymongo_secret_key){
+    if (this.instance !== null) {
+      return this.paymongo;
+    }
+    this.#paymongo = require('paymongo-node')(process.env.PAYMONGO_SECRET);
+  }
+}
+
 const paymongo = require('paymongo-node')(process.env.PAYMONGO_SECRET);
 
 // module.exports = () => {
