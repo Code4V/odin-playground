@@ -1,7 +1,11 @@
 export default function capitalize (to_capitalize) {
-  for (let letter of to_capitalize) {
-    console.log(String.fromCharCode(letter.charCodeAt(0) - 32))
+  const capitalize = [];
+  for (let letter in to_capitalize) {
+    if (parseInt(letter) === 0) {
+      capitalize.push(String.fromCharCode(to_capitalize.charCodeAt(0) - 32));
+    }
+    else capitalize.push(to_capitalize[letter]);
   }
 
-  return 0;
+  return capitalize.join('');
 }
