@@ -1,4 +1,3 @@
-import { jest } from '@jest/globals'
 import capitalize from './../functions/capitalize';
 
 describe('words must be capitalized', () => {
