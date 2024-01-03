@@ -1,8 +1,10 @@
 export const calculator = (...nums) => {
-  
-  const currentNumbers = nums.filter(e => {
-    if (typeof e !== "number") return false;
-    return true
+
+  const currentNumbers = nums
+    .flat()
+    .filter(e => {
+      if (typeof e !== "number") return false;
+      return true
   })
 
   const sum = () => {
