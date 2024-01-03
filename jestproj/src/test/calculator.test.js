@@ -3,7 +3,11 @@ import { calculator } from "../functions/calculator";
 describe('Testing calculator', () => {
   const testCase = [1, 123, 5, 61];
 
-  test('Acceptance of array', () => {
+  test('zero if no given argument/s', () => {
+    expect(calculator().sum()).toBe(0);
+  })
+
+  test('Acceptance of an array', () => {
     expect(calculator(testCase).sum()).toBe(
       testCase.reduce((prev, curr) => prev = prev + curr)
     );
@@ -21,4 +25,15 @@ describe('Testing calculator', () => {
     );
   })
 
+  test('product operation', () => {
+    expect(calculator(1, 123, 5, 61).product()).toBe(
+      testCase.reduce((prev, curr) => prev = prev * curr)
+    );
+  })
+
+  test('divide operation', () => {
+    expect(calculator(1, 123, 5, 61).divide()).toBe(
+      testCase.reduce((prev, curr) => prev = prev / curr)
+    );
+  })
 })

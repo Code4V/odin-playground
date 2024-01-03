@@ -6,10 +6,11 @@ export const calculator = (...nums) => {
       if (typeof e !== "number") return false;
       return true
   })
-
+  
+  let result = currentNumbers[0] ?? 0;
+  
   const sum = () => {
-    let i = 0;
-    let result = 0;
+    let i = 1;
 
     while (i < currentNumbers.length) {
       result = result + currentNumbers[i];
@@ -21,11 +22,32 @@ export const calculator = (...nums) => {
 
   const subtract = () => {
     let i = 1;
-    let result = currentNumbers[0];
     
     while (i < currentNumbers.length) {
       result = result - currentNumbers[i] ;
-      console.log(result)
+      i = i + 1;
+    }
+
+    return result;
+  }
+
+
+  const product = () => {
+    let i = 1;
+    
+    while (i < currentNumbers.length) {
+      result = result * currentNumbers[i] ;
+      i = i + 1;
+    }
+
+    return result;
+  }
+
+  const divide = () => {
+    let i = 1;
+    
+    while (i < currentNumbers.length) {
+      result = result / currentNumbers[i] ;
       i = i + 1;
     }
 
@@ -36,5 +58,7 @@ export const calculator = (...nums) => {
   return {
     sum,
     subtract,
+    product,
+    divide
   }
 }
