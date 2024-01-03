@@ -32,7 +32,7 @@ export const calculator = (...nums) => {
   }
 
 
-  const product = () => {
+  const multiply = () => {
     let i = 1;
     
     while (i < currentNumbers.length) {
@@ -51,14 +51,14 @@ export const calculator = (...nums) => {
       i = i + 1;
     }
 
-    return result;
+      return result;
   }
 
 
   return {
     sum,
     subtract,
-    product,
+    multiply,
     divide
   }
 }

@@ -26,7 +26,7 @@ describe('Testing calculator', () => {
   })
 
   test('product operation', () => {
-    expect(calculator(1, 123, 5, 61).product()).toBe(
+    expect(calculator(1, 123, 5, 61).multiply()).toBe(
       testCase.reduce((prev, curr) => prev = prev * curr)
     );
   })
