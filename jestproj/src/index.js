@@ -7,7 +7,7 @@ const capthis = 'test';
 
 console.log(
   reverseString(capthis),
-  caesarCipher('Jeanne Francis Rivas', 2)
+  caesarCipher('jeanne FraNcis rivaS', 2)
 )
 console.log(
   calculator(2, 1, 4, 1,'sasda', 4, 'as').sum()
