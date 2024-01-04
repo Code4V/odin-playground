@@ -31,27 +31,57 @@ const shiftLetters = (shifts, options = {isCaseSensitive: true}) => {
   return shiftedLettersMap;
 }
 
-export const caesarCipher = (to_encrypt = 'test', shifts = 0, options = { isCaseSensitive: false }) => {
-  const regex = /[A-Z]+/g;
+const shiftLetter = (letter, shifts) => {
+  const NUMBER_OF_LETTERS = 26;
+  const asciiLetter = letter.charCodeAt();
+
+  if (asciiLetter === 32) return asciiLetter;
+  if (asciiLetter >= 48 && asciiLetter <= 57) return asciiLetter;
+
+  const shiftOperation = asciiLetter + shifts;
+
+  return shiftOperation > 122 ? shiftOperation - NUMBER_OF_LETTERS : shiftOperation;
+}
+
+
+
+export const caesarCipher = (to_encrypt, shifts = 0, options = { isCaseSensitive: false }) => {
+  if (to_encrypt === undefined) return null;
+
+  const UPPERCASE_REGEX = /[A-Z]+/g;
+  const NUMBERS_REGEX = /[0-9]+/g;
+
   const to_encryptArray = Array.from(to_encrypt)
 
-  let found;
+  let foundUppercases;
+  let foundNumbers;
 
   if ( options.isCaseSensitive === true ){
-    while((found = regex.exec(to_encrypt)) !== null){ 
-      to_encryptArray[found.index] = String.fromCharCode(to_encrypt.charCodeAt(found.index) + 32);
+    while((foundUppercases = UPPERCASE_REGEX.exec(to_encrypt)) !== null){ 
+      to_encryptArray[foundUppercases.index] = String.fromCharCode(to_encrypt.charCodeAt(foundUppercases.index) + 32);
+    }
+    while((foundNumbers = NUMBERS_REGEX.exec(to_encrypt)) !== null){
+      to_encryptArray[foundNumbers.index] = parseInt(foundNumbers[0]);
     }
   }
 
-  to_encryptArray.join('')
+  
+
+  console.log(to_encryptArray)
 
   const encrypted = [];
   const shiftedLetters = shiftLetters(shifts);
 
   for ( let i = 0 ; i < to_encrypt.length ; i = i + 1 ) {
+    // if(typeof to_encryptArray[i] === 'number') {
+    //   encrypted.push(to_encryptArray[i]);
+    //   continue;
+    // }
+
     encrypted.push(
       String.fromCharCode(
-        shiftedLetters.get(to_encryptArray[i].charCodeAt())
+        shiftLetter(to_encryptArray[i], shifts)
+        // shiftedLetters.get(to_encryptArray[i].charCodeAt())
         )
     )
   }
