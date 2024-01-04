@@ -5,11 +5,11 @@ const shiftLetters = (shifts, options = {isCaseSensitive: true}) => {
 
   const shiftedLettersMap = new Map();
 
-  let baseLetters = Array.from( {length: NUMBER_OF_LETTERS}, (e, i) => i + ASCII_SMALL_LETTERS_START);
+  let baseLetters = Array.from( {length: NUMBER_OF_LETTERS}, (_, i) => i + ASCII_SMALL_LETTERS_START);
 
   if (options.isCaseSensitive === true) {
     baseLetters = baseLetters.
-      concat( Array.from({length: NUMBER_OF_LETTERS}, (e, i) => i +           ASCII_BIG_LETTERS_START) );
+      concat( Array.from({length: NUMBER_OF_LETTERS}, (_, i) => i + ASCII_BIG_LETTERS_START) );
   }
 
   const shiftedLetters = baseLetters.map(e => {
