@@ -18,7 +18,7 @@ const PUNCTUATIONS_ASCII = [
 const UPPERCASE_REGEX = /[A-Z]+/g;
 const NUMBERS_REGEX = /[0-9]+/g;
 
-const shiftLetter = (letter, shifts) => {
+const shiftAsciiLetter = (letter, shifts) => {
   let isUpperCase = false;
   const asciiLetter = letter.charCodeAt();
   const shiftOperation = asciiLetter + shifts;
@@ -66,10 +66,10 @@ export const caesarCipher = (to_encrypt, shifts = 0, options = { isCaseSensitive
   for ( let i = 0 ; i < to_encrypt.length ; i = i + 1 ) {
     encrypted.push(
       String.fromCharCode(
-        shiftLetter(to_encryptArray[i], normalizedShift)
+        shiftAsciiLetter(to_encryptArray[i], normalizedShift)
         )
     )
   }
-
+  
   return encrypted.join('');
 }

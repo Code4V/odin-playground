@@ -9,4 +9,8 @@ describe('Testing analyzeArray', () => {
       length: 6
     })
   })
-})
+
+  test('Empty array returns to NULL', () => {
+    expect(analyzeArray([])).toBeNull()
+  })
+});
