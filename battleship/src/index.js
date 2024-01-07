@@ -1,8 +1,7 @@
 import { Ship } from "./factories/ship";
-const BattleShip = new Ship('Destroyer')
+const BattleShip = Ship('Destroyer')
 
-BattleShip.hit()
-BattleShip.hit()
+// BattleShip.hit()
 
 
 console.log(BattleShip.getHealth());
