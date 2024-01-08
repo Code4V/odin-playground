@@ -1,0 +1,30 @@
+export const Gameboard = (() => {
+  const gameBoard = (() => {
+    const matrix = [];
+
+    for ( let i = 0 ; i < 10 ; i = i + 1 ) {
+      const newRow = [];
+      for ( let j = 0 ; j < 10 ; j = j + 1 ) {
+        newRow.push(0)
+      }
+      matrix.push(newRow)
+    }
+
+    return matrix;
+  })();
+
+  const receiveAttack = (row, col) => {
+    if(gameBoard[row][col] === 1) console.log('Already Hit!');
+
+    gameBoard[row][col] = 1;
+    return null;
+  } 
+
+  const getGameBoard = () => gameBoard;
+
+  return {
+    gameBoard,
+    receiveAttack,
+    getGameBoard,
+  }
+})();

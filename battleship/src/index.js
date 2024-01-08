@@ -1,7 +1,19 @@
 import { Ship } from "./factories/ship";
+import { Gameboard } from "./factories/Gameboard";
 const BattleShip = Ship('Destroyer')
 
 // BattleShip.hit()
 
+console.log(
+  Gameboard.gameBoard
+)
+
+Gameboard.receiveAttack(1, 1);
+Gameboard.receiveAttack(1, 1);
+Gameboard.receiveAttack(1, 2);
+
+console.log(
+  Gameboard.gameBoard
+)
 
 console.log(BattleShip.getHealth());
