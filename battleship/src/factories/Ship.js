@@ -1,5 +1,5 @@
 export const Ship = (typeOfShip = 'Patrol') => {
-  console.log(typeOfShip)
+  if (typeOfShip === '') return null;
   const shipType = typeOfShip;
   let isSunk = false;
 
