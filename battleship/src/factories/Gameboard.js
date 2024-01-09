@@ -14,7 +14,7 @@ export const Gameboard = (() => {
   })();
 
   const receiveAttack = (row, col) => {
-    if(gameBoard[row][col] === 1) console.log('Already Hit!');
+    if(gameBoard[row][col] === 1) return null;
 
     gameBoard[row][col] = 1;
     return null;

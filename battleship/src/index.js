@@ -1,4 +1,4 @@
-import { Ship } from "./factories/ship";
+import { Ship } from "./factories/Ship";
 import { Gameboard } from "./factories/Gameboard";
 const BattleShip = Ship('Destroyer')
 
