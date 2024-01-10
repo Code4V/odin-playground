@@ -13,7 +13,8 @@ Gameboard.receiveAttack(1, 1);
 Gameboard.receiveAttack(1, 2);
 
 console.log(
-  Gameboard.gameBoard
+  Gameboard.placeShip(BattleShip, 0, 0),
+  Gameboard.gameBoard,
 )
 
 console.log(BattleShip.getHealth());

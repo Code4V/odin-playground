@@ -19,10 +19,13 @@ export const Ship = (typeOfShip = 'Patrol') => {
       shipHealth = 1;
       break;
   }
+
+  const shipLength = shipHealth;
   
 
   const getHealth = () => shipHealth;
   const getIsSunk = () => isSunk;
+  const getLength = () => shipLength;
   
   const hit = () => {
     shipHealth = shipHealth - 1;
@@ -36,6 +39,7 @@ export const Ship = (typeOfShip = 'Patrol') => {
     shipHealth,
     getHealth,
     getIsSunk,
+    getLength,
     hit
   }
 }

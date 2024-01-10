@@ -18,13 +18,20 @@ export const Gameboard = (() => {
 
     gameBoard[row][col] = 1;
     return null;
-  } 
+  }
+  
+  const placeShip = (Ship, row, col) => {
+    for (let i = 0 ; i < Ship.getLength() ; i = i + 1){
+      gameBoard[row][col + i] = 'P';
+    }
+  }
 
   const getGameBoard = () => gameBoard;
 
   return {
     gameBoard,
-    receiveAttack,
     getGameBoard,
+    placeShip,
+    receiveAttack,
   }
 })();
