@@ -7,14 +7,16 @@ export const Ship = (typeOfShip = 'Patrol') => {
   console.log(shipType)
   switch (shipType){
     case 'Patrol':
-      shipHealth = 1;
+      shipHealth = 2;
       break;
     case 'Cruiser':
       shipHealth = 3;
       break;
-    case 'Destroyer':
+    case 'Battleship':
       shipHealth = 4;
       break;
+    case 'Carrier':
+      shipHealth = 5
     default: 
       shipHealth = 1;
       break;
