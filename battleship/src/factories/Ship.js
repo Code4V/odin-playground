@@ -30,6 +30,7 @@ export const Ship = (typeOfShip) => {
   const getHealth = () => shipHealth;
   const getIsSunk = () => isSunk;
   const getLength = () => shipLength;
+  const getType = () => shipType
   
   const hit = () => {
     shipHealth = shipHealth - 1;
@@ -39,7 +40,7 @@ export const Ship = (typeOfShip) => {
   }
   
   return {
-    shipType, 
+    getType, 
     shipHealth,
     getHealth,
     getIsSunk,

@@ -20,17 +20,19 @@ export const Gameboard = (() => {
     return null;
   }
   
-  const placeShip = (Ship, row, col) => {
+  const placeShip = (Ship, row, col, options = { isVertical: false }) => {
+    const shipInitial = Ship.getType()[0];
     let overflowSpot = 1;
+
     for (let i = 0 ; i < Ship.getLength() ; i = i + 1){
+      
       if(gameBoard[row][col + i] === undefined) {
-        gameBoard[row][col - j] = 'P';
+        gameBoard[row][col - overflowSpot] = shipInitial;
         overflowSpot = overflowSpot + 1;
         continue;
       }
 
-      gameBoard[row][col + i] = 'P';
-
+      gameBoard[row][col + i] = shipInitial;
     }
   }
 
