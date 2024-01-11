@@ -21,8 +21,16 @@ export const Gameboard = (() => {
   }
   
   const placeShip = (Ship, row, col) => {
+    let overflowSpot = 1;
     for (let i = 0 ; i < Ship.getLength() ; i = i + 1){
+      if(gameBoard[row][col + i] === undefined) {
+        gameBoard[row][col - j] = 'P';
+        overflowSpot = overflowSpot + 1;
+        continue;
+      }
+
       gameBoard[row][col + i] = 'P';
+
     }
   }
 

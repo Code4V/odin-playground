@@ -1,5 +1,6 @@
-export const Ship = (typeOfShip = 'Patrol') => {
+export const Ship = (typeOfShip) => {
   if (typeOfShip === '') return null;
+
   const shipType = typeOfShip;
   let isSunk = false;
 
@@ -16,7 +17,8 @@ export const Ship = (typeOfShip = 'Patrol') => {
       shipHealth = 4;
       break;
     case 'Carrier':
-      shipHealth = 5
+      shipHealth = 5;
+      break;
     default: 
       shipHealth = 1;
       break;
