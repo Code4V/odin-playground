@@ -16,7 +16,15 @@ export const Gameboard = (() => {
   const receiveAttack = (row, col) => {
     if (gameBoard[row][col] === 1) return null;
 
+    if (typeof gameBoard[row][col] === 'object') {
+      gameBoard[row][col].hit();
+
+      gameBoard[row][col] = 'X';
+      return null
+    }
+
     gameBoard[row][col] = 1;
+
     return null;
   }
 
@@ -27,21 +35,21 @@ export const Gameboard = (() => {
     for (let i = 0; i < Ship.getLength(); i = i + 1) {
       if (options.isVertical) {
         if (gameBoard[row + i] === undefined) {
-          gameBoard[row - stepBackwards][col] = shipInitial;
+          gameBoard[row - stepBackwards][col] = Ship;
           stepBackwards = stepBackwards + 1;
           continue;
         }
 
-        gameBoard[row + i][col] = shipInitial;
+        gameBoard[row + i][col] = Ship;
       }
       else {
         if (gameBoard[row][col + i] === undefined) {
-          gameBoard[row][col - stepBackwards] = shipInitial;
+          gameBoard[row][col - stepBackwards] = Ship;
           stepBackwards = stepBackwards + 1;
           continue;
         }
 
-        gameBoard[row][col + i] = shipInitial;
+        gameBoard[row][col + i] = Ship;
       }
     }
   }
