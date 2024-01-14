@@ -1,21 +1,21 @@
 export const Ship = (typeOfShip) => {
   if (typeOfShip === '') return null;
 
-  const shipType = typeOfShip;
+  const shipType = typeOfShip.toUpperCase();
   let isSunk = false;
 
   let shipHealth;
   switch (shipType) {
-    case 'Patrol':
+    case 'PATROL':
       shipHealth = 2;
       break;
-    case 'Cruiser':
+    case 'CRUISER':
       shipHealth = 3;
       break;
-    case 'Battleship':
+    case 'BATTLESHIP':
       shipHealth = 4;
       break;
-    case 'Carrier':
+    case 'CARRIER':
       shipHealth = 5;
       break;
     default:

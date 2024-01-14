@@ -27,29 +27,39 @@ export const Gameboard = (() => {
     return null;
   };
 
+  const markBoard = (row, col, options = { markWith: 'X' }) => {
+    const { markWith } = options;
+    gameBoard[row][col] = markWith;
+  };
+
   const placeShip = (Ship, row, col, options = { isVertical: false }) => {
-    const shipInitial = Ship.getType()[0];
     let stepBackwards = 1;
+    let columnPlacement = col;
+    let rowPlacement = row;
+
+    const shipLength = Ship.getLength();
+
+    if ((shipLength + col) > 9) {
+      columnPlacement = (columnPlacement - shipLength) + 1;
+    }
+
+    if ((shipLength + row) > 9 && options.isVertical) {
+      rowPlacement = (rowPlacement - shipLength) + 1;
+    }
+
+    if (!options.isVertical) {
+      for (let i = 0; i < Ship.getLength(); i += 1) {
+        markBoard(rowPlacement, columnPlacement + i, { markWith: Ship });
+      }
+
+      return null;
+    }
 
     for (let i = 0; i < Ship.getLength(); i += 1) {
-      if (options.isVertical) {
-        if (gameBoard[row + i] === undefined) {
-          gameBoard[row - stepBackwards][col] = Ship;
-          stepBackwards += 1;
-          continue;
-        }
-
-        gameBoard[row + i][col] = Ship;
-      } else {
-        if (gameBoard[row][col + i] === undefined) {
-          gameBoard[row][col - stepBackwards] = Ship;
-          stepBackwards += 1;
-          continue;
-        }
-
-        gameBoard[row][col + i] = Ship;
-      }
+      markBoard(rowPlacement + i, columnPlacement, { markWith: Ship });
     }
+
+    return null;
   };
 
   const getGameBoard = () => gameBoard;
