@@ -5,8 +5,7 @@ export const Ship = (typeOfShip) => {
   let isSunk = false;
 
   let shipHealth;
-  console.log(shipType)
-  switch (shipType){
+  switch (shipType) {
     case 'Patrol':
       shipHealth = 2;
       break;
@@ -19,32 +18,31 @@ export const Ship = (typeOfShip) => {
     case 'Carrier':
       shipHealth = 5;
       break;
-    default: 
+    default:
       shipHealth = 1;
       break;
   }
 
   const shipLength = shipHealth;
-  
 
   const getHealth = () => shipHealth;
   const getIsSunk = () => isSunk;
   const getLength = () => shipLength;
-  const getType = () => shipType
-  
+  const getType = () => shipType;
+
   const hit = () => {
-    shipHealth = shipHealth - 1;
+    shipHealth -= 1;
     if (shipHealth === 0) isSunk = true;
 
     return null;
-  }
-  
+  };
+
   return {
-    getType, 
+    getType,
     shipHealth,
     getHealth,
     getIsSunk,
     getLength,
-    hit
-  }
-}
+    hit,
+  };
+};
