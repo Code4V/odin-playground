@@ -1,10 +1,11 @@
 export const Gameboard = (() => {
+  const BOARD_TILES = 10;
   const gameBoard = (() => {
     const matrix = [];
 
-    for (let i = 0; i < 10; i += 1) {
+    for (let i = 0; i < BOARD_TILES; i += 1) {
       const newRow = [];
-      for (let j = 0; j < 10; j += 1) {
+      for (let j = 0; j < BOARD_TILES; j += 1) {
         newRow.push(0);
       }
       matrix.push(newRow);
@@ -13,38 +14,37 @@ export const Gameboard = (() => {
     return matrix;
   })();
 
-  const receiveAttack = (row, col) => {
-    if (gameBoard[row][col] === 1) return false;
-
-    if (typeof gameBoard[row][col] === 'object') {
-      // gameBoard[row][col].hit();
-      // gameBoard[row][col] = 'X';
-
-      return true;
-    }
-
-    gameBoard[row][col] = 1;
-    return null;
-  };
-
   const markBoard = (row, col, options = { markWith: 'X' }) => {
     const { markWith } = options;
     gameBoard[row][col] = markWith;
   };
 
+  const receiveAttack = (row, col) => {
+    if (gameBoard[row][col] === 1) return false;
+
+    if (typeof gameBoard[row][col] === 'object') {
+      // gameBoard[row][col].hit();
+      markBoard(row, col, { markWith: 'HIT!' });
+      return true;
+    }
+
+    markBoard(row, col);
+
+    return null;
+  };
+
   const placeShip = (Ship, row, col, options = { isVertical: false }) => {
-    let stepBackwards = 1;
     let columnPlacement = col;
     let rowPlacement = row;
 
     const shipLength = Ship.getLength();
 
-    if ((shipLength + col) > 9) {
-      columnPlacement = (columnPlacement - shipLength) + 1;
+    if ((shipLength + col) > BOARD_TILES) {
+      columnPlacement -= (columnPlacement + shipLength) % 10;
     }
 
-    if ((shipLength + row) > 9 && options.isVertical) {
-      rowPlacement = (rowPlacement - shipLength) + 1;
+    if ((shipLength + row) > BOARD_TILES && options.isVertical) {
+      rowPlacement -= (rowPlacement + shipLength) % 10;
     }
 
     if (!options.isVertical) {

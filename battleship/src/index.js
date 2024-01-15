@@ -10,7 +10,7 @@ GameLogic.createAction({
 GameLogic.createAction({
   type: 'placement',
   row: 1,
-  col: 3,
+  col: 6,
   ship: Ship('Cruiser'),
 });
 

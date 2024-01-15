@@ -1,6 +1,6 @@
-// jest.mock('./../factories/Ship');
+/* eslint-env jest */
+
 import { Ship } from '../factories/Ship';
-// import { jest } from 'jest/global';
 
 describe('iting the Ship factory', () => {
   it('on creation of the ship must not be null', () => {
