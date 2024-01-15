@@ -2,7 +2,7 @@
 
 import { Ship } from '../factories/Ship';
 
-describe('iting the Ship factory', () => {
+describe('Testing the Ship factory', () => {
   it('on creation of the ship must not be null', () => {
     const shipInstance = Ship();
 
@@ -18,7 +18,7 @@ describe('iting the Ship factory', () => {
   it('No param ship type must be Patrol', () => {
     const shipInstance = Ship();
 
-    expect(shipInstance.shipType).toMatch(/Patrol/);
+    expect(shipInstance.getType()).toMatch(/PATROL/);
   });
 
   it.todo('Destroyer must have 4 Lives');
@@ -28,6 +28,7 @@ describe('iting the Ship factory', () => {
   it('0 health means isSunk is True', () => {
     const patrolShip = Ship();
 
+    patrolShip.hit();
     patrolShip.hit();
 
     expect(patrolShip.getHealth()).toBe(0);

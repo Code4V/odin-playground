@@ -1,5 +1,6 @@
-export const Ship = (typeOfShip) => {
+export const Ship = (typeOfShip = 'Patrol') => {
   if (typeOfShip === '') return null;
+  if (typeOfShip === undefined) return null;
 
   const shipType = typeOfShip.toUpperCase();
   let isSunk = false;
