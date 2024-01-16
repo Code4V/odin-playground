@@ -2,10 +2,18 @@
 // import { Player } from '../factories/Player';
 
 export const GameLogic = (() => {
-  const createAction = (action = { type: null }) => {
+  const createAction = (action = {
+    currentPlayer: null,
+    targetPlayer: null,
+    type: null,
+    row: 0,
+    col: 0,
+    ship: null,
+    options: {},
+  }) => {
     const {
       currentPlayer,
-      target,
+      targetPlayer,
       type,
       row,
       col,
@@ -15,10 +23,10 @@ export const GameLogic = (() => {
 
     switch (type) {
       case 'attack':
-        target.getGameBoard().receiveAttack(row, col);
+        targetPlayer.getPlayerBoard().receiveAttack(row, col);
         break;
       case 'placement':
-        currentPlayer.getGameBoard().placeShip(ship, row, col, options);
+        currentPlayer.getPlayerBoard().placeShip(ship, row, col, options);
         break;
       default:
         break;

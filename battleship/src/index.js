@@ -5,8 +5,18 @@ import { Player } from './factories/Player';
 const firstPlayer = Player('FSAD');
 const secondPlayer = Player('DASF');
 
+const game = GameStatus().initializeGame();
+
+GameLogic.createAction({
+  currentPlayer: firstPlayer,
+  targetPlayer: secondPlayer,
+  type: 'attack',
+  row: 2,
+  col: 3,
+});
+
 console.log(
-  GameStatus(firstPlayer, secondPlayer).getStatus(),
+  game.getBoardStatus(),
 );
 
 console.table(
