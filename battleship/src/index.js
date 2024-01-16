@@ -1,28 +1,13 @@
 import { GameLogic } from './controllers/GameLogic';
-import { Ship } from './factories/Ship';
+import { GameStatus } from './controllers/GameStatus';
+import { Player } from './factories/Player';
 
-GameLogic.createAction({
-  type: 'attack',
-  row: 1,
-  col: 2,
-});
+const firstPlayer = Player('FSAD');
+const secondPlayer = Player('DASF');
 
-GameLogic.createAction({
-  type: 'placement',
-  row: 1,
-  col: 6,
-  ship: Ship('Cruiser'),
-});
-
-GameLogic.createAction({
-  type: 'placement',
-  row: 8,
-  col: 0,
-  ship: Ship('BattleShip'),
-  options: {
-    isVertical: true,
-  },
-});
+console.log(
+  GameStatus(firstPlayer, secondPlayer).getStatus(),
+);
 
 console.table(
   GameLogic.getStatus(),

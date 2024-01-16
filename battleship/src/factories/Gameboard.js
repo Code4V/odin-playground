@@ -1,4 +1,4 @@
-export const Gameboard = (() => {
+export const Gameboard = () => {
   const BOARD_TILES = 10;
   const gameBoard = (() => {
     const matrix = [];
@@ -70,4 +70,4 @@ export const Gameboard = (() => {
     placeShip,
     receiveAttack,
   };
-})();
+};
