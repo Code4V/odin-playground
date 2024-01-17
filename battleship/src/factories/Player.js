@@ -1,5 +1,6 @@
 export const Player = (name) => {
   const playerName = name;
+  let isReady = false;
   let playerBoard = null;
   let playerTurn = false;
   let haveWon = false;
@@ -10,6 +11,11 @@ export const Player = (name) => {
   };
 
   const getName = () => playerName;
+
+  const getReady = () => isReady;
+  const setReady = () => {
+    isReady = !isReady;
+  };
 
   const getWinStatus = () => haveWon;
   const setWinStatus = () => {
@@ -29,5 +35,7 @@ export const Player = (name) => {
     setWinStatus,
     getPlayerBoard,
     setPlayerBoard,
+    getReady,
+    setReady,
   };
 };

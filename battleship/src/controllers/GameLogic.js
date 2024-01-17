@@ -23,7 +23,10 @@ export const GameLogic = (() => {
 
     switch (type) {
       case 'attack':
-        targetPlayer.getPlayerBoard().receiveAttack(row, col);
+        if (targetPlayer.getPlayerBoard().receiveAttack(row, col)) {
+          targetPlayer.getPlayerBoard().getGameBoard()[row][col].hit();
+          targetPlayer.getPlayerBoard().getGameBoard()[row][col] = 'HIT';
+        }
         break;
       case 'placement':
         currentPlayer.getPlayerBoard().placeShip(ship, row, col, options);

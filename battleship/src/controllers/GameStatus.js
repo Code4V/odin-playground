@@ -6,6 +6,17 @@ export const GameStatus = (playerA, playerB) => {
   const initializeGame = () => {
     playerA.setPlayerBoard(Gameboard());
     playerB.setPlayerBoard(Gameboard());
+
+    gameStatus = 'Boards initialized';
+  };
+
+  const startGame = () => {
+    if (!playerA.getReady() && !playerB.getReady()) {
+      return false;
+    }
+
+    gameStatus = 'Game started';
+    return true;
   };
 
   const getBoardStatus = () => ({
@@ -23,5 +34,6 @@ export const GameStatus = (playerA, playerB) => {
     setStatus,
     getBoardStatus,
     initializeGame,
+    startGame,
   };
 };

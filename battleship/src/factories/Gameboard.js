@@ -14,6 +14,13 @@ export const Gameboard = () => {
     return matrix;
   })();
 
+  /*
+    4 Patrol
+    3 Cruiser
+    2 Battleship
+    1 Carrier
+  */
+
   const markBoard = (row, col, options = { markWith: 'X' }) => {
     const { markWith } = options;
     gameBoard[row][col] = markWith;
@@ -24,7 +31,7 @@ export const Gameboard = () => {
 
     if (typeof gameBoard[row][col] === 'object') {
       // gameBoard[row][col].hit();
-      markBoard(row, col, { markWith: 'HIT!' });
+      // markBoard(row, col, { markWith: 'HIT!' });
       return true;
     }
 
