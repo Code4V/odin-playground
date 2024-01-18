@@ -37,6 +37,12 @@ export const Gameboard = () => {
     return null;
   };
 
+  const checkTilesForShips = (row, col) => {
+    if (typeof gameBoard[row][col] === 'object') return true;
+
+    return false;
+  };
+
   const placeShip = (Ship, row, col, options = { isVertical: false }) => {
     let columnPlacement = col;
     let rowPlacement = row;
@@ -53,17 +59,24 @@ export const Gameboard = () => {
 
     if (!options.isVertical) {
       for (let i = 0; i < Ship.getLength(); i += 1) {
+        if (checkTilesForShips(rowPlacement, columnPlacement + i)) return false;
+      }
+
+      for (let i = 0; i < Ship.getLength(); i += 1) {
         markBoard(rowPlacement, columnPlacement + i, { markWith: Ship });
       }
 
-      return null;
+      return true;
+    }
+    for (let i = 0; i < Ship.getLength(); i += 1) {
+      if (checkTilesForShips(rowPlacement + i, columnPlacement)) return false;
     }
 
     for (let i = 0; i < Ship.getLength(); i += 1) {
       markBoard(rowPlacement + i, columnPlacement, { markWith: Ship });
     }
 
-    return null;
+    return true;
   };
 
   const getGameBoard = () => gameBoard;

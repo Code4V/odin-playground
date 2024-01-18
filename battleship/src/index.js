@@ -2,6 +2,7 @@ import { GameLogic } from './controllers/GameLogic';
 import { GameStatus } from './controllers/GameStatus';
 import { Player } from './factories/Player';
 import { Ship } from './factories/Ship';
+import { DefaultPositions } from './functions/defaultShipPositions';
 
 const firstPlayer = Player('FSAD');
 const secondPlayer = Player('DASF');
@@ -31,6 +32,10 @@ GameLogic.createAction({
 
 console.log(
   game.getBoardStatus(),
+);
+
+console.table(
+  DefaultPositions().getBaseBoard().getGameBoard(),
 );
 
 console.table(

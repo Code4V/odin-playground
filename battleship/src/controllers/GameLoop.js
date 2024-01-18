@@ -1,6 +1,3 @@
-export const GameLoop = () => {
-  
-  return {
+export const GameLoop = () => ({
 
-  }
-};
+});

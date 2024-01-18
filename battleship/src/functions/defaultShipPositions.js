@@ -11,16 +11,28 @@ export const DefaultPositions = () => {
 
   const BaseBoard = Gameboard();
 
-  const DefaultGameBoard = () => {
-    shipsToBePlaced.forEach((ships) => {
-      const randomRow = Math.round(Math.random() * 9);
-      const randomCol = Math.round(Math.random() * 9);
+  const DefaultGameBoard = (() => {
+    shipsToBePlaced.forEach((ship) => {
+      let isPlaced = false;
+      while (!isPlaced) {
+        const randomRow = Math.round(Math.random() * 9);
+        const randomCol = Math.round(Math.random() * 9);
+        const randomDirection = Math.round(Math.random() * 1) > 0;
 
-      BaseBoard.placeShip(ships, randomRow, randomCol);
+        if (BaseBoard.placeShip(
+          ship,
+          randomRow,
+          randomCol,
+          { isVertical: randomDirection },
+        )) isPlaced = true;
+      }
     });
-  };
+  })();
+
+  const getBaseBoard = () => BaseBoard;
 
   return {
     DefaultGameBoard,
+    getBaseBoard,
   };
 };
