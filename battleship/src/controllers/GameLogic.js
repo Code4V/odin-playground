@@ -2,6 +2,9 @@
 // import { Player } from '../factories/Player';
 
 export const GameLogic = (() => {
+  // const placementRules = (row, col) => {
+
+  // };
   const createAction = (action = {
     currentPlayer: null,
     targetPlayer: null,

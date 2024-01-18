@@ -14,16 +14,13 @@ export const Gameboard = () => {
     return matrix;
   })();
 
-  /*
-    4 Patrol
-    3 Cruiser
-    2 Battleship
-    1 Carrier
-  */
-
   const markBoard = (row, col, options = { markWith: 'X' }) => {
     const { markWith } = options;
+
+    if (gameBoard[row][col] !== 0) return false;
+
     gameBoard[row][col] = markWith;
+    return true;
   };
 
   const receiveAttack = (row, col) => {
