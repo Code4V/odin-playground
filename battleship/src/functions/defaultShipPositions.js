@@ -4,6 +4,7 @@ import { Ship } from '../factories/Ship';
 export const DefaultPositions = () => {
   const shipsToBePlaced = [
     Ship('Patrol'),
+    Ship('Patrol'),
     Ship('Cruiser'),
     Ship('BattleShip'),
     Ship('Carrier'),

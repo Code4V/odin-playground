@@ -38,6 +38,22 @@ export const Gameboard = () => {
   };
 
   const checkTilesForShips = (row, col) => {
+    if (gameBoard[row - 1] === undefined
+    || gameBoard[row + 1] === undefined) return false;
+
+    if (gameBoard[row][col + 1] === undefined
+    || gameBoard[row][col - 1] === undefined) return false;
+
+    if (typeof gameBoard[row - 1][col - 1] === 'object'
+    || typeof gameBoard[row][col - 1] === 'object'
+    || typeof gameBoard[row + 1][col - 1] === 'object'
+    || typeof gameBoard[row - 1][col + 1] === 'object'
+    || typeof gameBoard[row][col + 1] === 'object'
+    || typeof gameBoard[row + 1][col + 1] === 'object'
+    || typeof gameBoard[row - 1][col] === 'object'
+    || typeof gameBoard[row + 1][col] === 'object'
+    ) return true;
+
     if (typeof gameBoard[row][col] === 'object') return true;
 
     return false;
@@ -59,7 +75,10 @@ export const Gameboard = () => {
 
     if (!options.isVertical) {
       for (let i = 0; i < Ship.getLength(); i += 1) {
-        if (checkTilesForShips(rowPlacement, columnPlacement + i)) return false;
+        if (checkTilesForShips(
+          rowPlacement,
+          columnPlacement + i,
+        )) return false;
       }
 
       for (let i = 0; i < Ship.getLength(); i += 1) {
@@ -68,8 +87,12 @@ export const Gameboard = () => {
 
       return true;
     }
+
     for (let i = 0; i < Ship.getLength(); i += 1) {
-      if (checkTilesForShips(rowPlacement + i, columnPlacement)) return false;
+      if (checkTilesForShips(
+        rowPlacement + i,
+        columnPlacement,
+      )) return false;
     }
 
     for (let i = 0; i < Ship.getLength(); i += 1) {
