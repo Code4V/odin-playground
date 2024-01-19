@@ -1,11 +1,11 @@
-import { Gameboard } from '../factories/Gameboard';
+import { DefaultPositions } from '../functions/defaultShipPositions';
 
 export const GameStatus = (playerA, playerB) => {
   let gameStatus = 'Waiting to start!';
 
   const initializeGame = () => {
-    playerA.setPlayerBoard(Gameboard());
-    playerB.setPlayerBoard(Gameboard());
+    playerA.setPlayerBoard(DefaultPositions().getBaseBoard());
+    playerB.setPlayerBoard(DefaultPositions().getBaseBoard());
 
     gameStatus = 'Boards initialized';
   };

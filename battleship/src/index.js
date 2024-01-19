@@ -2,7 +2,6 @@ import { GameLogic } from './controllers/GameLogic';
 import { GameStatus } from './controllers/GameStatus';
 import { Player } from './factories/Player';
 import { Ship } from './factories/Ship';
-import { DefaultPositions } from './functions/defaultShipPositions';
 
 const firstPlayer = Player('FSAD');
 const secondPlayer = Player('DASF');
@@ -30,14 +29,14 @@ GameLogic.createAction({
   col: 2,
 });
 
-console.log(
-  game.getBoardStatus(),
-);
+Object.entries(game.getBoardStatus()).forEach((entry) => {
+  entry.forEach((table) => console.table(table));
+});
 
-console.table(
-  DefaultPositions().getBaseBoard().getGameBoard(),
-);
+// console.table(
+//   DefaultPositions().getBaseBoard().getGameBoard(),
+// );
 
-console.table(
-  GameLogic.getStatus(),
-);
+// console.table(
+//   GameLogic.getStatus(),
+// );
