@@ -34,6 +34,7 @@ export const GameLogic = (() => {
           targetPlayer.getPlayerBoard().getGameBoard()[row][col].hit();
           targetPlayer.getPlayerBoard().getGameBoard()[row][col] = 'HIT';
         }
+        currentPlayer.setPlayerTurn();
         break;
       case 'placement':
         currentPlayer.getPlayerBoard().placeShip(ship, row, col, options);

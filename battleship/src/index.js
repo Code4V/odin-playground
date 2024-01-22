@@ -39,9 +39,10 @@ GameLogic.createAction({
   col: 2,
 });
 
-Object.entries(GameStatus.getBoardStatus(firstPlayer, secondPlayer)).forEach((entry) => {
-  entry.forEach((table) => console.table(table));
-});
+Object.entries(GameStatus.getBoardStatus(firstPlayer, secondPlayer))
+  .forEach((entry) => {
+    entry.forEach((table) => console.table(table));
+  });
 
 // console.table(
 //   DefaultPositions().getBaseBoard().getGameBoard(),
