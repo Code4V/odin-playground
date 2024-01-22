@@ -1,5 +1,6 @@
 /* eslint-disable import/prefer-default-export */
-// import { Player } from '../factories/Player';
+
+import { GameStatus } from './GameStatus';
 
 export const GameLogic = (() => {
   // const placementRules = (row, col) => {
@@ -23,6 +24,9 @@ export const GameLogic = (() => {
       ship,
       options,
     } = action;
+
+    if (GameStatus.getStatus() !== 'Game started') throw new Error('Game not started yet!!');
+    if (!currentPlayer.getPlayerTurn()) return false;
 
     switch (type) {
       case 'attack':

@@ -11,16 +11,25 @@ const game = GameLoop(firstPlayer, secondPlayer);
 
 game.initializeGame();
 
-GameLogic.createAction({
-  currentPlayer: secondPlayer,
-  type: 'placement',
-  row: 2,
-  col: 2,
-  ship: Ship('Carrier'),
-  options: {
-    isVertical: true,
-  },
-});
+try {
+  GameLogic.createAction({
+    currentPlayer: secondPlayer,
+    type: 'placement',
+    row: 2,
+    col: 2,
+    ship: Ship('Carrier'),
+    options: {
+      isVertical: true,
+    },
+  });
+} catch (e) {
+  console.log(e.message);
+}
+
+console.log(
+  firstPlayer.getPlayerTurn(),
+  secondPlayer.getPlayerTurn(),
+);
 
 GameLogic.createAction({
   currentPlayer: firstPlayer,
