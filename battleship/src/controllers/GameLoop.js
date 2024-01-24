@@ -13,6 +13,7 @@ export const GameLoop = (playerA, playerB) => {
     if (!playerA.getReady() && !playerB.getReady()) {
       return false;
     }
+    playerA.setPlayerTurn();
 
     GameStatus.setStatus('Game started!');
     return true;

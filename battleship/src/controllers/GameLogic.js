@@ -25,8 +25,8 @@ export const GameLogic = (() => {
       options,
     } = action;
 
-    if (GameStatus.getStatus() !== 'Game started') throw new Error('Game not started yet!!');
-    if (!currentPlayer.getPlayerTurn()) return false;
+    if (GameStatus.getStatus() !== 'Game started!') throw new Error('Game not started yet!!');
+    if (!currentPlayer.getPlayerTurn()) throw new Error(`It's not ${currentPlayer.getName()}'s turn!`);
 
     switch (type) {
       case 'attack':
@@ -35,6 +35,7 @@ export const GameLogic = (() => {
           targetPlayer.getPlayerBoard().getGameBoard()[row][col] = 'HIT';
         }
         currentPlayer.setPlayerTurn();
+        targetPlayer.setPlayerTurn();
         break;
       case 'placement':
         currentPlayer.getPlayerBoard().placeShip(ship, row, col, options);
