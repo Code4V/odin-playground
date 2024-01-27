@@ -21,9 +21,11 @@ describe('Testing the Ship factory', () => {
     expect(shipInstance.getType()).toMatch(/PATROL/);
   });
 
-  it.todo('Destroyer must have 4 Lives');
-  it.todo('Cruiser must have 3 Lives');
-  it.todo('Patrol must have 1 Lives');
+  it('Battleship must have 4 Lives', () => {
+    const battleShip = Ship('BattleShip');
+
+    expect(battleShip.getHealth()).toBe(4);
+  });
 
   it('0 health means isSunk is True', () => {
     const patrolShip = Ship();
