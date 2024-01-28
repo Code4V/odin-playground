@@ -24,13 +24,12 @@ export const Gameboard = () => {
   };
 
   const receiveAttack = (row, col) => {
-    if (gameBoard[row][col] === 1) return false;
-
     if (typeof gameBoard[row][col] === 'object') {
       // gameBoard[row][col].hit();
       // markBoard(row, col, { markWith: 'HIT!' });
       return true;
     }
+    if (gameBoard[row][col] !== 0) return false;
 
     markBoard(row, col);
 
