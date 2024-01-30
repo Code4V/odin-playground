@@ -19,8 +19,29 @@ export const GameLoop = (playerA, playerB) => {
     return true;
   };
 
+  const playerAttack = (row, col, options = {
+    currentPlayer: null,
+    targetPlayer: null,
+  }) => {
+    const { currentPlayer, targetPlayer } = options;
+
+    if (GameStatus.getStatus() !== 'Game started!') throw new Error('Game not started yet!!');
+    if (!currentPlayer.getPlayerTurn()) throw new Error(`It's not ${currentPlayer.getName()}'s turn!`);
+
+    if (targetPlayer.getPlayerBoard().receiveAttack(row, col)) {
+      targetPlayer.getPlayerBoard().getGameBoard()[row][col].hit();
+      targetPlayer.getPlayerBoard().getGameBoard()[row][col] = 'HIT';
+    }
+    currentPlayer.setPlayerTurn();
+    targetPlayer.setPlayerTurn();
+
+    return null;
+  };
+
   return {
     initializeGame,
     startGame,
+    playerAttack,
+
   };
 };
