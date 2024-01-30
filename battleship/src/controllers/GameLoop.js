@@ -42,6 +42,5 @@ export const GameLoop = (playerA, playerB) => {
     initializeGame,
     startGame,
     playerAttack,
-
   };
 };

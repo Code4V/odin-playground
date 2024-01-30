@@ -45,11 +45,16 @@ try {
     col: 2,
   });
 
+  game.playerAttack(1, 1, {
+    currentPlayer: secondPlayer,
+    targetPlayer: firstPlayer,
+  });
+
   GameLogic.createAction({
     currentPlayer: firstPlayer,
     targetPlayer: secondPlayer,
     type: 'attack',
-    row: 3,
+    row: 1,
     col: 2,
   });
 
