@@ -11,6 +11,8 @@ const game = GameLoop(firstPlayer, secondPlayer);
 
 game.initializeGame();
 
+firstPlayer.getPlayerBoard().removeShip(3, 9);
+
 firstPlayer.setReady();
 secondPlayer.setReady();
 

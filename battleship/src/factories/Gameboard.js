@@ -101,6 +101,21 @@ export const Gameboard = () => {
     return true;
   };
 
+  const removeShip = (row, col, options = { isVertical: false }) => {
+    if (typeof gameBoard[row][col] !== 'object') throw new Error('Not a ship!');
+
+    const shipLength = gameBoard[row][col].getLength();
+
+    let i = col;
+    let shipBase;
+
+    while (typeof gameBoard[row][i] === 'object') {
+      if (gameBoard[row][i]) shipBase = i;
+
+      i -= 1;
+    }
+  };
+
   const getGameBoard = () => gameBoard;
 
   return {
@@ -108,5 +123,6 @@ export const Gameboard = () => {
     getGameBoard,
     placeShip,
     receiveAttack,
+    removeShip,
   };
 };
