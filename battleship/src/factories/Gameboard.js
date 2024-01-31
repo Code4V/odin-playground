@@ -114,6 +114,10 @@ export const Gameboard = () => {
 
       i -= 1;
     }
+
+    for (let j = 0; j < shipLength; j += 1) {
+      gameBoard[row][shipBase + j] = 0;
+    }
   };
 
   const getGameBoard = () => gameBoard;
