@@ -11,7 +11,14 @@ const game = GameLoop(firstPlayer, secondPlayer);
 
 game.initializeGame();
 
-firstPlayer.getPlayerBoard().removeShip(3, 9);
+try {
+  // firstPlayer.getPlayerBoard().removeShip(4, 5, { isVertical: true });
+  console.log(
+    firstPlayer.getReady(),
+  );
+} catch (e) {
+  console.log(e.message);
+}
 
 firstPlayer.setReady();
 secondPlayer.setReady();
@@ -39,26 +46,18 @@ try {
     secondPlayer.getPlayerTurn(),
   );
 
-  GameLogic.createAction({
-    currentPlayer: firstPlayer,
-    targetPlayer: secondPlayer,
-    type: 'attack',
-    row: 3,
-    col: 2,
-  });
+  game.playerAttack(3, 5, { currentPlayer: firstPlayer, targetPlayer: secondPlayer });
 
-  game.playerAttack(1, 1, {
-    currentPlayer: secondPlayer,
-    targetPlayer: firstPlayer,
-  });
+  game.playerAttack(4, 5, { currentPlayer: firstPlayer, targetPlayer: secondPlayer });
 
-  GameLogic.createAction({
-    currentPlayer: firstPlayer,
-    targetPlayer: secondPlayer,
-    type: 'attack',
-    row: 1,
-    col: 2,
-  });
+  console.log(
+    secondPlayer.getPlayerBoard().getGameBoard()[5][5].getHealth(),
+  );
+
+  // game.playerAttack(1, 1, {
+  //   currentPlayer: secondPlayer,
+  //   targetPlayer: firstPlayer,
+  // });
 
   console.log(
     firstPlayer.getPlayerTurn(),

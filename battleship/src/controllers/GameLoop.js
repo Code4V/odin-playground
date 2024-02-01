@@ -31,6 +31,8 @@ export const GameLoop = (playerA, playerB) => {
     if (targetPlayer.getPlayerBoard().receiveAttack(row, col)) {
       targetPlayer.getPlayerBoard().getGameBoard()[row][col].hit();
       targetPlayer.getPlayerBoard().getGameBoard()[row][col] = 'HIT';
+
+      return null;
     }
     currentPlayer.setPlayerTurn();
     targetPlayer.setPlayerTurn();

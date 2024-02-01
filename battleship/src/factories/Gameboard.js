@@ -14,10 +14,10 @@ export const Gameboard = () => {
     return matrix;
   })();
 
-  const markBoard = (row, col, options = { markWith: 'X' }) => {
-    const { markWith } = options;
+  const markBoard = (row, col, options = { markWith: 'X', forceMark: false }) => {
+    const { markWith, forceMark } = options;
 
-    if (gameBoard[row][col] !== 0) return false;
+    if (gameBoard[row][col] !== 0 && !forceMark) return false;
 
     gameBoard[row][col] = markWith;
     return true;
@@ -105,18 +105,27 @@ export const Gameboard = () => {
     if (typeof gameBoard[row][col] !== 'object') throw new Error('Not a ship!');
 
     const shipLength = gameBoard[row][col].getLength();
+    const { isVertical } = options;
 
-    let i = col;
+    let i = isVertical ? row : col;
     let shipBase;
 
-    while (typeof gameBoard[row][i] === 'object') {
-      if (gameBoard[row][i]) shipBase = i;
-
-      i -= 1;
-    }
-
-    for (let j = 0; j < shipLength; j += 1) {
-      gameBoard[row][shipBase + j] = 0;
+    if (!isVertical) {
+      while (typeof gameBoard[row][i] === 'object') {
+        if (gameBoard[row][i]) shipBase = i;
+        i -= 1;
+      }
+      for (let j = 0; j < shipLength; j += 1) {
+        markBoard(row, shipBase + j, { markWith: 0, forceMark: true });
+      }
+    } else {
+      while (typeof gameBoard[i][col] === 'object') {
+        if (gameBoard[i][col]) shipBase = i;
+        i -= 1;
+      }
+      for (let j = 0; j < shipLength; j += 1) {
+        markBoard(shipBase + j, col, { markWith: 0, forceMark: true });
+      }
     }
   };
 

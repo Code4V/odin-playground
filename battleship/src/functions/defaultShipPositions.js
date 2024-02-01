@@ -20,7 +20,7 @@ export const DefaultPositions = () => {
         const randomCol = Math.round(Math.random() * 9);
         const randomDirection = Math.round(Math.random() * 1) > 0;
 
-        BaseBoard.placeShip(Ship('Carrier'), 3, 5);
+        BaseBoard.placeShip(Ship('Cruiser'), 3, 5, { isVertical: true });
 
         if (BaseBoard.placeShip(
           ship,
