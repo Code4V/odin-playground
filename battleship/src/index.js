@@ -26,21 +26,10 @@ secondPlayer.setReady();
 game.startGame();
 
 console.log(
-  GameStatus.getStatus(),
+  firstPlayer.getPlayerBoard().getPlayerShips(),
 );
 
 try {
-  // GameLogic.createAction({
-  //   currentPlayer: secondPlayer,
-  //   type: 'placement',
-  //   row: 2,
-  //   col: 2,
-  //   ship: Ship('Carrier'),
-  //   options: {
-  //     isVertical: true,
-  //   },
-  // });
-
   console.log(
     firstPlayer.getPlayerTurn(),
     secondPlayer.getPlayerTurn(),

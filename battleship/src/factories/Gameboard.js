@@ -14,6 +14,8 @@ export const Gameboard = () => {
     return matrix;
   })();
 
+  const playerShips = new Map();
+
   const markBoard = (row, col, options = { markWith: 'X', forceMark: false }) => {
     const { markWith, forceMark } = options;
 
@@ -131,11 +133,18 @@ export const Gameboard = () => {
 
   const getGameBoard = () => gameBoard;
 
+  const getPlayerShips = () => playerShips;
+  const setPlayerShips = (Ships, row, col) => {
+    playerShips.set(Ships.getType(), { Ships, row, col });
+  };
+
   return {
     gameBoard,
     getGameBoard,
     placeShip,
     receiveAttack,
     removeShip,
+    getPlayerShips,
+    setPlayerShips,
   };
 };

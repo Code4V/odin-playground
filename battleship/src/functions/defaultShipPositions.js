@@ -4,7 +4,6 @@ import { Ship } from '../factories/Ship';
 export const DefaultPositions = () => {
   const shipsToBePlaced = [
     Ship('Patrol'),
-    Ship('Patrol'),
     Ship('Cruiser'),
     Ship('BattleShip'),
     Ship('Carrier'),
@@ -19,6 +18,8 @@ export const DefaultPositions = () => {
         const randomRow = Math.round(Math.random() * 9);
         const randomCol = Math.round(Math.random() * 9);
         const randomDirection = Math.round(Math.random() * 1) > 0;
+
+        BaseBoard.setPlayerShips(ship, randomRow, randomCol);
 
         BaseBoard.placeShip(Ship('Cruiser'), 3, 5, { isVertical: true });
 
