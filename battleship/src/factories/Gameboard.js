@@ -135,7 +135,11 @@ export const Gameboard = () => {
 
   const getPlayerShips = () => playerShips;
   const setPlayerShips = (Ships, row, col) => {
-    playerShips.set(Ships.getType(), { Ships, row, col });
+    playerShips.set(Ships.getType(), {
+      Ships,
+      row,
+      col,
+    });
   };
 
   return {

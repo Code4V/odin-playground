@@ -30,6 +30,12 @@ export const GameLoop = (playerA, playerB) => {
 
     if (targetPlayer.getPlayerBoard().receiveAttack(row, col)) {
       targetPlayer.getPlayerBoard().getGameBoard()[row][col].hit();
+
+      console.log(
+        targetPlayer.getPlayerBoard().getGameBoard()[row][col].getHealth(),
+        targetPlayer.getPlayerBoard().getPlayerShips(),
+      );
+
       targetPlayer.getPlayerBoard().getGameBoard()[row][col] = 'HIT';
 
       return null;

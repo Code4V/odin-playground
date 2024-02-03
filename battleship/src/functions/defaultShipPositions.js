@@ -21,7 +21,7 @@ export const DefaultPositions = () => {
 
         BaseBoard.setPlayerShips(ship, randomRow, randomCol);
 
-        BaseBoard.placeShip(Ship('Cruiser'), 3, 5, { isVertical: true });
+        // BaseBoard.placeShip(Ship('Cruiser'), 3, 5, { isVertical: true });
 
         if (BaseBoard.placeShip(
           ship,
