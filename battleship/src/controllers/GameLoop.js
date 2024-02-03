@@ -4,7 +4,7 @@ import { GameStatus } from './GameStatus';
 export const GameLoop = (playerA, playerB) => {
   const initializeGame = () => {
     playerA.setPlayerBoard(DefaultPositions().getBaseBoard());
-    playerB.setPlayerBoard(DefaultPositions().getBaseBoard());
+    playerB.setPlayerBoard(DefaultPositions().singleTestShip());
 
     GameStatus.setStatus('Boards initialized');
   };
@@ -30,13 +30,15 @@ export const GameLoop = (playerA, playerB) => {
 
     if (targetPlayer.getPlayerBoard().receiveAttack(row, col)) {
       targetPlayer.getPlayerBoard().getGameBoard()[row][col].hit();
+      targetPlayer.getPlayerBoard().getGameBoard()[row][col] = 'HIT';
 
-      console.log(
-        targetPlayer.getPlayerBoard().getGameBoard()[row][col].getHealth(),
+      const mapCopy = Array.from(
         targetPlayer.getPlayerBoard().getPlayerShips(),
       );
 
-      targetPlayer.getPlayerBoard().getGameBoard()[row][col] = 'HIT';
+      console.log(
+        mapCopy.some((ship) => ship[1].Ships.getHealth() !== 0),
+      );
 
       return null;
     }

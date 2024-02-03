@@ -131,6 +131,14 @@ export const Gameboard = () => {
     }
   };
 
+  const resetBoard = () => {
+    for (let i = 0; i < BOARD_TILES; i += 1) {
+      for (let j = 0; j < BOARD_TILES; j += 1) {
+        markBoard(i, j, { markWith: 0, forceMark: true });
+      }
+    }
+  };
+
   const getGameBoard = () => gameBoard;
 
   const getPlayerShips = () => playerShips;
@@ -150,5 +158,6 @@ export const Gameboard = () => {
     removeShip,
     getPlayerShips,
     setPlayerShips,
+    resetBoard,
   };
 };

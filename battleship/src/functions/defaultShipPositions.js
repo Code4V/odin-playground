@@ -11,7 +11,7 @@ export const DefaultPositions = () => {
 
   const BaseBoard = Gameboard();
 
-  const DefaultGameBoard = (() => {
+  const defaultGameBoard = (() => {
     shipsToBePlaced.forEach((ship) => {
       let isPlaced = false;
       while (!isPlaced) {
@@ -33,10 +33,21 @@ export const DefaultPositions = () => {
     });
   })();
 
+  const singleTestShip = () => {
+    const testShip = shipsToBePlaced[1];
+
+    BaseBoard.resetBoard();
+
+    BaseBoard.placeShip(testShip, 2, 5);
+
+    return BaseBoard;
+  };
+
   const getBaseBoard = () => BaseBoard;
 
   return {
-    DefaultGameBoard,
+    defaultGameBoard,
     getBaseBoard,
+    singleTestShip,
   };
 };

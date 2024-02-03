@@ -6,6 +6,10 @@ export const GameStatus = (() => {
     [playerB.getName()]: playerB.getPlayerBoard().getGameBoard(),
   });
 
+  const getTurnStatus = (playerA, playerB) => (
+    playerA.getPlayerTurn() ? `It's ${playerA.getName()}'s turn` : `It's ${playerB.getName()}'s turn`
+  );
+
   const getStatus = () => gameStatus;
   const setStatus = (newStatus) => {
     gameStatus = newStatus;
@@ -15,5 +19,6 @@ export const GameStatus = (() => {
     getStatus,
     setStatus,
     getBoardStatus,
+    getTurnStatus,
   };
 })();
