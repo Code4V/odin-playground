@@ -137,6 +137,8 @@ export const Gameboard = () => {
         markBoard(i, j, { markWith: 0, forceMark: true });
       }
     }
+
+    playerShips.clear();
   };
 
   const getGameBoard = () => gameBoard;

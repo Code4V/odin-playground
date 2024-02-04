@@ -1,7 +1,10 @@
 import { DefaultPositions } from '../functions/defaultShipPositions';
 import { GameStatus } from './GameStatus';
 
-export const GameLoop = (playerA, playerB) => {
+export const GameLoop = (firstPlayer, secondPlayer) => {
+  const playerA = firstPlayer;
+  const playerB = secondPlayer;
+
   const initializeGame = () => {
     playerA.setPlayerBoard(DefaultPositions().getBaseBoard());
     playerB.setPlayerBoard(DefaultPositions().singleTestShip());
@@ -17,6 +20,27 @@ export const GameLoop = (playerA, playerB) => {
 
     GameStatus.setStatus('Game started!');
     return true;
+  };
+
+  const checkWin = () => {
+    const playerAShipsArray = Array
+      .from(
+        playerA
+          .getPlayerBoard()
+          .getPlayerShips(),
+      );
+
+    const playerBShipsArray = Array
+      .from(
+        playerB
+          .getPlayerBoard()
+          .getPlayerShips(),
+      );
+
+    console.log(
+      playerAShipsArray,
+      playerBShipsArray,
+    );
   };
 
   const playerAttack = (row, col, options = {
@@ -35,6 +59,8 @@ export const GameLoop = (playerA, playerB) => {
       const mapCopy = Array.from(
         targetPlayer.getPlayerBoard().getPlayerShips(),
       );
+
+      checkWin();
 
       console.log(
         mapCopy.some((ship) => ship[1].Ships.getHealth() !== 0),

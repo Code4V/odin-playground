@@ -13,10 +13,11 @@ export const DefaultPositions = () => {
 
   const defaultGameBoard = (() => {
     shipsToBePlaced.forEach((ship) => {
+      const BOARD_LIMIT = 9;
       let isPlaced = false;
       while (!isPlaced) {
-        const randomRow = Math.round(Math.random() * 9);
-        const randomCol = Math.round(Math.random() * 9);
+        const randomRow = Math.round(Math.random() * BOARD_LIMIT);
+        const randomCol = Math.round(Math.random() * BOARD_LIMIT);
         const randomDirection = Math.round(Math.random() * 1) > 0;
 
         BaseBoard.setPlayerShips(ship, randomRow, randomCol);
@@ -34,11 +35,14 @@ export const DefaultPositions = () => {
   })();
 
   const singleTestShip = () => {
+    const TEST_ROW = 2;
+    const TEST_COL = 5;
     const testShip = shipsToBePlaced[1];
 
     BaseBoard.resetBoard();
 
-    BaseBoard.placeShip(testShip, 2, 5);
+    BaseBoard.setPlayerShips(testShip, TEST_ROW, TEST_COL);
+    BaseBoard.placeShip(testShip, TEST_ROW, TEST_COL);
 
     return BaseBoard;
   };
