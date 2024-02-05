@@ -25,9 +25,11 @@ secondPlayer.setReady();
 game.startGame();
 
 try {
-  game.playerAttack(2, 5, { currentPlayer: firstPlayer, targetPlayer: secondPlayer });
-
-  game.playerAttack(4, 5, { currentPlayer: firstPlayer, targetPlayer: secondPlayer });
+  console.log(
+    game.playerAttack(2, 5, { currentPlayer: firstPlayer, targetPlayer: secondPlayer }),
+    game.playerAttack(2, 6, { currentPlayer: firstPlayer, targetPlayer: secondPlayer }),
+    game.playerAttack(2, 7, { currentPlayer: firstPlayer, targetPlayer: secondPlayer }),
+  );
 } catch (e) {
   console.log(e.message);
 }

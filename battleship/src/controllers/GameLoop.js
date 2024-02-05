@@ -37,10 +37,15 @@ export const GameLoop = (firstPlayer, secondPlayer) => {
           .getPlayerShips(),
       );
 
-    console.log(
-      playerAShipsArray,
-      playerBShipsArray,
-    );
+    if (!playerBShipsArray.some((ships) => ships[1].Ships.getHealth() !== 0)) {
+      playerA.setWinStatus();
+    }
+
+    if (!playerAShipsArray.some((ships) => ships[1].Ships.getHealth() !== 0)) {
+      playerB.setWinStatus();
+    }
+
+    return null;
   };
 
   const playerAttack = (row, col, options = {
@@ -56,15 +61,9 @@ export const GameLoop = (firstPlayer, secondPlayer) => {
       targetPlayer.getPlayerBoard().getGameBoard()[row][col].hit();
       targetPlayer.getPlayerBoard().getGameBoard()[row][col] = 'HIT';
 
-      const mapCopy = Array.from(
-        targetPlayer.getPlayerBoard().getPlayerShips(),
-      );
-
       checkWin();
-
-      console.log(
-        mapCopy.some((ship) => ship[1].Ships.getHealth() !== 0),
-      );
+      if (playerA.getWinStatus()) return `${playerA.getName()} won!`;
+      if (playerB.getWinStatus()) return `${playerB.getName()} won!`;
 
       return null;
     }
