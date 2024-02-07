@@ -1,4 +1,4 @@
-export const GameStatus = (() => {
+const GameStatus = (() => {
   let gameStatus = 'Waiting to start!';
 
   const getBoardStatus = (playerA, playerB) => ({
@@ -22,3 +22,5 @@ export const GameStatus = (() => {
     getTurnStatus,
   };
 })();
+
+export { GameStatus };

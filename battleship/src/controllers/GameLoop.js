@@ -39,10 +39,12 @@ export const GameLoop = (firstPlayer, secondPlayer) => {
 
     if (!playerBShipsArray.some((ships) => ships[1].Ships.getHealth() !== 0)) {
       playerA.setWinStatus();
+      GameStatus.setStatus(`${playerA.getName()} Won!`);
     }
 
     if (!playerAShipsArray.some((ships) => ships[1].Ships.getHealth() !== 0)) {
       playerB.setWinStatus();
+      GameStatus.setStatus(`${playerB.getName()} Won!`);
     }
 
     return null;
