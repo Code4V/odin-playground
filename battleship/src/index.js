@@ -1,8 +1,10 @@
-import { GameLogic } from './controllers/GameLogic';
+import './sass/index.sass';
 import { GameLoop } from './controllers/GameLoop';
-import { GameStatus } from './controllers/GameStatus';
+import { Gameboard as playerBoard } from './components/Gameboard';
 import { Player } from './factories/Player';
 // import { Ship } from './factories/Ship';
+
+const main = document.querySelector('#main');
 
 const firstPlayer = Player('FSAD');
 const secondPlayer = Player('DASF');
@@ -10,6 +12,9 @@ const secondPlayer = Player('DASF');
 const game = GameLoop(firstPlayer, secondPlayer);
 
 game.initializeGame();
+
+main.appendChild(playerBoard(firstPlayer.getPlayerBoard().getGameBoard()));
+main.appendChild(playerBoard(secondPlayer.getPlayerBoard().getGameBoard()));
 
 try {
   console.log(
