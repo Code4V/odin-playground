@@ -18,6 +18,11 @@ export const Gameboard = (playerBoard) => {
       } else {
         newCol.textContent = `${col}`;
       }
+
+      newCol.addEventListener('click', () => {
+        document.querySelector('#main').insertAdjacentHTML('afterend', `${index} ${i} clicked! \n</br>`);
+      });
+
       newRow.appendChild(newCol);
     });
 
