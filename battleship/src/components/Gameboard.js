@@ -2,7 +2,8 @@ export const Gameboard = (playerBoard) => {
   const GameBoard = document.createElement('section');
   GameBoard.classList.add('playerboard');
 
-  playerBoard.forEach((row, index) => {
+  const gameBoard = playerBoard.getGameBoard();
+  gameBoard.forEach((row, index) => {
     const newRow = document.createElement('div');
     newRow.classList.add('playerboard__row');
     newRow.dataset.id = index;
@@ -21,6 +22,12 @@ export const Gameboard = (playerBoard) => {
 
       newCol.addEventListener('click', () => {
         document.querySelector('#main').insertAdjacentHTML('afterend', `${index} ${i} clicked! \n</br>`);
+
+        playerBoard.receiveAttack(index, i);
+
+        console.table(gameBoard);
+
+        newCol.innerText = 'X';
       });
 
       newRow.appendChild(newCol);

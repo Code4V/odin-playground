@@ -13,8 +13,8 @@ const game = GameLoop(firstPlayer, secondPlayer);
 
 game.initializeGame();
 
-main.appendChild(playerBoard(firstPlayer.getPlayerBoard().getGameBoard()));
-main.appendChild(playerBoard(secondPlayer.getPlayerBoard().getGameBoard()));
+main.appendChild(playerBoard(firstPlayer.getPlayerBoard()));
+main.appendChild(playerBoard(secondPlayer.getPlayerBoard()));
 
 try {
   console.log(
