@@ -1,6 +1,5 @@
 import './sass/index.sass';
 import { GameLoop } from './controllers/GameLoop';
-import { Gameboard as playerBoard } from './components/Gameboard';
 import { Player } from './factories/Player';
 // import { Ship } from './factories/Ship';
 
@@ -11,10 +10,7 @@ const secondPlayer = Player('DASF');
 
 const game = GameLoop(firstPlayer, secondPlayer);
 
-game.initializeGame();
-
-main.appendChild(playerBoard(firstPlayer.getPlayerBoard()));
-main.appendChild(playerBoard(secondPlayer.getPlayerBoard()));
+game.initializeGame(main);
 
 try {
   console.log(

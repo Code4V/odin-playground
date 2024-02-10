@@ -1,3 +1,4 @@
+import { Gameboard } from '../components/Gameboard';
 import { DefaultPositions } from '../functions/defaultShipPositions';
 import { GameStatus } from './GameStatus';
 
@@ -5,9 +6,11 @@ export const GameLoop = (firstPlayer, secondPlayer) => {
   const playerA = firstPlayer;
   const playerB = secondPlayer;
 
-  const initializeGame = () => {
+  const initializeGame = (displayScreen) => {
     playerA.setPlayerBoard(DefaultPositions().getBaseBoard());
     playerB.setPlayerBoard(DefaultPositions().singleTestShip());
+
+    displayScreen.append(Gameboard(playerA), Gameboard(playerB));
 
     GameStatus.setStatus('Boards initialized');
   };

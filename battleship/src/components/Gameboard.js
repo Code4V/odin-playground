@@ -1,8 +1,8 @@
-export const Gameboard = (playerBoard) => {
+export const Gameboard = (player) => {
   const GameBoard = document.createElement('section');
   GameBoard.classList.add('playerboard');
 
-  const gameBoard = playerBoard.getGameBoard();
+  const gameBoard = player.getPlayerBoard().getGameBoard();
   gameBoard.forEach((row, index) => {
     const newRow = document.createElement('div');
     newRow.classList.add('playerboard__row');
@@ -22,8 +22,6 @@ export const Gameboard = (playerBoard) => {
 
       newCol.addEventListener('click', () => {
         document.querySelector('#main').insertAdjacentHTML('afterend', `${index} ${i} clicked! \n</br>`);
-
-        playerBoard.receiveAttack(index, i);
 
         console.table(gameBoard);
 
