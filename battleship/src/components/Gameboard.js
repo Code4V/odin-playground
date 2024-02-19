@@ -23,9 +23,8 @@ export const Gameboard = (player) => {
       newCol.addEventListener('click', () => {
         document.querySelector('#main').insertAdjacentHTML('afterend', `${index} ${i} clicked! \n</br>`);
 
-        console.table(gameBoard);
-
-        newCol.innerText = 'X';
+        if (typeof col === 'object') newCol.innerText = 'HIT!';
+        else newCol.innerText = 'X';
       });
 
       newRow.appendChild(newCol);
