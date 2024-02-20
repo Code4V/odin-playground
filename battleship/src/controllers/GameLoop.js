@@ -1,16 +1,16 @@
-import { Gameboard } from '../components/Gameboard';
+// import { Gameboard } from '../factories/Gameboard';
 import { DefaultPositions } from '../functions/defaultShipPositions';
 import { GameStatus } from './GameStatus';
 
-export const GameLoop = (firstPlayer, secondPlayer) => {
-  const playerA = firstPlayer;
-  const playerB = secondPlayer;
+export const GameLoop = (() => {
+  let playerA;
+  let playerB;
 
-  const initializeGame = (displayScreen) => {
+  const initializeGame = () => {
     playerA.setPlayerBoard(DefaultPositions().getBaseBoard());
     playerB.setPlayerBoard(DefaultPositions().singleTestShip());
 
-    displayScreen.append(Gameboard(playerA), Gameboard(playerB));
+    // displayScreen.append(Gameboard(playerA), Gameboard(playerB));
 
     GameStatus.setStatus('Boards initialized');
   };
@@ -78,9 +78,25 @@ export const GameLoop = (firstPlayer, secondPlayer) => {
     return null;
   };
 
+  const setPlayers = (firstPlayer, secondPlayer) => {
+    playerA = firstPlayer;
+    playerB = secondPlayer;
+  };
+
+  const getFirstPlayer = () => playerA;
+  const getSecondPlayer = () => playerB;
+  const getTargetPlayer = () => {
+    const turnBy = playerA.getPlayerTurn() ? playerA : playerB;
+    return turnBy;
+  };
+
   return {
     initializeGame,
     startGame,
     playerAttack,
+    setPlayers,
+    getFirstPlayer,
+    getSecondPlayer,
+    getTargetPlayer,
   };
-};
+})();

@@ -1,3 +1,5 @@
+import { GameLoop } from '../controllers/GameLoop';
+
 export const Gameboard = (player) => {
   const GameBoard = document.createElement('section');
   GameBoard.classList.add('playerboard');
@@ -22,6 +24,10 @@ export const Gameboard = (player) => {
 
       newCol.addEventListener('click', () => {
         document.querySelector('#main').insertAdjacentHTML('afterend', `${index} ${i} clicked! \n</br>`);
+
+        GameLoop.playerAttack(row, col, {
+          currentPlayer: player, targetPlayer: GameLoop.getTargetPlayer(),
+        });
 
         if (typeof col === 'object') newCol.innerText = 'HIT!';
         else newCol.innerText = 'X';

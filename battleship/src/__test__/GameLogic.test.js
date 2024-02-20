@@ -1,5 +1,5 @@
 /* eslint-env jest */
-import { GameLogic } from "../controllers/GameLogic";
+import { GameLogic } from '../controllers/GameLogic';
 
 describe('GameLogic testing', () => {
   it.todo('Player moves end when it does not hit a boat');
