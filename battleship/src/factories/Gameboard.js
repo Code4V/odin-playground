@@ -31,11 +31,11 @@ export const Gameboard = () => {
       // markBoard(row, col, { markWith: 'HIT!' });
       return true;
     }
-    if (gameBoard[row][col] !== 0) return false;
 
+    if (gameBoard[row][col] !== 0) return false;
     markBoard(row, col);
 
-    return null;
+    return false;
   };
 
   const checkTilesForShips = (row, col) => {

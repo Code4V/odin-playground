@@ -25,7 +25,7 @@ export const Gameboard = (player) => {
       newCol.addEventListener('click', () => {
         document.querySelector('#main').insertAdjacentHTML('afterend', `${index} ${i} clicked! \n</br>`);
 
-        GameLoop.playerAttack(row, col, {
+        GameLoop.playerAttack(index, i, {
           currentPlayer: player, targetPlayer: GameLoop.getTargetPlayer(),
         });
 

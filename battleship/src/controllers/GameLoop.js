@@ -72,9 +72,11 @@ export const GameLoop = (() => {
 
       return null;
     }
+
     currentPlayer.setPlayerTurn();
     targetPlayer.setPlayerTurn();
 
+    console.log(GameStatus.getTurnStatus(currentPlayer, targetPlayer));
     return null;
   };
 
@@ -86,7 +88,7 @@ export const GameLoop = (() => {
   const getFirstPlayer = () => playerA;
   const getSecondPlayer = () => playerB;
   const getTargetPlayer = () => {
-    const turnBy = playerA.getPlayerTurn() ? playerA : playerB;
+    const turnBy = !playerA.getPlayerTurn() ? playerA : playerB;
     return turnBy;
   };
 

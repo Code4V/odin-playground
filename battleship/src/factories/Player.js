@@ -7,6 +7,7 @@ export const Player = (name) => {
 
   const getPlayerTurn = () => playerTurn;
   const setPlayerTurn = () => {
+    console.log('Shifted the turn', playerName);
     playerTurn = !playerTurn;
   };
 
