@@ -34,6 +34,7 @@ buttons.value = 'Status';
 buttons.innerText = 'asdad';
 buttons.addEventListener('click', () => {
   console.log(GameStatus.getTurnStatus(firstPlayer, secondPlayer));
+  console.log(GameStatus.getStatus());
 });
 
 main.append(

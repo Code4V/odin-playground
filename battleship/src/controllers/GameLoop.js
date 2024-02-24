@@ -2,7 +2,7 @@
 import { DefaultPositions } from '../functions/defaultShipPositions';
 import { GameStatus } from './GameStatus';
 
-export const GameLoop = (() => {
+const GameLoop = (() => {
   let playerA;
   let playerB;
 
@@ -53,25 +53,37 @@ export const GameLoop = (() => {
     return null;
   };
 
+  const getTargetPlayer = () => {
+    const turnBy = !playerA.getPlayerTurn() ? playerA : playerB;
+    return turnBy;
+  };
+
   const playerAttack = (row, col, options = {
     currentPlayer: null,
     targetPlayer: null,
   }) => {
-    const { currentPlayer, targetPlayer } = options;
+    const currentPlayer = getTargetPlayer();
+    const targetPlayer = playerA.getPlayerTurn() ? playerA : playerB;
 
+    console.log(getTargetPlayer().getName(), '<= target player');
+
+    console.log(currentPlayer.getName());
     if (GameStatus.getStatus() !== 'Game started!') throw new Error('Game not started yet!!');
-    if (!currentPlayer.getPlayerTurn()) throw new Error(`It's not ${currentPlayer.getName()}'s turn!`);
+    if (!targetPlayer.getPlayerTurn()) throw new Error(`It's not ${currentPlayer.getName()}'s turn!`);
 
     if (targetPlayer.getPlayerBoard().receiveAttack(row, col)) {
       targetPlayer.getPlayerBoard().getGameBoard()[row][col].hit();
       targetPlayer.getPlayerBoard().getGameBoard()[row][col] = 'HIT';
 
+      console.log('Passed here!');
+
       checkWin();
-      if (playerA.getWinStatus()) return `${playerA.getName()} won!`;
-      if (playerB.getWinStatus()) return `${playerB.getName()} won!`;
+      if (playerA.getWinStatus()) GameStatus.setStatus(`${playerA.getName()} won!`);
+      if (playerB.getWinStatus()) GameStatus.setStatus(`${playerB.getName()} won!`);
 
       return null;
     }
+    console.table(currentPlayer.getPlayerBoard().getGameBoard());
 
     currentPlayer.setPlayerTurn();
     targetPlayer.setPlayerTurn();
@@ -87,10 +99,6 @@ export const GameLoop = (() => {
 
   const getFirstPlayer = () => playerA;
   const getSecondPlayer = () => playerB;
-  const getTargetPlayer = () => {
-    const turnBy = !playerA.getPlayerTurn() ? playerA : playerB;
-    return turnBy;
-  };
 
   return {
     initializeGame,
@@ -102,3 +110,7 @@ export const GameLoop = (() => {
     getTargetPlayer,
   };
 })();
+
+export {
+  GameLoop,
+};

@@ -26,7 +26,7 @@ export const Gameboard = (player) => {
         document.querySelector('#main').insertAdjacentHTML('afterend', `${index} ${i} clicked! \n</br>`);
 
         GameLoop.playerAttack(index, i, {
-          currentPlayer: player, targetPlayer: GameLoop.getTargetPlayer(),
+          currentPlayer: GameLoop.getTargetPlayer(), targetPlayer: player,
         });
 
         if (typeof col === 'object') newCol.innerText = 'HIT!';
