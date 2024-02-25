@@ -1,0 +1,30 @@
+.favfood {
+  display: flex;
+  flex-flow: column wrap;
+  background-color: beige;
+  padding: 16px;
+
+  border-radius: 16px;
+}
+
+.favfood__img {
+  margin-inline: auto;
+  height: 150px;
+  width: 150px;
+}
+
+.favfood__img > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.favfood__title {
+  color: hsl(0, 50%, 50%);
+  text-transform: capitalize;
+}
+
+.favfood__description {
+  color: hsl(0, 40%, 50%);
+  font-weight: 600;
+}
