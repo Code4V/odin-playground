@@ -1,10 +1,14 @@
 .favfood {
   display: flex;
+  gap: 2rem;
   flex-flow: column wrap;
+}
+
+.favfood li {
   background-color: beige;
   padding: 16px;
-
   border-radius: 16px;
+  list-style: none;
 }
 
 .favfood__img {
