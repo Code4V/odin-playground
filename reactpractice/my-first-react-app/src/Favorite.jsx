@@ -10,12 +10,21 @@ import { v4 as uuid4 } from 'uuid';
 // }
 
 function Fruit (props) {
+
+  const COLOR = ["yellow", "blue", "green"]
+
+  const [ backgroundState, setBackgroundState ] = useState({"background-color": COLOR[0]});
   return (
-    <li>
+    <li style={backgroundState}>
       <p className='favfood__id' data-id={props.id}>{props.id}</p>
       <div className="favfood__img"><img src={Strawberry} alt="" /></div>
       <h1 className="favfood__title">{props.name}</h1>
       <p className="favfood__description">{props.description}</p>
+      <button type='button' onClick={() => {
+        const random = Math.round(Math.random() * 2);
+
+        setBackgroundState({"background-color": COLOR[random]});
+      }}> Change the color </button>
     </li>
   )
 }
@@ -27,30 +36,21 @@ function Fruit (props) {
 function Favorite (props) {
 
   const [fruitState, setFruitState] = useState(props.fruits);
-  const [testState, setTestState] = useState([]);
-  // const [numState, setNumState] = useState(0);
 
   const addFruit = () => {
     fruitState.push({name: "tesd", description: "kerea", id: uuid4()})
-    console.log(fruitState)
-    setFruitState(fruitState);
-
-    testState.push("fee")
-    setTestState([...testState])
+    console.log([...fruitState])
+    setFruitState([...fruitState]);
 
     // setNumState(numState + 1)
   };
 
   return (
     <>
-      {testState.map((element) => {
-        return <p>{element}</p>
-
-      })}
       <ul className="favfood">
-        {/* {fruitState.map((fruit, key) => (
+        {fruitState.map((fruit, key) => (
           <Fruit name={fruit.name} description={fruit.description} key={key} id={fruit.id}/>
-        ))} */}
+        ))}
       </ul>
       <button type='button' onClick={addFruit}> Add a Fruit </button>
     </>
