@@ -39,7 +39,6 @@ function Favorite (props) {
 
   const addFruit = () => {
     fruitState.push({name: "tesd", description: "kerea", id: uuid4()})
-    console.log([...fruitState])
     setFruitState([...fruitState]);
 
     // setNumState(numState + 1)
