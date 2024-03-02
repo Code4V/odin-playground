@@ -3,7 +3,6 @@ import '../stylus/Profile.styl'
 
 
 export const Profile = (props) => {
-  
   return (
     <div className="profile">
       <div className="profile__pic">

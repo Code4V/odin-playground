@@ -1,11 +1,11 @@
-import { Profile } from './components/Profile'
+import { Header } from './components/Header'
 import './stylus/index.styl'
 
 
 function App() {
   return (
     <div>
-      <Profile name="Jeanne Francis Rivas" position="Programmer"/>
+      <Header />
     </div>
   )
 }
