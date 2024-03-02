@@ -3,6 +3,8 @@ import '../stylus/Profile.styl'
 
 
 export const Profile = (props) => {
+
+  console.log(Rivas)
   return (
     <div className="profile">
       <div className="profile__pic">
