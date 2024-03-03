@@ -1,11 +1,18 @@
 import { Header } from './components/Header'
 import { createGlobalStyle } from 'styled-components';
 import './stylus/index.styl'
+import DMSans from './assets/fonts/DMSans.ttf';
 
 const GlobalFont = createGlobalStyle`
-  body {
-    font-family: "DM Sans", sans-serif;
+  @font-face {
+    font-family: 'DM Sans';
+    src: url(${DMSans});
   }
+
+  body {
+    font-family: 'DM Sans';
+  };
+
 `
 
 
