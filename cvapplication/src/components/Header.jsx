@@ -1,9 +1,9 @@
-import { Profile } from "./Profile"
+import { ProfileInfoClass } from "./Profile"
 
 export const Header = () => {
   return (
     <header>
-      <Profile name="Jeanne Francis Rivas" position="Programmer"/>
+      <ProfileInfoClass name="Jeanne Francis Rivas" position="Coderist"/>
     </header>
   )
 }
