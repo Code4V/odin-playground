@@ -15,7 +15,6 @@ const NavigationContainer = styled.nav`
 
 const ProfileWrapper = styled.div`
   width: 100px;
-  gap: 2rem;
 `
 const ProfilePicture = styled.span`
   display: inline-block;
@@ -27,7 +26,7 @@ const ProfilePicture = styled.span`
   text-align: center;
   vertical-align: center;
   font-weight: 700;
-  font-size: 2.65rem;
+  font-size: 2rem;
   line-height: 6rem;
   font-family: 'DM Serif Display';
 `;
@@ -73,7 +72,7 @@ export class Navigation extends React.Component {
                         ? "active"
                         : isPending
                         ? "pending"
-                        : "SHESH" 
+                        : "" 
                     } to={linkItem.linkTo}> {linkItem.linkName} </NavLink>
                   </ProfileListItem>
                 );

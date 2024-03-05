@@ -2,7 +2,7 @@ import Rivas from './../assets/RivasTeach.jpg';
 import React from 'react';
 import { styled } from 'styled-components';
 
-const Profile = styled.div`
+const Profile = styled.section`
   display: flex;
   flex-flow: column wrap;
   gap: 32px;
@@ -11,7 +11,6 @@ const Profile = styled.div`
   padding-inline: 16px;
   color: darkColor;
 `;
-
 
 const ProfileInfo = styled.div`
 `;
@@ -29,7 +28,7 @@ const ProfileInfoPosition = styled.p`
   
 const ProfilePicContainer = styled.div`
   // max-width: inherit;
-  max-height: 375px;
+  max-height: 400px;
   overflow: hidden;
 `
 

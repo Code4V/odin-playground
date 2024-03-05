@@ -4,6 +4,7 @@ import DMSans from './assets/fonts/DMSans.ttf';
 import DMSerif from './assets/fonts/DMSerifDisplay.ttf';
 import { Navigation } from './components/Navigation';
 import { Outlet } from 'react-router-dom';
+import React from 'react';
 
 const GlobalFont = createGlobalStyle`
   @font-face {
@@ -51,14 +52,15 @@ const MainContainer = styled.main`
 `
 
 
-function App() {
-  return (
-    <MainContainer>
-      <GlobalFont />
-      <Navigation />
-      <Outlet />
-    </MainContainer>
-  )
+export default class App extends React.Component {
+  render(){
+    return (
+      <MainContainer>
+        <GlobalFont />
+        <Navigation />
+        <Outlet />
+      </MainContainer>
+    )
+  }
 }
 
-export default App
