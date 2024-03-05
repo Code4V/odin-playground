@@ -37,7 +37,12 @@ const ProfilePic = styled.img`
   object-fit: cover;
   object-position: 0 -300px;
   padding-block-end: 100px;
-  filter: grayscale(1)
+  filter: grayscale(1);
+  transition: 150ms ease-in-out filter;
+
+  &:hover {
+    filter: none;
+  }
 `
 
 export class ProfileInfoClass extends React.Component {

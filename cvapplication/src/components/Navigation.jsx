@@ -27,7 +27,7 @@ const ProfilePicture = styled.span`
   text-align: center;
   vertical-align: center;
   font-weight: 700;
-  font-size: 2.5rem;
+  font-size: 2.65rem;
   line-height: 6rem;
   font-family: 'DM Serif Display';
 `;
