@@ -43,7 +43,8 @@ const GlobalFont = createGlobalStyle`
 
 const MainContainer = styled.main`
   display: grid;
-  grid-template-columns: 250px 724px;
+  grid-template-columns: repeat(4, 250px);
+  grid-template-rows: repeat(2, 1fr);
 
   margin-block-start: 64px;
   width: 1024px;

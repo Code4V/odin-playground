@@ -8,8 +8,8 @@ const Profile = styled.section`
   gap: 32px;
   min-height: 250px;
   max-width: @min-height * 2;
-  padding-inline: 16px;
   color: darkColor;
+
 `;
 
 const ProfileInfo = styled.div`

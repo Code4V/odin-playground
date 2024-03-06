@@ -1,9 +1,18 @@
 import { ProfileInfoClass } from "./Profile"
+import styled from "styled-components"
+import React from "react"
 
-export const Header = () => {
-  return (
-    <header>
-      <ProfileInfoClass name="Jeanne Francis Rivas" position="Full-stack Developer"/>
-    </header>
-  )
+
+const HeaderContainer = styled.header`
+  grid-column: 1/4;
+`
+
+export class Header extends React.Component {
+  render(){
+    return (
+      <HeaderContainer>
+        <ProfileInfoClass name="Jeanne Francis Rivas" position="About"/>
+      </HeaderContainer>
+    )
+  }
 }

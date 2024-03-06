@@ -11,6 +11,8 @@ const NavigationContainer = styled.nav`
   flex-flow: column wrap;
   align-content: center;
   height: fit-content;
+
+  grid-row: 1/2;
 `
 
 const ProfileWrapper = styled.div`

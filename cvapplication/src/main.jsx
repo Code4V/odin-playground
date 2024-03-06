@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { Header } from './components/Header.jsx';
 import App from './App.jsx';
 import './stylus/Reset.styl';
 import { 
@@ -8,6 +7,7 @@ import {
   RouterProvider,
 } from 'react-router-dom';
 import { ErrorPage } from './components/Error.jsx';
+import Main from './components/Main.jsx';
 
 const router = createBrowserRouter([
   {
@@ -17,7 +17,7 @@ const router = createBrowserRouter([
     children: [
       {
         path: '/',
-        element: <Header />
+        element: <Main />
       },
       {
         path: '/Projects',
