@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 const InfoContainer = styled.div`
-  margin-block-start: 1rem
+  margin-block-start: 2rem;
 `
 
 const InfoHeader = styled.h2`

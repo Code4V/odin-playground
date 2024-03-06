@@ -6,7 +6,7 @@ import InfoData from "./../data/cvdata.json";
 
 
 
-const MainWrapper = styled.main`
+const MainWrapper = styled.section`
   padding-inline: 16px;
   display: grid;
 

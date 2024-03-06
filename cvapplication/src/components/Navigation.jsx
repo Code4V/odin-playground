@@ -17,6 +17,11 @@ const NavigationContainer = styled.nav`
 
 const ProfileWrapper = styled.div`
   width: 100px;
+  transition: 500ms ease-in transform;
+
+  &:hover {
+    transform: rotate(-15deg);
+  }
 `
 const ProfilePicture = styled.span`
   display: inline-block;
