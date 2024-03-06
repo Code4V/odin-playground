@@ -19,7 +19,12 @@ export default class Main extends React.Component {
     return(
       <MainWrapper>
         <Header></Header>
-        <Info 
+        <Info $colspan="1 / 3"
+          $hasPaddingInlineEnd 
+          header={InfoData.about.personal.header} 
+          subheader={InfoData.about.personal.subheader} 
+          body={InfoData.about.personal.body} />
+        <Info
           header={InfoData.about.personal.header} 
           subheader={InfoData.about.personal.subheader} 
           body={InfoData.about.personal.body} />
