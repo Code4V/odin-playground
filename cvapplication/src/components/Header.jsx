@@ -11,7 +11,7 @@ export class Header extends React.Component {
   render(){
     return (
       <HeaderContainer>
-        <ProfileInfoClass name="Jeanne Francis Rivas" position="About"/>
+        <ProfileInfoClass name="Jeanne Francis Rivas" position="IT Programmer "/>
       </HeaderContainer>
     )
   }

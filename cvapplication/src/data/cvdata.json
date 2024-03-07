@@ -1,10 +1,26 @@
 {
   "about": {
-    "personal": {
-      "header": "Jeanne Francis Rivas",
+    "info": [
+    {
+      "header": "About Me",
       "subheader": "Born in Quezon City",
-      "body": "I'm an Information Technology student that loves exploring all things related to Techonology. I'm into building and programming web applications and websites, and I can see myself doing this for a pretty long time. \n\n Another thing that I'm into is teaching people on the basics of coding and assisting as much as I can. Because, I believe that everyone should at least learn the basics of coding for it will surely help them along their professional career."
-    }
+      "body": "I'm an Information Technology student that loves exploring all things related to Techonology. I'm into building and programming web applications and websites, and I can see myself doing this for a pretty long time. \n\n Another thing that I'm into is teaching people on the basics of coding and assisting as much as I can. Because, I believe that everyone should at least learn the basics of coding for it will surely help them along their professional career.",
+      "styles": {
+        "$colspanstart": 1,
+        "$colspanend": 3,
+        "$hasPaddingInlineEnd": true
+      },
+      "list": []
+    },
+    {
+      "header": "Curriculum Vitae",
+      "subheader": "Education",
+      "list": [
+        "2013 - 2017 Flora A. Ylagan High School", 
+        "2017 - 2019 ABE Business College ( TecVoc - ICT )",
+        "2019 - 2024 Polytechnic University of the Philippines ( BS Information Technology )" 
+      ]
+    }]
   }
 
 }

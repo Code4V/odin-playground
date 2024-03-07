@@ -21,7 +21,7 @@ const ProfileInfoName = styled.p`
 `;
 
 const ProfileInfoPosition = styled.p`
-  margin-block-start: 1rem;
+  margin-block-start: .5rem;
   font-weight: 600;
   text-transform: uppercase;
 `;
