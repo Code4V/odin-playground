@@ -5,6 +5,7 @@ import { List } from "./List";
 
 const InfoHeader = styled.h2`
 font-weight: 700;
+font-size: 1.5rem;
 `
 
 const InfoBody = styled.p`

@@ -9,6 +9,7 @@ import {
 import { ErrorPage } from './components/Error.jsx';
 import About from './components/About.jsx';
 
+
 const router = createBrowserRouter([
   {
     path: "/",

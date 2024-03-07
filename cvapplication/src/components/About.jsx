@@ -3,6 +3,8 @@ import styled from "styled-components";
 import { Header } from "./Header";
 import Info from "./Info";
 import InfoData from "../data/cvdata.json";
+import { Skill } from "./Skill";
+import { FaGithub } from "react-icons/fa6";
 
 const { about } = InfoData;
 
@@ -19,7 +21,7 @@ export default class About extends React.Component {
   render(){
     return(
       <MainWrapper>
-        <Header></Header>
+        <Header />
         { about.info.map((info, key) => {
           const { $colspanstart, $hasPaddingInlineEnd, $colspanend, $rowspanend, $rowspanstart }  = info.styles ?? '';
           return (
@@ -35,19 +37,9 @@ export default class About extends React.Component {
               $rowspanend={ $rowspanend }
               $hasPaddingInlineEnd={ $hasPaddingInlineEnd }
               
-            />
-          )
-        })}
-
-        {/* <Info $colspan="1 / 3"
-          $hasPaddingInlineEnd 
-          header={InfoData.about.personal.header} 
-          subheader={InfoData.about.personal.subheader} 
-          body={InfoData.about.personal.body} />
-        <Info
-          header={InfoData.about.personal.header} 
-          subheader={InfoData.about.personal.subheader} 
-          body={InfoData.about.personal.body} /> */}
+              />
+              )
+            })}
       </MainWrapper>
     )
   }
