@@ -5,6 +5,7 @@ import React from "react"
 
 const HeaderContainer = styled.header`
   grid-column: 1/4;
+  grid-row: 1/3;
 `
 
 export class Header extends React.Component {

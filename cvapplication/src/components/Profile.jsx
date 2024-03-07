@@ -9,7 +9,6 @@ const Profile = styled.section`
   min-height: 250px;
   max-width: @min-height * 2;
   color: darkColor;
-
 `;
 
 const ProfileInfo = styled.div`

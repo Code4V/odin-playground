@@ -12,6 +12,7 @@ const MainWrapper = styled.section`
 
   grid-template-columns: subgrid;
   grid-column: 2/5;
+  grid-template-rows: repeat(6, auto)
 `
 
 export default class About extends React.Component {
@@ -20,7 +21,7 @@ export default class About extends React.Component {
       <MainWrapper>
         <Header></Header>
         { about.info.map((info, key) => {
-          const { $colspanstart, $hasPaddingInlineEnd, $colspanend }  = info.styles ?? '';
+          const { $colspanstart, $hasPaddingInlineEnd, $colspanend, $rowspanend, $rowspanstart }  = info.styles ?? '';
           return (
             <Info 
               key={key} 
@@ -30,6 +31,8 @@ export default class About extends React.Component {
               list={info.list}
               $colspanstart={ $colspanstart } 
               $colspanend={ $colspanend } 
+              $rowspanstart= { $rowspanstart }
+              $rowspanend={ $rowspanend }
               $hasPaddingInlineEnd={ $hasPaddingInlineEnd }
               
             />

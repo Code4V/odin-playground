@@ -23,8 +23,10 @@ export default class Info extends React.Component{
   render(){
     return (
       <InfoContainer  
-      $colspanstart={ this.props.$colspanstart } 
+        $colspanstart={ this.props.$colspanstart } 
         $colspanend={ this.props.$colspanend } 
+        $rowspanstart={ this.props.$rowspanstart }
+        $rowspanend={ this.props.$rowspanend }
         $hasPaddingInlineEnd={ this.props.$hasPaddingInlineEnd }
       >
         <InfoHeader> { this.props.header }</InfoHeader>
@@ -49,5 +51,7 @@ const InfoContainer =  styled.div`
   margin-block-start: 2rem;
   ${props => props.$colspanstart && `grid-column-start: ${props.$colspanstart};`}
   ${props => props.$colspanend && `grid-column-end: ${props.$colspanend};`}
+  ${props => props.$rowspanstart && `grid-row-start: ${props.$rowspanstart};`}
+  ${props => props.$rowspanend && `grid-row-end: ${props.$rowspanend};`}
   ${props => props.$hasPaddingInlineEnd && `padding-inline-end: 16px;`}
 `;
