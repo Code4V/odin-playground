@@ -3,8 +3,9 @@ import styled from "styled-components";
 import { Header } from "./Header";
 import Info from "./Info";
 import InfoData from "../data/cvdata.json";
-import { Skill } from "./Skill";
-import { FaGithub } from "react-icons/fa6";
+import { FaGithub, FaHtml5, FaCss3 } from "react-icons/fa6";
+import { SiPhp, SiJavascript } from "react-icons/si";
+import { SkillList } from "./SkillList";
 
 const { about } = InfoData;
 
@@ -16,6 +17,29 @@ const MainWrapper = styled.section`
   grid-column: 2/5;
   grid-template-rows: repeat(6, auto)
 `
+
+const skillList = [
+  {
+    "icon": FaGithub(),
+    "skillName": 'Github'
+  },
+  {
+    "icon":  SiPhp(),
+    "skillName": 'PHP'
+  },
+  {
+    "icon": SiJavascript(),
+    "skillName": 'Javascript'
+  },
+  {
+    "icon": FaHtml5(),
+    "skillName": 'HTML'
+  },
+  {
+    "icon": FaCss3(),
+    "skillName": 'CSS'
+  },
+]
 
 export default class About extends React.Component {
   render(){
@@ -40,6 +64,7 @@ export default class About extends React.Component {
               />
               )
             })}
+        <SkillList $colspanstart={1} $colspanend={3} skills={skillList}/>
       </MainWrapper>
     )
   }

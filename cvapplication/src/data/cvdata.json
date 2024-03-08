@@ -24,7 +24,15 @@
         "$rowspanstart": 3,
         "$rowspanend": 7
       }
-    }]
+    },
+    {
+      "header": "Skills",
+      "body": "These are my current skills that I've acquired throughout my academic and professional journey",
+      "styles": {
+        "$colspanstart": 1,
+        "$colspanend": 3
+      }
+    }
+    ]
   }
-
 }
