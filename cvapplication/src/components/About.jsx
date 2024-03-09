@@ -9,7 +9,7 @@ import { SkillList } from "./SkillList";
 
 const { about } = InfoData;
 
-const MainWrapper = styled.section`
+export const MainWrapper = styled.section`
   padding-inline: 16px;
   display: grid;
 

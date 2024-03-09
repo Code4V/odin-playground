@@ -8,6 +8,7 @@ import {
 } from 'react-router-dom';
 import { ErrorPage } from './components/Error.jsx';
 import About from './components/About.jsx';
+import { Project } from './components/Project.jsx';
 
 
 const router = createBrowserRouter([
@@ -22,7 +23,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/Projects',
-        element: <div> Projects Placeholder </div>
+        element: <Project />
       },
       {
         path: '/Contact',
