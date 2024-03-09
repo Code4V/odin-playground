@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { MainWrapper } from './About';
+import Info from './Info';
 
 const ProjectContainer = styled(MainWrapper)`
 `
@@ -10,7 +11,7 @@ const ProjectHeader = styled.h2`
   font-weight: 700;
 
   grid-column-start: 1;
-  grid-column-end: 3;
+  grid-column-end: 4;
 `;
 
 export class Project extends React.Component {
@@ -18,6 +19,8 @@ export class Project extends React.Component {
     return(
       <ProjectContainer>
         <ProjectHeader> Projects Involved </ProjectHeader>
+        <Info header="Completed Projects" 
+              body="These are the projects I've done during my academic career. Additional projects will be added as my professional career continues"/>
       </ProjectContainer>
     )
   }

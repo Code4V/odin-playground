@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { Header } from "./Header";
 import Info from "./Info";
 import InfoData from "../data/cvdata.json";
-import { FaGithub, FaHtml5, FaCss3 } from "react-icons/fa6";
+import { FaGithub, FaHtml5, FaCss3Alt } from "react-icons/fa6";
 import { SiPhp, SiJavascript } from "react-icons/si";
 import { SkillList } from "./SkillList";
 
@@ -36,7 +36,7 @@ const skillList = [
     "skillName": 'HTML'
   },
   {
-    "icon": FaCss3(),
+    "icon": FaCss3Alt(),
     "skillName": 'CSS'
   },
 ]
