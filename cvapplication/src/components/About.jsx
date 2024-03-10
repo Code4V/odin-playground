@@ -14,7 +14,7 @@ export const MainWrapper = styled.section`
   display: grid;
 
   grid-template-columns: subgrid;
-  grid-column: 2/5;
+  grid-column: 2 / 6;
   grid-template-rows: repeat(6, auto)
 `
 
@@ -68,7 +68,7 @@ export default class About extends React.Component {
               />
               )
             })}
-        <SkillList $colspanstart={1} $colspanend={3} $hasSubheading={'Proficient in '} skills={skillList}/>
+        <SkillList $colspanstart={1} $colspanend={4} $hasSubheading={'Proficient in '} skills={skillList}/>
       </MainWrapper>
     )
   }

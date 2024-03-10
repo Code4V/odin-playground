@@ -54,5 +54,5 @@ const InfoContainer =  styled.div`
   ${props => props.$colspanend && `grid-column-end: ${props.$colspanend};`}
   ${props => props.$rowspanstart && `grid-row-start: ${props.$rowspanstart};`}
   ${props => props.$rowspanend && `grid-row-end: ${props.$rowspanend};`}
-  ${props => props.$hasPaddingInlineEnd && `padding-inline-end: 64px;`}
+  ${props => props.$hasPaddingInlineEnd && `padding-inline-end: 32px;`}
 `;

@@ -6,7 +6,7 @@ const SkillListContainer = styled.ul`
   display: flex;
   align-items: center;
   flex-flow: row wrap;
-  margin-block-start: 1.5rem;
+  margin-block-start: 2rem;
   border: 1px solid;
   position: relative;
   padding: .5rem .5rem;
@@ -14,7 +14,7 @@ const SkillListContainer = styled.ul`
   ${props => props.$colspanend && `grid-column-end: ${props.$colspanend};`}
   ${props => props.$rowspanstart && `grid-row-start: ${props.$rowspanstart};`}
   ${props => props.$rowspanend && `grid-row-end: ${props.$rowspanend};`}
-  ${props => props.$hasSubheading && `&::after { content: "${props.$hasSubheading}"; position: absolute; top: -12px; left: 0; background-color: white; padding-inline: .5rem; font-weight: 600}`}
+  ${props => props.$hasSubheading && `&::after { content: "${props.$hasSubheading}"; position: absolute; top: -10px; left: 0; background-color: white; padding-inline: .5rem; font-weight: 600}`}
 `;
 
 const SkillListItem = styled.li`

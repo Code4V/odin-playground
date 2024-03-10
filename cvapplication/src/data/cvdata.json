@@ -16,13 +16,14 @@
       "subheader": "Education",
       "list": [
         "2013 - 2017 Flora A. Ylagan High School", 
-        "2017 - 2019 ABE Business College ( TecVoc - ICT )",
-        "2019 - 2024 Polytechnic University of the Philippines ( BS Information Technology )" 
+        "2017 - 2019 ABE International Business College - ( TecVoc - ICT )",
+        "2019 - 2024 Polytechnic University of the Philippines - ( BS Information Technology )" 
       ],
       "styles": {
         "$colspanstart": 3,
+        "$colspanend": 5,
         "$rowspanstart": 3,
-        "$rowspanend": 7
+        "$rowspanend": 5
       }
     },
     {
@@ -30,7 +31,7 @@
       "body": "These are my current skills that I've acquired throughout my academic and professional journey",
       "styles": {
         "$colspanstart": 1,
-        "$colspanend": 3,
+        "$colspanend": 4,
         "$hasPaddingInlineEnd": true
       }
     }

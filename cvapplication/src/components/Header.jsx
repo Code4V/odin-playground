@@ -4,7 +4,7 @@ import React from "react"
 
 
 const HeaderContainer = styled.header`
-  grid-column: 1/4;
+  grid-column: 1/5;
   grid-row: 1/3;
 `
 
