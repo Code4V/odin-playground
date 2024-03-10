@@ -12,7 +12,7 @@ const SkillContainer = styled.section`
 `;
 
 const SkillIconContainer = styled.div`
-  max-width: 32px;
+  max-width: 16px;
 `;
 
 const SkillName = styled.span`

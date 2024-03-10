@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { Header } from "./Header";
 import Info from "./Info";
 import InfoData from "../data/cvdata.json";
-import { FaGithub, FaHtml5, FaCss3Alt } from "react-icons/fa6";
+import { FaGithub, FaHtml5, FaCss3Alt, FaReact } from "react-icons/fa6";
 import { SiPhp, SiJavascript } from "react-icons/si";
 import { SkillList } from "./SkillList";
 
@@ -39,6 +39,10 @@ const skillList = [
     "icon": FaCss3Alt(),
     "skillName": 'CSS'
   },
+  {
+    "icon": FaReact(),
+    "skillName": 'React'
+  }
 ]
 
 export default class About extends React.Component {
@@ -64,7 +68,7 @@ export default class About extends React.Component {
               />
               )
             })}
-        <SkillList $colspanstart={1} $colspanend={3} skills={skillList}/>
+        <SkillList $colspanstart={1} $colspanend={3} $hasSubheading={'Proficient in '} skills={skillList}/>
       </MainWrapper>
     )
   }
