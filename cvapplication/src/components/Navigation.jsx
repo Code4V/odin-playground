@@ -1,6 +1,8 @@
 import { styled } from 'styled-components';
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import { IoPersonCircle, IoBriefcase, IoCall } from 'react-icons/io5'
+import { IconContext } from 'react-icons';
 
 const NavigationContainer = styled.nav`
   position: sticky;
@@ -46,10 +48,15 @@ const ProfileList = styled.ul`
 `;
 
 const ProfileListItem = styled.li`
+  display: flex;
+  gap: .5rem;
   margin-block-start: 1.5rem;
   font-weight: 300;
   text-decoration: none;
+  align-items: flex-start;
 `;
+
+
 
 
 export class Navigation extends React.Component {
@@ -80,7 +87,7 @@ export class Navigation extends React.Component {
                         : isPending
                         ? "pending"
                         : "" 
-                    } to={linkItem.linkTo}> {linkItem.linkName} </NavLink>
+                    } to={ linkItem.linkTo }> { linkItem.linkName } </NavLink>
                   </ProfileListItem>
                 );
               })

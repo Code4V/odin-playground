@@ -50,8 +50,7 @@ const MainContainer = styled.main`
   width: 1024px;
   height: 140svh;
   margin-inline: auto;
-`
-
+`;
 
 export default class App extends React.Component {
   render(){
