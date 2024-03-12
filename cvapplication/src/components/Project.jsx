@@ -23,6 +23,14 @@ export class Project extends React.Component {
               body="These are the projects I've done during my academic career. Additional projects will be added as my professional career continues"
               $colspanstart={1}
               $colspanend={4}/>
+        <Info header="Completed Projects" 
+              body="These are the projects I've done during my academic career. Additional projects will be added as my professional career continues"
+              $colspanstart={1}
+              $colspanend={4}/>
+        <Info header="Completed Projects" 
+              body="These are the projects I've done during my academic career. Additional projects will be added as my professional career continues"
+              $colspanstart={1}
+              $colspanend={4}/>
       </ProjectContainer>
     )
   }
