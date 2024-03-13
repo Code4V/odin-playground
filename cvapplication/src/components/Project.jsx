@@ -19,7 +19,7 @@ export class Project extends React.Component {
     return(
       <ProjectContainer>
         <ProjectHeader> Projects Involved </ProjectHeader>
-        <Info header="Completed Projects" 
+        <Info header="Lakbay Sa Bayan: Travel Agency Booking System" 
               body="These are the projects I've done during my academic career. Additional projects will be added as my professional career continues"
               $colspanstart={1}
               $colspanend={4}/>
