@@ -2,6 +2,10 @@ import React from 'react';
 import styled from 'styled-components';
 import { MainWrapper } from './About';
 import Info from './Info';
+import { project } from '../data/data';
+
+
+const { projects } = project;
 
 const ProjectContainer = styled(MainWrapper)`
 `
@@ -19,11 +23,6 @@ export class Project extends React.Component {
     return(
       <ProjectContainer>
         <ProjectHeader> Projects Involved </ProjectHeader>
-        <Info header="LAKBAYAN: A BOOKING INFORMATION SYSTEM
-WITH TRAVEL PACKAGE RECOMMENDER" 
-              body="These are the projects I've done during my academic career. Additional projects will be added as my professional career continues"
-              $colspanstart={1}
-              $colspanend={4}/>
         <Info header="EIRA UNIVERSITY" 
               body="These are the projects I've done during my academic career. Additional projects will be added as my professional career continues"
               $colspanstart={1}
@@ -32,6 +31,21 @@ WITH TRAVEL PACKAGE RECOMMENDER"
               body="These are the projects I've done during my academic career. Additional projects will be added as my professional career continues"
               $colspanstart={1}
               $colspanend={4}/>
+
+        {
+          projects.map((proj, key) => {
+            return (
+              <Info 
+                $colspanstart={ proj.styles.$colspanstart }
+                $colspanend={ proj.styles.$colspanend }
+                header={ proj.header }
+                body={ proj.body }
+                list={ proj.list } 
+              />
+            )
+          })
+        }
+        
       </ProjectContainer>
     )
   }

@@ -2,12 +2,10 @@ import React from "react";
 import styled from "styled-components";
 import { Header } from "./Header";
 import Info from "./Info";
-import InfoData from "../data/cvdata.json";
+import { about } from "../data/data";
 import { FaGithub, FaHtml5, FaCss3Alt, FaReact } from "react-icons/fa6";
 import { SiPhp, SiJavascript } from "react-icons/si";
 import { SkillList } from "./SkillList";
-
-const { about } = InfoData;
 
 export const MainWrapper = styled.section`
   padding-inline: 16px;
