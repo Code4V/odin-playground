@@ -23,15 +23,6 @@ export class Project extends React.Component {
     return(
       <ProjectContainer>
         <ProjectHeader> Projects Involved </ProjectHeader>
-        <Info header="EIRA UNIVERSITY" 
-              body="These are the projects I've done during my academic career. Additional projects will be added as my professional career continues"
-              $colspanstart={1}
-              $colspanend={4}/>
-        <Info header="CLINIC MANAGEMENT SYSTEM" 
-              body="These are the projects I've done during my academic career. Additional projects will be added as my professional career continues"
-              $colspanstart={1}
-              $colspanend={4}/>
-
         {
           projects.map((proj, key) => {
             const { $colspanstart, $hasPaddingInlineEnd, $colspanend, $rowspanend, $rowspanstart }  = proj.styles ?? '';
