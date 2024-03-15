@@ -34,10 +34,11 @@ export class Project extends React.Component {
 
         {
           projects.map((proj, key) => {
+            const { $colspanstart, $hasPaddingInlineEnd, $colspanend, $rowspanend, $rowspanstart }  = proj.styles ?? '';
             return (
               <Info 
-                $colspanstart={ proj.styles.$colspanstart }
-                $colspanend={ proj.styles.$colspanend }
+                $colspanstart={ $colspanstart }
+                $colspanend={ $colspanend }
                 header={ proj.header }
                 body={ proj.body }
                 list={ proj.list } 

@@ -1,4 +1,4 @@
-import Rivas from './../assets/RivasTeach.jpg';
+import Rivas from './../assets/HeadMe.webp';
 import React from 'react';
 import { styled } from 'styled-components';
 
