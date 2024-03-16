@@ -28,11 +28,14 @@ export class Project extends React.Component {
             const { $colspanstart, $hasPaddingInlineEnd, $colspanend, $rowspanend, $rowspanstart }  = proj.styles ?? '';
             return (
               <Info 
-                $colspanstart={ $colspanstart }
-                $colspanend={ $colspanend }
+                $colspanstart={ 1 }
+                $colspanend={ 4 }
+                $isFlex={ true }
+                $gapSize={ "1rem" }
                 header={ proj.header }
                 body={ proj.body }
                 list={ proj.list } 
+                
               />
             )
           })

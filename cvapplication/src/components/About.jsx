@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Suspense } from "react";
 import styled from "styled-components";
 import { Header } from "./Header";
 import Info from "./Info";
@@ -14,6 +14,12 @@ export const MainWrapper = styled.section`
   grid-template-columns: subgrid;
   grid-column: 2 / 6;
   grid-template-rows: repeat(6, auto)
+`
+
+const ImagePreloader = styled.div`
+  background-color: red;
+  height: 100px;
+  width: 100px;
 `
 
 const skillList = [
@@ -47,9 +53,11 @@ export default class About extends React.Component {
   render(){
     return(
       <MainWrapper>
-        <Header />
+        <Suspense fallback={ ImagePreloader }> 
+          <Header />
+        </Suspense>
         { about.info.map((info, key) => {
-          const { $colspanstart, $hasPaddingInlineEnd, $colspanend, $rowspanend, $rowspanstart }  = info.styles ?? '';
+          const { $colspanstart, $hasPaddingInlineEnd, $colspanend, $rowspanend, $rowspanstart, $isFlex }  = info.styles ?? '';
           return (
             <Info 
               key={key} 
@@ -62,7 +70,7 @@ export default class About extends React.Component {
               $rowspanstart= { $rowspanstart }
               $rowspanend={ $rowspanend }
               $hasPaddingInlineEnd={ $hasPaddingInlineEnd }
-              
+              $isFlex={ $isFlex }
               />
               )
             })}

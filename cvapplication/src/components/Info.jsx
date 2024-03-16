@@ -40,7 +40,7 @@ export default class Info extends React.Component{
 
         {
           this.props.list 
-          ? <List items={this.props.list}/>
+          ? <List $isFlex={this.props.$isFlex} $gapSize={this.props.$gapSize} items={this.props.list}/>
           : ""
         }
 

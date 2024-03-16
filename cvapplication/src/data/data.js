@@ -22,7 +22,8 @@ export const about = {
         "$colspanstart": 3,
         "$colspanend": 5,
         "$rowspanstart": 3,
-        "$rowspanend": 5
+        "$rowspanend": 5,
+        "$isFlex": false
       }
     },
     {
@@ -48,14 +49,14 @@ export const project = {
         "Javascript",
         "MySQL"
       ],
-      "styles": {
-        "$colspanstart": 1,
-        "$colspanend": 4,
-      }
     },
     {
       "header": "Erovoutika International Academy",
       "body": "A Web Application for offering online courses by Erovoutika. After you completed a course, you can proceed to take an exam and get certified in a whim! Courses offered includes Electronics, Robotics, Automation, and ICT"
-    }
+    },
+    {
+      "header": "The Odin Project: Javascript",
+      "body": "A Compilation of my journey of learning Javascript through The Odin Project. My codes are available publicly and other coders can contribute freely"
+    },
   ]
 }

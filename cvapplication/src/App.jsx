@@ -4,7 +4,7 @@ import DMSans from './assets/fonts/DMSans.ttf';
 import DMSerif from './assets/fonts/DMSerifDisplay.ttf';
 import { Navigation } from './components/Navigation';
 import { Outlet } from 'react-router-dom';
-import React from 'react';
+import React, { Suspense } from 'react';
 
 const GlobalFont = createGlobalStyle`
   @font-face {
@@ -41,6 +41,13 @@ const GlobalFont = createGlobalStyle`
 
 `;
 
+
+const ImagePreloader = styled.div`
+  background-color: red;
+  height: 100px;
+  width: 100px;
+`
+
 const MainContainer = styled.main`
   display: grid;
   grid-template-columns: 250px 250px 125px 125px 250px;
@@ -58,7 +65,9 @@ export default class App extends React.Component {
       <MainContainer>
         <GlobalFont />
         <Navigation />
-        <Outlet />
+        <Suspense fallback={ ImagePreloader }> 
+          <Outlet />
+        </ Suspense>
       </MainContainer>
     )
   }
