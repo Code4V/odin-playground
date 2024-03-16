@@ -52,7 +52,11 @@ export const project = {
     },
     {
       "header": "Erovoutika International Academy",
-      "body": "A Web Application for offering online courses by Erovoutika. After you completed a course, you can proceed to take an exam and get certified in a whim! Courses offered includes Electronics, Robotics, Automation, and ICT"
+      "body": "A Web Application for offering online courses by Erovoutika. After you completed a course, you can proceed to take an exam and get certified in a whim! Courses offered includes Electronics, Robotics, Automation, and ICT",
+      "list": [
+        "PHP",
+        "MySQL"
+      ],
     },
     {
       "header": "The Odin Project: Javascript",

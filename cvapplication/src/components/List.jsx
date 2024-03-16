@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 const ListContainer = styled.ul`
   ${ props => props.$isFlex && `display: flex;`}
-  ${ props => props.$gapSize && `gap: ${props.$gapSize};`}
+  ${ props => props.$gapSize && `gap: ${ props.$gapSize };`}
   
 `;
 
