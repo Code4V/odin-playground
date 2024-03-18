@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { Skill } from "./Skill";
+import { Empty } from "./Empty";
 
 const SkillListContainer = styled.ul`
   display: flex;
@@ -40,7 +41,7 @@ export class SkillList extends React.Component {
         {/* <SkillListSubHeader> { this.props.subHeader } </SkillListSubHeader> */}
         { this.props.skills 
           ? this.props.skills.map((skill) => <SkillListItem><Skill icon={skill.icon} skillName={skill.skillName}/></SkillListItem>)
-          : "No List Provided"}
+          : <Empty placeHolder={ "No List to Display" }/>}
       </SkillListContainer>
     )
   }
