@@ -28,7 +28,7 @@ const skillList = [
     "skillName": 'Github'
   },
   {
-    "icon":  SiPhp(),
+    "icon": SiPhp(),
     "skillName": 'PHP'
   },
   {
@@ -50,31 +50,31 @@ const skillList = [
 ]
 
 export default class About extends React.Component {
-  render(){
-    return(
+  render() {
+    return (
       <MainWrapper>
-        <Suspense fallback={ ImagePreloader }> 
+        <Suspense fallback={ImagePreloader}>
           <Header />
         </Suspense>
-        { about.info.map((info, key) => {
-          const { $colspanstart, $hasPaddingInlineEnd, $colspanend, $rowspanend, $rowspanstart, $isFlex }  = info.styles ?? '';
+        {about.info.map((info, key) => {
+          const { $colspanstart, $hasPaddingInlineEnd, $colspanend, $rowspanend, $rowspanstart, $isFlex } = info.styles ?? '';
           return (
-            <Info 
-              key={key} 
-              header={info.header} 
-              subheader={info.subheader} 
-              body={info.body} 
+            <Info
+              key={key}
+              header={info.header}
+              subheader={info.subheader}
+              body={info.body}
               list={info.list}
-              $colspanstart={ $colspanstart } 
-              $colspanend={ $colspanend } 
-              $rowspanstart= { $rowspanstart }
-              $rowspanend={ $rowspanend }
-              $hasPaddingInlineEnd={ $hasPaddingInlineEnd }
-              $isFlex={ $isFlex }
-              />
-              )
-            })}
-        <SkillList $colspanstart={1} $colspanend={4} $hasSubheading={'Proficient in '} skills={skillList}/>
+              $colspanstart={$colspanstart}
+              $colspanend={$colspanend}
+              $rowspanstart={$rowspanstart}
+              $rowspanend={$rowspanend}
+              $hasPaddingInlineEnd={$hasPaddingInlineEnd}
+              $isFlex={$isFlex}
+            />
+          )
+        })}
+        <SkillList $colspanstart={1} $colspanend={4} $hasSubheading={'Proficient in '} skills={skillList} />
       </MainWrapper>
     )
   }

@@ -5,10 +5,10 @@ const EmptyWrapper = styled.div`
 `
 
 export class Empty extends React.Component {
-  render(){
+  render() {
     return (
       <EmptyWrapper>
-        { this.props.placeHolder ?? 'No items to display!' }
+        {this.props.placeHolder ?? 'No items to display!'}
       </EmptyWrapper>
     )
   }
