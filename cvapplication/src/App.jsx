@@ -1,10 +1,10 @@
-import { createGlobalStyle, styled } from 'styled-components';
-import './stylus/index.styl'
-import DMSans from './assets/fonts/DMSans.ttf';
-import DMSerif from './assets/fonts/DMSerifDisplay.ttf';
-import { Navigation } from './components/Navigation';
-import { Outlet } from 'react-router-dom';
-import React, { Suspense } from 'react';
+import { createGlobalStyle, styled } from "styled-components";
+import "./stylus/index.styl";
+import DMSans from "./assets/fonts/DMSans.ttf";
+import DMSerif from "./assets/fonts/DMSerifDisplay.ttf";
+import { Navigation } from "./components/Navigation";
+import { Outlet } from "react-router-dom";
+import React, { Suspense } from "react";
 
 const GlobalFont = createGlobalStyle`
   @font-face {
@@ -41,12 +41,11 @@ const GlobalFont = createGlobalStyle`
 
 `;
 
-
 const ImagePreloader = styled.div`
   background-color: red;
   height: 100px;
   width: 100px;
-`
+`;
 
 const MainContainer = styled.main`
   display: grid;
@@ -60,16 +59,15 @@ const MainContainer = styled.main`
 `;
 
 export default class App extends React.Component {
-  render(){
+  render() {
     return (
       <MainContainer>
         <GlobalFont />
         <Navigation />
-        <Suspense fallback={ ImagePreloader }> 
+        <Suspense fallback={ImagePreloader}>
           <Outlet />
-        </ Suspense>
+        </Suspense>
       </MainContainer>
-    )
+    );
   }
 }
-

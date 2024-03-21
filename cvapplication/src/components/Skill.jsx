@@ -1,14 +1,16 @@
 import React from "react";
-import styled from "styled-components"; 
+import styled from "styled-components";
 import { IconContext } from "react-icons";
 
 const SkillContainer = styled.section`
   display: flex;
   position: relative;
   align-items: center;
-  gap: .5rem;
-  padding: .5rem;
-  ${ props => props.$learning && `&::after { position: absolute; content: 'Learning'; top: 0; right: 0; }`}
+  gap: 0.5rem;
+  padding: 0.5rem;
+  ${(props) =>
+    props.$learning &&
+    `&::after { position: absolute; content: 'Learning'; top: 0; right: 0; }`}
 `;
 
 const SkillIconContainer = styled.div`
@@ -20,17 +22,17 @@ const SkillName = styled.span`
   font-weight: 700;
 `;
 
-export class Skill extends React.Component{
-  render(){
+export class Skill extends React.Component {
+  render() {
     return (
-      <SkillContainer $learning={ this.props.$learning }>
+      <SkillContainer $learning={this.props.$learning}>
         <SkillIconContainer>
           <IconContext.Provider value={{ size: "100%" }}>
-            { this.props.icon }
+            {this.props.icon}
           </IconContext.Provider>
         </SkillIconContainer>
-        <SkillName> { this.props.skillName} </SkillName>
+        <SkillName> {this.props.skillName} </SkillName>
       </SkillContainer>
-    )
+    );
   }
 }

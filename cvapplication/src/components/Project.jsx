@@ -1,14 +1,12 @@
-import React from 'react';
-import styled from 'styled-components';
-import { MainWrapper } from './About';
-import Info from './Info';
-import { project } from '../data/data';
-
+import React from "react";
+import styled from "styled-components";
+import { MainWrapper } from "./About";
+import Info from "./Info";
+import { project } from "../data/data";
 
 const { projects } = project;
 
-const ProjectContainer = styled(MainWrapper)`
-`
+const ProjectContainer = styled(MainWrapper)``;
 
 const ProjectHeader = styled.h2`
   font-size: 2.5rem;
@@ -19,29 +17,31 @@ const ProjectHeader = styled.h2`
 `;
 
 export class Project extends React.Component {
-  render(){
-    return(
+  render() {
+    return (
       <ProjectContainer>
         <ProjectHeader> Projects Involved </ProjectHeader>
-        {
-          projects.map((proj, key) => {
-            const { $colspanstart, $hasPaddingInlineEnd, $colspanend, $rowspanend, $rowspanstart }  = proj.styles ?? '';
-            return (
-              <Info 
-                $colspanstart={ 1 }
-                $colspanend={ 4 }
-                $isFlex={ true }
-                $gapSize={ "1rem" }
-                header={ proj.header }
-                body={ proj.body }
-                list={ proj.list } 
-                
-              />
-            )
-          })
-        }
-        
+        {projects.map((proj, key) => {
+          const {
+            $colspanstart,
+            $hasPaddingInlineEnd,
+            $colspanend,
+            $rowspanend,
+            $rowspanstart,
+          } = proj.styles ?? "";
+          return (
+            <Info
+              $colspanstart={1}
+              $colspanend={4}
+              $isFlex={true}
+              $gapSize={"1rem"}
+              header={proj.header}
+              body={proj.body}
+              list={proj.list}
+            />
+          );
+        })}
       </ProjectContainer>
-    )
+    );
   }
 }

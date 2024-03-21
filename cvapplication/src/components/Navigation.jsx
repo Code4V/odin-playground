@@ -1,8 +1,8 @@
-import { styled } from 'styled-components';
-import React from 'react';
-import { NavLink } from 'react-router-dom';
-import { IoPersonCircle, IoBriefcase, IoCall } from 'react-icons/io5'
-import { IconContext } from 'react-icons';
+import { styled } from "styled-components";
+import React from "react";
+import { NavLink } from "react-router-dom";
+import { IoPersonCircle, IoBriefcase, IoCall } from "react-icons/io5";
+import { IconContext } from "react-icons";
 
 const NavigationContainer = styled.nav`
   position: sticky;
@@ -15,7 +15,7 @@ const NavigationContainer = styled.nav`
   height: fit-content;
 
   grid-row: 1/2;
-`
+`;
 
 const ProfileWrapper = styled.div`
   width: 100px;
@@ -24,7 +24,7 @@ const ProfileWrapper = styled.div`
   &:hover {
     transform: rotate(-15deg);
   }
-`
+`;
 const ProfilePicture = styled.span`
   display: inline-block;
   background-color: black;
@@ -37,11 +37,10 @@ const ProfilePicture = styled.span`
   font-weight: 700;
   font-size: 2rem;
   line-height: 6rem;
-  font-family: 'DM Serif Display';
+  font-family: "DM Serif Display";
 `;
 
-const ProfileNav = styled.nav`
-`;
+const ProfileNav = styled.nav``;
 
 const ProfileList = styled.ul`
   list-style: none;
@@ -49,52 +48,48 @@ const ProfileList = styled.ul`
 
 const ProfileListItem = styled.li`
   display: flex;
-  gap: .5rem;
+  gap: 0.5rem;
   margin-block-start: 1.5rem;
   font-weight: 300;
   text-decoration: none;
   align-items: flex-start;
 `;
 
-
-
-
 export class Navigation extends React.Component {
   constructor() {
-    super()
+    super();
     this.links = [
-      {linkTo: '/', linkName: "About" },
-      {linkTo: 'Projects', linkName: "Projects" },
-      {linkTo: 'Contact', linkName: "Contact" },
-    ]
+      { linkTo: "/", linkName: "About" },
+      { linkTo: "Projects", linkName: "Projects" },
+      { linkTo: "Contact", linkName: "Contact" },
+    ];
   }
-  render (){
-    return(
+  render() {
+    return (
       <NavigationContainer>
         <ProfileWrapper>
           <ProfilePicture>JFR.</ProfilePicture>
         </ProfileWrapper>
         <ProfileNav>
           <ProfileList>
-            {
-              this.links.map((linkItem, index) => {
-                return (
-                  <ProfileListItem key={index}>
-                    <NavLink 
-                      className={({ isActive, isPending }) => 
-                        isActive 
-                        ? "active"
-                        : isPending
-                        ? "pending"
-                        : "" 
-                    } to={ linkItem.linkTo }> { linkItem.linkName } </NavLink>
-                  </ProfileListItem>
-                );
-              })
-            }
+            {this.links.map((linkItem, index) => {
+              return (
+                <ProfileListItem key={index}>
+                  <NavLink
+                    className={({ isActive, isPending }) =>
+                      isActive ? "active" : isPending ? "pending" : ""
+                    }
+                    to={linkItem.linkTo}
+                  >
+                    {" "}
+                    {linkItem.linkName}{" "}
+                  </NavLink>
+                </ProfileListItem>
+              );
+            })}
           </ProfileList>
         </ProfileNav>
       </NavigationContainer>
-    )
+    );
   }
 }
