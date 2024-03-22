@@ -55,6 +55,7 @@ export const project = {
     {
       header: "The Odin Project: Javascript",
       body: "A Compilation of my journey of learning Javascript through The Odin Project. My codes are available publicly and other coders can contribute freely",
+      list: ["Javascript", "React"]
     },
   ],
 };

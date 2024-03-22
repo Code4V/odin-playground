@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { Header } from "./Header";
 import Info from "./Info";
 import { about } from "../data/data";
-import { FaGithub, FaHtml5, FaCss3Alt, FaReact } from "react-icons/fa6";
+import { FaGithub, FaHtml5, FaCss3Alt, FaReact, FaJava } from "react-icons/fa6";
 import { SiPhp, SiJavascript } from "react-icons/si";
 import { SkillList } from "./SkillList";
 
@@ -22,7 +22,7 @@ const ImagePreloader = styled.div`
   width: 100px;
 `;
 
-const skillList = [
+const proficientList = [
   {
     icon: FaGithub(),
     skillName: "Github",
@@ -48,6 +48,14 @@ const skillList = [
     skillName: "React",
   },
 ];
+
+const basicList = [
+  {
+    icon: FaJava(),
+    skillName: "Java"
+
+  }
+]
 
 export default class About extends React.Component {
   render() {
@@ -85,7 +93,13 @@ export default class About extends React.Component {
           $colspanstart={1}
           $colspanend={4}
           $hasSubheading={"Proficient in "}
-          skills={skillList}
+          skills={proficientList}
+        />
+        <SkillList
+          $colspanstart={1}
+          $colspanend={4}
+          $hasSubheading={"Knows the basics of "}
+          skills={basicList}
         />
       </MainWrapper>
     );
