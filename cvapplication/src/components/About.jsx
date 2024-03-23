@@ -75,17 +75,17 @@ export default class About extends React.Component {
           } = info.styles ?? "";
           return (
             <Info
-              key={key}
-              header={info.header}
-              subheader={info.subheader}
-              body={info.body}
-              list={info.list}
               $colspanstart={$colspanstart}
               $colspanend={$colspanend}
               $rowspanstart={$rowspanstart}
               $rowspanend={$rowspanend}
               $hasPaddingInlineEnd={$hasPaddingInlineEnd}
               $isFlex={$isFlex}
+              key={key}
+              header={info.header}
+              subheader={info.subheader}
+              body={info.body}
+              list={info.list}
             />
           );
         })}
