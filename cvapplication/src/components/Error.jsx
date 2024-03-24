@@ -8,6 +8,8 @@ const ErrorWrapper = styled.section`
 
 export class ErrorPage extends React.Component {
   render() {
-    return <ErrorWrapper>Page not found!</ErrorWrapper>;
+    return <ErrorWrapper>{
+        this.props.errorMessage ?? "Page Not Found!"
+      }</ErrorWrapper>;
   }
 }
