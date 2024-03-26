@@ -53,6 +53,11 @@ export const project = {
       list: ["PHP", "MySQL"],
     },
     {
+      header: "Food Management System",
+      body: "A Web Application for offering online courses by Erovoutika. After you completed a course, you can proceed to take an exam and get certified in a whim! Courses offered includes Electronics, Robotics, Automation, and ICT",
+      list: ["C#"],
+    },
+    {
       header: "The Odin Project: Javascript",
       body: "A Compilation of my journey of learning Javascript through The Odin Project. My codes are available publicly and other coders can contribute freely",
       list: ["Javascript", "React"]
