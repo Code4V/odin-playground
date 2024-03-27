@@ -3,8 +3,8 @@ import styled from "styled-components";
 import { Header } from "./Header";
 import Info from "./Info";
 import { about } from "../data/data";
-import { FaGithub, FaHtml5, FaCss3Alt, FaReact, FaJava } from "react-icons/fa6";
-import { SiPhp, SiJavascript } from "react-icons/si";
+import { FaGithub, FaHtml5, FaCss3Alt, FaReact, FaJava, FaC } from "react-icons/fa6";
+import { SiPhp, SiJavascript, SiCplusplus, SiCsharp } from "react-icons/si";
 import { SkillList } from "./SkillList";
 
 export const MainWrapper = styled.section`
@@ -54,6 +54,18 @@ const basicList = [
     icon: FaJava(),
     skillName: "Java"
 
+  },
+  {
+    icon: FaC(),
+    skillName: "C"
+  },
+  {
+    icon: SiCplusplus(),
+    skillName: "C++"
+  },
+  {
+    icon: SiCsharp(),
+    skillName: "C#"
   }
 ]
 
