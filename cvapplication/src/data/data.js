@@ -54,7 +54,7 @@ export const project = {
     },
     {
       header: "Food Management System",
-      body: "A Web Application for offering online courses by Erovoutika. After you completed a course, you can proceed to take an exam and get certified in a whim! Courses offered includes Electronics, Robotics, Automation, and ICT",
+      body: "Created as a Final Project for my Application Development subject",
       list: ["C#"],
     },
     {
