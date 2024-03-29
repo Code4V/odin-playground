@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { Header } from "./Header";
 import Info from "./Info";
 import { about } from "../data/data";
-import { FaGithub, FaHtml5, FaCss3Alt, FaReact, FaJava, FaC } from "react-icons/fa6";
+import { FaGithub, FaHtml5, FaCss3Alt, FaReact, FaJava, FaC, FaPython } from "react-icons/fa6";
 import { SiPhp, SiJavascript, SiCplusplus, SiCsharp } from "react-icons/si";
 import { SkillList } from "./SkillList";
 
@@ -54,6 +54,10 @@ const basicList = [
     icon: FaJava(),
     skillName: "Java"
 
+  },
+  {
+    icon: FaPython(),
+    skillName: "Python"
   },
   {
     icon: FaC(),
