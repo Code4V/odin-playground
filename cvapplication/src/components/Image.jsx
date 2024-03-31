@@ -1,0 +1,27 @@
+import React from 'react';
+import styled from 'styled-components'; 
+
+const ImageWrapper = styled.div`
+  max-height: 400px;
+  // overflow: hidden;
+`;
+
+const ImageDisplay = styled.img`
+  object-fit: cover;
+  padding-block-end: 16px;
+  transition: 150ms ease-in-out filter;
+
+  &:hover {
+    filter: none;
+  }
+`;
+
+export class Image extends React.Component {
+  render(){
+    return(
+      <ImageWrapper>
+        <ImageDisplay src={ this.props.src } alt={ this.props.alt }/>
+      </ImageWrapper>
+    )
+  }
+}

@@ -1,6 +1,7 @@
 import React from "react";
 import styled, { css } from "styled-components";
 import { List } from "./List";
+import { Image } from "./Image";
 
 const InfoHeader = styled.h2`
   font-weight: 700;
@@ -29,6 +30,11 @@ export default class Info extends React.Component {
         $rowspanend={this.props.$rowspanend}
         $hasPaddingInlineEnd={this.props.$hasPaddingInlineEnd}
       >
+        {this.props.img ? (
+            <Image src={this.props.img} alt={'test'}/>
+          ) : (
+            ""
+          )}
         <InfoHeader> {this.props.header}</InfoHeader>
         {this.props.subheader ? (
           <InfoSubHeader> {this.props.subheader}</InfoSubHeader>

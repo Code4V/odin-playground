@@ -1,3 +1,6 @@
+import Lakbay from './../assets/Lakbay.webp';
+import Eira from './../assets/Eira.webp';
+
 export const about = {
   info: [
     {
@@ -46,11 +49,13 @@ export const project = {
       subheader: "Academic Requirement",
       body: "A Web Application that is built for Travel Agencies to post their travel packages. This Web Application utilizes a collaborative-based algorithm to suggest users Travel Packages to maximize the matches for the posted Travel Package.",
       list: ["PHP", "Javascript", "MySQL"],
+      img: Lakbay,
     },
     {
       header: "Erovoutika International Academy",
       body: "A Web Application for offering online courses by Erovoutika. After you completed a course, you can proceed to take an exam and get certified in a whim! Courses offered includes Electronics, Robotics, Automation, and ICT",
       list: ["PHP", "MySQL"],
+      img: Eira,
     },
     {
       header: "Food Management System",

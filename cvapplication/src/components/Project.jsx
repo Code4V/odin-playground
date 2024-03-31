@@ -16,6 +16,9 @@ const ProjectHeader = styled.h2`
   grid-column-end: 4;
 `;
 
+const InfoWrapper = styled.div`
+`;
+
 export class Project extends React.Component {
   render() {
     return (
@@ -38,6 +41,8 @@ export class Project extends React.Component {
               header={proj.header}
               body={proj.body}
               list={proj.list}
+              img={proj.img}
+              key={key}
             />
           );
         })}
