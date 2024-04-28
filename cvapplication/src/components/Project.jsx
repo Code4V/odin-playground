@@ -6,7 +6,10 @@ import { project } from "../data/data";
 
 const { projects } = project;
 
-const ProjectContainer = styled(MainWrapper)``;
+const ProjectContainer = styled(MainWrapper)`
+  margin-block-end: 4rem;
+  gap: 1.5rem
+`;
 
 const ProjectHeader = styled.h2`
   font-size: 2.5rem;
