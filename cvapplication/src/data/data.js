@@ -49,12 +49,14 @@ export const project = {
       subheader: "Academic Requirement",
       body: "A Web Application that is built for Travel Agencies to post their travel packages. This Web Application utilizes a collaborative-based algorithm to suggest users Travel Packages to maximize the matches for the posted Travel Package.",
       list: ["PHP", "Javascript", "MySQL"],
+      link: "https://github.com/Code4V/lakbayan-travel-and-tours",
       img: Lakbay,
     },
     {
       header: "Erovoutika International Academy",
       body: "A Web Application for offering online courses by Erovoutika. After you completed a course, you can proceed to take an exam and get certified in a whim! Courses offered includes Electronics, Robotics, Automation, and ICT",
       list: ["PHP", "MySQL"],
+      link: "https://eira.erovoutika.ph/",
       img: Eira,
     },
     {
@@ -65,6 +67,7 @@ export const project = {
     {
       header: "The Odin Project: Javascript",
       body: "A Compilation of my journey of learning Javascript through The Odin Project. My codes are available publicly and other coders can contribute freely",
+      link: "https://code4v.github.io/odin-playground/",
       list: ["Javascript", "React"]
     },
   ],

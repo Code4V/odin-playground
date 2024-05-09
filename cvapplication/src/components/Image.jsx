@@ -3,13 +3,14 @@ import styled from 'styled-components';
 
 const ImageWrapper = styled.div`
   max-height: 400px;
-  // overflow: hidden;
+  overflow: hidden;
+  margin-block-end: 16px;
 `;
 
 const ImageDisplay = styled.img`
   object-fit: cover;
-  padding-block-end: 16px;
   transition: 150ms ease-in-out filter;
+  
 
   &:hover {
     filter: none;

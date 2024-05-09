@@ -16,8 +16,13 @@ const ProjectHeader = styled.h2`
   font-weight: 700;
 
   grid-column-start: 1;
-  grid-column-end: 4;
+  grid-column-end: 5;
 `;
+
+const ProjectLink = styled.a`
+  display: inline-block;
+  padding: 1rem .75rem;
+`
 
 const InfoWrapper = styled.div`
 `;
@@ -36,17 +41,20 @@ export class Project extends React.Component {
             $rowspanstart,
           } = proj.styles ?? "";
           return (
-            <Info
-              $colspanstart={1}
-              $colspanend={4}
-              $isFlex={true}
-              $gapSize={"1rem"}
-              header={proj.header}
-              body={proj.body}
-              list={proj.list}
-              img={proj.img}
-              key={key}
-            />
+            <>
+              <Info
+                $colspanstart={1}
+                $colspanend={5}
+                $isFlex={true}
+                $gapSize={"1rem"}
+                header={proj.header}
+                body={proj.body}
+                list={proj.list}
+                img={proj.img}
+                key={key}
+              />
+              <ProjectLink href={proj.link}> Go to Project Link </ProjectLink>
+            </>
           );
         })}
       </ProjectContainer>
