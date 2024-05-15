@@ -35,9 +35,9 @@ export default class Info extends React.Component {
           ) : (
             ""
           )}
-        <InfoHeader> {this.props.header}</InfoHeader>
+        <InfoHeader> {this.props.header} </InfoHeader>
         {this.props.subheader ? (
-          <InfoSubHeader> {this.props.subheader}</InfoSubHeader>
+          <InfoSubHeader> {this.props.subheader} </InfoSubHeader>
         ) : (
           ""
         )}
