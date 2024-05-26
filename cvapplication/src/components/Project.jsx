@@ -22,7 +22,8 @@ const ProjectHeader = styled.h2`
 const ProjectLink = styled.a`
   display: inline-block;
   padding: 1rem .75rem;
-`
+`;
+
 
 const InfoWrapper = styled.div`
 `;
@@ -52,7 +53,7 @@ export class Project extends React.Component {
                 list={proj.list}
                 img={proj.img}
                 key={key}
-              />
+                />
               <ProjectLink href={proj.link}> Go to Project Link </ProjectLink>
             </>
           );
@@ -61,3 +62,5 @@ export class Project extends React.Component {
     );
   }
 }
+
+export {ProjectLink};

@@ -29,6 +29,7 @@ export default class Info extends React.Component {
         $rowspanstart={this.props.$rowspanstart}
         $rowspanend={this.props.$rowspanend}
         $hasPaddingInlineEnd={this.props.$hasPaddingInlineEnd}
+        key={this.props.keyb}
       >
         {this.props.img ? (
             <Image src={this.props.img} alt={'test'}/>
