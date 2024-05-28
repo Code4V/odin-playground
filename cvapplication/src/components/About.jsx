@@ -3,8 +3,8 @@ import styled from "styled-components";
 import { Header } from "./Header";
 import Info from "./Info";
 import { about } from "../data/data";
-import { FaGithub, FaHtml5, FaCss3Alt, FaReact, FaJava, FaC, FaPython } from "react-icons/fa6";
-import { SiPhp, SiJavascript, SiCplusplus, SiCsharp } from "react-icons/si";
+import { FaGithub, FaHtml5, FaCss3Alt, FaReact, FaJava, FaC, FaPython, FaFileExcel, FaFileWord, FaFilePowerpoint, FaFigma, FaWordpress, FaGit } from "react-icons/fa6";
+import { SiPhp, SiJavascript, SiCplusplus, SiCsharp, SiAdobephotoshop, SiAdobepremierepro, SiVega } from "react-icons/si";
 import { SkillList } from "./SkillList";
 
 export const MainWrapper = styled.section`
@@ -47,6 +47,10 @@ const proficientList = [
     icon: FaReact(),
     skillName: "React",
   },
+  {
+    icon: FaGit(),
+    skillName: "Git"
+  },
 ];
 
 const basicList = [
@@ -70,7 +74,42 @@ const basicList = [
   {
     icon: SiCsharp(),
     skillName: "C#"
-  }
+  },
+  {
+    icon: FaWordpress(),
+    skillName: "WordPress"
+  },
+]
+
+const othersList = [
+  {
+    icon: FaFileExcel(),
+    skillName: "MS Excel"
+  },
+  {
+    icon: FaFileWord(),
+    skillName: "MS Word"
+  },
+  {
+    icon: FaFilePowerpoint(),
+    skillName: "MS Powerpoint"
+  },
+  {
+    icon: SiAdobephotoshop(),
+    skillName: "Photoshop"
+  },
+  {
+    icon: SiAdobepremierepro(),
+    skillName: "Premiere Pro"
+  },
+  {
+    icon: SiVega(),
+    skillName: "Sony Vega"
+  },
+  {
+    icon: FaFigma(),
+    skillName: "Figma"
+  },
 ]
 
 export default class About extends React.Component {
@@ -105,18 +144,30 @@ export default class About extends React.Component {
             />
           );
         })}
-        <SkillList
-          $colspanstart={1}
-          $colspanend={4}
-          $hasSubheading={"Proficient in "}
-          skills={proficientList}
-        />
-        <SkillList
-          $colspanstart={1}
-          $colspanend={4}
-          $hasSubheading={"Knows the basics of "}
-          skills={basicList}
-        />
+        {[proficientList, basicList, othersList].map((list, key) => {
+          let subHeading;
+          switch(key){
+            case 0: 
+              subHeading = "Proficient in"
+              break;
+            case 1: 
+              subHeading = "Knows the basics of"
+              break;
+            case 2: 
+              subHeading = "Other Skills"
+              break;
+            default:
+              subHeading = "";
+          }
+          return (
+            <SkillList
+              $colspanstart={1}
+              $colspanend={4}
+              $hasSubheading={subHeading}
+              skills={list}
+            />
+          )
+        })}
       </MainWrapper>
     );
   }
