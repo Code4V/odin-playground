@@ -50,11 +50,12 @@ const ImagePreloader = styled.div`
 const MainContainer = styled.main`
   display: grid;
   grid-template-columns: 250px 250px 125px 125px 250px;
-  grid-template-rows: repeat(2, 1fr);
+  // grid-template-rows: repeat(2, 1fr);
 
+  padding-block-end: 64px;
   margin-block-start: 64px;
   width: 1024px;
-  height: 140svh;
+  // height: 140svh;  
   margin-inline: auto;
 `;
 

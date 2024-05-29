@@ -3,7 +3,9 @@ import styled from "styled-components";
 import Info from "./Info";
 import { ProjectLink } from "./Project";
 
-const ContactWrapper = styled.div``;
+const ContactWrapper = styled.div`
+  height: min-content;
+`;
 
 const ContactLink = styled(ProjectLink)`
 `;
