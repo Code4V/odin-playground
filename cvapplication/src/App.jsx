@@ -47,7 +47,7 @@ const ImagePreloader = styled.div`
   width: 100px;
 `;
 
-const MainContainer = styled.main`
+export const MainContainer = styled.main`
   display: grid;
   grid-template-columns: 250px 250px 125px 125px 250px;
   // grid-template-rows: repeat(2, 1fr);
