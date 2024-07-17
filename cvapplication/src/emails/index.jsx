@@ -26,7 +26,7 @@ export default function Email({userName, userInquiry, dateToday = new Date().toD
             </Row>
             <Row className="border border-solid border-black rounded py-2 px-4">
               <Column>
-                <Text> {userInquiry ?? "TEST_MESSAGE_PLEASE_IGNORE"} </Text>
+                <Text className="px-2"> {userInquiry ?? "TEST_MESSAGE_PLEASE_IGNORE"} </Text>
               </Column>
             </Row>
             <Row>
