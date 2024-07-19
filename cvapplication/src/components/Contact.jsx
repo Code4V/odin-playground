@@ -8,8 +8,10 @@ import { ProfileInfoClass } from "./Profile";
 
 const ContactWrapper = styled.div`
   height: min-content;
+  width: 718px;
+  display: grid;
   grid-template-columns: subgrid;
-  grid-column: 2/5;
+  grid-column: 2/6;
   padding-inline: 16px;
 `;
 
@@ -29,9 +31,9 @@ export class Contact extends React.Component {
     return (
       <ContactWrapper>
         <ContactHeader> Contact Me </ContactHeader>
-        <Info header="Email" body="rivasjeannefrancis@gmail.com" />
-        <Info header="My Socials" list={["Github: Code4V"]} />
-        <Info header="Contact Number" list={["0995-200-1867 ( GLOBE )", "0967-004-3898 ( GOMO )"]} />
+        <Info header="Email" body="rivasjeannefrancis@gmail.com" $colspanstart={1}/>
+        <Info header="My Socials" list={["Github: Code4V"]} $colspanstart={1}/>
+        <Info header="Contact Number" list={["0995-200-1867 ( GLOBE )", "0967-004-3898 ( GOMO )"]} $colspanstart={1}/>
       </ContactWrapper>
     );
   }

@@ -45,6 +45,7 @@ export const about = {
 export const project = {
   projects: [
     {
+      alt: 'Lakbayan Front Page Image',
       header:
         "Lakbayan: A Booking Information System With Travel Package Recommender",
       subheader: "Academic Requirement",
@@ -54,6 +55,7 @@ export const project = {
       img: Lakbay,
     },
     {
+      alt: 'Erovoutika Landing Page',
       header: "Erovoutika International Academy",
       body: "A Web Application for offering online courses by Erovoutika. After you completed a course, you can proceed to take an exam and get certified in a whim! Courses offered includes Electronics, Robotics, Automation, and ICT",
       list: ["PHP", "MySQL"],
@@ -61,11 +63,7 @@ export const project = {
       img: Eira,
     },
     {
-      header: "Food Management System",
-      body: "Created as a Final Project for my Application Development subject",
-      list: ["C#"],
-    },
-    {
+      alt: 'Odin Landing Page',
       header: "The Odin Project: Javascript",
       body: "A Compilation of my journey of learning Javascript through The Odin Project. My codes are available publicly and other coders can contribute freely",
       link: "https://code4v.github.io/odin-playground/",

@@ -32,7 +32,7 @@ export default class Info extends React.Component {
         key={this.props.keyb}
       >
         {this.props.img ? (
-            <Image src={this.props.img} alt={'test'}/>
+            <Image src={this.props.img} alt={ this.props.alt }/>
           ) : (
             ""
           )}

@@ -162,7 +162,7 @@ export default class About extends React.Component {
           return (
             <SkillList
               $colspanstart={1}
-              $colspanend={4}
+              $colspanend={5}
               $hasSubheading={subHeading}
               skills={list}
             />

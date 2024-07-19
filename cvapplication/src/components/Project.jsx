@@ -53,6 +53,7 @@ export class Project extends React.Component {
                 list={proj.list}
                 img={proj.img}
                 key={key}
+                alt={proj.alt}
                 />
               <ProjectLink href={proj.link}> Go to Project Link </ProjectLink>
             </>
