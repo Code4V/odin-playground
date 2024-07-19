@@ -1,5 +1,6 @@
 import Lakbay from './../assets/Lakbay.webp';
 import Eira from './../assets/Eira.webp';
+import Odin from './../assets/Odin.png'
 
 export const about = {
   info: [
@@ -68,7 +69,8 @@ export const project = {
       header: "The Odin Project: Javascript",
       body: "A Compilation of my journey of learning Javascript through The Odin Project. My codes are available publicly and other coders can contribute freely",
       link: "https://code4v.github.io/odin-playground/",
-      list: ["Javascript", "React"]
+      list: ["Javascript", "React"],
+      img: Odin
     },
   ],
 };
