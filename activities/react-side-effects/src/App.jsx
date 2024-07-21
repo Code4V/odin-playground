@@ -4,6 +4,7 @@ import viteLogo from '/vite.svg'
 import Clock from './components/clock'
 import './App.css'
 import Input from './components/input'
+import ClassInput from './components/classBasedComponent'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -12,6 +13,7 @@ function App() {
     <>
       <Clock />
       <Input />
+      <ClassInput />
     </>
   )
 }
