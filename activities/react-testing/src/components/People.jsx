@@ -1,27 +1,8 @@
-const people = [
-  {
-    name: 'Calvin Hawkins',
-    email: 'calvin.hawkins@example.com',
-    image:
-      'https://images.unsplash.com/photo-1491528323818-fdd1faba62cc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
-  },
-  {
-    name: 'Kristen Ramos',
-    email: 'kristen.ramos@example.com',
-    image:
-      'https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
-  },
-  {
-    name: 'Ted Fox',
-    email: 'ted.fox@example.com',
-    image:
-      'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
-  },
-]
+import PropTypes from 'prop-types'
 
-export default function People() {
+function People({ people }) {
   return (
-    <ul className="w-64 divide-y divide-gray-200">
+    <ul className="w-72 divide-y divide-gray-200">
       {people.map((person) => (
         <li key={person.email} className="py-4 flex">
           <img className="h-10 w-10 rounded-full" src={person.image} alt="" />
@@ -34,3 +15,13 @@ export default function People() {
     </ul>
   )
 }
+
+People.propTypes = {
+  people: PropTypes.arrayOf(PropTypes.exact({
+    image: PropTypes.string,
+    person: PropTypes.string,
+    email: PropTypes.string,
+  }))
+}
+
+export default People;
