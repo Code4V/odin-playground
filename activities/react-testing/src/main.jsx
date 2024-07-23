@@ -4,6 +4,7 @@ import App from './App.jsx'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import './index.css'
 import People from './components/People'
+import { PeopleListContainer } from './components/PeopleListContainer.jsx'
 
 const router = createBrowserRouter([
   {
@@ -12,7 +13,7 @@ const router = createBrowserRouter([
   },
   {
     path: "profile",
-    element: <People />,
+    element: <PeopleListContainer />,
   }
 ])
 
