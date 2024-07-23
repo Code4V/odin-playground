@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client'
 import App from './App.jsx'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import './index.css'
-import { CustomButton } from './components/CustomButton.jsx'
+import People from './components/People'
 
 const router = createBrowserRouter([
   {
@@ -12,7 +12,7 @@ const router = createBrowserRouter([
   },
   {
     path: "profile",
-    element: <CustomButton />,
+    element: <People />,
   }
 ])
 

@@ -10,7 +10,7 @@ function App() {
 
   return (
     <> 
-    <button type="button" onClick={clickHandler}> Click Me</button>
+      <button type="button" onClick={clickHandler}> Click Me</button>
       <h1>{ heading }</h1>
     </>
   )
