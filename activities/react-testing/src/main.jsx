@@ -8,6 +8,7 @@ import Spinach from './components/Spinach.jsx'
 import { PeopleListContainer } from './components/PeopleListContainer.jsx'
 import DefaultProfile from './components/DefaultProfile.jsx'
 import ErrorPage from './components/Error.jsx'
+import Image from './components/Image.jsx'
 
 const personMock = [{
   name: "John Mclain",
@@ -28,6 +29,10 @@ const router = createBrowserRouter([
   {
     path: "person/:id",
     element: <People />,
+  },
+  {
+    path: "image",
+    element: <Image />,
   }
 ])
 
