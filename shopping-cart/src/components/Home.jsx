@@ -1,6 +1,8 @@
-import { Container, Center, Text, VStack } from '@chakra-ui/react';
-import React from 'react'
+import { Container, Center, Text, VStack, SimpleGrid } from '@chakra-ui/react';
+import React, { useEffect, useState } from 'react'
 import { Search } from './Search';
+import { Product } from './Product';
+import { ProductList } from './ProductList';
 
 export const Home = () => {
   return (
@@ -13,6 +15,7 @@ export const Home = () => {
           </Container>
           <Search />
         </VStack>
+        <ProductList />
       </Container>
   )
 }
