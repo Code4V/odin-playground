@@ -1,5 +1,6 @@
-import React from 'react'
+import React, { useState } from 'react'
 import PropTypes from 'prop-types'
+import { Product } from './Product';
 import { 
   Box,
   Drawer,
@@ -14,7 +15,9 @@ import {
 } from '@chakra-ui/react'
 import { IoCart } from 'react-icons/io5'
 
-const Cart = props => {
+const Cart = ({ products = [] }) => {
+
+  console.log(products)
   const { isOpen, onOpen, onClose } = useDisclosure();
   const btnRef = React.useRef();
 
@@ -33,7 +36,9 @@ const Cart = props => {
           <DrawerCloseButton />
           <DrawerHeader>Your Cart</DrawerHeader>
           <DrawerBody>
-
+            { products.map((product, key) => {
+              return <Product props={product} key={key}/>
+            })}
           </DrawerBody>
           <DrawerFooter>
 
@@ -45,6 +50,8 @@ const Cart = props => {
   )
 }
 
-Cart.propTypes = {}
+Cart.propTypes = {
+  products: PropTypes.array,
+}
 
 export default Cart
