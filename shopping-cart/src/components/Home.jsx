@@ -15,28 +15,34 @@ import Cart from "./Cart";
 
 export const Home = () => {
   const [ cartContent, setCartContent ] = useState([]);
-  const productIDs = []
+  const [ productIDs, setProductIDs] = useState();
   useEffect(() => {
-    fetch('https://fakestoreapi.com/carts/5', {mode: 'cors'})
+    fetch('https://fakestoreapi.com/carts/1', {mode: 'cors'})
       .then(response => response.json())
-      .then(data => { data.products.forEach(prod => productIDs.push(prod))
-        })
+      .then(data => { 
+        console.log(data.products)
+          setProductIDs(data.products)
+      })
 
-        console.log(productIDs)
-    
-        productIDs.forEach(prod => {
-          fetch(`https://fakestoreapi.com/products/${prod.productId}`, {mode: 'cors'})
-            .then(response => response.json())
-            .then(sData => setCartContent(cartContent.push(sData)))
-        })
+        console.log(productIDs, 'This is what goes in')
+
+        // productIDs.forEach(prod => {
+        //   fetch(`https://fakestoreapi.com/products/${prod.productId}`, {mode: 'cors'})
+        //     .then(response => response.json())
+        //     .then(sData => {
+        //       console.log(sData)
+        //       setCartContent(cartContent.push(sData))
+        //   })
+        // })
   }, [])
+
   return (
     <Container maxW="1023px" colorScheme="brand" centerContent marginBlockStart={4}>
       <VStack align="justify" spacing={4} w="100%">
         <Flex align="center">
           <Text fontSize="3xl">The Odin Store</Text>
           <Spacer />
-          <Cart products={cartContent} />
+          <Cart products={productIDs} />
         </Flex>
         <Search />
       </VStack>

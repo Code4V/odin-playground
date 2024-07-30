@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 import { Product } from './Product';
 import { 
@@ -17,7 +17,20 @@ import { IoCart } from 'react-icons/io5'
 
 const Cart = ({ products = [] }) => {
 
-  console.log(products)
+  console.log(products, 'Product cart CART')
+
+  const [ cart, setCart ] = useState([]);
+
+  console.log(cart, "THE CART")
+
+  useEffect(() => {
+      fetch(`https://fakestoreapi.com/products`, {mode: 'cors'})
+        .then(response => response.json())
+        .then(data => {
+          console.log(data)
+        })
+  }, []);
+
   const { isOpen, onOpen, onClose } = useDisclosure();
   const btnRef = React.useRef();
 
@@ -36,9 +49,9 @@ const Cart = ({ products = [] }) => {
           <DrawerCloseButton />
           <DrawerHeader>Your Cart</DrawerHeader>
           <DrawerBody>
-            { products.map((product, key) => {
+            { cart && cart.map((product, key) => {
               return <Product props={product} key={key}/>
-            })}
+            }) } 
           </DrawerBody>
           <DrawerFooter>
 
