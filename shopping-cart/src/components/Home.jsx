@@ -25,15 +25,6 @@ export const Home = () => {
       })
 
         console.log(productIDs, 'This is what goes in')
-
-        // productIDs.forEach(prod => {
-        //   fetch(`https://fakestoreapi.com/products/${prod.productId}`, {mode: 'cors'})
-        //     .then(response => response.json())
-        //     .then(sData => {
-        //       console.log(sData)
-        //       setCartContent(cartContent.push(sData))
-        //   })
-        // })
   }, [])
 
   return (
