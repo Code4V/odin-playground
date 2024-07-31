@@ -16,14 +16,7 @@ import {
 import { IoCart } from 'react-icons/io5'
 
 const Cart = ({ products = [] }) => {
-
-  console.log(products, 'Product cart CART')
   const [ cart, setCart ] = useState([]);
-
-  // console.log(cart, "THE CART")
-
-  
-  
   const gotProducts = JSON.parse(localStorage.getItem('products'));
   const toCart = products.map((prod, key) => {
     return gotProducts[prod.productId - 1]
@@ -31,9 +24,7 @@ const Cart = ({ products = [] }) => {
   
   useEffect(() => {
     setCart(toCart);
-
-    console.log(cart, 'TEST')
-  }, [products]);
+  }, [ products ]);
 
   const { isOpen, onOpen, onClose } = useDisclosure();
   const btnRef = React.useRef();
