@@ -17,7 +17,7 @@ export const Home = () => {
   const [ cartContent, setCartContent ] = useState([]);
   const [ productIDs, setProductIDs] = useState();
   useEffect(() => {
-    fetch('https://fakestoreapi.com/carts/1', {mode: 'cors'})
+    fetch('https://fakestoreapi.com/carts/2', {mode: 'cors'})
       .then(response => response.json())
       .then(data => { 
         console.log(data.products)

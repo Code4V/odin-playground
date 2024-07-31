@@ -18,20 +18,22 @@ import { IoCart } from 'react-icons/io5'
 const Cart = ({ products = [] }) => {
 
   console.log(products, 'Product cart CART')
-
   const [ cart, setCart ] = useState([]);
 
-  console.log(cart, "THE CART")
+  // console.log(cart, "THE CART")
 
+  
+  
+  const gotProducts = JSON.parse(localStorage.getItem('products'));
+  const toCart = products.map((prod, key) => {
+    return gotProducts[prod.productId - 1]
+  })
+  
   useEffect(() => {
-      fetch(`https://fakestoreapi.com/products`, {mode: 'cors'})
-        .then(response => response.json())
-        .then(data => {
-          console.log(data)
-        });
+    setCart(toCart);
 
-      
-  }, []);
+    console.log(cart, 'TEST')
+  }, [products]);
 
   const { isOpen, onOpen, onClose } = useDisclosure();
   const btnRef = React.useRef();
