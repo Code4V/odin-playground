@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 import { Product } from './Product';
+import CartProduct from './CartProduct';
 import { 
   Box,
   Drawer,
@@ -17,13 +18,17 @@ import { IoCart } from 'react-icons/io5'
 
 const Cart = ({ products = [] }) => {
   const [ cart, setCart ] = useState([]);
-  const gotProducts = JSON.parse(localStorage.getItem('products'));
-  const toCart = products.map((prod, key) => {
-    return gotProducts[prod.productId - 1]
-  })
   
   useEffect(() => {
-    setCart(toCart);
+    (function getCart(){
+      const gotProducts = JSON.parse(localStorage.getItem('products'));
+      const toCart = products.map((prod, key) => {
+        return gotProducts[prod.productId - 1]
+      })
+      
+      setCart(toCart);
+    })()
+
   }, [ products ]);
 
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -45,7 +50,7 @@ const Cart = ({ products = [] }) => {
           <DrawerHeader>Your Cart</DrawerHeader>
           <DrawerBody>
             { cart && cart.map((product, key) => {
-              return <Product props={product} key={key}/>
+              return <CartProduct props={product} key={key}/>
             }) } 
           </DrawerBody>
           <DrawerFooter>

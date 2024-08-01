@@ -20,7 +20,7 @@ const Product = ({ props }) => {
     <Card id={props.id} variant="outline">
       <CardBody>
         <AspectRatio ratio={1 / 1}>
-          <Image src={props.image} borderRadius="xl" fit="none" />
+          <Image src={props.image} borderRadius="xl" objectFit="cover" />
         </AspectRatio>
         <Stack spacing={4} marginBlockStart={4}>
           <Heading noOfLines={2} size="lg" fontWeight={700}>
