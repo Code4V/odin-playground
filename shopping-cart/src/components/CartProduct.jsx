@@ -9,8 +9,9 @@ const CartProduct = ({ props }) => {
       variant='outline'
       marginBlockEnd={4}
     >
-      <Image boxSize='64px' src={props.image} objectFit='cover'/>
+      <Image boxSize='80px' src={props.image} objectFit='cover' maxW={{ base: '100%', sm:'200px' }}/>
       <CardBody>
+
         <Heading size='sm' noOfLines={2}>{props.title}</Heading>
         <Text>{props.price}</Text>
       </CardBody>
