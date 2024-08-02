@@ -14,21 +14,26 @@ import { ProductList } from "./ProductList";
 import Cart from "./Cart";
 
 export const Home = () => {
-  const [ cartContent, setCartContent ] = useState([]);
-  const [ productIDs, setProductIDs] = useState();
+  const [cartContent, setCartContent] = useState([]);
+  const [productIDs, setProductIDs] = useState();
   useEffect(() => {
-    fetch('https://fakestoreapi.com/carts/2', {mode: 'cors'})
-      .then(response => response.json())
-      .then(data => { 
-        console.log(data.products)
-          setProductIDs(data.products)
-      })
+    fetch("https://fakestoreapi.com/carts/2", { mode: "cors" })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data.products);
+        setProductIDs(data.products);
+      });
 
-        console.log(productIDs, 'This is what goes in')
-  }, [])
+    console.log(productIDs, "This is what goes in");
+  }, []);
 
   return (
-    <Container maxW="1023px" colorScheme="brand" centerContent marginBlockStart={4}>
+    <Container
+      maxW="1023px"
+      colorScheme="brand"
+      centerContent
+      marginBlockStart={4}
+    >
       <VStack align="justify" spacing={4} w="100%">
         <Flex align="center">
           <Text fontSize="3xl">The Odin Store</Text>

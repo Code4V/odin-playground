@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import  PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 import {
   Card,
   CardHeader,
@@ -14,8 +14,11 @@ import {
   ButtonGroup,
 } from "@chakra-ui/react";
 
+const Product = ({ props, addToCart }) => {
+  const handleAddCart = (event) => {
+    addToCart("Hello" + props.id);
+  };
 
-const Product = ({ props }) => {
   return (
     <Card id={props.id} variant="outline">
       <CardBody>
@@ -35,7 +38,9 @@ const Product = ({ props }) => {
       <CardFooter>
         <ButtonGroup gap={2}>
           <Button variant="solid">Buy Now</Button>
-          <Button variant="outline">Add Cart</Button>
+          <Button variant="outline" onClick={handleAddCart}>
+            Add Cart
+          </Button>
         </ButtonGroup>
       </CardFooter>
     </Card>
