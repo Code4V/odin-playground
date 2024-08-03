@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { CircularProgress, SimpleGrid } from "@chakra-ui/react";
 import { Product } from "./Product";
 
-export const ProductList = () => {
+export const ProductList = ({ addToCart }) => {
   const [products, setProducts] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -24,10 +24,6 @@ export const ProductList = () => {
     }
   }, []);
 
-  const handleAddCart = (message) => {
-    console.log(message);
-  };
-
   if (!isLoading)
     return <CircularProgress isIndeterminate marginBlockStart={4} />;
 
@@ -36,7 +32,7 @@ export const ProductList = () => {
       <SimpleGrid columns={3} gap={8} paddingBlockStart={8}>
         {products.map((product, key) => {
           return (
-            <Product props={product} key={key} addToCart={handleAddCart} />
+            <Product props={product} key={key} addToCart={addToCart} />
           );
         })}
       </SimpleGrid>

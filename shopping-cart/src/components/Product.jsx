@@ -16,7 +16,7 @@ import {
 
 const Product = ({ props, addToCart }) => {
   const handleAddCart = (event) => {
-    addToCart("Hello" + props.id);
+    addToCart({productId: props.id, quantity: 1});
   };
 
   return (

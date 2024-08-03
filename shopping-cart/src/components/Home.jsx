@@ -27,6 +27,12 @@ export const Home = () => {
     console.log(productIDs, "This is what goes in");
   }, []);
 
+
+  const handleAddCart = (newProd) => {
+
+    setProductIDs([...productIDs, newProd])
+  };
+
   return (
     <Container
       maxW="1023px"
@@ -42,7 +48,7 @@ export const Home = () => {
         </Flex>
         <Search />
       </VStack>
-      <ProductList />
+      <ProductList addToCart={handleAddCart}/>
     </Container>
   );
 };
