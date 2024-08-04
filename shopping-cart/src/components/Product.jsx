@@ -1,5 +1,5 @@
-import React, { useEffect } from "react";
-import PropTypes from "prop-types";
+import React, { useEffect } from 'react'
+import PropTypes from 'prop-types'
 import {
   Card,
   CardHeader,
@@ -11,13 +11,13 @@ import {
   Stack,
   AspectRatio,
   Button,
-  ButtonGroup,
-} from "@chakra-ui/react";
+  ButtonGroup
+} from '@chakra-ui/react'
 
-const Product = ({ props, addToCart }) => {
-  const handleAddCart = (event) => {
-    addToCart({productId: props.id, quantity: 1});
-  };
+const Product = ({ props, callbackFn }) => {
+  const handleAddCart = event => {
+    callbackFn({ productId: props.id, quantity: 1 })
+  }
 
   return (
     <Card id={props.id} variant="outline">
@@ -44,8 +44,8 @@ const Product = ({ props, addToCart }) => {
         </ButtonGroup>
       </CardFooter>
     </Card>
-  );
-};
+  )
+}
 
 Product.propTypes = {
   props: PropTypes.object,
@@ -53,7 +53,7 @@ Product.propTypes = {
   image: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
-  price: PropTypes.number.isRequired,
-};
+  price: PropTypes.number.isRequired
+}
 
-export { Product };
+export { Product }

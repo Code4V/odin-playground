@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react";
-import PropTypes from "prop-types";
-import { Product } from "./Product";
-import CartProduct from "./CartProduct";
+import React, { useEffect, useState } from 'react'
+import PropTypes from 'prop-types'
+import { Product } from './Product'
+import CartProduct from './CartProduct'
 import {
   Box,
   Drawer,
@@ -12,34 +12,34 @@ import {
   DrawerContent,
   DrawerCloseButton,
   Icon,
-  useDisclosure,
-} from "@chakra-ui/react";
-import { IoCart } from "react-icons/io5";
+  useDisclosure
+} from '@chakra-ui/react'
+import { IoCart } from 'react-icons/io5'
 
 const Cart = ({ products = [] }) => {
-  const [cart, setCart] = useState([]);
+  const [cart, setCart] = useState([])
+  const { isOpen, onOpen, onClose } = useDisclosure()
+  const btnRef = React.useRef()
 
   function getCart() {
-    const gotProducts = JSON.parse(localStorage.getItem("products"));
+    console.log(products)
+    const gotProducts = JSON.parse(localStorage.getItem('products'))
     const toCart = products.map((prod, key) => {
-      return gotProducts[prod.productId - 1];
-    });
+      return gotProducts[prod.productId - 1]
+    })
 
-    setCart(toCart);
+    setCart(toCart)
   }
 
   useEffect(() => {
-    const updateCart = setInterval(() => {
-      getCart();
-    }, 1000);
+    const updateCart = setTimeout(() => {
+      getCart()
+    }, 1000)
 
     return () => {
-      clearInterval(updateCart);
-    };
-  }, [products]);
-
-  const { isOpen, onOpen, onClose } = useDisclosure();
-  const btnRef = React.useRef();
+      clearTimeout(updateCart)
+    }
+  }, [products])
 
   return (
     <Box>
@@ -58,18 +58,18 @@ const Cart = ({ products = [] }) => {
           <DrawerBody>
             {cart &&
               cart.map((product, key) => {
-                return <CartProduct props={product} key={key} />;
+                return <CartProduct props={product} key={key} />
               })}
           </DrawerBody>
           <DrawerFooter></DrawerFooter>
         </DrawerContent>
       </Drawer>
     </Box>
-  );
-};
+  )
+}
 
 Cart.propTypes = {
-  products: PropTypes.array,
-};
+  products: PropTypes.array
+}
 
-export default Cart;
+export default Cart

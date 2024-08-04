@@ -1,5 +1,5 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React from 'react'
+import PropTypes from 'prop-types'
 import {
   Box,
   Card,
@@ -10,13 +10,13 @@ import {
   Heading,
   ButtonGroup,
   Button,
-  Text,
-} from "@chakra-ui/react";
+  Text
+} from '@chakra-ui/react'
 
 const CartProduct = ({ props }) => {
   return (
     <Card
-      direction={{ base: "column", sm: "row" }}
+      direction={{ base: 'column', sm: 'row' }}
       variant="outline"
       marginBlockEnd={4}
     >
@@ -24,7 +24,7 @@ const CartProduct = ({ props }) => {
         boxSize="80px"
         src={props.image}
         objectFit="cover"
-        maxW={{ base: "100%", sm: "200px" }}
+        maxW={{ base: '100%', sm: '200px' }}
       />
       <CardBody>
         <Heading size="sm" noOfLines={2}>
@@ -38,9 +38,9 @@ const CartProduct = ({ props }) => {
         </ButtonGroup>
       </CardFooter>
     </Card>
-  );
-};
+  )
+}
 
-CartProduct.propTypes = {};
+CartProduct.propTypes = {}
 
-export default CartProduct;
+export default CartProduct

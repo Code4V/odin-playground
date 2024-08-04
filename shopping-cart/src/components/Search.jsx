@@ -1,5 +1,5 @@
-import { Input, InputGroup, InputRightElement } from "@chakra-ui/react";
-import { SearchIcon } from "@chakra-ui/icons";
+import { Input, InputGroup, InputRightElement } from '@chakra-ui/react'
+import { SearchIcon } from '@chakra-ui/icons'
 
 export const Search = () => {
   return (
@@ -9,5 +9,5 @@ export const Search = () => {
         <SearchIcon />
       </InputRightElement>
     </InputGroup>
-  );
-};
+  )
+}
