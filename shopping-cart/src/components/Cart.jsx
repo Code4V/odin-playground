@@ -32,6 +32,7 @@ const Cart = ({ products = [] }) => {
   }
 
   useEffect(() => {
+
     const updateCart = setTimeout(() => {
       getCart()
     }, 1000)
@@ -39,7 +40,7 @@ const Cart = ({ products = [] }) => {
     return () => {
       clearTimeout(updateCart)
     }
-  }, [products])
+  }, [ products ])
 
   return (
     <Box>

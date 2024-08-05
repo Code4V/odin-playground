@@ -41,6 +41,11 @@ const CartProduct = ({ props }) => {
   )
 }
 
-CartProduct.propTypes = {}
+CartProduct.propTypes = {
+  props: PropTypes.objectOf(PropTypes.string),
+  image: PropTypes.string,
+  title: PropTypes.string,
+  price: PropTypes.number,
+}
 
 export default CartProduct

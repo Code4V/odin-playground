@@ -53,7 +53,8 @@ Product.propTypes = {
   image: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
-  price: PropTypes.number.isRequired
+  price: PropTypes.number.isRequired, 
+  callbackFn: PropTypes.func,
 }
 
 export { Product }
