@@ -16,13 +16,12 @@ import {
 } from '@chakra-ui/react'
 import { IoCart } from 'react-icons/io5'
 
-const Cart = ({ products = [] }) => {
+const Cart = ({ products = [], callbackFn }) => {
   const [cart, setCart] = useState([])
   const { isOpen, onOpen, onClose } = useDisclosure()
   const btnRef = React.useRef()
 
   function getCart() {
-    console.log(products)
     const gotProducts = JSON.parse(localStorage.getItem('products'))
     const toCart = products.map((prod, key) => {
       return gotProducts[prod.productId - 1]
@@ -31,8 +30,14 @@ const Cart = ({ products = [] }) => {
     setCart(toCart)
   }
 
-  useEffect(() => {
+  const removeProduct = (id) => {
+    setCart(cart.filter(element => id !== element.id))
+    callbackFn(products.filter(element => id !== element.productId))
+    
+    return 0;
+  }
 
+  useEffect(() => {
     const updateCart = setTimeout(() => {
       getCart()
     }, 1000)
@@ -59,7 +64,7 @@ const Cart = ({ products = [] }) => {
           <DrawerBody>
             {cart &&
               cart.map((product, key) => {
-                return <CartProduct props={product} key={key} />
+                return <CartProduct props={product} key={key} callbackFn={removeProduct}/>
               })}
           </DrawerBody>
           <DrawerFooter></DrawerFooter>
