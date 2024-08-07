@@ -37,6 +37,10 @@ export const Home = () => {
     console.log(productIDs, 'This is what goes in')
   }, [])
 
+  const updateCart = newCart => {
+    setProductIDs(newCart)
+  }
+
   const handleAddCart = newProd => {
     setProductIDs([...productIDs, newProd])
     setCartSuccess(true)
@@ -74,7 +78,7 @@ export const Home = () => {
         <Flex align="center">
           <Text fontSize="3xl">The Odin Store</Text>
           <Spacer />
-          <Cart products={productIDs} />
+          <Cart products={productIDs} callbackFn={updateCart} />
         </Flex>
         <Search />
       </VStack>

@@ -13,12 +13,17 @@ import {
   Text
 } from '@chakra-ui/react'
 
-const CartProduct = ({ props }) => {
+const CartProduct = ({ props, callbackFn }) => {
+
+  const handleOnClick = () => {
+    callbackFn(props.id);
+  }
   return (
     <Card
       direction={{ base: 'column', sm: 'row' }}
       variant="outline"
       marginBlockEnd={4}
+      key={props.id}
     >
       <Image
         boxSize="80px"
@@ -36,7 +41,7 @@ const CartProduct = ({ props }) => {
       </CardBody>
       <CardFooter>
         <ButtonGroup>
-          <Button variant="outline">Remove</Button>
+          <Button variant="outline" onClick={handleOnClick}>Remove</Button>
         </ButtonGroup>
       </CardFooter>
     </Card>
