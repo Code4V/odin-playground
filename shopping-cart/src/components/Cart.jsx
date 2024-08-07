@@ -12,7 +12,8 @@ import {
   DrawerContent,
   DrawerCloseButton,
   Icon,
-  useDisclosure
+  useDisclosure,
+  Text
 } from '@chakra-ui/react'
 import { IoCart } from 'react-icons/io5'
 
@@ -22,17 +23,16 @@ const Cart = ({ products = [] }) => {
   const btnRef = React.useRef()
 
   function getCart() {
-    console.log(products)
+    console.log(products, 'the products')
     const gotProducts = JSON.parse(localStorage.getItem('products'))
     const toCart = products.map((prod, key) => {
-      return gotProducts[prod.productId - 1]
+      return { ...gotProducts[prod.productId - 1], quantity: prod.quantity }
     })
 
     setCart(toCart)
   }
 
   useEffect(() => {
-
     const updateCart = setTimeout(() => {
       getCart()
     }, 1000)
@@ -40,7 +40,7 @@ const Cart = ({ products = [] }) => {
     return () => {
       clearTimeout(updateCart)
     }
-  }, [ products ])
+  }, [products])
 
   return (
     <Box>
@@ -62,7 +62,16 @@ const Cart = ({ products = [] }) => {
                 return <CartProduct props={product} key={key} />
               })}
           </DrawerBody>
-          <DrawerFooter></DrawerFooter>
+          <DrawerFooter>
+            <Text>
+              TOTAL CART AMOUNT:{' '}
+              {cart
+                .map(prod => {
+                  return prod.quantity * prod.price
+                })
+                .reduce((prev, curr) => (prev += curr))}
+            </Text>
+          </DrawerFooter>
         </DrawerContent>
       </Drawer>
     </Box>

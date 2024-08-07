@@ -30,7 +30,9 @@ const CartProduct = ({ props }) => {
         <Heading size="sm" noOfLines={2}>
           {props.title}
         </Heading>
-        <Text>{props.price}</Text>
+        <Text>
+          {`${props.price} * ${props.quantity} TOTAL AMOUNT ${props.price * props.quantity}`}{' '}
+        </Text>
       </CardBody>
       <CardFooter>
         <ButtonGroup>
@@ -45,7 +47,7 @@ CartProduct.propTypes = {
   props: PropTypes.objectOf(PropTypes.string),
   image: PropTypes.string,
   title: PropTypes.string,
-  price: PropTypes.number,
+  price: PropTypes.number
 }
 
 export default CartProduct
