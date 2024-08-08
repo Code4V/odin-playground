@@ -1,22 +1,20 @@
-import React from 'react'
 import PropTypes from 'prop-types'
 import {
-  Box,
   Card,
-  CardHeader,
   CardBody,
   Image,
   CardFooter,
   Heading,
   ButtonGroup,
   Button,
-  Text
+  Text,
+  StackDivider,
+  HStack
 } from '@chakra-ui/react'
 
 const CartProduct = ({ props, callbackFn }) => {
-
   const handleOnClick = () => {
-    callbackFn(props.id);
+    callbackFn(props.id)
   }
   return (
     <Card
@@ -32,16 +30,20 @@ const CartProduct = ({ props, callbackFn }) => {
         maxW={{ base: '100%', sm: '200px' }}
       />
       <CardBody>
-        <Heading size="sm" noOfLines={2}>
-          {props.title}
-        </Heading>
-        <Text>
-          {`${props.price} * ${props.quantity} TOTAL AMOUNT ${props.price * props.quantity}`}{' '}
-        </Text>
+        <HStack spacing={4} divider={<StackDivider />}>
+          <Heading size="sm" noOfLines={2} w="256px">
+            {props.title}
+          </Heading>
+          <Text>${props.price}</Text>
+          <Text>{props.quantity}</Text>
+          <Text>${props.price * props.quantity}</Text>
+        </HStack>
       </CardBody>
       <CardFooter>
         <ButtonGroup>
-          <Button variant="outline" onClick={handleOnClick}>Remove</Button>
+          <Button variant="outline" onClick={handleOnClick}>
+            Remove
+          </Button>
         </ButtonGroup>
       </CardFooter>
     </Card>
@@ -50,9 +52,12 @@ const CartProduct = ({ props, callbackFn }) => {
 
 CartProduct.propTypes = {
   props: PropTypes.objectOf(PropTypes.string),
+  id: PropTypes.number,
   image: PropTypes.string,
   title: PropTypes.string,
-  price: PropTypes.number
+  price: PropTypes.number,
+  quantity: PropTypes.number,
+  callbackFn: PropTypes.func
 }
 
 export default CartProduct

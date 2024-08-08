@@ -2,39 +2,28 @@ import {
   Alert,
   AlertIcon,
   AlertTitle,
-  AlertDescription,
-  Box,
   Container,
-  Center,
   Text,
   VStack,
-  SimpleGrid,
   Flex,
-  ScaleFade,
-  Spacer,
-  useDisclosure
+  Spacer
 } from '@chakra-ui/react'
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Search } from './Search'
-import { Product } from './Product'
 import { ProductList } from './ProductList'
 import Cart from './Cart'
 
 export const Home = () => {
-  const [cartContent, setCartContent] = useState([])
-  const [productIDs, setProductIDs] = useState()
+  const [productIDs, setProductIDs] = useState([])
   const [cartSuccess, setCartSuccess] = useState(false)
-  const { isOpen, onToggle, onClose } = useDisclosure()
+  // const { isOpen, onToggle, onClose } = useDisclosure()
 
   useEffect(() => {
-    fetch('https://fakestoreapi.com/carts/2', { mode: 'cors' })
+    fetch('https://fakestoreapi.com/carts/1', { mode: 'no-cors' })
       .then(response => response.json())
       .then(data => {
-        console.log(data.products)
         setProductIDs(data.products)
       })
-
-    console.log(productIDs, 'This is what goes in')
   }, [])
 
   const updateCart = newCart => {
@@ -42,7 +31,23 @@ export const Home = () => {
   }
 
   const handleAddCart = newProd => {
-    setProductIDs([...productIDs, newProd])
+    console.group(newProd, productIDs)
+    console.groupEnd()
+
+    if (!productIDs.filter(prod => prod.productId === newProd.productId).length)
+      setProductIDs([...productIDs, newProd])
+    else {
+      const updatedIDs = productIDs.map(prod => {
+        if (prod.productId === newProd.productId)
+          return {
+            ...prod,
+            quantity: (prod.quantity += 1)
+          }
+        else return prod
+      })
+      setProductIDs(updatedIDs)
+    }
+
     setCartSuccess(true)
     // onToggle();
 

@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
-import { Product } from './Product'
 import CartProduct from './CartProduct'
 import {
   Box,
@@ -11,6 +10,9 @@ import {
   DrawerOverlay,
   DrawerContent,
   DrawerCloseButton,
+  Heading,
+  HStack,
+  StackDivider,
   Icon,
   useDisclosure,
   Text
@@ -24,18 +26,18 @@ const Cart = ({ products = [], callbackFn }) => {
 
   function getCart() {
     const gotProducts = JSON.parse(localStorage.getItem('products'))
-    const toCart = products.map((prod, key) => {
+    const toCart = products.map(prod => {
       return { ...gotProducts[prod.productId - 1], quantity: prod.quantity }
     })
 
     setCart(toCart)
   }
 
-  const removeProduct = (id) => {
+  const removeProduct = id => {
     setCart(cart.filter(element => id !== element.id))
     callbackFn(products.filter(element => id !== element.productId))
-    
-    return 0;
+
+    return 0
   }
 
   useEffect(() => {
@@ -56,26 +58,42 @@ const Cart = ({ products = [], callbackFn }) => {
         placement="right"
         onClose={onClose}
         finalFocusRef={btnRef}
-        size="md"
+        size="xl"
       >
         <DrawerOverlay />
         <DrawerContent>
           <DrawerCloseButton />
           <DrawerHeader>Your Cart</DrawerHeader>
           <DrawerBody>
+            <HStack spacing={4} divider={<StackDivider />}>
+              <Heading size="sm" noOfLines={2} w="256px">
+                Product
+              </Heading>
+              <Text>Price</Text>
+              <Text>Qty</Text>
+              <Text>Total</Text>
+            </HStack>
             {cart &&
               cart.map((product, key) => {
-                return <CartProduct props={product} key={key} callbackFn={removeProduct}/>
+                return (
+                  <CartProduct
+                    props={product}
+                    key={key}
+                    callbackFn={removeProduct}
+                  />
+                )
               })}
           </DrawerBody>
           <DrawerFooter>
             <Text>
-              TOTAL CART AMOUNT:{' '}
-              {cart
-                .map(prod => {
-                  return prod.quantity * prod.price
-                })
-                .reduce((prev, curr) => (prev += curr))}
+              TOTAL CART AMOUNT:{' $'}
+              {cart.length &&
+                cart
+                  .map(prod => {
+                    return prod.quantity * prod.price
+                  })
+                  .reduce((prev, curr) => (prev += curr))
+                  .toFixed(2)}
             </Text>
           </DrawerFooter>
         </DrawerContent>
@@ -85,7 +103,8 @@ const Cart = ({ products = [], callbackFn }) => {
 }
 
 Cart.propTypes = {
-  products: PropTypes.array
+  products: PropTypes.array,
+  callbackFn: PropTypes.func
 }
 
 export default Cart

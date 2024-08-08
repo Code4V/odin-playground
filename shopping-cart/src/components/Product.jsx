@@ -1,8 +1,6 @@
-import React, { useEffect } from 'react'
 import PropTypes from 'prop-types'
 import {
   Card,
-  CardHeader,
   CardBody,
   CardFooter,
   Image,
@@ -15,7 +13,7 @@ import {
 } from '@chakra-ui/react'
 
 const Product = ({ props, callbackFn }) => {
-  const handleAddCart = event => {
+  const handleAddCart = () => {
     callbackFn({ productId: props.id, quantity: 1 })
   }
 
