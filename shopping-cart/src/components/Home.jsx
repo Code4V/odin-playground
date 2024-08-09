@@ -16,6 +16,7 @@ import Cart from './Cart'
 export const Home = () => {
   const [productIDs, setProductIDs] = useState([])
   const [cartSuccess, setCartSuccess] = useState(false)
+  const [ searchInput, setSearchInput ] = useState('');
   // const { isOpen, onToggle, onClose } = useDisclosure()
 
   useEffect(() => {
@@ -85,7 +86,7 @@ export const Home = () => {
           <Spacer />
           <Cart products={productIDs} callbackFn={updateCart} />
         </Flex>
-        <Search />
+        <Search searchInput={searchInput} callbackFn={setSearchInput}/>
       </VStack>
       <ProductList callbackFn={handleAddCart} />
     </Container>
