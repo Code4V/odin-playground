@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types'
 import { useEffect } from 'react'
-import { CircularProgress, SimpleGrid } from '@chakra-ui/react'
+import { CircularProgress, SimpleGrid, Text } from '@chakra-ui/react'
 import { Product } from './Product'
 
 const ProductList = ({productsItems = [],  callbackFn }) => {
@@ -10,6 +10,7 @@ const ProductList = ({productsItems = [],  callbackFn }) => {
 
   if (!productsItems.length)
     return <CircularProgress isIndeterminate marginBlockStart={4} />
+    // return <Text>No products to display</Text>
 
   return (
     // isLoading && (
