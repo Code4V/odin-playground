@@ -16,10 +16,29 @@ import Cart from './Cart'
 export const Home = () => {
   const [productIDs, setProductIDs] = useState([])
   const [cartSuccess, setCartSuccess] = useState(false)
-  const [ searchInput, setSearchInput ] = useState('');
+  const [products, setProducts] = useState([])
+  const [isLoading, setIsLoading] = useState(false)
   // const { isOpen, onToggle, onClose } = useDisclosure()
 
   useEffect(() => {
+
+    if (localStorage.getItem('products') === null) {
+      fetch('https://fakestoreapi.com/products', {
+        mode: 'cors',
+        method: 'GET'
+      })
+        .then(response => response.json())
+        .then(json => {
+          setProducts(json)
+          localStorage.setItem('products', JSON.stringify(json))
+        })
+        .finally(() => setIsLoading(true))
+    } else {
+      setProducts(JSON.parse(localStorage.getItem('products')))
+      setIsLoading(true)
+    }
+
+
     fetch('https://fakestoreapi.com/carts/1', { mode: 'no-cors' })
       .then(response => response.json())
       .then(data => {
@@ -29,6 +48,15 @@ export const Home = () => {
 
   const updateCart = newCart => {
     setProductIDs(newCart)
+  }
+
+  const handleSearch = searchItem => {
+    if (localStorage.length !== 0) {
+      console.log(searchItem)
+      setProducts(JSON.parse(localStorage.getItem('products')).filter(item => {
+        return item.title.includes(searchItem)
+      }))
+    }
   }
 
   const handleAddCart = newProd => {
@@ -86,9 +114,11 @@ export const Home = () => {
           <Spacer />
           <Cart products={productIDs} callbackFn={updateCart} />
         </Flex>
-        <Search searchInput={searchInput} callbackFn={setSearchInput}/>
+        {
+          <Search callbackFn={handleSearch}/>
+        }
       </VStack>
-      <ProductList callbackFn={handleAddCart} />
+      <ProductList productsItems={products} callbackFn={handleAddCart} />
     </Container>
   )
 }

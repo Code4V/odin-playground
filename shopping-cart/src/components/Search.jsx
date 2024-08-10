@@ -1,9 +1,13 @@
 import { Input, InputGroup, InputRightElement } from '@chakra-ui/react'
 import { SearchIcon } from '@chakra-ui/icons'
+import PropTypes from 'prop-types';
+import { useState } from 'react';
 
-export const Search = ({ searchInput, callbackFn }) => {
+const Search = ({ callbackFn }) => {
+  const [ searchInput, setSearchInput ] = useState('');
   const handleOnChange = (e) => {
-    callbackFn(e.value)
+    setSearchInput(e.target.value);
+    callbackFn(e.target.value);
   }
   return (
     <InputGroup>
@@ -14,3 +18,9 @@ export const Search = ({ searchInput, callbackFn }) => {
     </InputGroup>
   )
 }
+
+Search.propTypes = {
+  callbackFn: PropTypes.func,
+}
+
+export { Search }
