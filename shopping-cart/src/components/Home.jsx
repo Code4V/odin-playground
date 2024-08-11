@@ -17,7 +17,6 @@ export const Home = () => {
   const [productIDs, setProductIDs] = useState([])
   const [cartSuccess, setCartSuccess] = useState(false)
   const [products, setProducts] = useState([])
-  const [isLoading, setIsLoading] = useState(false)
   // const { isOpen, onToggle, onClose } = useDisclosure()
 
   useEffect(() => {
@@ -32,10 +31,9 @@ export const Home = () => {
           setProducts(json)
           localStorage.setItem('products', JSON.stringify(json))
         })
-        .finally(() => setIsLoading(true))
+        .catch(err => console.log(err))
     } else {
       setProducts(JSON.parse(localStorage.getItem('products')))
-      setIsLoading(true)
     }
 
 
@@ -78,14 +76,12 @@ export const Home = () => {
     }
 
     setCartSuccess(true)
-    // onToggle();
 
     setTimeout(() => {
       setCartSuccess(false)
-      // onClose()
     }, 1500)
 
-    return
+    return 0 
   }
 
   return (
