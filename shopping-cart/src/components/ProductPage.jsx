@@ -16,30 +16,25 @@ import { useEffect, useRef } from 'react'
 
 const ProductPage = ({ props, callbackFn }) => {
   const { id } = useParams();
-  const productId = useRef(props)
-
-  useEffect(() => {
-    productId.current = JSON.parse(localStorage.getItem('products'))[Number.parseInt(id) - 1];
-    console.log(productId)
-  })
+  props = JSON.parse(localStorage.getItem('products'))[Number.parseInt(id) - 1];
 
   const handleAddCart = () => {
     callbackFn({ productId: props.id, quantity: 1 })
   }
 
   return (
-    <Card id={productId.current.id} variant="outline">
+    <Card id={props.id} variant="outline">
       <CardBody>
         <AspectRatio ratio={1 / 1}>
-          <Image src={productId.current.image} borderRadius="xl" objectFit="cover" />
+          <Image src={props.image} borderRadius="xl" objectFit="cover" />
         </AspectRatio>
         <Stack spacing={4} marginBlockStart={4}>
           <Heading noOfLines={2} size="lg" fontWeight={700}>
-            {productId.current.title}
+            {props.title}
           </Heading>
-          <Text noOfLines={3}>{productId.current.description}</Text>
+          <Text noOfLines={3}>{props.description}</Text>
           <Text fontSize={24} as="b">
-            ${productId.current.price}
+            ${props.price}
           </Text>
         </Stack>
       </CardBody>
