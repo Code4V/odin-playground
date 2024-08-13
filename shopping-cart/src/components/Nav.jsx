@@ -13,7 +13,7 @@ import { Search } from './Search'
 import { ProductList } from './ProductList'
 import Cart from './Cart'
 
-export const Home = () => {
+export const Nav = () => {
   const [productIDs, setProductIDs] = useState([])
   const [cartSuccess, setCartSuccess] = useState(false)
   // const { isOpen, onToggle, onClose } = useDisclosure()

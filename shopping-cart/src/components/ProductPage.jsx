@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types'
+import { Nav } from './Nav'
 import { useParams } from 'react-router-dom'
 import {
   Card,
@@ -24,6 +25,7 @@ const ProductPage = ({ props, callbackFn }) => {
 
   return (
     <Container maxW='6xl'>
+      <Nav />
       <Card  size='lg' id={props.id} variant="outline" direction={{base: 'column', sm: 'row'}} >
         <CardHeader w='40%' >
           <Image src={props.image} borderRadius="xl" objectFit="cover" w='512px' h='512px' />
