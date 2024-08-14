@@ -25,12 +25,29 @@ const Cart = ({ products = [], callbackFn }) => {
   const btnRef = React.useRef()
 
   function getCart() {
-    const gotProducts = JSON.parse(localStorage.getItem('products'))
-    const toCart = products.map(prod => {
+    const gotProducts = JSON.parse(localStorage.getItem('products'));
+
+    const prodToCart = products.length  ? 
+                        products : 
+                        JSON.parse(localStorage.getItem('currentCart'));
+
+    const toCart = prodToCart.map(prod => {
       return { ...gotProducts[prod.productId - 1], quantity: prod.quantity }
     })
 
     setCart(toCart)
+  }
+
+  const storeCartToStorage = () => {
+    if (products.length) {
+      const cartToLocalStorage = products.map(item => {
+        return {'productId': item.productId, 'quantity': item.quantity}
+      });
+  
+      localStorage.setItem('currentCart', JSON.stringify(cartToLocalStorage));
+    }
+
+    return 0;
   }
 
   const removeProduct = id => {
@@ -42,13 +59,14 @@ const Cart = ({ products = [], callbackFn }) => {
 
   useEffect(() => {
     const updateCart = setTimeout(() => {
-      getCart()
+      getCart();
+      storeCartToStorage();
     }, 1000)
 
     return () => {
       clearTimeout(updateCart)
     }
-  }, [products])
+  }, [ products ])
 
   return (
     <Box>

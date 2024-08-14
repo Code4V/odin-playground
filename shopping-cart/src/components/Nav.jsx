@@ -12,6 +12,7 @@ import { useEffect, useState } from 'react'
 import { Search } from './Search'
 import { ProductList } from './ProductList'
 import Cart from './Cart'
+import { Link } from 'react-router-dom'
 
 export const Nav = () => {
   const [productIDs, setProductIDs] = useState([])
@@ -59,32 +60,8 @@ export const Nav = () => {
   }
 
   return (
-    <Container
-      maxW="1023px"
-      colorScheme="brand"
-      centerContent
-      marginBlockStart={4}
-    >
-      {
-        cartSuccess && (
-          // <ScaleFade in={isOpen} initialScale={0.9}>
-          // {/* <Box w={1080}> */}
-          <Alert status="success" position="fixed" zIndex={1} top={0} right={0}>
-            <AlertIcon />
-            <AlertTitle>Item Added To Cart</AlertTitle>
-          </Alert>
-        )
-        // {/* </Box> */}
-        // </ScaleFade>
-      }
-
-      <VStack align="justify" spacing={4} w="100%">
-        <Flex align="center">
-          <Text fontSize="3xl">The Odin Store</Text>
-          <Spacer />
-          <Cart products={productIDs} callbackFn={updateCart} />
-        </Flex>
-      </VStack>
-    </Container>
+    <Link to='/'>
+      <Text fontSize="3xl">The Odin Store</Text>
+    </Link>
   )
 }

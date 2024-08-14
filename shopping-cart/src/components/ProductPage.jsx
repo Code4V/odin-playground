@@ -12,11 +12,17 @@ import {
   Stack,
   Button,
   ButtonGroup,
-  Container
+  Container,
+  Flex,
+  Spacer
 } from '@chakra-ui/react'
+import Cart from './Cart'
+import { useState } from 'react'
 
 const ProductPage = ({ props, callbackFn }) => {
   const { id } = useParams();
+  const [ productId, setProductId ] = useState(JSON.parse(localStorage.getItem('currentCart')) ?? []) 
+
   props = JSON.parse(localStorage.getItem('products'))[Number.parseInt(id) - 1];
 
   const handleAddCart = () => {
@@ -24,9 +30,18 @@ const ProductPage = ({ props, callbackFn }) => {
   }
 
   return (
-    <Container maxW='6xl'>
-      <Nav />
-      <Card  size='lg' id={props.id} variant="outline" direction={{base: 'column', sm: 'row'}} >
+    <Container 
+      maxW="1023px"
+      colorScheme="brand"
+      centerContent
+      marginBlockStart={4}
+      >
+      <Flex align='center' w='100%'>
+        <Nav />
+        <Spacer />
+        <Cart products={productId}/>
+      </Flex>
+      <Card  size='md' id={props.id} variant="outline" direction={{base: 'column', sm: 'row'}} marginBlockStart={4} >
         <CardHeader w='40%' >
           <Image src={props.image} borderRadius="xl" objectFit="cover" w='512px' h='512px' />
         </CardHeader>

@@ -12,11 +12,15 @@ import { useEffect, useState } from 'react'
 import { Search } from './Search'
 import { ProductList } from './ProductList'
 import Cart from './Cart'
+import { Nav } from './Nav'
 
 export const Home = () => {
-  const [productIDs, setProductIDs] = useState([])
+  // For Cart
+  const [productIDs, setProductIDs] = useState(JSON.parse(localStorage.getItem('currentCart')) ?? []) 
   const [cartSuccess, setCartSuccess] = useState(false)
-  const [products, setProducts] = useState([])
+
+  // For Product List
+  const [products, setProducts] = useState([]);
   // const { isOpen, onToggle, onClose } = useDisclosure()
 
   useEffect(() => {
@@ -37,14 +41,15 @@ export const Home = () => {
     }
 
 
-    fetch('https://fakestoreapi.com/carts/1', { mode: 'no-cors' })
-      .then(response => response.json())
-      .then(data => {
-        setProductIDs(data.products)
-      })
+  //   fetch('https://fakestoreapi.com/carts/1', { mode: 'no-cors' })
+  //     .then(response => response.json())
+  //     .then(data => {
+  //       setProductIDs(data.products)
+  //     })
+
   }, [])
 
-  const updateCart = newCart => {
+  const deleteCartProduct = newCart => {
     setProductIDs(newCart)
   }
 
@@ -58,9 +63,6 @@ export const Home = () => {
   }
 
   const handleAddCart = newProd => {
-    console.group(newProd, productIDs)
-    console.groupEnd()
-
     if (!productIDs.filter(prod => prod.productId === newProd.productId).length)
       setProductIDs([...productIDs, newProd])
     else {
@@ -106,9 +108,9 @@ export const Home = () => {
 
       <VStack align="justify" spacing={4} w="100%">
         <Flex align="center">
-          <Text fontSize="3xl">The Odin Store</Text>
+          <Nav />
           <Spacer />
-          <Cart products={productIDs} callbackFn={updateCart} />
+          <Cart products={productIDs} callbackFn={deleteCartProduct} />
         </Flex>
         {
           <Search callbackFn={handleSearch}/>
