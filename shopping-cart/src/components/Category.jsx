@@ -12,7 +12,7 @@ const Category = ({ props }) => {
   }
 
   return (
-    <Button width='fit-content' size='sm' variant={!isActive ? 'outline' : 'solid'} onClick={handleOnClick}>{ props.category ?? 'shiiiet' }</Button>
+    <Button width='fit-content' transition='250ms ease-in-out' size='sm' variant={!isActive ? 'outline' : 'solid'} onClick={handleOnClick}>{ props.category ?? 'shiiiet' }</Button>
   )
 }
 
