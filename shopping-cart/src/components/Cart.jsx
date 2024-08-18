@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useMemo, useState } from 'react'
 import PropTypes from 'prop-types'
 import CartProduct from './CartProduct'
 import {
@@ -23,13 +23,14 @@ const Cart = ({ products = [], callbackFn }) => {
   const [cart, setCart] = useState([])
   const { isOpen, onOpen, onClose } = useDisclosure()
   const btnRef = React.useRef()
+  const cartMemo = useMemo(getCart, [products])
 
   function getCart() {
-    const gotProducts = JSON.parse(localStorage.getItem('products'));
+    const gotProducts = JSON.parse(localStorage.getItem('products'))
 
-    const prodToCart = products.length  ? 
-                        products : 
-                        JSON.parse(localStorage.getItem('currentCart'));
+    const prodToCart = products.length
+      ? products
+      : JSON.parse(localStorage.getItem('currentCart')) ?? [];
 
     const toCart = prodToCart.map(prod => {
       return { ...gotProducts[prod.productId - 1], quantity: prod.quantity }
@@ -41,13 +42,13 @@ const Cart = ({ products = [], callbackFn }) => {
   const storeCartToStorage = () => {
     if (products.length) {
       const cartToLocalStorage = products.map(item => {
-        return {'productId': item.productId, 'quantity': item.quantity}
-      });
-  
-      localStorage.setItem('currentCart', JSON.stringify(cartToLocalStorage));
+        return { productId: item.productId, quantity: item.quantity }
+      })
+
+      localStorage.setItem('currentCart', JSON.stringify(cartToLocalStorage))
     }
 
-    return 0;
+    return 0
   }
 
   const removeProduct = id => {
@@ -59,14 +60,14 @@ const Cart = ({ products = [], callbackFn }) => {
 
   useEffect(() => {
     const updateCart = setTimeout(() => {
-      getCart();
-      storeCartToStorage();
+      cartMemo()
+      storeCartToStorage()
     }, 1000)
 
     return () => {
       clearTimeout(updateCart)
     }
-  }, [ products ])
+  }, [products])
 
   return (
     <Box>
@@ -83,7 +84,12 @@ const Cart = ({ products = [], callbackFn }) => {
           <DrawerCloseButton />
           <DrawerHeader>Your Cart</DrawerHeader>
           <DrawerBody>
-            <HStack spacing={4} divider={<StackDivider />}>
+            <HStack
+              spacing={4}
+              divider={<StackDivider />}
+              marginInlineStart="100px"
+              marginBlockEnd={4}
+            >
               <Heading size="sm" noOfLines={2} w="256px">
                 Product
               </Heading>

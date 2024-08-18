@@ -19,7 +19,6 @@ const Product = ({ props, callbackFn }) => {
   }
 
   return (
-
     <Card id={props.id} variant="outline">
       <Link to={`product/${props.id}`}>
         <CardBody>

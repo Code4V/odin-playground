@@ -3,28 +3,41 @@ import {
   AlertIcon,
   AlertTitle,
   Container,
-  Text,
   VStack,
   Flex,
   Spacer
 } from '@chakra-ui/react'
-import { useEffect, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { Search } from './Search'
 import { ProductList } from './ProductList'
 import Cart from './Cart'
 import { Nav } from './Nav'
+import CategoryList from './CategoryList'
 
 export const Home = () => {
   // For Cart
-  const [productIDs, setProductIDs] = useState(JSON.parse(localStorage.getItem('currentCart')) ?? []) 
+  const [productIDs, setProductIDs] = useState(
+    JSON.parse(localStorage.getItem('currentCart')) ?? []
+  )
   const [cartSuccess, setCartSuccess] = useState(false)
 
   // For Product List
-  const [products, setProducts] = useState([]);
+  const [products, setProducts] = useState([])
   // const { isOpen, onToggle, onClose } = useDisclosure()
 
-  useEffect(() => {
+  const currentCategories = useMemo(() => {
+    const cc = [];
+    console.log(products, 'sheesh')
+    products.filter(prod => {
+      if (!cc.includes(prod.category)) 
+        cc.push(prod.category)
+    });
 
+    return cc;
+
+  }, [products]);
+
+  useEffect(() => {
     if (localStorage.getItem('products') === null) {
       fetch('https://fakestoreapi.com/products', {
         mode: 'cors',
@@ -40,13 +53,11 @@ export const Home = () => {
       setProducts(JSON.parse(localStorage.getItem('products')))
     }
 
-
-  //   fetch('https://fakestoreapi.com/carts/1', { mode: 'no-cors' })
-  //     .then(response => response.json())
-  //     .then(data => {
-  //       setProductIDs(data.products)
-  //     })
-
+    //   fetch('https://fakestoreapi.com/carts/1', { mode: 'no-cors' })
+    //     .then(response => response.json())
+    //     .then(data => {
+    //       setProductIDs(data.products)
+    //     })
   }, [])
 
   const deleteCartProduct = newCart => {
@@ -56,9 +67,11 @@ export const Home = () => {
   const handleSearch = searchItem => {
     if (localStorage.length !== 0) {
       console.log(searchItem)
-      setProducts(JSON.parse(localStorage.getItem('products')).filter(item => {
-        return item.title.includes(searchItem)
-      }))
+      setProducts(
+        JSON.parse(localStorage.getItem('products')).filter(item => {
+          return item.title.includes(searchItem)
+        })
+      )
     }
   }
 
@@ -83,7 +96,7 @@ export const Home = () => {
       setCartSuccess(false)
     }, 1500)
 
-    return 0 
+    return 0
   }
 
   return (
@@ -112,11 +125,10 @@ export const Home = () => {
           <Spacer />
           <Cart products={productIDs} callbackFn={deleteCartProduct} />
         </Flex>
-        {
-          <Search callbackFn={handleSearch}/>
-        }
+        <Search callbackFn={handleSearch} />
+        <CategoryList categories={currentCategories} />
+        <ProductList productsItems={products} callbackFn={handleAddCart} />
       </VStack>
-      <ProductList productsItems={products} callbackFn={handleAddCart} />
     </Container>
   )
 }

@@ -36,7 +36,7 @@ const CartProduct = ({ props, callbackFn }) => {
           </Heading>
           <Text>${props.price}</Text>
           <Text>{props.quantity}</Text>
-          <Text>${props.price * props.quantity}</Text>
+          <Text>${(props.price * props.quantity).toFixed(2)}</Text>
         </HStack>
       </CardBody>
       <CardFooter>
