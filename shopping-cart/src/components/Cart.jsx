@@ -30,7 +30,7 @@ const Cart = ({ products = [], callbackFn }) => {
 
     const prodToCart = products.length
       ? products
-      : JSON.parse(localStorage.getItem('currentCart')) ?? [];
+      : (JSON.parse(localStorage.getItem('currentCart')) ?? [])
 
     const toCart = prodToCart.map(prod => {
       return { ...gotProducts[prod.productId - 1], quantity: prod.quantity }
@@ -110,7 +110,7 @@ const Cart = ({ products = [], callbackFn }) => {
           </DrawerBody>
           <DrawerFooter>
             <Text>
-              TOTAL CART AMOUNT:{' $'}
+              TOTAL CART AMOUNT: $
               {cart.length &&
                 cart
                   .map(prod => {

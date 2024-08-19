@@ -7,12 +7,14 @@ import {
   Flex,
   Spacer
 } from '@chakra-ui/react'
-import { useEffect, useMemo, useState } from 'react'
+import React, { useEffect, useMemo, useState } from 'react'
 import { Search } from './Search'
 import { ProductList } from './ProductList'
 import Cart from './Cart'
 import { Nav } from './Nav'
 import CategoryList from './CategoryList'
+
+export const HomeContext = React.createContext()
 
 export const Home = () => {
   // For Cart
@@ -24,18 +26,18 @@ export const Home = () => {
   // For Product List
   const [products, setProducts] = useState([])
   // const { isOpen, onToggle, onClose } = useDisclosure()
+  const [activeFilter, setActiveFilter] = useState([])
+  const categoryRef = React.useRef()
 
   const currentCategories = useMemo(() => {
-    const cc = [];
+    const cc = []
     console.log(products, 'sheesh')
     products.filter(prod => {
-      if (!cc.includes(prod.category)) 
-        cc.push(prod.category)
-    });
+      if (!cc.includes(prod.category)) cc.push(prod.category)
+    })
 
-    return cc;
-
-  }, [products]);
+    return cc
+  }, [products])
 
   useEffect(() => {
     if (localStorage.getItem('products') === null) {
@@ -43,14 +45,23 @@ export const Home = () => {
         mode: 'cors',
         method: 'GET'
       })
-        .then(response => response.json())
-        .then(json => {
-          setProducts(json)
-          localStorage.setItem('products', JSON.stringify(json))
-        })
-        .catch(err => console.log(err))
+      .then(response => response.json())
+      .then(json => {
+        setProducts(json)
+        localStorage.setItem('products', JSON.stringify(json))
+      })
+      .catch(err => console.log(err))
     } else {
-      setProducts(JSON.parse(localStorage.getItem('products')))
+      categoryRef.current = currentCategories;
+      const parsedLocalProducts = JSON.parse(localStorage.getItem('products'))
+
+      const filteredProducts = parsedLocalProducts.filter(item => {
+        if (activeFilter.includes(item.category)) return item
+      })
+
+      setProducts(
+        filteredProducts.length === 0 ? parsedLocalProducts : filteredProducts
+      )
     }
 
     //   fetch('https://fakestoreapi.com/carts/1', { mode: 'no-cors' })
@@ -58,7 +69,7 @@ export const Home = () => {
     //     .then(data => {
     //       setProductIDs(data.products)
     //     })
-  }, [])
+  }, [activeFilter])
 
   const deleteCartProduct = newCart => {
     setProductIDs(newCart)
@@ -66,7 +77,6 @@ export const Home = () => {
 
   const handleSearch = searchItem => {
     if (localStorage.length !== 0) {
-      console.log(searchItem)
       setProducts(
         JSON.parse(localStorage.getItem('products')).filter(item => {
           return item.title.includes(searchItem)
@@ -126,7 +136,11 @@ export const Home = () => {
           <Cart products={productIDs} callbackFn={deleteCartProduct} />
         </Flex>
         <Search callbackFn={handleSearch} />
-        <CategoryList categories={currentCategories} />
+
+        <HomeContext.Provider value={[activeFilter, setActiveFilter]}>
+          <CategoryList categories={currentCategories} />
+        </HomeContext.Provider>
+
         <ProductList productsItems={products} callbackFn={handleAddCart} />
       </VStack>
     </Container>

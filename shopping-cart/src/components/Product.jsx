@@ -50,11 +50,11 @@ const Product = ({ props, callbackFn }) => {
 
 Product.propTypes = {
   props: PropTypes.object,
-  id: PropTypes.number.isRequired,
-  image: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
-  description: PropTypes.string.isRequired,
-  price: PropTypes.number.isRequired,
+  id: PropTypes.number,
+  image: PropTypes.string,
+  title: PropTypes.string,
+  description: PropTypes.string,
+  price: PropTypes.number,
   callbackFn: PropTypes.func
 }
 
