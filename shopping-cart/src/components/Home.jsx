@@ -31,8 +31,7 @@ export const Home = () => {
 
   const currentCategories = useMemo(() => {
     const cc = []
-    console.log(products, 'sheesh')
-    products.filter(prod => {
+    JSON.parse(localStorage.getItem('products')).filter(prod => {
       if (!cc.includes(prod.category)) cc.push(prod.category)
     })
 
