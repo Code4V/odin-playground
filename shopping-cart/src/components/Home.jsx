@@ -37,7 +37,7 @@ export const Home = () => {
     })
 
     return cc
-  }, [products])
+  })
 
   useEffect(() => {
     if (localStorage.getItem('products') === null) {
@@ -120,7 +120,7 @@ export const Home = () => {
         cartSuccess && (
           // <ScaleFade in={isOpen} initialScale={0.9}>
           // {/* <Box w={1080}> */}
-          <Alert status="success" position="fixed" zIndex={1} top={0} right={0}>
+          <Alert status="success" position="fixed" zIndex={1} top={4} right={4} w={256}>
             <AlertIcon />
             <AlertTitle>Item Added To Cart</AlertTitle>
           </Alert>
