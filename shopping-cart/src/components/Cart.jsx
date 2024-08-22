@@ -36,7 +36,8 @@ const Cart = ({ products = [], callbackFn }) => {
       return { ...gotProducts[prod.productId - 1], quantity: prod.quantity }
     })
 
-    setCart(toCart)
+    // setCart(toCart);
+    return toCart
   }
 
   const storeCartToStorage = () => {
@@ -60,7 +61,7 @@ const Cart = ({ products = [], callbackFn }) => {
 
   useEffect(() => {
     const updateCart = setTimeout(() => {
-      cartMemo()
+      setCart(cartMemo)
       storeCartToStorage()
     }, 1000)
 

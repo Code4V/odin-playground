@@ -27,16 +27,19 @@ export const Home = () => {
   const [products, setProducts] = useState([])
   // const { isOpen, onToggle, onClose } = useDisclosure()
   const [activeFilter, setActiveFilter] = useState([])
-  const categoryRef = React.useRef()
+  // const categoryRef = React.useRef()
 
   const currentCategories = useMemo(() => {
     const cc = []
+
+    if (!localStorage.getItem('products')) return cc
+
     JSON.parse(localStorage.getItem('products')).filter(prod => {
       if (!cc.includes(prod.category)) cc.push(prod.category)
     })
 
     return cc
-  })
+  }, [])
 
   useEffect(() => {
     if (localStorage.getItem('products') === null) {
@@ -44,14 +47,13 @@ export const Home = () => {
         mode: 'cors',
         method: 'GET'
       })
-      .then(response => response.json())
-      .then(json => {
-        setProducts(json)
-        localStorage.setItem('products', JSON.stringify(json))
-      })
-      .catch(err => console.log(err))
+        .then(response => response.json())
+        .then(json => {
+          setProducts(json)
+          localStorage.setItem('products', JSON.stringify(json))
+        })
+        .catch(err => console.log(err))
     } else {
-      categoryRef.current = currentCategories;
       const parsedLocalProducts = JSON.parse(localStorage.getItem('products'))
 
       const filteredProducts = parsedLocalProducts.filter(item => {
@@ -68,7 +70,7 @@ export const Home = () => {
     //     .then(data => {
     //       setProductIDs(data.products)
     //     })
-  }, [activeFilter])
+  }, [activeFilter, currentCategories])
 
   const deleteCartProduct = newCart => {
     setProductIDs(newCart)
@@ -119,7 +121,14 @@ export const Home = () => {
         cartSuccess && (
           // <ScaleFade in={isOpen} initialScale={0.9}>
           // {/* <Box w={1080}> */}
-          <Alert status="success" position="fixed" zIndex={1} top={4} right={4} w={256}>
+          <Alert
+            status="success"
+            position="fixed"
+            zIndex={1}
+            top={4}
+            right={4}
+            w={256}
+          >
             <AlertIcon />
             <AlertTitle>Item Added To Cart</AlertTitle>
           </Alert>
