@@ -12,6 +12,8 @@ const Category = ({ props }) => {
 
     if (!activeFilter.includes(props.category)) {
       setActiveFilter([props.category, ...activeFilter])
+    } else {
+      setActiveFilter(activeFilter.filter(f => f !== props.category));
     }
 
     console.log(activeFilter)

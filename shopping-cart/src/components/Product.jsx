@@ -21,11 +21,11 @@ const Product = ({ props, callbackFn }) => {
   return (
     <Card id={props.id} variant="outline">
       <Link to={`product/${props.id}`}>
+        <AspectRatio ratio={1 / 1}>
+          <Image src={props.image} borderRadius="xl" objectFit="cover" />
+        </AspectRatio>
         <CardBody>
-          <AspectRatio ratio={1 / 1}>
-            <Image src={props.image} borderRadius="xl" objectFit="cover" />
-          </AspectRatio>
-          <Stack spacing={4} marginBlockStart={4}>
+          <Stack spacing={4} marginBlockStart={2}>
             <Heading noOfLines={2} size="lg" fontWeight={700}>
               {props.title}
             </Heading>
