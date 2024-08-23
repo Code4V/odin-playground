@@ -14,7 +14,8 @@ import Cart from './Cart'
 import { Nav } from './Nav'
 import CategoryList from './CategoryList'
 
-export const HomeContext = React.createContext()
+export const HomeContext = React.createContext();
+export const ProductContext = React.createContext();
 
 export const Home = () => {
   // For Cart
@@ -31,10 +32,11 @@ export const Home = () => {
 
   const currentCategories = useMemo(() => {
     const cc = []
+    const gotProducts = JSON.parse(localStorage.getItem('products'));
 
     if (!localStorage.getItem('products')) return cc
 
-    JSON.parse(localStorage.getItem('products')).filter(prod => {
+    gotProducts.filter(prod => {
       if (!cc.includes(prod.category)) cc.push(prod.category)
     })
 
@@ -149,7 +151,9 @@ export const Home = () => {
           <CategoryList categories={currentCategories} />
         </HomeContext.Provider>
 
-        <ProductList productsItems={products} callbackFn={handleAddCart} />
+        <ProductContext.Provider value={[handleAddCart]}>
+          <ProductList productsItems={products} callbackFn={handleAddCart} />
+        </ProductContext.Provider>
       </VStack>
     </Container>
   )

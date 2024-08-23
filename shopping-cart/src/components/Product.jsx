@@ -12,10 +12,15 @@ import {
   Button,
   ButtonGroup
 } from '@chakra-ui/react'
+import React from 'react';
+import { ProductContext } from './Home'
 
 const Product = ({ props, callbackFn }) => {
-  const handleAddCart = () => {
-    callbackFn({ productId: props.id, quantity: 1 })
+  const [ handleAddCart ] = React.useContext(ProductContext);
+  const handleOnClick = () => {
+    // callbackFn({ productId: props.id, quantity: 1 })
+    handleAddCart({productId: props.id, quantity: 1});
+
   }
 
   return (
@@ -39,7 +44,7 @@ const Product = ({ props, callbackFn }) => {
       <CardFooter>
         <ButtonGroup gap={2}>
           <Button variant="solid">Buy Now</Button>
-          <Button variant="outline" onClick={handleAddCart}>
+          <Button variant="outline" onClick={handleOnClick}>
             Add Cart
           </Button>
         </ButtonGroup>
