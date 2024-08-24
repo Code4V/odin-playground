@@ -26,9 +26,9 @@ export const Home = () => {
 
   // For Product List
   const [products, setProducts] = useState([])
+
   // const { isOpen, onToggle, onClose } = useDisclosure()
   const [activeFilter, setActiveFilter] = useState([])
-  // const categoryRef = React.useRef()
 
   const currentCategories = useMemo(() => {
     const cc = []
@@ -67,11 +67,6 @@ export const Home = () => {
       )
     }
 
-    //   fetch('https://fakestoreapi.com/carts/1', { mode: 'no-cors' })
-    //     .then(response => response.json())
-    //     .then(data => {
-    //       setProductIDs(data.products)
-    //     })
   }, [activeFilter, currentCategories])
 
   const deleteCartProduct = newCart => {
