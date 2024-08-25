@@ -29,19 +29,22 @@ export const Home = () => {
 
   // const { isOpen, onToggle, onClose } = useDisclosure()
   const [activeFilter, setActiveFilter] = useState([])
+  
+    const getCategories = () => {
+      const cc = []
+      const gotProducts = products ?? JSON.parse(localStorage.getItem('products'));
+  
+      if (!localStorage.getItem('products')) return cc
+  
+      gotProducts.filter(prod => {
+        if (!cc.includes(prod.category)) cc.push(prod.category)
+      })
+  
+      return cc
+    }
 
-  const currentCategories = useMemo(() => {
-    const cc = []
-    const gotProducts = JSON.parse(localStorage.getItem('products'));
+  const currentCategories = useMemo(getCategories, [ products ]);
 
-    if (!localStorage.getItem('products')) return cc
-
-    gotProducts.filter(prod => {
-      if (!cc.includes(prod.category)) cc.push(prod.category)
-    })
-
-    return cc
-  }, [])
 
   useEffect(() => {
     if (localStorage.getItem('products') === null) {
@@ -52,9 +55,10 @@ export const Home = () => {
         .then(response => response.json())
         .then(json => {
           setProducts(json)
-          localStorage.setItem('products', JSON.stringify(json))
+          localStorage.setItem('products', JSON.stringify(json));
         })
         .catch(err => console.log(err))
+
     } else {
       const parsedLocalProducts = JSON.parse(localStorage.getItem('products'))
 
