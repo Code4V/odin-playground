@@ -1,19 +1,29 @@
 import React, { useState } from "react";
+import Header from "./components/Header";
+import { ProductDetail } from "./components/ProductDetail";
+
 import { Link } from "react-router-dom";
 
-function App() {
-  const [heading, setHeading] = useState("Magnificent Monkeys");
+export const ShopContext = React.createContext({
+  products: [],
+  cartItems: [],
+  addToCart: () => {console.log('I the con')},
+})
 
-  const clickHandler = () => {
-    setHeading("Radical Rhinos");
-  }
+function App() {
+  const [cartItems, setCartItems] = useState([
+
+  ]);
+
+  const products = [];
+
+  const addToCart = () => console.log('con the I');
 
   return (
-    <> 
-      <button type="button" onClick={clickHandler}> Click Me</button>
-      <h1>{ heading }</h1>
-      <Link to="person"> Go to Profile</Link>
-    </>
+    <ShopContext.Provider value={{ products, cartItems, addToCart }}> 
+      <Header cartItemsCount={cartItems.length}/>
+      <ProductDetail />
+    </ShopContext.Provider>
   )
 }
 

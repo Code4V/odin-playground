@@ -9,6 +9,7 @@ import { PeopleListContainer } from './components/PeopleListContainer.jsx'
 import DefaultProfile from './components/DefaultProfile.jsx'
 import ErrorPage from './components/Error.jsx'
 import Image from './components/Image.jsx'
+import { Reducer } from './components/Reducer.jsx'
 
 const personMock = [{
   name: "John Mclain",
@@ -33,6 +34,10 @@ const router = createBrowserRouter([
   {
     path: "image",
     element: <Image />,
+  },
+  {
+    path: "reduce",
+    element: <Reducer />
   }
 ])
 
