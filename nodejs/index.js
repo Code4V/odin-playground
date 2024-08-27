@@ -16,7 +16,13 @@ const req = https.request(options, res => {
   res.on('data', d => {
     process.stdout.write(d);
   })
-})
+});
+
+req.on('error', err => {
+  console.error(err);
+});
+
+req.end();
 
 
 // axios
