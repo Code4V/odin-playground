@@ -4,30 +4,80 @@ const axios = require('axios');
 const https = require('https');
 const http = require('http');
 const fs = require('fs');
+const url = require('url');
+
+const fs2 = require('fs/promises');
 const path = require('path');
 
 const pathName = 'fsDrop/files';
 const fileName = 'fsDrop/files/test.txt';
 
-fs.mkdir(path.join(__dirname, pathName), 
-  { recursive: true}, 
-  (err) => {
-    if (err) {
-      return console.error(err);
-    }
-    console.log('Directory created successfully');
-});
+// fs.mkdir(path.join(__dirname, pathName), 
+//   { recursive: true}, 
+//   (err) => {
+//     if (err) {
+//       return console.error(err);
+//     }
+//     console.log('Directory created successfully');
+// });
+
+// const content = 'Some Content!';
+
+// fs.writeFile(fileName, content, err => {
+//   if (err) {
+//     console.error(err);
+//   } else {
+//     console.log('Success');
+//   }
+// });
+
+// async function example(){
+//   try{
+//     const con = 'More Content';
+//     await fs2.appendFile(fileName, con);
+//     await fs2.appendFile(fileName, con);
+//     await fs2.appendFile(fileName, con);
+//     await fs2.appendFile(fileName, con);
+//     console.log('More Success');
+//   } catch (err) {
+//     console.log(err);
+//   }
+// }; 
+
+// const indexPath = '../index.html';
+// async function readTest(){
+//   try {
+//     setTimeout(async () => {
+//       const data = await fs2.readFile(indexPath, 'utf-8');
+//       console.log(data);
+//     }, 1000)
+//   } catch (err) {
+//     console.log(err)
+//   }
+// }
+
+// example();
+// readTest(); 
+
 // fs.mkdir('fsDrop/file', () => {});
 
-// const server = http.createServer((req, res) => {
-//   res.writeHead(200, {'Content-Type': 'application/json'});
-//   res.end(JSON.stringify({
-//     data: 'Hello World',
-//   }))
+const server = http.createServer((req, res) => {
+  res.writeHead(200, {'Content-Type': 'text/html'});
+  // res.write(req.url);
+  let q = url.parse(req.url, true).query;
+  let txt = q.year + " " + q.month;
+  res.end(txt);
+  // fs.readFile('../index.html', 'utf-8' ,(err, data) => {
+  //   if (err) {
+  //     console.error(err);
+  //   }
 
-// })
+  //   res.write(data);
+  // })
 
-// server.listen(8000);
+})
+
+server.listen(8000);
 
 // const secondServer = http.createServer();
 
