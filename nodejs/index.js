@@ -5,77 +5,52 @@ const https = require('https');
 const http = require('http');
 const fs = require('fs');
 const url = require('url');
+const formidable = require('formidable');
 
 const path = require('path');
 
-const pathName = 'fsDrop/files';
-const fileName = 'fsDrop/files/test.txt';
 
-
-
-const server = http.createServer((req, res) => {
+http.createServer((req, res) => {
   res.writeHead(200, {'Content-Type': 'text/html'});
-  // const uri = new url();
 
-  console.log(req.method);
+  const uri = {
+    '/': 'index.html',
+    '/contact': 'urls/contact.html',
+    '/about': 'urls/about.html'
+  };
 
-  const uri = [
-    {
-      path: '/',
-      file: 'index.html'
-    },
-    {
-      path: '/contact',
-      file: 'urls/contact.html'
-    }
-  ]
+  const reqPath = url.parse(req.url).path;
+  const keys = Object.keys(uri);
 
-  if (!url.parse(req.url).path) {
+  if (req.url == '/fileupload') {
+    let form = new formidable.IncomingForm();
 
+    form.parse(req, (err, fields, files) => {
+      if (err) res.end(err.message);
+      const uploadedFile = files.fileupload[0];
+      let fromPath = uploadedFile.filepath;
+      let toPath = __dirname + '\\fsDrop\\' + uploadedFile.originalFilename;
+
+      fs.rename(fromPath, toPath, (err) => {
+        if (err) res.end(err.message);
+        res.write('File Uploaded and moved');
+        res.end(); 
+      })
+    })
+  }
+  else if(!keys.includes(reqPath)) {
+    fs.readFile('urls/error.html', (err, data) => {
+      if (err) res.end(err.message);
+      res.end(data)
+    })
+  } else {
+    fs.readFile(uri[reqPath], (err, data) => {
+      if (err) res.end(err.message);
+      res.end(data);
+    })
   }
 
-  uri.forEach(path => {
-    if (path.path === url.parse(req.url).path)
-      fs.readFile(path.file, (err, data) => {
-          if (err) res.end(err.message)
-          res.end(data);
-      })
-  })
-
-  // switch (url.parse(req.url).path){
-  //   case '/': 
-  //     fs.readFile('index1.html', (err, data) => {
-  //       if (err) res.end(err.message)
-  //       res.end(data);
-  //     });
-  //     break;
-  //   case '/contact': 
-  //     fs.readFile('urls/contact.html', (err, data) => {
-  //       if (err) res.end(err.message)
-  //       res.end(data);
-  //     });
-  //     break;
-  //   default: 
-  //     fs.readFile('urls/error.html', (err, data) => {
-  //       if (err) res.end(err.message)
-  //       res.end(data);
-  //     })
-  //     break;
-  // }
-  // // let q = url.parse(req.url, true).query;
-  // // let txt = q.year + " " + q.month;
-  // // res.end(txt);
-  // // fs.readFile('../index.html', 'utf-8' ,(err, data) => {
-  // //   if (err) {
-  // //     console.error(err);
-  // //   }
-
-  //   res.write(data);
-  // })
-
-})
-
-server.listen(8000);
+}).listen(8000);
 
 // const options = {
 //   hostname: 'example.com',
