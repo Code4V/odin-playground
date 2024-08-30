@@ -11,39 +11,64 @@ const path = require('path');
 const pathName = 'fsDrop/files';
 const fileName = 'fsDrop/files/test.txt';
 
+
+
 const server = http.createServer((req, res) => {
   res.writeHead(200, {'Content-Type': 'text/html'});
   // const uri = new url();
 
-  console.log(req.method)
+  console.log(req.method);
 
-  switch (url.parse(req.url).path){
-    case '/': 
-      fs.readFile('index1.html', (err, data) => {
-        if (err) res.end(err.message)
-        res.end(data);
-      });
-      break;
-    case '/contact': 
-      fs.readFile('urls/contact.html', (err, data) => {
-        if (err) res.end(err.message)
-        res.end(data);
-      });
-      break;
-    default: 
-      fs.readFile('urls/error.html', (err, data) => {
-        if (err) res.end(err.message)
-        res.end(data);
-      })
-      break;
+  const uri = [
+    {
+      path: '/',
+      file: 'index.html'
+    },
+    {
+      path: '/contact',
+      file: 'urls/contact.html'
+    }
+  ]
+
+  if (!url.parse(req.url).path) {
+
   }
-  // let q = url.parse(req.url, true).query;
-  // let txt = q.year + " " + q.month;
-  // res.end(txt);
-  // fs.readFile('../index.html', 'utf-8' ,(err, data) => {
-  //   if (err) {
-  //     console.error(err);
-  //   }
+
+  uri.forEach(path => {
+    if (path.path === url.parse(req.url).path)
+      fs.readFile(path.file, (err, data) => {
+          if (err) res.end(err.message)
+          res.end(data);
+      })
+  })
+
+  // switch (url.parse(req.url).path){
+  //   case '/': 
+  //     fs.readFile('index1.html', (err, data) => {
+  //       if (err) res.end(err.message)
+  //       res.end(data);
+  //     });
+  //     break;
+  //   case '/contact': 
+  //     fs.readFile('urls/contact.html', (err, data) => {
+  //       if (err) res.end(err.message)
+  //       res.end(data);
+  //     });
+  //     break;
+  //   default: 
+  //     fs.readFile('urls/error.html', (err, data) => {
+  //       if (err) res.end(err.message)
+  //       res.end(data);
+  //     })
+  //     break;
+  // }
+  // // let q = url.parse(req.url, true).query;
+  // // let txt = q.year + " " + q.month;
+  // // res.end(txt);
+  // // fs.readFile('../index.html', 'utf-8' ,(err, data) => {
+  // //   if (err) {
+  // //     console.error(err);
+  // //   }
 
   //   res.write(data);
   // })
