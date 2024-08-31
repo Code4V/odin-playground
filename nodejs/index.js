@@ -38,12 +38,21 @@ http.createServer((req, res) => {
       })
     })
   }
+
   else if(!keys.includes(reqPath)) {
-    fs.createReadStream('urls/error.html', (err, data) => {
-      if (err) res.end(err.message);
-      res.end(data)
+    const readStream = fs.createReadStream('urls/error.html');
+
+    readStream.on('error', err => {
+      res.write(err.message);
+      res.end();
+    })
+
+    readStream.on('data', chunk => {
+      res.write(chunk);
+      res.end();
     })
   } else {
+
     const readStream = fs.createReadStream(uri[reqPath]);
     
     readStream.on('error', err => {
