@@ -22,6 +22,11 @@ http.createServer((req, res) => {
   const reqPath = url.parse(req.url).path;
   const keys = Object.keys(uri);
 
+  if (req.url.includes('assets/')) {
+    const imageStream = fs.readFileSync(__dirname + reqPath)
+    res.write(imageStream, 'binary')
+  }
+
   if (req.url == '/fileupload') {
     let form = new formidable.IncomingForm();
 
