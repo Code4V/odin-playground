@@ -16,15 +16,23 @@
   </script>
 
 </head>
-<body class="grid items-center grid-cols-5 mx-8 md:mx-32">
+<body class="relative grid items-center grid-cols-5 mx-8 md:mx-32">
+  <nav class="sticky top-0 z-50 flex items-center w-full h-24 col-span-5 gap-8 after:inset-0 after:bg-pink-300 after:bg-opacity-75 after:h-full after:w-full after:absolute after:-z-50 ps-8">
+    <a href="#">Home</a>
+    <a href="/about">About Us</a>
+    <a href="/contact">Contact</a>
+  </nav>
+
   <heading class="h-64 col-span-5 place-content-center">
     <div class="">
-      <h1 class="text-5xl font-bold">Our Cats </h1>
+      <h1 class="text-5xl font-bold">
+        <span class="text-pink-500">Our</span>
+        Beloved Cats </h1>
       <p>Home of cats</p>
     </div>
   </heading>
 
-  <section class="grid col-span-5 h-72 grid-cols-subgrid"> 
+  <section class="grid col-span-5 md:h-72 grid-cols-subgrid"> 
     <ul class="grid col-span-5 gap-4 lg:row-span-2 grid-cols-subgrid">
       
       <li class="relative col-span-5 group md:col-span-1">
@@ -36,12 +44,12 @@
       </li>
 
       <!-- set img of MORA to md:objects-[-100px] -->
-      <li class="relative col-span-5 md:col-span-1">
-        <div class="relative h-full overflow-hidden">
-          <div class="absolute inset-0 w-full h-full bg-black opacity-50"></div>
+      <li class="relative col-span-5 group md:col-span-1">
+        <div class="relative h-full overflow-hidden group">
+          <div class="absolute inset-0 w-full h-full transition-opacity duration-150 bg-black opacity-0 group-hover:opacity-50"></div>
           <img class="object-cover md:object-[-100px] h-full" src="assets/Mora.jpg" alt="">
         </div>
-        <p class="absolute inset-0 mx-auto text-xl font-bold text-white w-fit place-content-center">MORA</p>
+        <p class="absolute inset-0 mx-auto text-xl font-bold text-white transition-opacity duration-150 opacity-0 w-fit place-content-center group-hover:opacity-100">MORA</p>
       </li>
 
       <li class="relative col-span-5 md:col-span-1">

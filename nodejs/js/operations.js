@@ -8,13 +8,13 @@ const cats = [
   {
     catName: "Mora",
     catDesc: "A gentle cat with a gentleman attitude. Never gets mad and always befriend others even if they're aggresive",
-    catPers: "Diplomat",
+    catPers: "Diplomat and Kind",
     catImg: 'assets/Mora.jpg',
   },
   {
     catName: "Slurpee",
     catDesc: "A fat cat that likes to eat and cry.",
-    catPers: "Fat",
+    catPers: "Fat and Dirty",
     catImg: 'assets/Slurpee.jpg',
   },
   {
@@ -26,13 +26,12 @@ const cats = [
   {
     catName: "Kiwi",
     catDesc: "Like Slurpee, he likes to eat a lot and loves to explore outside. With a unique facial feature, which is his tongue always hang out of his mouth sideways",
-    catPers: "Veliceraptor",
+    catPers: "Veliceraptor and Mlep",
     catImg: 'assets/Kiwi.jpg',
   },
 ]
 
 function createShowcase (cat) {
-  console.log(cat)
   const catShowcase = document.createElement('div');
   catShowcase.classList.add('grid', 'col-span-5', 'grid-cols-subgrid');
 
@@ -49,8 +48,9 @@ function createShowcase (cat) {
   const catDescDesc = document.createElement('p');
   const catDescPers = document.createElement('p');
 
-  catDescContainer.classList.add('col-span-2');
-  catDescName.classList.add('text-xl', 'font-bold');
+  catDescContainer.classList.add('col-span-2', 'flex', 'flex-col', 'gap-4');
+  catDescName.classList.add('text-2xl', 'font-bold');
+  catDescPers.classList.add('italic')
 
   catDescName.textContent = cat.catName;
   catDescDesc.textContent = cat.catDesc;
