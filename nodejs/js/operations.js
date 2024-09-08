@@ -25,7 +25,7 @@ const cats = [
   },
   {
     catName: "Kiwi",
-    catDesc: "Like Slurpee, he likes to eat a lot and loves to explore outside. With a unique facial feature, which is his tongue always hang out of his mouth sideways",
+    catDesc: "Like Slurpee, he likes to eat a lot and loves to explore outside. With a unique facial feature, which is his tongue always hanging out of his mouth sideways",
     catPers: "Veliceraptor and Mlep",
     catImg: 'assets/Kiwi.jpg',
   },
@@ -41,6 +41,7 @@ function createShowcase (cat) {
 
   catImgContainer.classList.add('relative', 'col-span-3');
   catImgLiner.classList.add('absolute', 'inset-0', 'left-0', 'w-8', 'h-full', 'bg-pink-500')
+  catImg.classList.add('h-full')
   catImg.src = cat.catImg;
 
   const catDescContainer = document.createElement('div');

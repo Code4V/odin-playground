@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,94 +17,114 @@
   </script>
 
 </head>
-<body class="relative grid items-center grid-cols-5 mx-8 md:mx-32">
-  <nav class="sticky top-0 z-50 flex items-center w-full h-24 col-span-5 gap-8 after:inset-0 after:bg-pink-300 after:bg-opacity-75 after:h-full after:w-full after:absolute after:-z-50 ps-8">
+
+<body class="bg-slate-100">
+  <nav
+    class="sticky top-0 z-50 flex items-center w-full h-24 col-span-5 gap-8 after:inset-0 after:bg-pink-300 after:bg-opacity-75 after:h-full after:w-full after:absolute after:-z-50 ps-8">
     <a href="#">Home</a>
     <a href="/about">About Us</a>
     <a href="/contact">Contact</a>
   </nav>
 
-  <heading class="h-64 col-span-5 place-content-center">
-    <div class="">
-      <h1 class="text-5xl font-bold">
-        <span class="text-pink-500">Our</span>
-        Beloved Cats </h1>
-      <p>Home of cats</p>
-    </div>
-  </heading>
+  <div class="relative grid items-center grid-cols-5 mx-8 md:mx-32">
 
-  <section class="grid col-span-5 md:h-72 grid-cols-subgrid"> 
-    <ul class="grid col-span-5 gap-4 lg:row-span-2 grid-cols-subgrid">
-      
-      <li class="relative col-span-5 group md:col-span-1">
-        <div class="relative h-full overflow-hidden">
-          <div class="absolute inset-0 w-full h-full transition-opacity duration-150 bg-black opacity-0 group-hover:opacity-50"></div>
-          <img class="object-cover md:object-[-50px] h-full" src="assets/Nami.jpg" alt="">
-        </div>
-        <p class="absolute inset-0 mx-auto text-xl font-bold text-white transition-opacity duration-150 opacity-0 group-hover:opacity-100 w-fit place-content-center">NAMI</p>
-      </li>
 
-      <!-- set img of MORA to md:objects-[-100px] -->
-      <li class="relative col-span-5 group md:col-span-1">
-        <div class="relative h-full overflow-hidden group">
-          <div class="absolute inset-0 w-full h-full transition-opacity duration-150 bg-black opacity-0 group-hover:opacity-50"></div>
-          <img class="object-cover md:object-[-100px] h-full" src="assets/Mora.jpg" alt="">
-        </div>
-        <p class="absolute inset-0 mx-auto text-xl font-bold text-white transition-opacity duration-150 opacity-0 w-fit place-content-center group-hover:opacity-100">MORA</p>
-      </li>
-
-      <li class="relative col-span-5 md:col-span-1">
-        <div class="relative h-full overflow-hidden">
-          <div class="absolute inset-0 w-full h-full bg-black opacity-50"></div>
-          <img class="object-cover h-full" src="assets/Slurpee.jpg" alt="">
-        </div>
-        <p class="absolute inset-0 mx-auto text-xl font-bold text-white w-fit place-content-center">SLURPEE</p>
-      </li>
-
-      <li class="relative col-span-5 md:col-span-1">
-        <div class="relative h-full overflow-hidden">
-          <div class="absolute inset-0 w-full h-full bg-black opacity-50"></div>
-          <img class="object-cover h-full" src="assets/Lemon.JPG" alt="">
-        </div>
-        <p class="absolute inset-0 mx-auto text-xl font-bold text-white w-fit place-content-center">LEMON</p>
-      </li>
-      
-      <!-- set img of KIWI to md:objects-[-100px] -->
-      <li class="relative col-span-5 md:col-span-1">
-        <div class="relative h-full overflow-hidden">
-          <div class="absolute inset-0 w-full h-full bg-black opacity-50"></div>
-          <img class="object-cover object-right h-full" src="assets/Kiwi.jpg" alt="">
-        </div>
-        <p class="absolute inset-0 mx-auto text-xl font-bold text-white w-fit place-content-center">KIWI</p>
-      </li>
-
-    </ul>
-  </section>
-
-  <section class="h-32 place-content-center">
-    <div class="">
-      <h2 class="text-3xl font-bold">
-        Cat Showcase
-      </h2>
-    </div>
-  </section>
-
-  <section class="grid col-span-5 gap-4 grid-cols-subgrid place-content-center" id="showCase">
-    <!-- <div class="grid col-span-5 grid-cols-subgrid">
-      <div class="relative col-span-3">
-        <div class="absolute inset-0 left-0 w-8 h-full bg-pink-500"></div>
-        <img src="assets/Nami.JPG" alt="">
-      </div>
+    <heading class="h-64 col-span-5 place-content-center">
       <div class="">
-        <p class="text-xl font-bold" id="catName">CAT NAME</p>
-        <p>CAT DESCRIPTION</p>
-        <p>CAT PERSONALITY</p>
+        <h1 class="text-5xl font-bold">
+          <span class="text-pink-500">Our</span>
+          Beloved Cats
+        </h1>
+        <p>Home of cats</p>
       </div>
-    </div> -->
-    
-  </section>
+    </heading>
+
+    <section class="grid col-span-5 md:h-72 grid-cols-subgrid">
+      <ul class="grid col-span-5 gap-0 lg:row-span-2 grid-cols-subgrid">
+
+        <li class="relative col-span-5 group md:col-span-1">
+          <div class="relative h-full overflow-hidden">
+            <div
+              class="absolute inset-0 w-full h-full transition-opacity duration-150 bg-black opacity-0 group-hover:opacity-50">
+            </div>
+            <img class="object-cover md:object-[-50px] h-full" src="assets/Nami.jpg" alt="">
+          </div>
+          <p
+            class="absolute inset-0 mx-auto text-xl font-bold text-white transition-opacity duration-150 opacity-0 group-hover:opacity-100 w-fit place-content-center">
+            NAMI</p>
+        </li>
+
+        <!-- set img of MORA to md:objects-[-100px] -->
+        <li class="relative col-span-5 group md:col-span-1">
+          <div class="relative h-full overflow-hidden group">
+            <div
+              class="absolute inset-0 w-full h-full transition-opacity duration-150 bg-black opacity-0 group-hover:opacity-50">
+            </div>
+            <img class="object-cover md:object-[-100px] h-full" src="assets/Mora.jpg" alt="">
+          </div>
+          <p
+            class="absolute inset-0 mx-auto text-xl font-bold text-white transition-opacity duration-150 opacity-0 w-fit place-content-center group-hover:opacity-100">
+            MORA</p>
+        </li>
+
+        <li class="relative col-span-5 md:col-span-1">
+          <div class="relative h-full overflow-hidden">
+            <div class="absolute inset-0 w-full h-full bg-black opacity-50"></div>
+            <img class="object-cover h-full" src="assets/Slurpee.jpg" alt="">
+          </div>
+          <p class="absolute inset-0 mx-auto text-xl font-bold text-white w-fit place-content-center">SLURPEE</p>
+        </li>
+
+        <li class="relative col-span-5 md:col-span-1">
+          <div class="relative h-full overflow-hidden">
+            <div class="absolute inset-0 w-full h-full bg-black opacity-50"></div>
+            <img class="object-cover h-full" src="assets/Lemon.JPG" alt="">
+          </div>
+          <p class="absolute inset-0 mx-auto text-xl font-bold text-white w-fit place-content-center">LEMON</p>
+        </li>
+
+        <!-- set img of KIWI to md:objects-[-100px] -->
+        <li class="relative col-span-5 md:col-span-1">
+          <div class="relative h-full overflow-hidden">
+            <div class="absolute inset-0 w-full h-full bg-black opacity-50"></div>
+            <img class="object-cover object-right h-full" src="assets/Kiwi.jpg" alt="">
+          </div>
+          <p class="absolute inset-0 mx-auto text-xl font-bold text-white w-fit place-content-center">KIWI</p>
+        </li>
+
+      </ul>
+    </section>
+
+    <section class="h-32 place-content-center">
+      <div class="">
+        <h2 class="text-3xl font-bold">
+          Cat Showcase
+        </h2>
+      </div>
+    </section>
+
+    <section class="grid col-span-5 gap-16 grid-cols-subgrid place-content-center" id="showCase">
+      <!-- <div class="grid col-span-5 grid-cols-subgrid">
+        <div class="relative col-span-3">
+          <div class="absolute inset-0 left-0 w-8 h-full bg-pink-500"></div>
+          <img src="assets/Nami.JPG" alt="">
+        </div>
+        <div class="">
+          <p class="text-xl font-bold" id="catName">CAT NAME</p>
+          <p>CAT DESCRIPTION</p>
+          <p>CAT PERSONALITY</p>
+        </div>
+      </div> -->
+
+    </section>
+  </div>
+
+<footer class="grid h-12 mt-16 align-middle bg-pink-500 place-content-center">
+    <div class="w-full font-bold">Created by Code4V</div>
+  </footer>
 
   <script src="js/operations.js"></script>
 
 </body>
+
 </html>
