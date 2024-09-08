@@ -5,32 +5,45 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Home</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        fontFamily: {
+          sans: ['Cerebri Sans', 'sans-serif'],
+        }
+      }
+    }
+  </script>
 
 </head>
 <body class="grid items-center grid-cols-5 mx-8 md:mx-32">
   <heading class="h-64 col-span-5 place-content-center">
     <div class="">
-      <h1 class="text-5xl font-bold">Cats and Furs</h1>
+      <h1 class="text-5xl font-bold">Our Cats </h1>
       <p>Home of cats</p>
     </div>
   </heading>
 
-  <section class="grid h-64 col-span-5 grid-cols-subgrid"> 
+  <section class="grid col-span-5 h-72 grid-cols-subgrid"> 
     <ul class="grid col-span-5 gap-4 lg:row-span-2 grid-cols-subgrid">
-      <li class="relative col-span-5 md:col-span-1">
+      
+      <li class="relative col-span-5 group md:col-span-1">
         <div class="relative h-full overflow-hidden">
-          <div class="absolute inset-0 w-full h-full bg-black opacity-50"></div>
-          <img class="object-cover object-[-50px] h-full" src="assets/Nami.jpg" alt="">
+          <div class="absolute inset-0 w-full h-full transition-opacity duration-150 bg-black opacity-0 group-hover:opacity-50"></div>
+          <img class="object-cover md:object-[-50px] h-full" src="assets/Nami.jpg" alt="">
         </div>
-        <p class="absolute inset-0 mx-auto text-xl font-bold text-white w-fit place-content-center">NAMI</p>
+        <p class="absolute inset-0 mx-auto text-xl font-bold text-white transition-opacity duration-150 opacity-0 group-hover:opacity-100 w-fit place-content-center">NAMI</p>
       </li>
+
+      <!-- set img of MORA to md:objects-[-100px] -->
       <li class="relative col-span-5 md:col-span-1">
         <div class="relative h-full overflow-hidden">
           <div class="absolute inset-0 w-full h-full bg-black opacity-50"></div>
-          <img class="object-cover object-[-100px] h-full" src="assets/Mora.jpg" alt="">
+          <img class="object-cover md:object-[-100px] h-full" src="assets/Mora.jpg" alt="">
         </div>
         <p class="absolute inset-0 mx-auto text-xl font-bold text-white w-fit place-content-center">MORA</p>
       </li>
+
       <li class="relative col-span-5 md:col-span-1">
         <div class="relative h-full overflow-hidden">
           <div class="absolute inset-0 w-full h-full bg-black opacity-50"></div>
@@ -38,6 +51,7 @@
         </div>
         <p class="absolute inset-0 mx-auto text-xl font-bold text-white w-fit place-content-center">SLURPEE</p>
       </li>
+
       <li class="relative col-span-5 md:col-span-1">
         <div class="relative h-full overflow-hidden">
           <div class="absolute inset-0 w-full h-full bg-black opacity-50"></div>
@@ -45,6 +59,8 @@
         </div>
         <p class="absolute inset-0 mx-auto text-xl font-bold text-white w-fit place-content-center">LEMON</p>
       </li>
+      
+      <!-- set img of KIWI to md:objects-[-100px] -->
       <li class="relative col-span-5 md:col-span-1">
         <div class="relative h-full overflow-hidden">
           <div class="absolute inset-0 w-full h-full bg-black opacity-50"></div>
@@ -52,9 +68,34 @@
         </div>
         <p class="absolute inset-0 mx-auto text-xl font-bold text-white w-fit place-content-center">KIWI</p>
       </li>
+
     </ul>
   </section>
 
+  <section class="h-32 place-content-center">
+    <div class="">
+      <h2 class="text-3xl font-bold">
+        Cat Showcase
+      </h2>
+    </div>
+  </section>
+
+  <section class="grid col-span-5 gap-4 grid-cols-subgrid place-content-center" id="showCase">
+    <!-- <div class="grid col-span-5 grid-cols-subgrid">
+      <div class="relative col-span-3">
+        <div class="absolute inset-0 left-0 w-8 h-full bg-pink-500"></div>
+        <img src="assets/Nami.JPG" alt="">
+      </div>
+      <div class="">
+        <p class="text-xl font-bold" id="catName">CAT NAME</p>
+        <p>CAT DESCRIPTION</p>
+        <p>CAT PERSONALITY</p>
+      </div>
+    </div> -->
+    
+  </section>
+
+  <script src="js/operations.js"></script>
 
 </body>
 </html>
