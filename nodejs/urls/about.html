@@ -5,17 +5,33 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="https://cdn.tailwindcss.com"></script>
   <title>About</title>
+  <script>
+    tailwind.config = {
+      theme: {
+        fontFamily: {
+          sans: ['Cerebri Sans', 'sans-serif'],
+        }
+      }
+    }
+  </script>
+
 </head>
 <body>
-  <div class="grid">
-    <h1>
-      About
-      Us
-    </h1>
+  <section class="relative grid items-center grid-cols-1 gap-4 mx-auto sm:w-3/4 md:w-2/3 lg:w-1/2">
+    <div class="h-64 place-content-center">
+      <h1 class="text-5xl font-black">
+        <span class="text-pink-500">About</span>
+        Us
+      </h1>
+    </div>
 
     <p>
-      We very much love our cats and will do anything for them to be happy. Because in our eyes, our cats are our children and nothing like taking care of your kids 
+      We very much love our cats and will do anything for them to be happy. Because in our eyes, our cats are our children and nothing like taking care of your kids. 
     </p>
-  </div>
+
+    <p>
+      This site will serve as a blogspot for our cats and will be a go-to site to post update of the current situation of our feline children! :D 
+    </p>
+  </section>
 </body>
 </html>
