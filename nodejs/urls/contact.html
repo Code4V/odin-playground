@@ -4,15 +4,44 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        fontFamily: {
+          sans: ['Cerebri Sans', 'sans-serif'],
+        }
+      }
+    }
+  </script>
   <title>Contact</title>
 </head>
 <body>
-  <header>
-    <h1>This is the Contact Page</h1>
-  </header>
-  <form action="/fileupload" method="post" enctype="multipart/form-data">
+  <nav
+    class="sticky top-0 z-50 flex items-center w-full h-24 col-span-5 gap-8 after:inset-0 after:bg-pink-300 after:bg-opacity-75 after:h-full after:w-full after:absolute after:-z-50 ps-8">
+    <a href="/">Home</a>
+    <a href="/about">About Us</a>
+    <a href="#">Contact</a>
+  </nav>
+
+  <section class="relative grid items-center grid-cols-1 gap-4 mx-auto sm:w-3/4 md:w-2/3 lg:w-1/2">
+    <div class="h-64 place-content-center">
+      <h1 class="text-5xl font-black">
+        <span class="text-pink-500">Contact</span>
+        Us
+      </h1>
+    </div>
+
+<div class="px-8 py-4 border">
+  <p>Email us here</p>
+  <p>elcattos@gmail.com</p>
+</div>
+
+    
+  </section>
+  
+  <!-- <form action="/fileupload" method="post" enctype="multipart/form-data">
     <input type="file" name="fileupload" id="">
     <input type="submit" value="Upload File...">
-  </form>
+  </form> -->
 </body>
 </html>
