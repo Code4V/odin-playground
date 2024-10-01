@@ -11,7 +11,7 @@ const path = require('path');
 
 
 http.createServer((req, res) => {
-  res.writeHead(200, {'Content-Type': 'text/html'});
+  res.writeHead(200, { 'Content-Type': 'text/html' });
 
   const uri = {
     '/': 'index.html',
@@ -45,12 +45,12 @@ http.createServer((req, res) => {
       fs.rename(fromPath, toPath, (err) => {
         if (err) res.end(err.message);
         res.write('File Uploaded and moved');
-        res.end(); 
+        res.end();
       })
     })
   }
 
-  else if(!keys.includes(reqPath)) {
+  else if (!keys.includes(reqPath)) {
     const readStream = fs.createReadStream('urls/error.html');
 
     readStream.on('error', err => {
@@ -65,7 +65,7 @@ http.createServer((req, res) => {
   } else {
 
     const readStream = fs.createReadStream(uri[reqPath]);
-    
+
     readStream.on('error', err => {
       res.write(err.message);
       res.end();
@@ -105,7 +105,7 @@ http.createServer((req, res) => {
 //   .get('https://example.com/todos')
 //   .then(res => {
 //     console.log(`statusCode: ${res.status}`);
-//     console.log(res);   
+//     console.log(res);
 //   })
 //   .catch(err => {
 //     console.error(err);
