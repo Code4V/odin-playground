@@ -1,5 +1,6 @@
 #!/usr/bin/node
 
+require('dotenv').config();
 const axios = require('axios');
 const https = require('https');
 const http = require('http');
@@ -7,8 +8,11 @@ const fs = require('fs');
 const url = require('url');
 const formidable = require('formidable');
 
+
 const path = require('path');
 
+console.log(process.env.URL);
+console.log(process.env.LANG);
 
 http.createServer((req, res) => {
   res.writeHead(200, { 'Content-Type': 'text/html' });
