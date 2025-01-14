@@ -5,10 +5,25 @@ const beansRouter = require("./routes/beansRouter");
 require("dotenv").config();
 app.set('view engine', 'pug');
 
+function middleWhere (req, res, next) {
+  console.log("Middleware called");
+
+  req.customProperty = "test";
+
+  req.customFunc = (val) => {
+    return val + 3000
+  }
+
+  next();
+}
+
+app.use(middleWhere);
+
 app.use("/beans", beansRouter);
 
 app.get("/", (req, res) => {
-  return res.render("app", { pump: 'GOTY', it: 'wewe'});
+  
+  return res.render("index", { pump: 'GOTY', it: req.customFunc(300)});
 });
 
 

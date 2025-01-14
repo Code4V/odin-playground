@@ -1,11 +1,11 @@
 const { Router } = require("express");
 
+const { getCoffeeBean } = require('../controllers/beanController')
+
 const beansRouter = Router();
 
 beansRouter.get("/", (req, res) => res.send("All Beans"));
-beansRouter.get("/:beansId", (req, res) => {
-  const { beansId } = req.params;
-  res.send(`Beans ID: ${beansId}`);
-});
+
+beansRouter.get("/:beanId", getCoffeeBean);
 
 module.exports = beansRouter;
