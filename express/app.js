@@ -3,14 +3,18 @@ const app = express();
 const beansRouter = require("./routes/beansRouter");
 
 require("dotenv").config();
+app.set('view engine', 'pug');
 
 app.use("/beans", beansRouter);
 
-app.get("/", (req, res) => res.send("Hellow World"));
+app.get("/", (req, res) => {
+  return res.render("app", { pump: 'GOTY', it: 'wewe'});
+});
 
 
-app.post("/mess*ages", (req, res) => {
-  return res.send("This is where you can see any messages.");
+
+app.get("/messages?", (req, res) => {
+  return res.json({ data: {message: "be cautious"} });
 })
 
 app.all("/profile/:profileId/:messageId", (req, res) => {
